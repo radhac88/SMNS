@@ -1,0 +1,44 @@
+img.background{
+	width:100%;
+height: 100%;
+top: 0px;
+left: 0px;
+position: absolute;
+z-index: -1;
+filter: blur(5px);
+}
+h1{
+	color: white;
+	text-align: center;
+	font-size: 50px;
+	font-style:italic;
+}
+p{
+	color: pink;
+	font-size: 30px;
+	text-align: center;
+}
+ul{
+
+	color: white;
+	text-align: left;
+	font-size: 20px;
+
+}
+fieldset{
+	margin-left:700px;
+	border:none;
+}
+
+button{
+	padding: 5px;
+	margin-left: 800px;
+	border-radius: 10px;
+}
+footer{
+	position:absolute;
+    bottom: 30px;
+    width: 100%;
+    font-size: 20px;
+    font-style: bold;
+}

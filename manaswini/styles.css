@@ -1,0 +1,11 @@
+.test1{
+position: absolute;
+top: 50%;
+border-color: red;
+
+}
+.wrapper{
+
+	object-position: center;
+
+}
