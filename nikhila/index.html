@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 	<title>new html page</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <style type="text/css">
 	body{
@@ -59,9 +60,9 @@ link opens in blank page <a href="https://www.google.com" target="_blank">google
 	<li>roses</li>
 	<li>lily</li>
 </ol>
-<img src="nature.jpg" alt="nature" width="100" height="100">
-<img src="nature.jpg" alt="nature" width="100%" height="100%">
-<img src="naturephoto.jpg" alt="nature" width="100%" height="100%">
+<img src="img/nature.jpg" alt="nature" width="100" height="100">
+<img src="img/nature.jpg" alt="nature" width="100%" height="100%">
+<img src="img/naturephoto.jpg" alt="nature" width="100%" height="100%">
 
 <button>button</button><br><br>
 <input type="text"   id="uname" value="hjfdh" disabled="text">
@@ -87,5 +88,403 @@ tag
 <del>deleted text</del><br>
 <ins>this is inserted</ins><br>
 
+<!--html quotations-->
+<!--q element is used for short quotations and printed in double quotes-->
+<p>this is a quote <q>The best preparation for tomorrow is doing your best today.</q></p>
+<!--blockquote is quoted from another source-->
+<p>Here is a blockquote from WWF's website:</p>
+<blockquote cite="http://www.worldwildlife.org/who/index.html">
+For 50 years, WWF has been protecting the future of nature.
+The world's leading conservation organization,
+WWF works in 100 countries and is supported by
+1.2 million members in the United States and
+close to 5 million globally.
+</blockquote>
+<!--abbreviations-->
+<abbr title=""></abbr>
+<!--bdo is bidirectional override-->
+<bdo dir="rtl">this will override current text direction</bdo><br>
+<!--html links-->
+<p>link opens in blank page</p>
+<a href="https://www.google.com" target="_blank">google website</a><br>
+<p>link opens in same page</p>
+	<a href="https://www.google.com" target="_self">google website</a><br>
+<p></p>	
+<a href="https://www.google.com" target="_parent">google website</a><br>
+<a href="https://www.google.com" target="_top">google website</a><br>
+<p>image with width=100 and height=100</p>
+<img src="img/nature.jpg" alt="nature" width="100" height="100"><br>
+<p>image with width=100% and height=100%</p>
+<img src="img/nature.jpg" alt="nature" width="100%" height="100%">
+<p> image as links</p>
+<a href="https://en.wikipedia.org/wiki/India"><img src="img/india.jpg"  alt="india" width="100" height="100"></a>
+<a href="https://en.wikipedia.org/wiki/Nature"><img src="img/nature.jpg" alt="nature" width="100" height="100"></a>
+<!--table with no css-->
+<table class="table1">
+<tr>
+	<th>name</th>
+	<th>phone no</th>
+	<th>address</th>
+</tr>
+<tr>
+	<td>nikhila</td>
+	<td>999999999</td>
+	<td>nagole</td>
+</tr>
+<tr>
+	<td>surya</td>
+	<td>88888888</td>
+	<td>kurnool</td>
+</tr>
+<tr>
+	<td>manaswini</td>
+	<td>77777777</td>
+	<td>ecil</td>
+</tr>
+<tr>
+	<td>shiva</td>
+	<td>998899889</td>
+	<td>kukatpally</td>
+</tr>
+</table>
+
+
+<p>table with alternate row colors</p>
+<table id="table2">
+<tr>
+	<th>name</th>
+	<th>phone no</th>
+	<th>address</th>
+</tr>
+<tr>
+	<td>nikhila</td>
+	<td>999999999</td>
+	<td>nagole</td>
+</tr>
+<tr>
+	<td>surya</td>
+	<td>888888888</td>
+	<td>kurnool</td>
+</tr>
+<tr>
+	<td>manaswini</td>
+	<td>777777777</td>
+	<td>ecil</td>
+</tr>
+<tr>
+	<td>shiva</td>
+	<td>998899889</td>
+	<td>kukatpally</td>
+</tr>
+</table>
+
+
+<p>table with alternate column colors</p>
+<table id="table3">
+<tr>
+	<th>name</th>
+	<th>phone no</th>
+	<th>address</th>
+</tr>
+<tr>
+	<td>nikhila</td>
+	<td>999999999</td>
+	<td>nagole</td>
+</tr>
+<tr>
+	<td>surya</td>
+	<td>88888888</td>
+	<td>kurnool</td>
+</tr>
+<tr>
+	<td>manaswini</td>
+	<td>77777777</td>
+	<td>ecil</td>
+</tr>
+<tr>
+	<td>shiva</td>
+	<td>998899889</td>
+	<td>kukatpally</td>
+</tr>
+</table>
+
+
+<p>table with colspan and cell padding</p>
+<table id="table4">
+	<tr><td colspan="3" align="center">details<tr>
+<tr>
+	<th>name</th>
+	<th>phone no</th>
+	<th>address</th>
+</tr>
+<tr>
+	<td>nikhila</td>
+	<td>999999999</td>
+	<td>nagole</td>
+</tr>
+<tr>
+	<td>surya</td>
+	<td>88888888</td>
+	<td>kurnool</td>
+</tr>
+<tr>
+	<td>manaswini</td>
+	<td>77777777</td>
+	<td>ecil</td>
+</tr>
+<tr>
+	<td>shiva</td>
+	<td>998899889</td>
+	<td>kukatpally</td>
+</tr>
+</table>
+
+
+<p>table with background image</p>
+<table id="table5">
+<tr>
+	<th>name</th>
+	<th>phone no</th>
+	<th>address</th>
+</tr>
+<tr>
+	<td>nikhila</td>
+	<td>999999999</td>
+	<td>nagole</td>
+</tr>
+<tr>
+	<td>surya</td>
+	<td>88888888</td>
+	<td>kurnool</td>
+</tr>
+<tr>
+	<td>manaswini</td>
+	<td>77777777</td>
+	<td>ecil</td>
+</tr>
+<tr>
+	<td>shiva</td>
+	<td>99889988</td>
+	<td>kukatpally</td>
+</tr>
+</table>
+
+<p>unordered lists</p>
+<ul>
+	<li>first item</li>
+	<li>second item</li>
+</ul>
+<ul type="square">
+	<li>first item</li>
+	<li>second item</li>
+</ul>
+<ul type="circle">
+	<li>first item</li>
+	<li>second item</li>
+</ul>
+<ul type="disc">
+	<li>first item</li>
+	<li>second item</li>
+</ul>
+<p>ordered lists</p>
+<ol>
+	<li>first item</li>
+	<li>second item</li>
+</ol>
+<ol type="a">
+	<li>first item</li>
+	<li>second item</li>
+</ol>
+<ol type="A">
+	<li>first item</li>
+	<li>second item</li>
+</ol>
+<ol type="i">
+	<li>first item</li>
+	<li>second item</li>
+</ol>
+<ol type="I">
+	<li>first item</li>
+	<li>second item</li>
+</ol>
+<p>description lists</p>
+<dl>
+	<dt>first item</dt>
+	<dd>-this is the first item of the list</dd>
+	<dt>Second Item</dt>
+	<dd>-This is the Second item of a list</dd> 
+</dl>
+<p>nested lists</p>
+<ul>
+<li>countries</li>
+<ol>
+	<li>india</li>
+	<li>pakistan</li>
+</ol>
+<li>caiptals</li>
+<ol>
+	<li>New delhi</li>
+	<li>Islamabad</li>
+</ol>
+</ul>
+<p>lists to start from 1000</p>
+<ol start="1000">
+	<li>hyderabad</li>
+	<li>chennai</li>
+	<li>mumbai</li>
+<ol>
+	<p> navigation bar</p>
+	<nav>
+	<ul>
+		<li><a href="">HTML</a></li>
+		<li><a href="">CSS</a></li>
+		<li><a href="">JavaScript</a></li>
+		<li><a href="">SQL</a></li>
+		<li><a href="">PHP</a></li>
+		
+	</ul>
+</nav>
+	<br>
+	<p> frames</p>
+	<iframe src="https://www.w3schools.com"></iframe><br>
+	<iframe src="https://www.w3schools.com" width="500" height="700"></iframe>
+	<a href="https://www.w3schools.com" target="iframe_a">link</a>
+	
+
+<header>
+<h3>Header</h3>
+</header>
+<nav>
+<ul>
+		<li><a href="">HTML</a></li>
+		<li><a href="">CSS</a></li>
+		<li><a href="">JavaScript</a></li>
+		<li><a href="">SQL</a></li>
+		<li><a href="">PHP</a></li>
+		
+	</ul>
+</nav>
+<section>
+	<br>
+	<br>
+	<br>
+	<p><center>this is section</center></p>
+	<br>
+	<br>
+	<br>
+	</section>
+<footer>
+	footer
+</footer>
+<br><br><br><br>
+<h5>html template</h5>
+<div id="header">
+	<label><b>Linked in</b></label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+	<input type="text" placeholder="Email or phone number" class="textbox">
+	<input type="password" placeholder="Password" class="textbox">&ensp;
+	<input type="submit" value="sign in">&emsp;
+	<a href="" target="_balnk" >forget password?</a>
+</div>
+<div id="center">
+<br><br><br><br><br><br><br><br><br><br><br>
+	<fieldset>
+		<h3 align="center">Be great at what you do</h3>
+		<p align="center" style="font-size: 20px">Get started-it's free</p>
+		<hr>
+		<label>First name</label><br><br>
+		<input type="text" size="60" class="textbox"><br>
+		<label>last name</label><br><br>
+		<input type="text" size="60" class="textbox"><br>
+		<label>Email or phone number</label><br><br>
+		<input type="text" size="60" class="textbox"><br>
+		<label>Password(6 or more characters)</label><br><br>
+		<input type="password" size="60" class="textbox"><br>
+		<p>By clicking join now, you agree to LinkedIn <a href="">User Agreement</a>, <a href="">Privay Policy</a> ,and<a href="">Cookie Policy.</a></p>
+		<input type="submit" id="submit" value="Join now" >
+	</fieldset><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+<div id="footer">
+<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<label>Find a colleague</label>
+<input type="text" placeholder="First name" class="textbox">
+<input type="text" placeholder="Last name" class="textbox">
+<input type="submit" value="search">
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;	
+linkedIn member directory:
+<a href="">A</a> |
+<a href="">B</a> |
+<a href="">C</a> |
+<a href="">D</a> |
+<a href="">E</a> |
+<a href="">F</a> |
+<a href="">G</a> |
+<a href="">H</a> |
+<a href="">I</a> |
+<a href="">J</a> |
+<a href="">K</a> |
+<a href="">L</a> |
+<a href="">M</a> |
+<a href="">N</a> |
+<a href="">O</a> |
+<a href="">P</a> |
+<a href="">Q</a> |
+<a href="">R</a> |
+<a href="">S</a> |
+<a href="">T</a> |
+<a href="">U</a> |
+<a href="">V</a> |
+<a href="">W</a> |
+<a href="">X</a> |
+<a href="">Y</a> |
+<a href="">Z</a> |
+<a href="">More</a> |
+<a href="">Browse by Country/Region</a>
+<hr>
+<table id="menu"><tr>
+<td>General <br>
+<a href="">Sign Up</a> |
+<a href="">Help Center</a> |
+<a href="">About</a> |
+<a href="">Press</a> |
+<a href="">Blog</a> |
+<a href="">Careers</a> |
+<a href="">Developers</a></td>
+
+<td>Bussiness Solutions<br>
+<a href="">Talent</a> |
+<a href="">Marketing</a> |
+<a href="">Sales</a> |
+<a href="">Learning</a> |
+</td></tr>
+<tr>
+<td>Browse LinkedIn <br>
+<a href="">Learning</a> |
+<a href="">Jobs</a> |
+<a href="">Mobile</a> |
+<a href="">ProFinder</a> 
+
+<td>Directories<br>
+<a href="">Members</a> |
+<a href="">Jobs</a> |
+<a href="">Pulse</a> |
+<a href="">Companies</a> |
+<a href="">Salaries</a> |
+<a href="">Universities</a> |
+<a href="">Top Jobs</a> 
+</td></tr>
+
+</table>
+<br><hr>
+<p align="center">Linkedin &copy;2018 
+<a href="">User Agreement</a>
+<a href="">Privacy Policy</a>
+<a href="">Community Guidelines</a>
+<a href="">Cookie Policy</a>
+<a href="">Copyright Policy</a>
+<a href="">Guest Contols</a>
+<a href="">Language</a>
+</p>
+
+</div>
 </body>
 </html>
