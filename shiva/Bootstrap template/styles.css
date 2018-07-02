@@ -1,3 +1,11 @@
 		body{
 			background-image: url("background.jpg");
 		}
+.div1{
+	border : 5px groove black;
+	padding: 10px;
+	margin-bottom: 25px;
+	opacity: 5px;
+	background-position: center;
+
+}
