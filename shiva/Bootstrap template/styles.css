@@ -1,0 +1,12 @@
+body{
+			background-image: url("background.jpg");
+		}
+.div1{
+	
+	border-width: 15px;
+	padding: 10px;
+	margin-bottom: 25px;
+	opacity: 5px;
+	background-position: center;
+
+}

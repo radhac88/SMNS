@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+  
+  <div class="row">
+    <div class="col" style="background-color:lavender;">.col</div>
+    <div class="col" style="background-color:orange;">.col</div>
+    <div class="col" style="background-color:lavender;">.col</div>
+  </div>
+
+  <div class="row">
+  <div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div>
+  <div class="col-sm-8" style="background-color:orange;">.col-sm-8</div>
+</div>
+<h1>h1 Bootstrap heading (40px)</h1>
+  <h2>h2 Bootstrap heading (2rem = 32px)</h2>
+  <h3>h3 Bootstrap heading (1.75rem = 28px)</h3>
+  <h4>h4 Bootstrap heading (1.5rem = 24px)</h4>
+  <h5>h5 Bootstrap heading (1.25rem = 20px)</h5>
+  <h6>h6 Bootstrap heading (1rem = 16px)</h6>
+
+
+   <h1>Display Headings</h1>
+  <p>Display headings are used to stand out more than normal headings (larger font-size and lighter font-weight):</p>
+  
+  <h1 class="display-2">Display 2</h1>
+  <h1 class="display-3">Display 3</h1>
+  <h1 class="display-4">Display 4</h1>
+
+
+    <h1>Lighter, Secondary Text</h1>
+  <p>The small element is used to create a lighter, secondary text in any heading:</p>       
+  <h1>h1 heading <small>secondary text</small></h1>
+  <h2>h2 heading <small>secondary text</small></h2>
+  <h3>h3 heading <small>secondary text</small></h3>
+  <h4>h4 heading <small>secondary text</small></h4>
+  <h5>h5 heading <small>secondary text</small></h5>
+  <h6>h6 heading <small>secondary text</small></h6>
+
+
+<h1>Highlight Text</h1>    
+  <p>Use the mark element to <mark>highlight</mark> text.</p>
+
+
+  <h1>Abbreviations</h1>
+  <p>The abbr element is used to mark up an abbreviation or acronym:</p>
+  <p>The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p>
+</div>
+
+
+<h1>Blockquotes</h1>
+  <p>The blockquote element is used to present content from another source:</p>
+  <blockquote class="blockquote">
+    <p>For 50 years, WWF has been protecting the future of nature. The world's leading conservation organization, WWF works in 100 countries and is supported by 1.2 million members in the United States and close to 5 million globally.</p>
+    <footer class="blockquote-footer">From WWF's website</footer>
+  </blockquote>
+
+  <h1>Description Lists</h1>    
+  <p>The dl element indicates a description list:</p>
+  <dl>
+    <dt>Coffee</dt>
+    <dd>- black hot drink</dd>
+    <dt>Milk</dt>
+    <dd>- white cold drink</dd>
+  </dl>     
+
+   <h1>Code Snippets</h1>
+  <p>Inline snippets of code should be embedded in the code element:</p>
+  <p>The following HTML elements: <code>span</code>, <code>section</code>, and <code>div</code> defines a section in a document.</p>
+
+  <h1>Keyboard Inputs</h1>
+  <p>To indicate input that is typically entered via the keyboard, use the kbd element:</p>
+  <p>Use <kbd>ctrl + p</kbd> to open the Print dialog box.</p>
+
+   <h1>Multiple Code Lines</h1>
+<p>For multiple lines of code, use the pre element:</p>
+<pre>
+Text in a pre element
+is displayed in a fixed-width
+font, and it preserves
+both      spaces and
+line breaks.
+</pre>
+
+<h2>Contextual Colors</h2>
+  <p>Use the contextual classes to provide "meaning through colors":</p>
+  <p class="text-muted">This text is muted.</p>
+  <p class="text-primary">This text is important.</p>
+  <p class="text-success">This text indicates success.</p>
+  <p class="text-info">This text represents some information.</p>
+  <p class="text-warning">This text represents a warning.</p>
+  <p class="text-danger">This text represents danger.</p>
+  <p class="text-secondary">Secondary text.</p>
+  <p class="text-dark">This text is dark grey.</p>
+  <p class="text-body">Default body color (often black).</p>
+  <p class="text-light">This text is light grey (on white background).</p>
+  <p class="text-white">This text is white (on white background).</p>
+
+
+   <h2>Contextual Backgrounds</h2>
+  <p>Use the contextual background classes to provide "meaning through colors".</p>
+  <p>Note that you can also add a .text-* class if you want a different text color:</p>
+  <p class="bg-primary text-white">This text is important.</p>
+  <p class="bg-success text-white">This text indicates success.</p>
+  <p class="bg-info text-white">This text represents some information.</p>
+  <p class="bg-warning text-white">This text represents a warning.</p>
+  <p class="bg-danger text-white">This text represents danger.</p>
+  <p class="bg-secondary text-white">Secondary background color.</p>
+  <p class="bg-dark text-white">Dark grey background color.</p>
+  <p class="bg-light text-dark">Light grey background color.</p>
+
+
+  <div class="container">
+  <h2>Basic Table</h2>
+  <p>The .table class adds basic styling (light padding and horizontal dividers) to a table:</p>            
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+
+   <h2>Striped Rows</h2>
+  <p>The .table-striped class adds zebra-stripes to a table:</p>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+<div class="container">
+  <h2>Bordered Table</h2>
+  <p>The .table-bordered class adds borders on all sides of the table and the cells:</p>            
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+   <h2>Hover Rows</h2>
+  <p>The .table-hover class enables a hover state (grey background on mouse over) on table rows:</p>            
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h2>Black/Dark Table</h2>
+  <p>The .table-dark class adds a black background to the table:</p>            
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Dark Striped Table</h2>
+  <p>Combine .table-dark and .table-striped to create a dark, striped table:</p>            
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+    <h2>Hoverable Dark Table</h2>
+  <p>The .table-hover class adds a hover effect (grey background color) on table rows:</p>            
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+   <h2>Borderless Table</h2>
+  <p>The .table-borderless class removes borders from the table:</p>            
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h2>Contextual Classes</h2>
+  <p>Contextual classes can be used to color the table, table rows or table cells. The classes that can be used are: .table-primary, .table-success, .table-info, .table-warning, .table-danger, .table-active, .table-secondary, .table-light and .table-dark:</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Default</td>
+        <td>Defaultson</td>
+        <td>def@somemail.com</td>
+      </tr>      
+      <tr class="table-primary">
+        <td>Primary</td>
+        <td>Joe</td>
+        <td>joe@example.com</td>
+      </tr>
+      <tr class="table-success">
+        <td>Success</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr class="table-danger">
+        <td>Danger</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr class="table-info">
+        <td>Info</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+      <tr class="table-warning">
+        <td>Warning</td>
+        <td>Refs</td>
+        <td>bo@example.com</td>
+      </tr>
+      <tr class="table-active">
+        <td>Active</td>
+        <td>Activeson</td>
+        <td>act@example.com</td>
+      </tr>
+      <tr class="table-secondary">
+        <td>Secondary</td>
+        <td>Secondson</td>
+        <td>sec@example.com</td>
+      </tr>
+      <tr class="table-light">
+        <td>Light</td>
+        <td>Angie</td>
+        <td>angie@example.com</td>
+      </tr>
+      <tr class="table-dark text-dark">
+        <td>Dark</td>
+        <td>Bo</td>
+        <td>bo@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+<h2>Table Head Colors</h2>
+  <p>The .thead-dark class adds a black background to table headers, and the .thead-light class adds a grey background to table headers:</p>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h2>Small Table</h2>
+  <p>The .table-sm class makes the table smaller by cutting cell padding in half:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h2>Responsive Table</h2>
+  <p>The .table-responsive-sm class creates a responsive table which will scroll horizontally on screens that are less than 576px wide.</p>                                                                                      
+  <p>Resize the browser window to see the effect.</p>
+  <div class="table-responsive-sm">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Age</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Sex</th>
+        <th>Example</th>
+        <th>Example</th>
+        <th>Example</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Anna</td>
+        <td>Pitt</td>
+        <td>35</td>
+        <td>New York</td>
+        <td>USA</td>
+        <td>Female</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+
+  <img src="img\nature.jpg" class="rounded" alt="nature" width="304" height="236"> 
+
+  <img src="img\nature.jpg" class="rounded-circle" alt="nature">
+  <img src="img\nature.jpg" class="img-thumbnail" alt="nature">
+  <img src="img\nature.jpg" class="float-left" width="300px" height="300px"> 
+<img src="img\nature.jpg" class="float-right" width="300px" height="300px">
+<img src="img\nature.jpg" class="mx-auto d-block">
+<img class="img-fluid" src="img\nature.jpg" alt="Chania">
+
+
+
+<div class="jumbotron">
+    <h1>Bootstrap Tutorial</h1>      
+    <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
+  </div>
+</div>
+
+
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>Bootstrap Tutorial</h1>      
+    <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
+  </div>
+</div>
+
+
+
+
+</body>
+</html>
