@@ -42,11 +42,21 @@ var co=0;
        {
         	document.getElementById(t).value="x";
         win();
+        var full;
+        full=co+cx;
+        if (full==8)
+        	alert("its a draw");
+
     }
         else
         {
         	document.getElementById(t).value="o";
         	win();
+        	var full;
+        full=co+cx;
+        if (full==8)
+        	alert("its a draw");
+
         }
         
 }
@@ -95,7 +105,6 @@ var co=0;
         	alert("o won");
 
         
-
 
 }
   function clearBtn() {
