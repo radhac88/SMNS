@@ -5,6 +5,14 @@
 function myFunction() {
     document.getElementById("demo5").innerHTML = "Paragraph changed.";
 }
+
+document.getElementById("demo6").innerHTML = 
+typeof {name:'john', age:34} + "<br>" +
+typeof [1,2,3,4] + "<br>" +
+typeof null + "<br>" +
+typeof function myFunc1(){};
+
+
 </script>
 </head>
 <body>
@@ -35,7 +43,7 @@ Click me to display Date and Time.</button>
 
 <button type="button" onclick="myFunction()">Try it</button>
 
-
+<p id="demo6"></p>
 
 </body>
 </html> 
