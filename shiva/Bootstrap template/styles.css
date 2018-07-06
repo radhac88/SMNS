@@ -1,5 +1,5 @@
 body{
-			background-image: url("background.jpg");
+			background-image: url("./images/background.jpg");
 		}
 .div1{
 	
@@ -9,4 +9,8 @@ body{
 	opacity: 5px;
 	background-position: center;
 
+}
+
+#footer {
+	text-align: right;
 }
