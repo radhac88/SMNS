@@ -66,7 +66,10 @@ var tot=countofo+countofx;
 	{
 		document.getElementById(p).value = "x";
 		win();
-		
+		if(tot==8)
+		{
+			document.getElementById("demo").innerHTML= "draw Please reset the game.";
+		}
 
 	}
 		
@@ -74,6 +77,10 @@ var tot=countofo+countofx;
 	else{
 		document.getElementById(p).value = "o";
 		win();
+		if(tot==8)
+		{
+			document.getElementById("demo").innerHTML= "draw Please reset the game.";
+		}
 	}
 }
 
@@ -214,10 +221,7 @@ function win()
 						col(3,5,7);
 						document.getElementById("demo").innerHTML= "x won Please reset the game.";
 					}
-		if(tot==8)
-		{
-			alert("draw Please reset the game.");
-		}
+		
 }
 function col(x,y,z)
 {

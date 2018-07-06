@@ -65,16 +65,19 @@ var tot=countofo+countofx;
 	if(countofx==countofo)
 	{
 		document.getElementById(p).value = "x";
+		document.getElementById("demo").innerHTML="computers turn";
 		var ran=Math.floor((Math.random()*9) + 1); 
 
 		if(document.getElementById(ran).value=="o"||document.getElementById(ran).value=="x")
 		{
 				var ran1=Math.floor((Math.random()*9) + 1); 
-				document.getElementById(ran1).value ="o";
+				setTimeout(function(){document.getElementById(ran).value ="o"; }, 1000);
+				document.getElementById("demo").innerHTML="players turn";
 		}
 		else
 		{
-			document.getElementById(ran).value ="o";
+			  setTimeout(function(){document.getElementById(ran).value ="o"; }, 1000);
+			  document.getElementById("demo").innerHTML="players turn";
 		}
 
 
@@ -192,4 +195,5 @@ function re()
 	document.getElementById(7).value = "";
 	document.getElementById(8).value = "";
 	document.getElementById(9).value = "";
+	document.getElementById("demo").innerHTML="players turn";
 }
