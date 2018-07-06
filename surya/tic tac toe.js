@@ -78,6 +78,25 @@ function func(m) {
 		alert("x won");
 	else if(document.getElementById("3").innerHTML=="o" && document.getElementById("5").innerHTML=="o" && document.getElementById("7").innerHTML=="o")
 		alert("o won");
+	if (document.getElementById("1").innerHTML=="x" && document.getElementById("4").innerHTML=="x" && document.getElementById("7").innerHTML=="x")
+		alert("x won");
+	else if(document.getElementById("1").innerHTML=="o" && document.getElementById("4").innerHTML=="o" && document.getElementById("7").innerHTML=="o")
+		alert("o won");
+if (document.getElementById("2").innerHTML=="x" && document.getElementById("5").innerHTML=="x" && document.getElementById("8").innerHTML=="x")
+		alert("x won");
+	else if(document.getElementById("2").innerHTML=="o" && document.getElementById("5").innerHTML=="o" && document.getElementById("8").innerHTML=="o")
+		alert("o won");
+if (document.getElementById("3").innerHTML=="x" && document.getElementById("6").innerHTML=="x" && document.getElementById("9").innerHTML=="x")
+		alert("x won");
+	else if(document.getElementById("3").innerHTML=="o" && document.getElementById("6").innerHTML=="o" && document.getElementById("9").innerHTML=="o")
+		alert("o won");
+
+var tot;
+tot=nofox+noofo;
+if(tot==8)
+alert("draw please reset the game")
+
+
 
 		
 		
