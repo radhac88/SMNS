@@ -12,27 +12,35 @@
       background-color: #000000;
       color: #ffffff;
     }
-    li{
-    }
     h4{
       color: #99cc00;
+    }
+    #profile{
+      color: #99cc00; 
     }
   </style>
 <body>
 
 
-  <div class="container-fluid">
+  <div class="container">
   <div class="row">
     <div class="col-sm-3">Call US:xxxxx xxxxxxxxx</div>
     <div class="col-sm-4">Email Us:contact@mydomain.com</div>
     <div class="col-sm-3"></div>
     <div class="col-sm-2">
-      <input type="text" name="" placeholder="search">
+      <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
     </div>
 </div>
 
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+  <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">ALL ROUNDER</a>
     </div>
@@ -51,7 +59,7 @@
 <img class="img-responsive" src="img/photo.jpg" alt="Chania" width="100%">
 </div>
 <div  class="container">
-  <h4><i>"LOREM ipsum dolor sit amet, consectetur adipiscing elit. Nunc non diam erat. In fringilla massa ut nisi ullamcorper pellentesque,,</i></h4>
+  <h3><i><center>"LOREM ipsum dolor sit amet, consectetur adipiscing elit. Nunc non diam erat. In fringilla massa ut nisi ullamcorper pellentesque,,</center></i></h3>
   <hr>
   </div>
 
@@ -60,7 +68,7 @@
   <div class="col-sm-3">
     <div class="thumbnail">
       <a href="#">
-        <img  class="img-responsive" src="img/building.jpg" alt="building" style="width:400px; height:400px">
+        <img  class="img-responsive" src="img/building.jpg" alt="building" style="max-width: 100%; height:400px">
         <div class="caption">
           <h4>Indonectetus facilis</h4>
           <p>Dignissimmorbi rhoncus sed netus ligula conseque netus nulla aliquat id dui fermentumnec.</p>
@@ -105,14 +113,14 @@
 <hr>
 <div class="row">
   <div class="col-sm-6">
-    <h4>Lorem Ipsum Dolor</h4><hr>
+    <h3>Lorem Ipsum Dolor</h3><hr>
     <div class="row">
 
       <div class="col-sm-1">
       <p><span class="glyphicon glyphicon-envelope"></span></p>
     </div>
       <div class="col-sm-5">
-      <h5> Indonectetus facilis</h5>
+      <h4> Indonectetus facilis</h4>
       <p>Vestibulu maccumsan ege stibulum eu justo convallis aug ue estas aenean elit intes que sed. Facili spede estib ulum<br><br><br><br></p>
     </div>
 
@@ -120,7 +128,7 @@
       <p><span class="glyphicon glyphicon-tags"></span></p>
     </div>
       <div class="col-sm-5">
-      <h5> Indonectetus facilis</h5>
+      <h4> Indonectetus facilis</h4>
       <p>Vestibulu maccumsan ege stibulum eu justo convallis aug ue estas aenean elit intes que sed. Facili spede estib ulum<br><br><br><br></p>
     </div>
 
@@ -132,7 +140,7 @@
       <p><span class="glyphicon glyphicon-globe"></span></p>
     </div>
       <div class="col-sm-5">
-      <h5> Indonectetus facilis</h5>
+      <h4> Indonectetus facilis</h4>
       <p>Vestibulu maccumsan ege stibulum eu justo convallis aug ue estas aenean elit intes que sed. Facili spede estib ulum<br><br><br><br></p>
     </div>
 
@@ -140,7 +148,7 @@
       <p><span class="glyphicon glyphicon-map-marker"></span></p>
     </div>
       <div class="col-sm-5">
-      <h5> Indonectetus facilis</h5>
+      <h4> Indonectetus facilis</h4>
       <p>Vestibulu maccumsan ege stibulum eu justo convallis aug ue estas aenean elit intes que sed. Facili spede estib ulum<br><br><br><br></p>
     </div>
 
@@ -151,14 +159,15 @@
 
   </div>
 <div class="col-sm-6">
-    <h4>Lorem Ipsum Dolor</h4>
+    <h3>Lorem Ipsum Dolor</h3>
     <hr>
 
 <div class="col-sm-6">
     <div class="thumbnail">
-        <img  class="img-responsive" src="img/men.jpg" alt="men" style="width:10  00px; height:400px">
+        <img  class="img-responsive" src="img/men.jpg" alt="men" style="max-width: 100%; height:400px">
         <div class="caption">
           <p><strong>Name:</strong>John Doe</p> 
+           <p id="profile">view profile >></p>
         </div>
      
     </div>
@@ -166,9 +175,10 @@
 
 <div class="col-sm-6">
     <div class="thumbnail">
-        <img  class="img-responsive" src="img/women.jpg" alt="women" style="width:1000px; height:400px">
+        <img  class="img-responsive" src="img/women.jpg" alt="women" style="max-width: 100%; height:400px">
         <div class="caption">
           <p><strong>Name:</strong>John Doe</p> 
+          <p id="profile">view profile >></p>
         </div>
      
     </div>
@@ -188,15 +198,15 @@
     <h3>LINK BLOCK</h3>
    
      <ul class="list-group">
-  <a href=""><li class="list-group-item">Lorem Ipsum dolor sit</li></a>
-   <a href=""><li class="list-group-item">Amet consectetur</li></a>
-   <a href=""><li class="list-group-item">Praesent vel sem id</li></a>
-   <a href=""><li class="list-group-item">Curabitur hendrerit est</li></a>
-   <a href=""><li class="list-group-item">Aliquam eget erat nec </li></a>
-   <a href=""><li class="list-group-item">Cras id augue nunc</li></a>
-   <a href=""><li class="list-group-item">In nec justo non</li></a>
-   <a href=""><li class="list-group-item">Vivamus mollis enim ut</li></a>
-   <a href=""><li class="list-group-item">Curabitur hendrerit est</li></a>
+  <a href=""><li class="list-group-item">>> Lorem Ipsum dolor sit</li></a>
+   <a href=""><li class="list-group-item">>> Amet consectetur</li></a>
+   <a href=""><li class="list-group-item">>> Praesent vel sem id</li></a>
+   <a href=""><li class="list-group-item">>> Curabitur hendrerit est</li></a>
+   <a href=""><li class="list-group-item">>> Aliquam eget erat nec </li></a>
+   <a href=""><li class="list-group-item">>> Cras id augue nunc</li></a>
+   <a href=""><li class="list-group-item">>> In nec justo non</li></a>
+   <a href=""><li class="list-group-item">>> Vivamus mollis enim ut</li></a>
+   <a href=""><li class="list-group-item">>> Curabitur hendrerit est</li></a>
 </ul>
     </div>
 
@@ -246,11 +256,12 @@
 </div>
   </div>
   <div class="row">
-    <hr>
   <div class="col-sm-9">
+    <hr>
   copyright&copy;2013. All Rights Reserved. Domain Name
   </div>
   <div class="col-sm-3">
+    <hr>
   Template by OS Templates
   </div>
 </div>
