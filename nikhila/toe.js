@@ -2,70 +2,20 @@ function x(m) {
 	
 		var countofo=0;
 		var countofx=0;
+		var b=[];
 		
-	var b1=document.getElementById(1).value; 
-	var b2=document.getElementById(2).value ;
-	var b3=document.getElementById(3).value ;
-	var b4=document.getElementById(4).value ;
-	var b5=document.getElementById(5).value ;
-	var b6=document.getElementById(6).value ;
-	var b7=document.getElementById(7).value ;
-	var b8=document.getElementById(8).value ;
-	var b9=document.getElementById(9).value ;
-		
+		for(var i=1;i<10;i++)
+		{
+			b[i] = document.getElementById(i).value; 
+		}
+		for(var i=1;i<10;i++)
+		{
+			if(b[i]=="x")
+			countofx++;
+		else if(b[i]=="o")
+			countofo++; 
+		}
 
-		if(b1=="x")
-			countofx++;
-		else if(b1=="o")
-			countofo++; 
-	
-		if(b2=="x")
-			countofx++;
-		else if(b2=="o")
-			countofo++; 
-	
-	
-		if(b3=="x")
-			countofx++;
-		else if(b3=="o")
-			countofo++; 
-	
-	
-		if(b4=="x")
-			countofx++;
-		else if(b4=="o")
-			countofo++; 
-		
-		if(b5=="x")
-			countofx++;
-		else if(b5=="o")
-			countofo++; 
-	
-	
-		if(b6=="x")
-			countofx++;
-		else if(b6=="o")
-			countofo++; 
-	
-	
-		if(b7=="x")
-			countofx++;
-		else if(b7=="o")
-			countofo++; 
-	
-	
-		if(b8=="x")
-			countofx++;
-		else if(b8=="o")
-			countofo++; 
-	
-	
-		if(b9=="x")
-			countofx++;
-		else if(b9=="o")
-			countofo++; 
-	
-	
 		
 var	p=m;
 var tot=countofo+countofx;
@@ -98,25 +48,14 @@ var tot=countofo+countofx;
 			
 function re()
 {
-	document.getElementById(1).value = "";
-	document.getElementById(2).value = "";
-	document.getElementById(3).value = "";
-	document.getElementById(4).value = "";
-	document.getElementById(5).value = "";
-	document.getElementById(6).value = "";
-	document.getElementById(7).value = "";
-	document.getElementById(8).value = "";
-	document.getElementById(9).value = "";
-	document.getElementById(1).style.background ="" ;
-	document.getElementById(2).style.background ="" ;
-	document.getElementById(3).style.background ="" ;
-	document.getElementById(4).style.background ="" ;
-	document.getElementById(5).style.background ="" ;
-	document.getElementById(6).style.background ="" ;
-	document.getElementById(7).style.background ="" ;
-	document.getElementById(8).style.background ="" ;
-	document.getElementById(9).style.background ="" ;
-	document.getElementById("demo").innerHTML="";
+	for(var i=1;i<10;i++)
+		{
+		 document.getElementById(i).value = ""; 
+		 document.getElementById(i).style.background ="" ;
+		}
+
+
+	
 }
 function win()
 {

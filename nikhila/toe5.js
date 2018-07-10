@@ -3,217 +3,24 @@ function x(m) {
 		var countofo=0;
 		var countofx=0;
 		var countofp=0;
-	var b1=document.getElementById(1).value; 
-	var b2=document.getElementById(2).value ;
-	var b3=document.getElementById(3).value ;
-	var b4=document.getElementById(4).value ;
-	var b5=document.getElementById(5).value ;
-	var b6=document.getElementById(6).value ;
-	var b7=document.getElementById(7).value ;
-	var b8=document.getElementById(8).value ;
-	var b9=document.getElementById(9).value ;
-	var b10=document.getElementById(10).value ;
-	var b11=document.getElementById(11).value ;
-	var b12=document.getElementById(12).value ;
-	var b13=document.getElementById(13).value ;
-	var b14=document.getElementById(14).value ;
-	var b15=document.getElementById(15).value ;
-	var b16=document.getElementById(16).value ;
-	var b17=document.getElementById(17).value ;
-	var b18=document.getElementById(18).value ;
-	var b19=document.getElementById(19).value ;
-	var b20=document.getElementById(20).value ;
-	var b21=document.getElementById(21).value ;
-	var b22=document.getElementById(22).value ;
-	var b23=document.getElementById(23).value ;
-	var b24=document.getElementById(24).value ;
-	var b25=document.getElementById(25).value ;
-	
-	
-
-		if(b1=="x")
-			countofx++;
-		else if(b1=="o")
-			countofo++; 
-		else if(b1=="+")
-			countofp++; 
-	
-		if(b2=="x")
-			countofx++;
-		else if(b2=="o")
-			countofo++; 
-		else if(b2=="+")
-			countofp++; 
-	
-	
-		if(b3=="x")
-			countofx++;
-		else if(b3=="o")
-			countofo++; 
-		else if(b3=="+")
-			countofp++; 
+			
+		var b=[];
 		
-	
-	
-		if(b4=="x")
+		for(var i=1;i<26;i++)
+		{
+			b[i] = document.getElementById(i).value; 
+		}
+		for(var i=1;i<26;i++)
+		{
+			if(b[i]=="x")
 			countofx++;
-		else if(b4=="o")
+		else if(b[i]=="o")
 			countofo++; 
-		else if(b4=="+")
+		else if(b[i]=="+")
 			countofp++; 
+		}
+
 		
-		if(b5=="x")
-			countofx++;
-		else if(b5=="o")
-			countofo++; 
-		else if(b5=="+")
-			countofp++; 
-	
-	
-		if(b6=="x")
-			countofx++;
-		else if(b6=="o")
-			countofo++; 
-		else if(b6=="+")
-			countofp++; 
-	
-	
-		if(b7=="x")
-			countofx++;
-		else if(b7=="o")
-			countofo++; 
-		else if(b7=="+")
-			countofp++; 
-	
-	
-		if(b8=="x")
-			countofx++;
-		else if(b8=="o")
-			countofo++; 
-		else if(b8=="+")
-			countofp++; 
-	
-	
-		if(b9=="x")
-			countofx++;
-		else if(b9=="o")
-			countofo++; 
-		else if(b9=="+")
-			countofp++; 
-
-		if(b10=="x")
-			countofx++;
-		else if(b10=="o")
-			countofo++; 
-		else if(b10=="+")
-			countofp++; 
-
-		if(b11=="x")
-			countofx++;
-		else if(b11=="o")
-			countofo++; 
-		else if(b11=="+")
-			countofp++; 
-
-		if(b12=="x")
-			countofx++;
-		else if(b12=="o")
-			countofo++; 
-		else if(b12=="+")
-			countofp++; 
-
-		if(b13=="x")
-			countofx++;
-		else if(b13=="o")
-			countofo++; 
-		else if(b13=="+")
-			countofp++; 
-
-		if(b14=="x")
-			countofx++;
-		else if(b14=="o")
-			countofo++; 
-		else if(b14=="+")
-			countofp++; 
-
-		if(b15=="x")
-			countofx++;
-		else if(b15=="o")
-			countofo++; 
-		else if(b15=="+")
-			countofp++; 
-
-		if(b16=="x")
-			countofx++;
-		else if(b16=="o")
-			countofo++; 
-		else if(b16=="+")
-			countofp++; 
-
-		if(b17=="x")
-			countofx++;
-		else if(b17=="o")
-			countofo++; 
-		else if(b17=="+")
-			countofp++; 
-
-		if(b18=="x")
-			countofx++;
-		else if(b18=="o")
-			countofo++; 
-		else if(b18=="+")
-			countofp++; 
-
-		if(b19=="x")
-			countofx++;
-		else if(b19=="o")
-			countofo++; 
-		else if(b19=="+")
-			countofp++; 
-
-		if(b20=="x")
-			countofx++;
-		else if(b20=="o")
-			countofo++; 
-		else if(b20=="+")
-			countofp++; 
-
-		if(b21=="x")
-			countofx++;
-		else if(b21=="o")
-			countofo++; 
-		else if(b21=="+")
-			countofp++; 
-
-		if(b22=="x")
-			countofx++;
-		else if(b22=="o")
-			countofo++; 
-		else if(b22=="+")
-			countofp++; 
-
-		if(b23=="x")
-			countofx++;
-		else if(b23=="o")
-			countofo++; 
-		else if(b23=="+")
-			countofp++; 
-
-		if(b24=="x")
-			countofx++;
-		else if(b24=="o")
-			countofo++; 
-		else if(b24=="+")
-			countofp++; 
-
-		if(b25=="x")
-			countofx++;
-		else if(b25=="o")
-			countofo++; 
-		else if(b25=="+")
-			countofp++; 
-
-	
 		
 var	p=m;
 var tot=countofo+countofx+countofp;
@@ -242,31 +49,12 @@ var sum=countofx+countofo;
 			
 function re()
 {
-	document.getElementById(1).value = "";
-	document.getElementById(2).value = "";
-	document.getElementById(3).value = "";
-	document.getElementById(4).value = "";
-	document.getElementById(5).value = "";
-	document.getElementById(6).value = "";
-	document.getElementById(7).value = "";
-	document.getElementById(8).value = "";
-	document.getElementById(9).value = "";
-	document.getElementById(10).value = "";
-	document.getElementById(11).value = "";
-	document.getElementById(12).value = "";
-	document.getElementById(13).value = "";
-	document.getElementById(14).value = "";
-	document.getElementById(15).value = "";
-	document.getElementById(16).value = "";
-	document.getElementById(17).value = "";
-	document.getElementById(18).value = "";
-	document.getElementById(19).value = "";
-	document.getElementById(20).value = "";
-	document.getElementById(21).value = "";
-	document.getElementById(22).value = "";
-	document.getElementById(23).value = "";
-	document.getElementById(24).value = "";
-	document.getElementById(25).value = "";
+	for(var i=1;i<10;i++)
+		{
+		 document.getElementById(i).value = ""; 
+		 
+		}
+
 	
 	
 
