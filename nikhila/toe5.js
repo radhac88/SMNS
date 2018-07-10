@@ -3,188 +3,214 @@ function x(m) {
 		var countofo=0;
 		var countofx=0;
 		var countofp=0;
+	var b1=document.getElementById(1).value; 
+	var b2=document.getElementById(2).value ;
+	var b3=document.getElementById(3).value ;
+	var b4=document.getElementById(4).value ;
+	var b5=document.getElementById(5).value ;
+	var b6=document.getElementById(6).value ;
+	var b7=document.getElementById(7).value ;
+	var b8=document.getElementById(8).value ;
+	var b9=document.getElementById(9).value ;
+	var b10=document.getElementById(10).value ;
+	var b11=document.getElementById(11).value ;
+	var b12=document.getElementById(12).value ;
+	var b13=document.getElementById(13).value ;
+	var b14=document.getElementById(14).value ;
+	var b15=document.getElementById(15).value ;
+	var b16=document.getElementById(16).value ;
+	var b17=document.getElementById(17).value ;
+	var b18=document.getElementById(18).value ;
+	var b19=document.getElementById(19).value ;
+	var b20=document.getElementById(20).value ;
+	var b21=document.getElementById(21).value ;
+	var b22=document.getElementById(22).value ;
+	var b23=document.getElementById(23).value ;
+	var b24=document.getElementById(24).value ;
+	var b25=document.getElementById(25).value ;
+	
+	
+
+		if(b1=="x")
+			countofx++;
+		else if(b1=="o")
+			countofo++; 
+		else if(b1=="+")
+			countofp++; 
+	
+		if(b2=="x")
+			countofx++;
+		else if(b2=="o")
+			countofo++; 
+		else if(b2=="+")
+			countofp++; 
+	
+	
+		if(b3=="x")
+			countofx++;
+		else if(b3=="o")
+			countofo++; 
+		else if(b3=="+")
+			countofp++; 
 		
-
-		if(document.getElementById("1").value=="x")
-			countofx++;
-		else if(document.getElementById("1").value=="o")
-			countofo++; 
-		else if(document.getElementById("1").value=="+")
-			countofp++; 
-	
-		if(document.getElementById("2").value=="x")
-			countofx++;
-		else if(document.getElementById("2").value=="o")
-			countofo++; 
-		else if(document.getElementById("2").value=="+")
-			countofp++; 
 	
 	
-		if(document.getElementById("3").value=="x")
+		if(b4=="x")
 			countofx++;
-		else if(document.getElementById("3").value=="o")
+		else if(b4=="o")
 			countofo++; 
-		else if(document.getElementById("3").value=="+")
+		else if(b4=="+")
 			countofp++; 
 		
-	
-	
-		if(document.getElementById("4").value=="x")
+		if(b5=="x")
 			countofx++;
-		else if(document.getElementById("4").value=="o")
+		else if(b5=="o")
 			countofo++; 
-		else if(document.getElementById("4").value=="+")
-			countofp++; 
-		
-		if(document.getElementById("5").value=="x")
-			countofx++;
-		else if(document.getElementById("5").value=="o")
-			countofo++; 
-		else if(document.getElementById("5").value=="+")
+		else if(b5=="+")
 			countofp++; 
 	
 	
-		if(document.getElementById("6").value=="x")
+		if(b6=="x")
 			countofx++;
-		else if(document.getElementById("6").value=="o")
+		else if(b6=="o")
 			countofo++; 
-		else if(document.getElementById("6").value=="+")
+		else if(b6=="+")
 			countofp++; 
 	
 	
-		if(document.getElementById("7").value=="x")
+		if(b7=="x")
 			countofx++;
-		else if(document.getElementById("7").value=="o")
+		else if(b7=="o")
 			countofo++; 
-		else if(document.getElementById("7").value=="+")
+		else if(b7=="+")
 			countofp++; 
 	
 	
-		if(document.getElementById("8").value=="x")
+		if(b8=="x")
 			countofx++;
-		else if(document.getElementById("8").value=="o")
+		else if(b8=="o")
 			countofo++; 
-		else if(document.getElementById("8").value=="+")
+		else if(b8=="+")
 			countofp++; 
 	
 	
-		if(document.getElementById("9").value=="x")
+		if(b9=="x")
 			countofx++;
-		else if(document.getElementById("9").value=="o")
+		else if(b9=="o")
 			countofo++; 
-		else if(document.getElementById("9").value=="+")
+		else if(b9=="+")
 			countofp++; 
 
-		if(document.getElementById("10").value=="x")
+		if(b10=="x")
 			countofx++;
-		else if(document.getElementById("10").value=="o")
+		else if(b10=="o")
 			countofo++; 
-		else if(document.getElementById("10").value=="+")
+		else if(b10=="+")
 			countofp++; 
 
-		if(document.getElementById("11").value=="x")
+		if(b11=="x")
 			countofx++;
-		else if(document.getElementById("11").value=="o")
+		else if(b11=="o")
 			countofo++; 
-		else if(document.getElementById("11").value=="+")
+		else if(b11=="+")
 			countofp++; 
 
-		if(document.getElementById("12").value=="x")
+		if(b12=="x")
 			countofx++;
-		else if(document.getElementById("12").value=="o")
+		else if(b12=="o")
 			countofo++; 
-		else if(document.getElementById("12").value=="+")
+		else if(b12=="+")
 			countofp++; 
 
-		if(document.getElementById("13").value=="x")
+		if(b13=="x")
 			countofx++;
-		else if(document.getElementById("13").value=="o")
+		else if(b13=="o")
 			countofo++; 
-		else if(document.getElementById("13").value=="+")
+		else if(b13=="+")
 			countofp++; 
 
-		if(document.getElementById("14").value=="x")
+		if(b14=="x")
 			countofx++;
-		else if(document.getElementById("14").value=="o")
+		else if(b14=="o")
 			countofo++; 
-		else if(document.getElementById("14").value=="+")
+		else if(b14=="+")
 			countofp++; 
 
-		if(document.getElementById("15").value=="x")
+		if(b15=="x")
 			countofx++;
-		else if(document.getElementById("15").value=="o")
+		else if(b15=="o")
 			countofo++; 
-		else if(document.getElementById("15").value=="+")
+		else if(b15=="+")
 			countofp++; 
 
-		if(document.getElementById("16").value=="x")
+		if(b16=="x")
 			countofx++;
-		else if(document.getElementById("16").value=="o")
+		else if(b16=="o")
 			countofo++; 
-		else if(document.getElementById("16").value=="+")
+		else if(b16=="+")
 			countofp++; 
 
-		if(document.getElementById("17").value=="x")
+		if(b17=="x")
 			countofx++;
-		else if(document.getElementById("17").value=="o")
+		else if(b17=="o")
 			countofo++; 
-		else if(document.getElementById("17").value=="+")
+		else if(b17=="+")
 			countofp++; 
 
-		if(document.getElementById("18").value=="x")
+		if(b18=="x")
 			countofx++;
-		else if(document.getElementById("18").value=="o")
+		else if(b18=="o")
 			countofo++; 
-		else if(document.getElementById("18").value=="+")
+		else if(b18=="+")
 			countofp++; 
 
-		if(document.getElementById("19").value=="x")
+		if(b19=="x")
 			countofx++;
-		else if(document.getElementById("19").value=="o")
+		else if(b19=="o")
 			countofo++; 
-		else if(document.getElementById("19").value=="+")
+		else if(b19=="+")
 			countofp++; 
 
-		if(document.getElementById("20").value=="x")
+		if(b20=="x")
 			countofx++;
-		else if(document.getElementById("20").value=="o")
+		else if(b20=="o")
 			countofo++; 
-		else if(document.getElementById("20").value=="+")
+		else if(b20=="+")
 			countofp++; 
 
-		if(document.getElementById("21").value=="x")
+		if(b21=="x")
 			countofx++;
-		else if(document.getElementById("21").value=="o")
+		else if(b21=="o")
 			countofo++; 
-		else if(document.getElementById("21").value=="+")
+		else if(b21=="+")
 			countofp++; 
 
-		if(document.getElementById("22").value=="x")
+		if(b22=="x")
 			countofx++;
-		else if(document.getElementById("22").value=="o")
+		else if(b22=="o")
 			countofo++; 
-		else if(document.getElementById("22").value=="+")
+		else if(b22=="+")
 			countofp++; 
 
-		if(document.getElementById("23").value=="x")
+		if(b23=="x")
 			countofx++;
-		else if(document.getElementById("23").value=="o")
+		else if(b23=="o")
 			countofo++; 
-		else if(document.getElementById("23").value=="+")
+		else if(b23=="+")
 			countofp++; 
 
-		if(document.getElementById("24").value=="x")
+		if(b24=="x")
 			countofx++;
-		else if(document.getElementById("24").value=="o")
+		else if(b24=="o")
 			countofo++; 
-		else if(document.getElementById("24").value=="+")
+		else if(b24=="+")
 			countofp++; 
 
-		if(document.getElementById("25").value=="x")
+		if(b25=="x")
 			countofx++;
-		else if(document.getElementById("25").value=="o")
+		else if(b25=="o")
 			countofo++; 
-		else if(document.getElementById("25").value=="+")
+		else if(b25=="+")
 			countofp++; 
 
 	
@@ -247,295 +273,202 @@ function re()
 }
 function win()
 {
-	if(document.getElementById("1").value=="o")
-				if(document.getElementById("2").value=="o")
-					if(document.getElementById("3").value=="o")
-						if(document.getElementById("4").value=="o")
-							if(document.getElementById("5").value=="o")
+
+	var b1=document.getElementById(1).value; 
+	var b2=document.getElementById(2).value ;
+	var b3=document.getElementById(3).value ;
+	var b4=document.getElementById(4).value ;
+	var b5=document.getElementById(5).value ;
+	var b6=document.getElementById(6).value ;
+	var b7=document.getElementById(7).value ;
+	var b8=document.getElementById(8).value ;
+	var b9=document.getElementById(9).value ;
+	var b10=document.getElementById(10).value ;
+	var b11=document.getElementById(11).value ;
+	var b12=document.getElementById(12).value ;
+	var b13=document.getElementById(13).value ;
+	var b14=document.getElementById(14).value ;
+	var b15=document.getElementById(15).value ;
+	var b16=document.getElementById(16).value ;
+	var b17=document.getElementById(17).value ;
+	var b18=document.getElementById(18).value ;
+	var b19=document.getElementById(19).value ;
+	var b20=document.getElementById(20).value ;
+	var b21=document.getElementById(21).value ;
+	var b22=document.getElementById(22).value ;
+	var b23=document.getElementById(23).value ;
+	var b24=document.getElementById(24).value ;
+	var b25=document.getElementById(25).value ;
+
+
+	if(b1=="o" && b2=="o" && b3=="o" && b4=="o" && b5=="o")
 					{	
 						alert(" o won Please reset the game.");
 					}
-		if(document.getElementById("1").value=="x")
-				if(document.getElementById("2").value=="x")
-					if(document.getElementById("3").value=="x")
-						if(document.getElementById("4").value=="x")
-							if(document.getElementById("5").value=="x")
+		if(b1=="x" && b2=="x" && b3=="x" && b4=="x" && b5=="x")
 
 					{	
 						alert(" x won Please reset the game.");
 					}
-		if(document.getElementById("1").value=="+")
-				if(document.getElementById("2").value=="+")
-					if(document.getElementById("3").value=="+")
-						if(document.getElementById("4").value=="+")
-							if(document.getElementById("5").value=="+")
+		if(b1=="+" && b2=="+" && b3=="+"&& b4=="+" && b5=="+")
 
 					{	
 						alert(" + won Please reset the game.");
 					}
-		if(document.getElementById("6").value=="o")
-				if(document.getElementById("7").value=="o")
-					if(document.getElementById("8").value=="o")
-						if(document.getElementById("9").value=="o")
-							if(document.getElementById("10").value=="o")
-					{
-						alert("o won Please reset the game.");
+	
+	if(b6=="o" && b7=="o" && b8=="o" && b9=="o" && b10=="o")
+					{	
+						alert(" o won Please reset the game.");
 					}
-		if(document.getElementById("6").value=="x")
-				if(document.getElementById("7").value=="x")
-					if(document.getElementById("8").value=="x")
-						if(document.getElementById("9").value=="x")
-							if(document.getElementById("10").value=="x")
-					{
-						alert("x won Please reset the game.");
+		if(b6=="x" && b7=="x" && b8=="x" && b9=="x" && b10=="x")
+
+					{	
+						alert(" x won Please reset the game.");
 					}
-		if(document.getElementById("6").value=="+")
-				if(document.getElementById("7").value=="+")
-					if(document.getElementById("8").value=="+")
-						if(document.getElementById("9").value=="+")
-							if(document.getElementById("10").value=="+")
-					{
-						alert("+ won Please reset the game.");
+		if(b6=="+" && b7=="+" && b8=="+"&& b9=="+" && b10=="+")
+
+					{	
+						alert(" + won Please reset the game.");
 					}
-		if(document.getElementById("11").value=="o")
-				if(document.getElementById("12").value=="o")
-					if(document.getElementById("13").value=="o")
-						if(document.getElementById("14").value=="o")
-							if(document.getElementById("15").value=="o")
-					{
-						alert("o won Please reset the game.");
+		if(b11=="o" && b12=="o" && b13=="o" && b14=="o" && b15=="o")
+					{	
+						alert(" o won Please reset the game.");
 					}
-		if(document.getElementById("11").value=="x")
-				if(document.getElementById("12").value=="x")
-					if(document.getElementById("13").value=="x")
-						if(document.getElementById("14").value=="x")
-							if(document.getElementById("15").value=="x")
-					{
-						alert("x won Please reset the game.");
+		if(b11=="x" && b12=="x" && b13=="x" && b14=="x" && b15=="x")
+
+					{	
+						alert(" x won Please reset the game.");
 					}
-		if(document.getElementById("11").value=="+")
-				if(document.getElementById("12").value=="+")
-					if(document.getElementById("13").value=="+")
-						if(document.getElementById("14").value=="+")
-							if(document.getElementById("15").value=="+")
-					{
-						alert("+ won Please reset the game.");
+		if(b11=="+" && b12=="+" && b13=="+"&& b14=="+" && b15=="+")
+
+					{	
+						alert(" + won Please reset the game.");
 					}
-		if(document.getElementById("16").value=="o")
-				if(document.getElementById("17").value=="o")
-					if(document.getElementById("18").value=="o")
-						if(document.getElementById("19").value=="o")
-							if(document.getElementById("20").value=="o")
-					{
-						alert("o won Please reset the game.");
+		if(b16=="o" && b17=="o" && b18=="o" && b19=="o" && b20=="o")
+					{	
+						alert(" o won Please reset the game.");
 					}
-		if(document.getElementById("16").value=="x")
-				if(document.getElementById("17").value=="x")
-					if(document.getElementById("18").value=="x")
-						if(document.getElementById("19").value=="x")
-							if(document.getElementById("20").value=="x")
-					{
-						alert("x won Please reset the game.");
+		if(b16=="x" && b17=="x" && b18=="x" && b19=="x" && b20=="x")
+
+					{	
+						alert(" x won Please reset the game.");
 					}
-		if(document.getElementById("16").value=="+")
-				if(document.getElementById("17").value=="+")
-					if(document.getElementById("18").value=="+")
-						if(document.getElementById("19").value=="+")
-							if(document.getElementById("20").value=="+")
-					{
-						alert("+ won Please reset the game.");
+		if(b16=="+" && b17=="+" && b18=="+"&& b19=="+" && b20=="+")
+
+					{	
+						alert(" + won Please reset the game.");
 					}
-		if(document.getElementById("21").value=="o")
-				if(document.getElementById("22").value=="o")
-					if(document.getElementById("23").value=="o")
-						if(document.getElementById("24").value=="o")
-							if(document.getElementById("25").value=="o")
-					{
-						alert("o won Please reset the game.");
+		if(b21=="o" && b22=="o" && b23=="o" && b24=="o" && b25=="o")
+					{	
+						alert(" o won Please reset the game.");
 					}
-		if(document.getElementById("21").value=="x")
-				if(document.getElementById("22").value=="x")
-					if(document.getElementById("23").value=="x")
-						if(document.getElementById("24").value=="x")
-							if(document.getElementById("25").value=="x")
-					{
-						alert("x won Please reset the game.");
+		if(b21=="x" && b22=="x" && b23=="x" && b24=="x" && b25=="x")
+
+					{	
+						alert(" x won Please reset the game.");
 					}
-		if(document.getElementById("21").value=="+")
-				if(document.getElementById("22").value=="+")
-					if(document.getElementById("23").value=="+")
-						if(document.getElementById("24").value=="+")
-							if(document.getElementById("25").value=="+")
-					{
-						alert("+ won Please reset the game.");
+		if(b21=="+" && b22=="+" && b23=="+"&& b24=="+" && b25=="+")
+
+					{	
+						alert(" + won Please reset the game.");
 					}
-		if(document.getElementById("1").value=="o")
-				if(document.getElementById("6").value=="o")
-					if(document.getElementById("11").value=="o")
-						if(document.getElementById("16").value=="o")
-							if(document.getElementById("21").value=="o")
-					{
-						alert("o won Please reset the game.");
+		if(b1=="o" && b6=="o" && b11=="o" && b16=="o" && b21=="o")
+					{	
+						alert(" o won Please reset the game.");
 					}
-		if(document.getElementById("1").value=="x")
-				if(document.getElementById("6").value=="x")
-					if(document.getElementById("11").value=="x")
-						if(document.getElementById("16").value=="x")
-							if(document.getElementById("21").value=="x")
-					{
-						alert("x won Please reset the game.");
+		if(b1=="x" && b6=="x" && b11=="x" && b16=="x" && b21=="x")
+
+					{	
+						alert(" x won Please reset the game.");
 					}
-		if(document.getElementById("1").value=="+")
-				if(document.getElementById("6").value=="+")
-					if(document.getElementById("11").value=="+")
-						if(document.getElementById("16").value=="+")
-							if(document.getElementById("21").value=="+")
-					{
-						alert("+ won Please reset the game.");
+		if(b1=="+" && b6=="+" && b11=="+"&& b16=="+" && b21=="+")
+
+					{	
+						alert(" + won Please reset the game.");
 					}
-		if(document.getElementById("2").value=="o")
-				if(document.getElementById("7").value=="o")
-					if(document.getElementById("12").value=="o")
-						if(document.getElementById("17").value=="o")
-							if(document.getElementById("22").value=="o")
-					{
-						alert("o won Please reset the game.");
+		if(b2=="o" && b7=="o" && b12=="o" && b17=="o" && b22=="o")
+					{	
+						alert(" o won Please reset the game.");
 					}
-		if(document.getElementById("2").value=="x")
-				if(document.getElementById("7").value=="x")
-					if(document.getElementById("12").value=="x")
-						if(document.getElementById("17").value=="x")
-							if(document.getElementById("22").value=="x")
-					{
-						alert("x won Please reset the game.");
+		if(b2=="x" && b7=="x" && b12=="x" && b17=="x" && b22=="x")
+
+					{	
+						alert(" x won Please reset the game.");
 					}
-		if(document.getElementById("2").value=="+")
-				if(document.getElementById("7").value=="+")
-					if(document.getElementById("12").value=="+")
-						if(document.getElementById("17").value=="+")
-							if(document.getElementById("22").value=="+")
-					{
-						alert("+ won Please reset the game.");
+		if(b2=="+" && b7=="+" && b12=="+"&& b17=="+" && b22=="+")
+
+					{	
+						alert(" + won Please reset the game.");
 					}
-		if(document.getElementById("3").value=="o")
-				if(document.getElementById("8").value=="o")
-					if(document.getElementById("13").value=="o")
-						if(document.getElementById("18").value=="o")
-							if(document.getElementById("22").value=="o")
-					{
-						alert("o won Please reset the game.");
+		if(b3=="o" && b8=="o" && b13=="o" && b18=="o" && b22=="o")
+					{	
+						alert(" o won Please reset the game.");
 					}
-		if(document.getElementById("3").value=="x")
-				if(document.getElementById("8").value=="x")
-					if(document.getElementById("13").value=="x")
-						if(document.getElementById("18").value=="x")
-							if(document.getElementById("22").value=="x")
-					{
-						alert("x won Please reset the game.");
+		if(b3=="x" && b8=="x" && b13=="x" && b18=="x" && b22=="x")
+
+					{	
+						alert(" x won Please reset the game.");
 					}
-		if(document.getElementById("3").value=="+")
-				if(document.getElementById("8").value=="+")
-					if(document.getElementById("13").value=="+")
-						if(document.getElementById("18").value=="+")
-							if(document.getElementById("22").value=="+")
-					{
-						alert("+ won Please reset the game.");
+		if(b3=="+" && b8=="+" && b13=="+"&& b18=="+" && b22=="+")
+
+					{	
+						alert(" + won Please reset the game.");
 					}
-		if(document.getElementById("4").value=="o")
-				if(document.getElementById("9").value=="o")
-					if(document.getElementById("14").value=="o")
-						if(document.getElementById("19").value=="o")
-							if(document.getElementById("24").value=="o")
-					{
-						alert("o won Please reset the game.");
+		if(b4=="o" && b9=="o" && b14=="o" && b19=="o" && b24=="o")
+					{	
+						alert(" o won Please reset the game.");
 					}
-		if(document.getElementById("4").value=="x")
-				if(document.getElementById("9").value=="x")
-					if(document.getElementById("14").value=="x")
-						if(document.getElementById("19").value=="x")
-							if(document.getElementById("24").value=="x")
-					{
-						alert("x won Please reset the game.");
+		if(b4=="x" && b9=="x" && b14=="x" && b19=="x" && b24=="x")
+
+					{	
+						alert(" x won Please reset the game.");
 					}
-		if(document.getElementById("4").value=="+")
-				if(document.getElementById("9").value=="+")
-					if(document.getElementById("14").value=="+")
-						if(document.getElementById("19").value=="+")
-							if(document.getElementById("24").value=="+")
-					{
-						alert("+ won Please reset the game.");
+		if(b4=="+" && b9=="+" && b14=="+"&& b19=="+" && b24=="+")
+
+					{	
+						alert(" + won Please reset the game.");
 					}
-		if(document.getElementById("5").value=="o")
-				if(document.getElementById("10").value=="o")
-					if(document.getElementById("15").value=="o")
-						if(document.getElementById("20").value=="o")
-							if(document.getElementById("25").value=="o")
-					{
-						alert("o won Please reset the game.");
+		if(b5=="o" && b10=="o" && b15=="o" && b20=="o" && b25=="o")
+					{	
+						alert(" o won Please reset the game.");
 					}
-		if(document.getElementById("5").value=="x")
-				if(document.getElementById("10").value=="x")
-					if(document.getElementById("15").value=="x")
-						if(document.getElementById("20").value=="x")
-							if(document.getElementById("25").value=="x")
-					{
-						alert("x won Please reset the game.");
+		if(b5=="x" && b10=="x" && b15=="x" && b20=="x" && b25=="x")
+
+					{	
+						alert(" x won Please reset the game.");
 					}
-		if(document.getElementById("5").value=="+")
-				if(document.getElementById("10").value=="+")
-					if(document.getElementById("15").value=="+")
-						if(document.getElementById("20").value=="+")
-							if(document.getElementById("25").value=="+")
-					{
-						alert("+ won Please reset the game.");
+		if(b5=="+" && b10=="+" && b15=="+"&& b20=="+" && b25=="+")
+
+					{	
+						alert(" + won Please reset the game.");
 					}
-		if(document.getElementById("1").value=="o")
-				if(document.getElementById("7").value=="o")
-					if(document.getElementById("13").value=="o")
-						if(document.getElementById("19").value=="o")
-							if(document.getElementById("25").value=="o")
-					{
-						alert("o won Please reset the game.");
+		if(b1=="o" && b7=="o" && b13=="o" && b19=="o" && b25=="o")
+					{	
+						alert(" o won Please reset the game.");
 					}
-		if(document.getElementById("1").value=="x")
-				if(document.getElementById("7").value=="x")
-					if(document.getElementById("13").value=="x")
-						if(document.getElementById("19").value=="x")
-							if(document.getElementById("25").value=="x")
-					{
-						alert("x won Please reset the game.");
+		if(b1=="x" && b7=="x" && b13=="x" && b19=="x" && b25=="x")
+
+					{	
+						alert(" x won Please reset the game.");
 					}
-		if(document.getElementById("1").value=="+")
-				if(document.getElementById("7").value=="+")
-					if(document.getElementById("13").value=="+")
-						if(document.getElementById("19").value=="+")
-							if(document.getElementById("25").value=="+")
-					{
-						alert("+ won Please reset the game.");
+		if(b1=="+" && b7=="+" && b13=="+"&& b19=="+" && b25=="+")
+
+					{	
+						alert(" + won Please reset the game.");
 					}
-		if(document.getElementById("5").value=="o")
-				if(document.getElementById("9").value=="o")
-					if(document.getElementById("13").value=="o")
-						if(document.getElementById("17").value=="o")
-							if(document.getElementById("21").value=="o")
-					{
-						alert("o won Please reset the game.");
+		if(b5=="o" && b9=="o" && b13=="o" && b17=="o" && b21=="o")
+					{	
+						alert(" o won Please reset the game.");
 					}
-		if(document.getElementById("5").value=="x")
-				if(document.getElementById("9").value=="x")
-					if(document.getElementById("13").value=="x")
-						if(document.getElementById("17").value=="x")
-							if(document.getElementById("21").value=="x")
-					{
-						alert("x won Please reset the game.");
+		if(b5=="x" && b9=="x" && b13=="x" && b17=="x" && b21=="x")
+
+					{	
+						alert(" x won Please reset the game.");
 					}
-		if(document.getElementById("5").value=="+")
-				if(document.getElementById("9").value=="+")
-					if(document.getElementById("13").value=="+")
-						if(document.getElementById("17").value=="+")
-							if(document.getElementById("21").value=="+")
-					{
-						alert("+ won Please reset the game.");
+		if(b5=="+" && b9=="+" && b13=="+"&& b17=="+" && b21=="+")
+
+					{	
+						alert(" + won Please reset the game.");
 					}
 		
 		if(tot==24)
