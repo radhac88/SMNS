@@ -29,49 +29,17 @@ var tot=countofo+countofx;
 
 		
 		var ran=Math.floor((Math.random()*9) + 1); 
-		
-
-		if(document.getElementById(ran).value=="o"||document.getElementById(ran).value=="x")
-		{
-			
-				var ran1=Math.floor((Math.random()*9) + 1); 
-					if(document.getElementById(ran1).value=="o"||document.getElementById(ran1).value=="x")
-					{
-						var ran2=Math.floor((Math.random()*9) + 1); 
-						setTimeout(function(){document.getElementById(ran2).value ="o"; }, 1000);
-						win();
+	
+			while(document.getElementById(ran).value=="o"||document.getElementById(ran).value=="x")
+			{
+				ran=Math.floor((Math.random()*9) + 1);
+			}
+		setTimeout(function(){document.getElementById(ran).value ="o"; }, 1000);
+		win();
 						if(tot==8)
 							{
-							alert("draw Please reset the game.");
-							}	
-					}
-					else{
-							
-							setTimeout(function(){document.getElementById(ran1).value ="o"; }, 1000);
-							win();
-							if(tot==8)
-							{
-							alert("draw Please reset the game.");
-							}	
-					}
-
-				win();
-				if(tot==8)
-				{
-					alert("draw Please reset the game.");
-				}
-		}
-		else
-		{
-			  setTimeout(function(){document.getElementById(ran).value ="o"; }, 1000);
-			 win();
-
-			if(tot==8)
-			{
-				alert("draw Please reset the game.");
-			}
-		}
-
+							document.getElementById("demo").innerHTML= "Draw Please reset the game.";
+							}
 
 	}
 }
@@ -175,6 +143,10 @@ var b1=document.getElementById(1).value;
 						col(3,5,7);
 						document.getElementById("demo").innerHTML= "x won Please reset the game.";
 					}
+		if(tot==8)
+				{
+				alert("draw Please reset the game.");
+				}
 		
 
 }
