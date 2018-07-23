@@ -1,0 +1,11 @@
+$.ajax({
+    type:"GET", 
+    url: "http://fantasy.premierleague.com/web/api/elements/100/", 
+    success: function(data) {
+            $("body").append(JSON.stringify(data));
+        }, 
+    error: function(jqXHR, textStatus, errorThrown) {
+            alert(jqXHR.status);
+        },
+   dataType: "jsonp"
+});​​​​​​​​​​​​​​​
