@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function vform(){
+		var url = window.location.search;
+		url=url.replace("?","");
+		var namearr = url.split("&");
+		var fnameval = namearr[0].split("=");
+		var lnameval=namearr[1].split("=");
+		
+	}
+	</script>
+</head>
+<body> 
+    <form id="form1"  onsubmit="vform()">  
+    <div>  
+        Name:  <input type="text" name="fname">
+        Last Name:  <input type="text" name="lname">
+<input type="submit" value="Submit">  
+    </div>  
+    </form>  
+
+</body>
+</html

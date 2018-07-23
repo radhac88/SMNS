@@ -92,9 +92,9 @@ if (document.getElementById("3").innerHTML=="x" && document.getElementById("6").
 		alert("o won");
 
 var tot;
-tot=nofox+noofo;
+tot=noofx+noofo;
 if(tot==8)
-alert("draw please reset the game")
+alert("draw please reset the game");
 
 
 

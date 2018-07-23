@@ -49,7 +49,7 @@ function re()
 		{
 		 document.getElementById(i).value = ""; 
 		}
-	document.getElementById("demo").innerHTML="players turn";
+	
 }
 function win()
 {
