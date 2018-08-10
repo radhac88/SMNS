@@ -1,0 +1,36 @@
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#01").click(function(){ 
+       $.ajax({url: "http://localhost:1111/", success: function(result){
+        
+  
+  for(var i=0;i<10;i++){
+  $("#a1").append('<img src="'+result[i].show_key_art+'"/><br>');
+}
+
+           }});
+        });
+    });
+
+
+
+</script>
+</head>
+<body>
+<button id="01">get details </button>
+<div class="col-sm-6" >
+ <div id="a1">
+   
+ </div>
+
+</div>
+
+
+
+
+</body>
+</html>
