@@ -1,0 +1,52 @@
+cars=["ford","bmw","audi"]
+x=cars[0]
+print(x)
+num=[1,2,3,4,4,6,4]
+print(num)
+num[2]=300
+print(num)
+print(len(num))
+print(cars[0])
+for x in cars:print(cars)
+for x in cars:print(x)
+cars.append("benz")
+print(cars)
+cars.remove("bmw")
+print(cars)
+num.remove(4)
+print(num)
+lol=[1,2,3,5,5,8,5,454,]
+print(len(lol))
+print(lol[7])
+lol.clear()
+print(lol)
+carbs=cars.copy()
+print(carbs)
+print(num.count(4))
+cars.extend(num)
+print(cars)
+cars.extend(carbs)
+print(cars)
+print(carbs.index("ford"))
+num.insert(4,23)
+print(num)
+num.pop(2)
+print(num)
+x=num.pop(2)
+print(x)
+num.reverse()
+print(num)
+#print(num.reverse())//none
+print(num)
+num.sort()
+print(num)
+carbs.sort(reverse=True)
+print(carbs)
+carbs.sort()
+print(carbs)
+fruits=["mango","grapes","banana","apple"]
+def fun(e):
+	return len(e)
+fruits.sort(reverse=True,key=fun)
+print(fruits)
+	
