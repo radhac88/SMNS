@@ -1,0 +1,41 @@
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#01").click(function(){
+        $.ajax({url: "http://localhost:1111/", success: function(result){
+            $("#ab").attr("src" ,result[0].show_key_art);
+             $("#more").attr("src" ,result[0].show_id);
+              $("#more").attr("src" ,result[0].original_language);
+              $("#more").attr("src" ,result[0].episode_title);
+
+            
+            
+            
+           }});
+        });
+    });
+</script>
+</head>
+<body>
+
+<button id="01">ghost </button>
+
+<div>
+    <img id="ab" src=""/>
+</div>
+<button></button>
+
+<button id="02">click for more images</button>
+
+<div id="more">
+	
+</div>
+
+
+
+
+</body>
+</html>
