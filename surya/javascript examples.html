@@ -65,6 +65,64 @@ function myFunction3() {
 	
     
 </script>
+<p id="demo4">hello</p>
+<script type="text/javascript">
+	
+	var str = "hello worls";
+	document.getElementById("demo4").innerHTML=str.charAt(0);
+</script>
+<p id="demo5">ff</p>
+<script type="text/javascript">
+var mynumber= 2;
+txt="";
+while(mynumber !=256)
+{
+	mynumber = mynumber * mynumber;
+	txt = txt+ mynumber + "<br>";
+}
+	document.getElementById("demo5").innerHTML=txt;
+
+
+
+	
+</script>
+<p id="demo"></p>
+
+<script>
+var numbers = [4, 9, 16, 25];
+var over18 = numbers.filter(myFunction);
+
+document.getElementById("demo").innerHTML = over18;
+
+function myFunction(value, index, array) {
+    return value > 18;
+}
+</script>
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML =
+Math.floor(Math.random() * 10);
+</script>
+<p id="demo8"></p>
+<script type="text/javascript">
+	
+	var person1={
+		fullname: function(){
+			return this.firstname+" "+ this.lastname;
+		}
+	}
+	var person2={
+		firstname:"surya",
+		lastname:"kala",
+		age:25;
+	}
+
+	var x=person1.fullname.call(person2);
+	document.getElementById("demo8").innerHTML=x;
+</script>
+
+
 
 
 </body>

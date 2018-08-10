@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$.ajax({
+    type:"GET", 
+    url: "http://fantasy.premierleague.com/web/api/elements/100/", 
+    success: function(data) {
+            $("body").append(JSON.stringify(data));
+        }, 
+    error: function(jqXHR, textStatus, errorThrown) {
+            alert(jqXHR.status);
+        },
+   dataType: "jsonp"
+});​​​​​​​​​​​​​​​
+</head>
+<body>
+
+</body>
+</html>
