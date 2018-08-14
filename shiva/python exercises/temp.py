@@ -35,3 +35,11 @@ for word in words:
 a = {0,2,5,8,9,10}
 b = {1,3,6,9,15}
 print("union", a|b)
+print("my name is {0} and my age is {1} ".format("shiva",22))
+print("hey {0} dude i said {0} did u listen i said {0} ".format("hi"))
+print("hey".capitalize())
+print("HEY".casefold())
+print("HEY".center(5))
+print("HEY".encode())
+print("FGDYYY".count("Y"))
+print("hbgvhyADGDS")

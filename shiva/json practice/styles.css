@@ -11,6 +11,7 @@ body{
 }
 .container{
 	color: white;
+	border: 2px solid black;
 }
 #image-container{
 	color: black;

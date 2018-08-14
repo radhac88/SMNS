@@ -11,9 +11,9 @@ $(document).ready(function(){
         +result[i].audio +' "<p><b>Ratings:</b>"' 
         +result[i].ratings 
         +"</p> </div></div>");
-    for(var j=0; j<result[i].videos.length ;j++){
+    /*for(var j=0; j<result[i].videos.length ;j++){
         $("#image-container").append(result[i].videos[j].episode_title+ '----' +result[i].videos[j].season +'<br>');
-    }
+    }*/
      $("#image-container").append("<div><hr></div>"); 
          	}
         $(".seemore").click(function(){
