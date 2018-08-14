@@ -45,9 +45,9 @@ window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("btn").style.display = "block";
+        document.getElementById("myBtn").style.display = "block";
     } else {
-        document.getElementById("btn").style.display = "none";
+        document.getElementById("myBtn").style.display = "none";
    }
 }
 
@@ -61,13 +61,9 @@ function topFunction() {
 </script>
 </head>
 <body>
-  <div id="con" class="container">
+  <div id="con" class="container"></div>
 	<button>Get JSON data</button> 
-	
-  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-
-
-
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
 	<div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -75,8 +71,9 @@ function topFunction() {
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Modal Header</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
         </div>
         <div class="modal-body">
           <p id="full-synop"></p>
