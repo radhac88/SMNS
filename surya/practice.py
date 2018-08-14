@@ -291,7 +291,7 @@ matrix=[[1, 2],
 [6, 7],
 [8, 9]]
 transposed=[]
-tyt h ugwytr4         rrr4ydgerh  iro7r jkdf"t57ty"tert"tr7tyet:rywrt"rtttffor i in range(2):
+for i in range(2):
  		transposed_row=[]
  		for row in matrix:
  			transposed_row.append(row[i])
