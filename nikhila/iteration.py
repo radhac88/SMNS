@@ -148,3 +148,33 @@ def new_string(str):
 
 print(new_string("Array"))
 print(new_string("IsEmpty"))
+
+#ex
+def fahrenheit(T):
+    return ((float(9)/5)*T + 32)
+def celsius(T):
+    return (float(5)/9)*(T-32)
+temp = (36.5, 37, 37.5,39)
+
+F = list(map(fahrenheit, temp))
+print(F)
+C = list(map(celsius, F))
+print(C)
+
+import mysql.connector
+mydb = mysql.connector.connect(
+  host="172.16.0.213",
+  port="3306",
+  user="root",
+  passwd="welcome",
+  database="nikhila"
+)
+
+mycursor = mydb.cursor()
+
+mycursor.execute("SELECT * FROM student")
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
