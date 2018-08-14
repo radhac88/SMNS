@@ -1,0 +1,50 @@
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#01").click(function(){
+        $.ajax({url: "http://localhost:1111/", success: function(result){
+            $("#a1").attr("src" ,result[0].show_key_art);
+  
+           }});
+        });
+   
+    $("#02").click(function(){
+        $.ajax({url: "http://localhost:1111/", success: function(result){
+          $("#a3").text(result[0].videos[0].episode_title);
+            $("#a4").text(result[0].original_language);
+                  $("#a2").attr("src" ,result[0].video_image);
+    
+
+
+
+
+           }});
+        });
+    });
+</script>
+</head>
+<body>
+
+<button id="01">ghost </button>
+
+<div>
+    <img id="a1" src=""/>
+</div>
+<button></button>
+
+<button id="02">click for more details</button>
+
+<div>
+	<img id="a2" src=""/>
+	<p id="a3" />
+	<p id="a4" />
+</div>
+
+
+
+
+</body>
+</html>
