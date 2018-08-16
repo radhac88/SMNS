@@ -21,7 +21,9 @@ $(document).ready(function(){
                 if(synop=="undefined"){
                     synop = $(this).data("mysynop");
                 }
-                $("#full-synop").html(synop);
+                var rep = synop.replace(/[\u21b5\u21e5]/g," ")
+                $("#full-synop").html(rep);
+
             });
         }});
     });
