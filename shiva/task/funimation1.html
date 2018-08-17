@@ -4,14 +4,29 @@
 <head>
   <title>Funimation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+  <script src="jquery.twbsPagination.js" type="text/javascript"></script>
+  <script type="text/javascript" src="main1.js"></script>
 </head>
 
 <body>
   <div class="well well-sm">
     <h1>Funimation - Destiny to all your fun</h1>
   </div>
-  <div id="image-container" class="container"></div>
-  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+
+  <div class="container">
+    <div id="page-content"></div>
+    <nav aria-label="Page navigation">
+      <div class="pagination" id="pagination">
+      </div>
+    </nav>
+  </div>
+
+  <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -30,11 +45,6 @@
       </div>
     </div>
   </div>
-
-  <div id="paginationNavigation"></div>
-  <div id="paginationContent">
-  </div>
-
 
   <div class="row" id="data-grid">
     <div class="col-sm-3">
@@ -56,12 +66,5 @@
     </div>
   </div>
 </body>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="styles.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="pagination.js"></script>
-<script type="text/javascript" src="main1.js"></script>
 
 </html>

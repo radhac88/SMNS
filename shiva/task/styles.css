@@ -9,7 +9,7 @@
   color: blue;
   cursor: pointer;
 }
-#myBtn {
+#topBtn {
   display: none;
   position: fixed;
   bottom: 20px;
