@@ -9,8 +9,8 @@
   color: blue;
   cursor: pointer;
 }
-#myBtn {
-  display: none;
+#topBtn {
+  display: unset;
   position: fixed;
   bottom: 20px;
   right: 30px;
@@ -25,20 +25,17 @@
   border-radius: 4px;
 }
 
-#myBtn:hover {
+#topBtn:hover {
   background-color: #555;
 }
 #b1{
   margin: 10px 0px 0px 675px
 }
-#data-grid {
+/*#data-grid {
     display: none;
     padding: 11px;
 }
-#showimg{
-  width:224px;
-  height: 300px;
-}
+*/
 body{
   background-color: #A9A9A9;
 }
@@ -47,11 +44,39 @@ h1{
   text-align:center ;
   font-family:Courier New Header;
 }
-.loadmore{
- color: blue;
-  cursor: pointer;
-}
+
 #video-container{
   width:20px;
   height: 10px;
+}
+/*for dummy image */
+img{
+  width:224px;
+  height:300px;
+}
+.menu{
+  display: none;
+}
+
+#loadmore {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: white;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 9px #999;
+}
+
+#loadmore:hover {background-color: #3e8e41}
+
+#loadmore:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }

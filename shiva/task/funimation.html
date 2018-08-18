@@ -1,52 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Funimation</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="main.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-    <div class="well well-sm">
-      <h1>Funimation -Destiny to all your fun</h1>
-    </div>
-    <div id ="image-container" class="container"></div>
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4>
-          </div>
-          <div class="modal-body">
-            <p id="full-synop"></p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
+<head>
+  <title>Funimation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+  <script src="jquery.twbsPagination.js" type="text/javascript"></script>
+  <script type="text/javascript" src="main.js"></script>
+</head>
+<body>	
+  <div class="well well-sm">
+    <h1>Funimation - Destiny to all your fun</h1>
+  </div>
+<p><span class="count"></span></p>
+  <div class="container">
+    <div id="page-content"></div>
+    <nav aria-label="Page navigation">
+      <div class="pagination" id="pagination">
+      </div>
+    </nav>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p id="full-synop"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
-    <div class="row" id="data-grid">
-      <div class="col-sm-3">
-      <img id="showimg"; src=""; onerror="this.src='inf.jpg';"class="img-rounded"; /></div>
-      <div class="col-sm-9">
-        <b>Title:</b> <h3 id="showtitle"></h3>
-        <b>Description:</b> <span id="des"></span>
-        <span data-toggle='modal' data-target='#myModal' class='seemore' data-synop='' data-msynop='' class='btn-default'>..see more</span><br>
-        <b>Language:</b> <p id="showlang"></p>
-        <b>Rating:</b> <p id="showrating"></p>
-        <span class='btn btn-default'>Show Episodes</span>
-        <div id ="episode-container" class="container1"></div>
-      </div>
-    </div>
   </div>
-</div>
+    <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+
+  <!-- <div class="row" id="data-grid">
+    <div class="col-sm-3">
+      <img id="showimg" ; src="" ; onerror="this.src='./images/inf.jpg';" class="img-rounded" ; />
+    </div>
+    <div class="col-sm-9">
+      <b>Title:</b>
+      <h3 id="showtitle"></h3>
+      <b>Description:</b>
+      <span id="des"></span>
+      <span data-toggle='modal' data-target='#myModal' class='seemore' data-synop='' data-msynop='' class='btn-default'>..see more</span>
+      <br>
+      <b>Language:</b>
+      <p id="showlang"></p>
+      <b>Rating:</b>
+      <p id="showrating"></p>
+      <span class='btn btn-default'>Show Episodes</span>
+      <div id="episode-container" class="container1"></div>
+    </div>
+  </div> -->
 </body>
+
 </html>
