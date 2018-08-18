@@ -40,14 +40,12 @@ $(document).ready(function () {
                             + '"<p><b>language:</b></p>"'
                             + movies[i].audio + ' "<p><b>Ratings:</b>"'
                             + movies[i].ratings
-                            +'<span id="ldc"></span>'
-                            + '"</p><button id="loadmore">load more</button></div></div>'
+                            +'<span id="ldc'+i+'"></span>'
+                            + '"</p><button class="loadmore">load more</button></div></div>'
                             );
-                        $('#loadmore').click(function() {
-                        $('.menu').toggle();
-                                    });
-                        for(var j= i; j<movies[i].videos.length;j++){
-                            $("#idc").append('<div class="menu"><p><b>episode title</p></b><p>'+movies[i].videos[j].episode_title+'</p>'
+                       
+                        for(var j=0; j<movies[i].videos.length;j++){
+                            $("#ldc"+i).append('<div class="menu"><p><b>episode title</p></b><p>'+movies[i].videos[j].episode_title+'</p>'
                                 +'<p><b>season</p></b><p>'+movies[i].videos[j].season+'</p>'
                                 +'<p><b>ratings</p></b><p>'+movies[i].videos[j].ratings+'</p>'
                                 +'<p><b>thumbnail</p></b><img src="'+movies[i].videos[j].video_thumbnail+'" width="100px; height="100px";/><br></div>');
@@ -58,6 +56,10 @@ $(document).ready(function () {
                         }*/
                         $("#page-content").append("<div><hr></div>");
                     }
+
+                     $('.loadmore').click(function() {
+                        $('.menu').toggle();
+                                    });
                     $(".seemore").click(function () {
                         var synop = $(this).data("synop");
                         if (synop == "undefined") {
@@ -66,6 +68,7 @@ $(document).ready(function () {
                         var rep = synop.replace(/[\u21b5\u21e5]/g, " ")
                         $("#full-synop").html(rep);
                     });
+                    $("#topBtn").click();
                 }
             }).on('page', function (event, page) {
                 // console.info(page + ' (from event listening)');
@@ -75,9 +78,9 @@ $(document).ready(function () {
 });//ready func close
 
 
-$(document).load(function () {
+// $(document).load(function () {
 
-})
+// })
 
 //scroll function
 window.onscroll = function () { scrollFunction() };
