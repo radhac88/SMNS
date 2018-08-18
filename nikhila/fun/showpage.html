@@ -11,8 +11,9 @@
 </head>
 <body>
 	<p id="demo"></p>
-	<div id="container1" class="container" >
-		
+	<div  class="container" >
+		<div class="row" id="container1">
+		</div>
 	</div>
 	<div class="container">
 	 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -46,11 +47,13 @@ $(document).ready(function(){
     $.ajax({url: "http://localhost:1111/", success: function(result){
       
     {
-  		 $("#container1").append('<br><div class="row"> <div class="col-sm-3"><img src=" '
+  		 $("#container1").append('<br> <div class="col-sm-3"><img src=" '
         + result[id1].show_key_art +'"alt="no image" onerror=this.src="'+result[id1].show_thumbnail+'"/></div><div class="col-sm-9">'+'<b>Title:</b>"'
-        + result[id1].title +'"'+'<p id="des"><b>Description:</b>"'
-        + result[id1].synopsis["short-synopsis"]+'"<span data-toggle="modal" data-target="#myModal" class="seemore" data-synop="'+result[id1].synopsis["full-synopsis"]+'"data-msynop="'+result[id1].synopsis["medium-synopsis"]+'" class="btn-default" style="color:red">...seemore</span></p><p><b>Audio:</b>"'
-        + result[id1].audio+'"</p><p><b>Ratings:</b> "'+ result[id1].ratings+'" <br><br><br </p></div></div>');   
+        + result[id1].title +'"<p><b>Short Description:</b>"'
+        + result[id1].synopsis["short-synopsis"]+'"<p><b>Full Description:</b>"'
+        + result[id1].synopsis["long-synopsis"]+'"</p></p><p><b>Audio:</b>"'
+        + result[id1].audio+'"</p><p><b>Ratings:</b> "'
+        + result[id1].ratings+'" <br><br><br </p></div>');   
 
   		 $("#list").append('<li data-target="#myCarousel" data-slide-to="0" class="active"></li>');
   		 $("#ep").append( '<div class="item active"><img src="'+ result[id1].videos[0].video_image+'" style="width:100%;"></div>');

@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <style type="text/css">
@@ -28,7 +30,9 @@
 .load{
   display:none;
 }
-
+.checked,.fa-star-half-full{
+  color: orange;
+}
 </style>
 
 <body>
@@ -104,8 +108,7 @@ $(document).ready(function(){
         + result[i].synopsis["short-synopsis"]+'"<span data-toggle="modal" data-target="#myModal" class="seemore" data-synop="'
         +result[i].synopsis["full-synopsis"]+'"data-msynop="'
         +result[i].synopsis["medium-synopsis"]+'" class="btn-default" style="color:red">...seemore</span></p><p><b>Audio:</b>"'
-        + result[i].audio+'"</p><p><b>Ratings:</b> "'
-        + result[i].ratings+'"  </p><button class="load1" data-click="'+i+'">load more</button><div class="load" id="load'+i+'"><span id="'+i+'"><br></span> </div> <button id="'+i+'" ><a href="showpage.html?id='+i+'">show</a></button></div></div><hr>');   
+        + result[i].audio+'"</p><p><b>Ratings:</b> <span id="ratings'+i+'"></span>  </p><button class="load1 btn btn-primary" data-click="'+i+'">load more</button><div class="load " id="load'+i+'"><span id="'+i+'"><br></span> </div> <button id="'+i+'" ><a href="showpage.html?id='+i+'">show</a></button></div></div><hr>');   
       
        for (j in result[i].videos) {
         $("#"+i).append('<div class="container"><div class="row"> <div class="col-sm-3"><img src="'
@@ -114,6 +117,47 @@ $(document).ready(function(){
         +result[i].videos[j].ratings+'"</p><p><b>season:</b>"'
         +result[i].videos[j].season+'"</p></div> </div><hr></div>');
         }
+var x=0;
+ 
+        for(k=0;k<=result[i].ratings.length&&x==0;k++)
+        {
+          var value=Number(result[i].ratings[k]);
+                   
+            if(typeof value == 'number' )
+              {
+               
+                    var rat=(result[i].ratings[k])/4;
+                    var rat1=Math.floor(rat);
+
+                    for(var l=1;l<=rat1;l++)
+                    {
+                      $("#ratings"+i).append('<span class="fa fa-star checked"></span>');
+                      x+=1;
+                    }
+
+                    
+              }
+          
+           
+                for(var m=1;m<=(5-rat1);m++)
+                {
+                  var str=rat.toString();
+                var n=str.search(".5");
+
+                if(n != -1&&x==0)
+                {
+                  $("#ratings"+i).append('<span class="fa fa-star-half-full"></span>');
+                  x+=1;
+                }
+                else{
+                    $("#ratings"+i).append('<span class="fa fa-star"></span>');
+                  
+                }
+                }   
+          
+          
+        }
+
       }
 
 
