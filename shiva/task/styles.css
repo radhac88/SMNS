@@ -80,3 +80,23 @@ img{
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+
+/* loading css */
+#loading {
+  background: url('images/spinner.gif');
+  height: 64px;
+  width: 64px;
+}
+#progress {
+  max-width: fit-content;
+  margin: auto;
+  position: absolute;
+  left: 45%;
+  top: 40%;
+}
+
+#container {
+  display: none;
+}
+/* loading css end */

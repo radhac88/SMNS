@@ -1,20 +1,9 @@
 $(document).ready(function () {
     var movies = [];
-     var count = 10;
-    function myCount() {
-    if (count < 0) {
-        $('.count').text(" ");
-
-        }
-    else{
-        $('.count').text(count);
-                count --;
-            }
-             setInterval(myCount,500);
-    }
-       
-
-    // start loading
+    function show() {
+        $('#loading').hide();
+        $('#container').fadeIn();
+    };
     $.ajax({
         type: 'GET',
         url: 'http://localhost:1111',
@@ -34,32 +23,32 @@ $(document).ready(function () {
                             + movies[i].show_key_art + ' " onerror="imgError(this);" /></div><div class="col-sm-9"><b>Title:</b>"'
                             + movies[i].title + ' "<p id="des"><b>Description:</b>"'
                             + movies[i].synopsis["short-synopsis"]
-                            + "...<span data-toggle ='modal' data-target= '#myModal'class='seemore' data-synop='" 
-                            + movies[i].synopsis["full-synopsis"] + "'data-mysynop = '" 
+                            + "...<span data-toggle ='modal' data-target= '#myModal'class='seemore' data-synop='"
+                            + movies[i].synopsis["full-synopsis"] + "'data-mysynop = '"
                             + movies[i].synopsis["medium-synopsis"] + "' class='btn-default'>seemore</span>"
                             + '"<p><b>language:</b></p>"'
                             + movies[i].audio + ' "<p><b>Ratings:</b>"'
                             + movies[i].ratings
-                            +'<span id="ldc'+i+'"></span>'
+                            + '<span id="ldc' + i + '"></span>'
                             + '"</p><button class="loadmore">load more</button></div></div>'
-                            );
-                       
-                        for(var j=0; j<movies[i].videos.length;j++){
-                            $("#ldc"+i).append('<div class="menu"><p><b>episode title</p></b><p>'+movies[i].videos[j].episode_title+'</p>'
-                                +'<p><b>season</p></b><p>'+movies[i].videos[j].season+'</p>'
-                                +'<p><b>ratings</p></b><p>'+movies[i].videos[j].ratings+'</p>'
-                                +'<p><b>thumbnail</p></b><img src="'+movies[i].videos[j].video_thumbnail+'" width="100px; height="100px";/><br></div>');
-                            
-                      } 
+                        );
+
+                        for (var j = 0; j < movies[i].videos.length; j++) {
+                            $("#ldc" + i).append('<div class="menu"><p><b>episode title</p></b><p>' + movies[i].videos[j].episode_title + '</p>'
+                                + '<p><b>season</p></b><p>' + movies[i].videos[j].season + '</p>'
+                                + '<p><b>ratings</p></b><p>' + movies[i].videos[j].ratings + '</p>'
+                                + '<p><b>thumbnail</p></b><img src="' + movies[i].videos[j].video_thumbnail + '" width="100px; height="100px";/><br></div>');
+
+                        }
                         /*for(var j=0; j<movies[i].videos.length ;j++){
                             $("#page-content").append(movies[i].videos[j].episode_title+ '----' +movies[i].videos[j].season +'<br>');
                         }*/
                         $("#page-content").append("<div><hr></div>");
                     }
 
-                     $('.loadmore').click(function() {
+                    $('.loadmore').click(function () {
                         $('.menu').toggle();
-                                    });
+                    });
                     $(".seemore").click(function () {
                         var synop = $(this).data("synop");
                         if (synop == "undefined") {
@@ -73,14 +62,10 @@ $(document).ready(function () {
             }).on('page', function (event, page) {
                 // console.info(page + ' (from event listening)');
             });
-        }
+            show();
+        }//ajax complete function end
     });
 });//ready func close
-
-
-// $(document).load(function () {
-
-// })
 
 //scroll function
 window.onscroll = function () { scrollFunction() };
