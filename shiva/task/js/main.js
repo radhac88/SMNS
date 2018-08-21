@@ -2,7 +2,7 @@ $(document).ready(function () {
     var movies = [];
     function show() {
         $('#loading').hide();
-        $('#container').fadeIn();
+        $('#container').fadeIn(2000);
     };
     $.ajax({
         type: 'GET',
@@ -18,31 +18,30 @@ $(document).ready(function () {
                     $("#page-content").html("");
                     let startIndex = (page - 1) * 10;
                     let endIndex = (page * 10) - 1;
+                    // console.log(""+page);
                     for (var i = startIndex; i < endIndex; i++) {
                         $("#page-content").append('<div class="row"><div class="col-sm-3"><img src="'
-                            + movies[i].show_key_art + ' " onerror="imgError(this);" /></div><div class="col-sm-9"><b>Title:</b>"'
-                            + movies[i].title + ' "<p id="des"><b>Description:</b>"'
+                            + movies[i].show_key_art + '" class="img-rounded" class="img-responsive"  onerror="imgError(this);" /></div><div class="col-sm-9"><b><i>Title: </i></b>'
+                            + movies[i].title + '<p id="des"><b><i>Description: </i></b>"'
                             + movies[i].synopsis["short-synopsis"]
                             + "...<span data-toggle ='modal' data-target= '#myModal'class='seemore' data-synop='"
                             + movies[i].synopsis["full-synopsis"] + "'data-mysynop = '"
                             + movies[i].synopsis["medium-synopsis"] + "' class='btn-default'>seemore</span>"
-                            + '"<p><b>language:</b></p>"'
-                            + movies[i].audio + ' "<p><b>Ratings:</b>"'
+                            + '"<p><b><i>language: </i></b></p>"'
+                            + movies[i].audio + ' "<p><b><i>Ratings: </i></b>"'
                             + movies[i].ratings
-                            + '<span id="ldc' + i + '"></span>'
+                            + '<span id="ldc'+i+'"></span>'
                             + '"</p><button class="loadmore">load more</button></div></div>'
                         );
 
                         for (var j = 0; j < movies[i].videos.length; j++) {
-                            $("#ldc" + i).append('<div class="menu"><p><b>episode title</p></b><p>' + movies[i].videos[j].episode_title + '</p>'
-                                + '<p><b>season</p></b><p>' + movies[i].videos[j].season + '</p>'
-                                + '<p><b>ratings</p></b><p>' + movies[i].videos[j].ratings + '</p>'
-                                + '<p><b>thumbnail</p></b><img src="' + movies[i].videos[j].video_thumbnail + '" width="100px; height="100px";/><br></div>');
+                            $("#ldc" + i).append('<div class="menu"><div class="row"><div class="col-sm-3"><p><b>thumbnail</b></p><img src="' 
+                                + movies[i].videos[j].video_thumbnail + '" class="img-responsive" width="150px" height="130px";/></div><div class="col-sm-9"><br><p><b>episode title</p></b><p>' 
+                                + movies[i].videos[j].episode_title + '</p><p><b>season</b></p><p>' 
+                                + movies[i].videos[j].season + '</p><p><b>ratings</p></b><p>' 
+                                + movies[i].videos[j].ratings + '</p></div></div></div>');
 
                         }
-                        /*for(var j=0; j<movies[i].videos.length ;j++){
-                            $("#page-content").append(movies[i].videos[j].episode_title+ '----' +movies[i].videos[j].season +'<br>');
-                        }*/
                         $("#page-content").append("<div><hr></div>");
                     }
 
