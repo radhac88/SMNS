@@ -7,10 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
-=======
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
->>>>>>> 7eb2ddecb3aa6969430a868e7f560161ff7046b0
 </head>
 
 <style type="text/css">
@@ -25,16 +22,6 @@
       transition: all 0.4s ease-in-out 0s;
     }
 
-<<<<<<< HEAD
-.scrollTop #a1 {
-  font-size: 18px;
-  color: #fff;
-}
-.load{
-  display:none;
-}
-
-=======
     .scrollTop #a1 {
       font-size: 18px;
       color: #fff;
@@ -45,7 +32,6 @@
     .checked,.fa-star-half-full{
       color: orange;
     }
->>>>>>> 7eb2ddecb3aa6969430a868e7f560161ff7046b0
 </style>
 
 <body>
@@ -80,48 +66,27 @@
 
     <br><br><br>
     <center>
-      <ul class="pagination pagination-lg">
-        <li><a href="ajajq.html?i=0&j=10">1</a></li>
-        <li><a href="ajajq.html?i=10&j=20">2</a></li>
-        <li><a href="ajajq.html?i=20&j=30">3</a></li>
-        <li><a href="ajajq.html?i=30&j=40">4</a></li>
-        <li><a href="ajajq.html?i=40&j=50">5</a></li>
-        <li><a href="ajajq.html?i=50&j=60">6</a></li>
-        <li><a href="ajajq.html?i=60&j=70">7</a></li>
-        <li><a href="ajajq.html?i=70&j=80">8</a></li>
-        <li><a href="ajajq.html?i=80&j=90">9</a></li>
-        <li><a href="ajajq.html?i=100&j=110">10</a></li> 
-
-      </ul>
+       <button class="btn btn-default"><a class="func" onclick="page(0);">load more</a></button>
     </center>  
   
 
 <script>
+ function page(i)
+ {
 
-  var url=window.location.href;
-  url=url.split("?");
-  var para= url[1].split("&");
-  var p1= para[0].split("=");
-  var pi=p1[1].split(",")
-  var p2=para[1].split("=");
-  var pj=p2[1].split(",")
+  var pi=i;
   $(document).ready(function(){
     $.ajax({url: "http://localhost:1111/", success: function(result){
-      for(var i=pi;i<pj;i++)
+      for(var i=pi;i<(pi+10);i++)
       {
    
-       $("#container1").append('<br><div class="row"> <div class="col-sm-3"><img src=" '+ result[i].show_key_art 
-        +'"/></div><div class="col-sm-9">'+'<b>Title:</b>"'
-        + result[i].title +'"'+'<p id="des"><b>Description:</b>"'
+       $("#container1").append('<br><div class="row"> <div class="col-sm-3"><img src="'+result[i].show_key_art 
+        +'"/></div><div class="col-sm-9"><b>Title:</b>"'
+        + result[i].title +'"<p id="des"><b>Description:</b>"'
         + result[i].synopsis["short-synopsis"]+'"<span data-toggle="modal" data-target="#myModal" class="seemore" data-synop="'
         +result[i].synopsis["full-synopsis"]+'"data-msynop="'
         +result[i].synopsis["medium-synopsis"]+'" class="btn-default" style="color:red">...seemore</span></p><p><b>Audio:</b>"'
-<<<<<<< HEAD
-        + result[i].audio+'"</p><p><b>Ratings:</b> "'
-        + result[i].ratings+'"  </p><button class="load1" data-click="'+i+'">load more</button><div class="load" id="load'+i+'"><span id="'+i+'"><br></span> </div> <button id="'+i+'" ><a href="showpage.html?id='+i+'">show</a></button></div></div><hr>');   
-=======
-        + result[i].audio+'"</p><p><b>Ratings:</b> <span id="ratings'+i+'"></span>  </p><button class="load1 btn btn-primary" data-click="'+i+'">load more</button><div class="load " id="load'+i+'"><span id="'+i+'"><br></span> </div> <button class="btn btn-success"  ><a href="showpage.html?id='+i+'" style="color:white"  >show</a></button></div></div><hr>');   
->>>>>>> 7eb2ddecb3aa6969430a868e7f560161ff7046b0
+        + result[i].audio+'"</p><p><b>Ratings:</b> <span id="ratings'+i+'"></span>  </p><button class="load1 btn btn-primary" data-click="'+i+'">load more</button><div class="load " id="load'+i+'"><span id="'+i+'"><br></span> </div> <button id="'+i+'" class="btn btn-success"  ><a href="showpage.html?id='+i+'" style="color:white">show</a></button></div></div><hr>');   
       
        for (j in result[i].videos) {
         $("#"+i).append('<div class="container"><div class="row"> <div class="col-sm-3"><img src="'
@@ -130,16 +95,14 @@
         +result[i].videos[j].ratings+'"</p><p><b>season:</b>"'
         +result[i].videos[j].season+'"</p></div> </div><hr></div>');
         }
-<<<<<<< HEAD
-=======
         var x=0;
         var x1=0; 
-        for(var k=0;k<=result[i].ratings.length&&x1==0;k++)
+        for(var p=0;p<=result[i].ratings.length&&x1==0;p++)
         {
-          var value=Number(result[i].ratings[k]);       
+          var value=Number(result[i].ratings[p]);       
             if(typeof value == 'number' )
               {
-                var rat=(result[i].ratings[k])/4;
+                var rat=(result[i].ratings[p])/4;
                 var rat1=Math.floor(rat);
                 for(var l=1;l<=rat1;l++)
                 {
@@ -167,7 +130,6 @@
                 }
               }   
 
->>>>>>> 7eb2ddecb3aa6969430a868e7f560161ff7046b0
       }
 
 
@@ -201,13 +163,14 @@
 
             });
     
-
+ var pj=pi+10;
+$(".func").attr("onclick", "page("+pj+");");
 
         }});
 
 });
-
  
+} 
   var scrollTop = $(".scrollTop");
 
   $(window).scroll(function() {
