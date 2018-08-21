@@ -7,7 +7,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
+=======
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+>>>>>>> 7eb2ddecb3aa6969430a868e7f560161ff7046b0
 </head>
 
 <style type="text/css">
@@ -22,6 +25,16 @@
       transition: all 0.4s ease-in-out 0s;
     }
 
+<<<<<<< HEAD
+.scrollTop #a1 {
+  font-size: 18px;
+  color: #fff;
+}
+.load{
+  display:none;
+}
+
+=======
     .scrollTop #a1 {
       font-size: 18px;
       color: #fff;
@@ -32,6 +45,7 @@
     .checked,.fa-star-half-full{
       color: orange;
     }
+>>>>>>> 7eb2ddecb3aa6969430a868e7f560161ff7046b0
 </style>
 
 <body>
@@ -102,7 +116,12 @@
         + result[i].synopsis["short-synopsis"]+'"<span data-toggle="modal" data-target="#myModal" class="seemore" data-synop="'
         +result[i].synopsis["full-synopsis"]+'"data-msynop="'
         +result[i].synopsis["medium-synopsis"]+'" class="btn-default" style="color:red">...seemore</span></p><p><b>Audio:</b>"'
+<<<<<<< HEAD
+        + result[i].audio+'"</p><p><b>Ratings:</b> "'
+        + result[i].ratings+'"  </p><button class="load1" data-click="'+i+'">load more</button><div class="load" id="load'+i+'"><span id="'+i+'"><br></span> </div> <button id="'+i+'" ><a href="showpage.html?id='+i+'">show</a></button></div></div><hr>');   
+=======
         + result[i].audio+'"</p><p><b>Ratings:</b> <span id="ratings'+i+'"></span>  </p><button class="load1 btn btn-primary" data-click="'+i+'">load more</button><div class="load " id="load'+i+'"><span id="'+i+'"><br></span> </div> <button class="btn btn-success"  ><a href="showpage.html?id='+i+'" style="color:white"  >show</a></button></div></div><hr>');   
+>>>>>>> 7eb2ddecb3aa6969430a868e7f560161ff7046b0
       
        for (j in result[i].videos) {
         $("#"+i).append('<div class="container"><div class="row"> <div class="col-sm-3"><img src="'
@@ -111,6 +130,8 @@
         +result[i].videos[j].ratings+'"</p><p><b>season:</b>"'
         +result[i].videos[j].season+'"</p></div> </div><hr></div>');
         }
+<<<<<<< HEAD
+=======
         var x=0;
         var x1=0; 
         for(var k=0;k<=result[i].ratings.length&&x1==0;k++)
@@ -146,6 +167,7 @@
                 }
               }   
 
+>>>>>>> 7eb2ddecb3aa6969430a868e7f560161ff7046b0
       }
 
 

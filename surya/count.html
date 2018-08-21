@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script type="text/javascript">
+function startTimer(duration, display) {
+    var timer = duration, seconds;
+    setInterval(function () {
+        
+        seconds = parseInt(timer % 60, 10);
+
+        
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+            window.location="samplejson.html"
+
+
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var tenseconds  = 10,
+        display = document.querySelector('#time');
+    startTimer(tenseconds, display);
+};	
+</script>
+<style type="text/css">
+    body{
+    text-align: center;
+    background: #00ECB9;
+  font-family: sans-serif;
+  font-weight: 100;
+}
+
+h1{
+  color: #396;
+  font-weight: 100;
+  font-size: 40px;
+  margin: 40px 0px 20px;
+}
+
+#clockdiv{
+    font-family: sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
+}
+
+#clockdiv > div{
+    padding: 10px;
+    border-radius: 3px;
+    background: #00BF96;
+    display: inline-block;
+}
+
+#clockdiv div > span{
+    padding: 15px;
+    border-radius: 3px;
+    background: #00816A;
+    display: inline-block;
+}
+
+.smalltext{
+    padding-top: 5px;
+    font-size: 16px;
+}
+    
+
+</style>	
+</head>
+
+<body>
+    <h1>count down</h1>
+    <div id ="clockdiv">
+    <div> <span id="time">10</span></div> 
+    
+    
+    <p class="smalltext">Seconds</p>
+  
+</div>
+</body>	
+
+
+</html>
