@@ -30,14 +30,16 @@ $(document).ready(function () {
                             + '"<p><b><i>language: </i></b></p>"'
                             + movies[i].audio + ' "<p><b><i>Ratings: </i></b>"'
                             + movies[i].ratings
-                            + '<span id="ldc'+i+'"></span>'
-                            + '"</p><button class="loadmore">load more</button></div></div>'
+                            + '<div><span id="ldc'+i+'" class="menu"></span>'
+                            + '"</p><button class="loadmore" >load more</button></div><br><button class="btn btn-success"><a href="carousel.html?id='+i+'">show</a></button></div></div>'
                         );
 
                         for (var j = 0; j < movies[i].videos.length; j++) {
-                            $("#ldc" + i).append('<div class="menu"><div class="row"><div class="col-sm-3"><p><b>thumbnail</b></p><img src="' 
-                                + movies[i].videos[j].video_thumbnail + '" class="img-responsive" width="150px" height="130px";/></div><div class="col-sm-9"><br><p><b>episode title</p></b><p>' 
-                                + movies[i].videos[j].episode_title + '</p><p><b>season</b></p><p>' 
+                            $("#ldc" + i).append('<div><div class="row"><div class="col-sm-3"><p><b>thumbnail</b></p><img src="' 
+                                + movies[i].videos[j].video_thumbnail 
+                                + '" class="img-responsive" width="150px" height="130px";/></div><div class="col-sm-9"><br><p><b>episode title</p></b><p>' 
+                                + movies[i].videos[j].episode_title 
+                                + '</p><p><b>season</b></p><p>' 
                                 + movies[i].videos[j].season + '</p><p><b>ratings</p></b><p>' 
                                 + movies[i].videos[j].ratings + '</p></div></div></div>');
 
@@ -45,9 +47,12 @@ $(document).ready(function () {
                         $("#page-content").append("<div><hr></div>");
                     }
 
+                    
                     $('.loadmore').click(function () {
                         $('.menu').toggle();
                     });
+                    
+
                     $(".seemore").click(function () {
                         var synop = $(this).data("synop");
                         if (synop == "undefined") {
