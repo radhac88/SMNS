@@ -1,24 +1,26 @@
 <html>
 <head>
-	<title> JSon and ajax</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="json.css">
+  <title> JSon and ajax</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="json.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="sample.js"></script>
+
+  
    <meta name="viewport" content="width=device-width, initial-scale=1">
   
 
 </head>
 <body>
 <header>
-	<h1 style="text-align: center;">JSON AJAX </h1>
+  <h1 style="text-align: center;">JSON AJAX </h1>
 </header>
+
 <div id ="image-container" class="container"></div>
 <div id="popup"></div>
 <div id="video-container"></div>
 
-<button id="b1" class="btn btn-success" type="button">Loaddata from json</button>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
 
@@ -47,11 +49,142 @@
 
 
 <script type="text/javascript">
-	  function scrollWin() {
+    
+
+    
+    var url=window.location.href;
+    url=url.split("?");
+    var  para= url[1].split("&");
+    var  p1= para[0].split("=");
+    var pi=p1[1].split(",");
+    var p2=para[1].split("=");
+    var pj=p2[1].split(",");
+  
+  
+
+  
+  $(document).ready(function(){
+        $.ajax({url: "http://localhost:1111", success: function(result){
+            console.log(result);
+            
+          for(var i=pi; i<pj; i++){
+            $("#image-container").append('<div class="row"><div class="col-sm-3"><img src="'
+                    +result[i].show_key_art +'"/></div><div class="col-sm-9"><b>Title:</b>"' 
+                    +result[i].title+' "<p><b>Description:</b>' 
+                    +result[i].synopsis["short-synopsis"]+"...<span data-toggle='modal' data-target='#myModal' class='seemore' data-synop='"+result[i].synopsis["full-synopsis"]+"' data-msynop='"+result[i].synopsis["medium-synopsis"]+"' class='btn-default'>see more</span>"
+                    +'<p><b>language:</b></p>"' 
+                    +result[i].audio +' "<p id="ratings"><b>Ratings:</b>"' 
+                    +result[i].ratings 
+                    +"</p> <span id='load"+i+"' class='surya'></span><button class=load  data-click="+i+ ">load more</button>&emsp;<button><a href=show.html?id="+i+">show</a></button></div></div>");
+
+
+
+                    for(var j=0; j<result[i].videos.length ;j++){
+                        $("#load"+i).append("<p><b>Episode title:</b>"
+                            +result[i].videos[j].episode_title+"</p><p><b>Episode Season</b> "
+                            + result[i].videos[j].season+"<p><b>Episode Type:</b>"
+                            +result[i].videos[j].Type+"</p><p><b>Language:</b>"
+                            +result[i].videos[j].language+" <br><br>");
+                        //$( "<p>"+result[i].videos[j].episode_title+ ' ----- ' + result[i].videos[j].season+ "'<br>'" ).insertAfter( $( ".row" ) );
+                    }
+                
+                    
+                    $("#image-container").append("<div><hr></div>"); 
+          }
+            
+ $(".load").click(function(){
+  var click=$(this).data("click");
+  for(var k=pi;k<pj;k++)
+  {
+
+    if(k==click)
+    {
+     $("#load"+k).toggle();
+    }   
+    else
+    {
+      $("#load"+k).hide(); 
+    }
+
+}
+});
+            $(".seemore").click(function(){
+                var synop = $(this).data("synop");
+                if(synop == "undefined"){
+                    synop = $(this).data("msynop");
+
+                    
+                }
+                var txt=synop.replace(/[\u21b5\u21e5]/g,"");
+
+
+
+                $("#full-synop").html(txt);
+            });
+        var x=0   
+            for(var r=0;r<result[i].ratings.length;r++){
+                var value=Number(result[i].ratings[r]);
+                if(typeof value=="num")
+                {
+                  var rat=(result[i].ratings[k])/4;
+                  var rat1=Math.floor(rat);
+                  for(var l=1;l<=rat1;l++){
+                  
+                    $("#ratings"+i).append('<span class="fa fa-star checked"></span>');
+                    x1+=1;
+                  }
+                }
+
+
+                  
+            }    
+                
+
+                 
+              
+
+        
+        }});
+    
+ 
+});
+  function scrollWin() {
     window.scrollTo(0,0);
+  }
+  window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
 }
 
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+
+
 </script>
+<div class="container" id="surya">
+  <ul class="pagination pagination-lg">
+    <li><a href="samplejson.html?i=1&j=10">1</a></li>
+    <li><a href="samplejson.html?i=10&j=20">2</a></li>
+    <li><a href="samplejson.html?i=20&j=30">3</a></li>
+    <li><a href="samplejson.html?i=30&j=40">4</a></li>
+    <li><a href="samplejson.html?i=40&j=50">5</a></li>
+    <li><a href="samplejson.html?i=50&j=60">6</a></li>
+    <li><a href="samplejson.html?i=60&j=70">7</a></li>
+    <li><a href="samplejson.html?i=70&j=80">8</a></li>
+    <li><a href="samplejson.html?i=80&j=90">9</a></li>
+    <li><a href="samplejson.html?i=90&j=100">10</a></li>
+    <li><a href="samplejson.html?i=10&j=110">11</a></li>
+  </ul>
+</div>
 
 
 </body>
