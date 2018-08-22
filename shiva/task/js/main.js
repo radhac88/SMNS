@@ -31,7 +31,7 @@ $(document).ready(function () {
                             + movies[i].audio + ' "<p><b><i>Ratings: </i></b>"'
                             + movies[i].ratings
                             + '<div><span id="ldc'+i+'" class="menu"></span>'
-                            + '"</p><button class="loadmore" >load more</button></div><br><button class="btn btn-success"><a href="carousel.html?id='+i+'">show</a></button></div></div>'
+                            + '"</p><button class="loadmore" >load more</button></div><br><button class="btn btn-success"><a href="carousel.html?id='+i+'" target="_blank">show</a></button></div></div>'
                         );
 
                         for (var j = 0; j < movies[i].videos.length; j++) {
