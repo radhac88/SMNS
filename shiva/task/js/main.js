@@ -1,7 +1,9 @@
 $(document).ready(function () {
     var movies = [];
+    $('#error').hide();
     function show() {
         $('#loading').hide();
+        $('#error').hide();
         $('#container').fadeIn(2000);
     };
     $.ajax({
@@ -32,29 +34,22 @@ $(document).ready(function () {
                             + '<p><b><i>language: </i></b></p>'
                             + movies[i].audio + '<p><b><i>Ratings: </i></b>'
                             + movies[i].ratings
-                            + '<div><span id="ldc'+i+'" class="menu" ></span>'
-                            + '</p><button class="loadmore btn btn-info" >Load more</button>  <button class="btn btn-success"><a href="carousel.html?id='+i+'" target="_blank">show</a></button></div></div>'
+                            + '<br /> <br /> <button class="btn btn-info" id="showInfoBtn' + i + '" onclick="showInfo(' + i + ')">Show Seasons</button>  <button class="btn btn-success"><a href="carousel.html?id=' + i + '" target="_blank" title="This will open in another tab">Additional Information</a></button></div></div>'
+                            + '<div><span id="menu' + i + '"style="display:none"></span>'
                         );
 
                         for (var j = 0; j < movies[i].videos.length; j++) {
-                            $("#ldc" + i).append('<div><div class="row"><div class="col-sm-3"><p><b>Thumbnail</b></p><img class="img-thumbnail img-responsive"  src="' 
-                                + movies[i].videos[j].video_thumbnail 
-                                + '" width="150px" height="130px"/></div><div class="col-sm-9"><br><p><b>Episode Title</p></b><p>' 
-                                + movies[i].videos[j].episode_title 
-                                + '</p><p><b>Season</b></p><p>' 
-                                + movies[i].videos[j].season + '</p><p><b>atings</p></b><p>' 
+                            $("#menu" + i).append('<div><div class="row"><div class="col-sm-3"></div><div class="col-sm-3"><p><b>Thumbnail</b></p><img class="img-thumbnail img-responsive"  src="'
+                                + movies[i].videos[j].video_thumbnail
+                                + '" width="150px" height="130px"/></div><div class="col-sm-6"><br><p><b>Episode Title</p></b><p>'
+                                + movies[i].videos[j].episode_title
+                                + '</p><p><b>Season</b></p><p>'
+                                + movies[i].videos[j].season + '</p><p><b>atings</p></b><p>'
                                 + movies[i].videos[j].ratings + '</p></div></div></div>');
 
                         }
                         $("#page-content").append("<div><hr></div>");
                     }
-
-                    
-                    $('.loadmore').click(function () {
-                        $('.menu').toggle();
-                    });
-                    
-
                     $(".seemore").click(function () {
                         var synop = $(this).data("synop");
                         if (synop == "undefined") {
@@ -72,13 +67,17 @@ $(document).ready(function () {
         }//ajax complete function end
     });
 });//ready func close
+//for show information (toggle)
+function showInfo(id) {
+    $('#menu' + id).toggle();
+    if ($('#menu' + id).css('display') == 'none') {
+        $("#showInfoBtn" + id).html('Show Seasons')
+    } else {
+        $("#showInfoBtn" + id).html('Hide Seasons')
+    }
+};
 
 //scroll function
-// error handling
-        $( document ).ajaxError(function() {
-  $( ".log" ).text( "Triggered ajaxError handler : ajax calls fails " );
-});
-
 window.onscroll = function () { scrollFunction() };
 function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -95,6 +94,6 @@ function topFunction() {
 // for dummy image
 function imgError(image) {
     image.onerror = "";
-    image.src = "./images/inf.jpg";
+    image.src = "./images/inf.svg";
     return true;
 }
