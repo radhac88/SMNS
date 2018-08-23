@@ -1,13 +1,29 @@
-#image-container{
-	color: black;
+/*for heading*/
+.well{
+  background-color:#e6ffff; 
 }
-.container{
-	color: white;
+/*for image in main div*/
+.img-rounded {border-style:solid;
+    border-width:3px;  
+    border-color:#000000;
+    border-radius:6px;
+}
+/*for images in loadmore div */
+.img-thumbnail{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
 }
 
+.img-thumbnail:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+/*for seemore button */
 .seemore{
-  color: blue;
+  color: #584d4b;
   cursor: pointer;
+  font-family: cursive, sans-serif;
 }
 #topBtn {
   display: unset;
@@ -37,7 +53,8 @@
 }
 */
 body{
-  background-color: #A9A9A9;
+  background-color:#f0f5f5;
+/*background-image: url("../images/background.jpg");*/
 }
 h1{
   font-style: oblique;
@@ -50,41 +67,18 @@ h1{
   height: 10px;
 }
 /*for dummy image */
-img{
+/*img{
   width:224px;
   height:300px;
-}
+}*/
 .menu{
   display: none;
-}
-
-#loadmore {
-  display: inline-block;
-  padding: 5px 10px;
-  font-size: 10px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: white;
-  background-color: black;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 9px #999;
-}
-
-#loadmore:hover {background-color: #3e8e41}
-
-#loadmore:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
 }
 
 
 /* loading css */
 #loading {
-  background: url('images/spinner.gif');
+  background: url('../images/spinner.gif');
   height: 64px;
   width: 64px;
 }
@@ -99,4 +93,4 @@ img{
 #container {
   display: none;
 }
-/* loading css end */
+/* loading css end 
