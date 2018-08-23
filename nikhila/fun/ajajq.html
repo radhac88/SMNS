@@ -96,16 +96,16 @@
       for(var i=pi;i<pj;i++)
       {
    
-       $("#container1").append('<br><div class="row"> <div class="col-sm-3"><img src=" '+ result[i].show_key_art 
+       $("#container1").append('<br><div class="row"> <div class="col-sm-3"><img class="img-responsive" src=" '+ result[i].show_key_art 
         +'"/></div><div class="col-sm-9">'+'<b>Title:</b>"'
         + result[i].title +'"'+'<p id="des"><b>Description:</b>"'
         + result[i].synopsis["short-synopsis"]+'"<span data-toggle="modal" data-target="#myModal" class="seemore" data-synop="'
         +result[i].synopsis["full-synopsis"]+'"data-msynop="'
         +result[i].synopsis["medium-synopsis"]+'" class="btn-default" style="color:red">...seemore</span></p><p><b>Audio:</b>"'
-        + result[i].audio+'"</p><p><b>Ratings:</b> <span id="ratings'+i+'"></span>  </p><button class="load1 btn btn-primary" data-click="'+i+'">load more</button><div class="load " id="load'+i+'"><span id="'+i+'"><br></span> </div> <button class="btn btn-success"  ><a href="showpage.html?id='+i+'" style="color:white"  >show</a></button></div></div><hr>');   
+        + result[i].audio+'"</p><p><b>Ratings:</b> <span id="ratings'+i+'"></span>  </p><button class="load1 btn btn-primary" data-click="'+i+'">load more</button><div class="load " id="load'+i+'"><span id="'+i+'"><br></span> </div> <button class="btn btn-success"><a href="showpage.html?id='+i+'" style="color:white">show</a></button></div></div><hr>');   
       
        for (j in result[i].videos) {
-        $("#"+i).append('<div class="container"><div class="row"> <div class="col-sm-3"><img src="'
+        $("#"+i).append('<div class="container"><div class="row"> <div class="col-sm-3"><img class="img-responsive" src="'
         + result[i].videos[j].video_thumbnail +'"alt="no image" width="250px"/></div><div class="col-sm-9" ><p><b>Episode title:</b>"'
         +result[i].videos[j].episode_title+'"</p><p><b>Rating:</b>"'
         +result[i].videos[j].ratings+'"</p><p><b>season:</b>"'

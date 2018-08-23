@@ -46,9 +46,7 @@ var id1=id[1];
 $(document).ready(function(){
 
     $.ajax({url: "http://localhost:1111/", success: function(result){
-      
-    {
-  		 $("#container1").append('<br> <div class="col-sm-3"><img src=" '
+  		 $("#container1").append('<br> <div class="col-sm-3"><img class="img-responsive" src=" '
         + result[id1].show_key_art +'"alt="no image" onerror=this.src="'+result[id1].show_thumbnail+'"/></div><div class="col-sm-9">'+'<b>Title:</b>"'
         + result[id1].title +'"<p><b>Short Description:</b>"'
         + result[id1].synopsis["short-synopsis"]+'"<p><b>Full Description:</b>"'
@@ -63,7 +61,7 @@ $(document).ready(function(){
   		 	 $("#list").append('<li data-target="#myCarousel" data-slide-to="'+j+'"></li>');
         $("#ep").append( '<div class="item"><img src="'+ result[id1].videos[j].video_image+'"></div>');
         }
-      }
+      
 }});
 
 });
