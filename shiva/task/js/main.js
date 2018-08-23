@@ -10,6 +10,8 @@ $(document).ready(function () {
         success: function (response) {
             movies = response;
         },
+
+
         complete: function () {
             $('#pagination').twbsPagination({
                 totalPages: movies.length / 10,
@@ -21,26 +23,26 @@ $(document).ready(function () {
                     // console.log(""+page);
                     for (var i = startIndex; i < endIndex; i++) {
                         $("#page-content").append('<div class="row"><div class="col-sm-3"><img src="'
-                            + movies[i].show_key_art + '" class="img-rounded" class="img-responsive"  onerror="imgError(this);" /></div><div class="col-sm-9"><b><i>Title: </i></b>'
-                            + movies[i].title + '<p id="des"><b><i>Description: </i></b>"'
+                            + movies[i].show_key_art + '"  class="img-responsive img-rounded"  onerror="imgError(this);" /></div><div class="col-sm-9"><b><i>Title: </i></b>'
+                            + movies[i].title + '<p id="des"><b><i>Description: </i></b>'
                             + movies[i].synopsis["short-synopsis"]
                             + "...<span data-toggle ='modal' data-target= '#myModal'class='seemore' data-synop='"
                             + movies[i].synopsis["full-synopsis"] + "'data-mysynop = '"
                             + movies[i].synopsis["medium-synopsis"] + "' class='btn-default'>seemore</span>"
-                            + '"<p><b><i>language: </i></b></p>"'
-                            + movies[i].audio + ' "<p><b><i>Ratings: </i></b>"'
+                            + '<p><b><i>language: </i></b></p>'
+                            + movies[i].audio + '<p><b><i>Ratings: </i></b>'
                             + movies[i].ratings
-                            + '<div><span id="ldc'+i+'" class="menu"></span>'
-                            + '"</p><button class="loadmore" >load more</button></div><br><button class="btn btn-success"><a href="carousel.html?id='+i+'" target="_blank">show</a></button></div></div>'
+                            + '<div><span id="ldc'+i+'" class="menu" ></span>'
+                            + '</p><button class="loadmore btn btn-info" >Load more</button>  <button class="btn btn-success"><a href="carousel.html?id='+i+'" target="_blank">show</a></button></div></div>'
                         );
 
                         for (var j = 0; j < movies[i].videos.length; j++) {
-                            $("#ldc" + i).append('<div><div class="row"><div class="col-sm-3"><p><b>thumbnail</b></p><img src="' 
+                            $("#ldc" + i).append('<div><div class="row"><div class="col-sm-3"><p><b>Thumbnail</b></p><img class="img-thumbnail img-responsive"  src="' 
                                 + movies[i].videos[j].video_thumbnail 
-                                + '" class="img-responsive" width="150px" height="130px";/></div><div class="col-sm-9"><br><p><b>episode title</p></b><p>' 
+                                + '" width="150px" height="130px"/></div><div class="col-sm-9"><br><p><b>Episode Title</p></b><p>' 
                                 + movies[i].videos[j].episode_title 
-                                + '</p><p><b>season</b></p><p>' 
-                                + movies[i].videos[j].season + '</p><p><b>ratings</p></b><p>' 
+                                + '</p><p><b>Season</b></p><p>' 
+                                + movies[i].videos[j].season + '</p><p><b>atings</p></b><p>' 
                                 + movies[i].videos[j].ratings + '</p></div></div></div>');
 
                         }
@@ -72,6 +74,11 @@ $(document).ready(function () {
 });//ready func close
 
 //scroll function
+// error handling
+        $( document ).ajaxError(function() {
+  $( ".log" ).text( "Triggered ajaxError handler : ajax calls fails " );
+});
+
 window.onscroll = function () { scrollFunction() };
 function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
