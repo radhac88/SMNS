@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 #myBtn {
-  display: block;
+  display: none;
   position: fixed;
   bottom: 20px;
   right: 30px;
@@ -31,3 +31,39 @@
 #b1{
   margin: 10px 0px 0px 675px
 }
+#b2{
+  margin: 10px 0px 0px 675px
+}
+body{
+  
+  text-decoration-color: white;
+}
+#surya{
+  
+  color: white;
+  margin-left:450px;
+  margin-top: 150px;
+
+}
+.hide-show{
+  display: none;
+}
+.surya{
+  display: none;
+}
+.load{
+  color:white;
+  background-color: purple;
+}
+.checked {
+    color: blue;
+  }
+#surya4{
+   border: 1px solid black;
+    background-color: lightblue;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+}           
+     
