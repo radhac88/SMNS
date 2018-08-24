@@ -13,9 +13,14 @@ for i in range(1, 4, 2):
 print("***")
 print("**")
 
+lst = [[c for c in range(r)] for r in range(3)]
+print(lst)
+for x in lst:
+ for y in x:
+ 	if y < 2:
+ 		print('*',end='')
 
-
-lst = [i // i for i in range(0,4)]
+lst = [i // i for i in range(1,4)]
 sum = 0
 for n in lst:
  sum += n

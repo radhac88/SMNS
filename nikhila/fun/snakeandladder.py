@@ -54,7 +54,7 @@ while(player1<100 and player2<100):
 			elif player1 in ladders:
 				player1=ladders[player1]
 				print("Hurray!you got ladder..")
-		print("you are at "+str(player1)+"\n")
+		print("player1 is at "+str(player1)+"\n")
 		box(player1,player2);
 		print("\n**************************")
 		win(player1,player2)	
@@ -73,7 +73,7 @@ while(player1<100 and player2<100):
 			elif player2 in ladders.keys():
 				player2=ladders[player2]
 				print("Hurray!you got ladder..")
-		print("you are at "+str(player2))
+		print("player2 is at "+str(player2))
 		box(player1,player2);
 		print("**************************")
 		win(player1,player2)	
