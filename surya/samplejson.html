@@ -12,7 +12,7 @@
   
 
 </head>
-<body>
+<body id="surya4">
 <header>
   <h1 style="text-align: center;">JSON AJAX </h1>
 </header>
@@ -68,28 +68,28 @@
             console.log(result);
             
           for(var i=pi; i<pj; i++){
-            $("#image-container").append('<div class="row"><div class="col-sm-3"><img src="'
-                    +result[i].show_key_art +'"/></div><div class="col-sm-9"><b>Title:</b>"' 
+            $("#image-container").append('<div class="col-sm-6"><br><br><div class="col-sm-6"><img src="'+result[i].show_key_art +'" class="img-responsive"/></div><div class="col-sm-6"><b>Title:</b>"' 
                     +result[i].title+' "<p><b>Description:</b>' 
                     +result[i].synopsis["short-synopsis"]+"...<span data-toggle='modal' data-target='#myModal' class='seemore' data-synop='"+result[i].synopsis["full-synopsis"]+"' data-msynop='"+result[i].synopsis["medium-synopsis"]+"' class='btn-default'>see more</span>"
                     +'<p><b>language:</b></p>"' 
                     +result[i].audio +' "<p id="ratings"><b>Ratings:</b>"' 
                     +result[i].ratings 
-                    +"</p> <span id='load"+i+"' class='surya'></span><button class=load  data-click="+i+ ">load more</button>&emsp;<button><a href=show.html?id="+i+">show</a></button></div></div>");
+                    +"</p> <span id='load"+i+"' class='surya'></span><button type='button' class='btn btn-success btn-lg load' data-click="+i+ ">load more</button>&emsp;<button type='button' class='btn btn-warning'><a href=show.html?id="+i+">show</a></button></div></div>");
 
 
 
                     for(var j=0; j<result[i].videos.length ;j++){
-                        $("#load"+i).append("<p><b>Episode title:</b>"
+                        $("#load"+i).append("<div class='row'><div class='col-sm-6'><img src='"+result[i].videos[j].video_thumbnail+"' class='img-responsive'/></div><div class='col-sm-6'<p><b>Episode title:</b>"
                             +result[i].videos[j].episode_title+"</p><p><b>Episode Season</b> "
                             + result[i].videos[j].season+"<p><b>Episode Type:</b>"
                             +result[i].videos[j].Type+"</p><p><b>Language:</b>"
-                            +result[i].videos[j].language+" <br><br>");
+                            +result[i].videos[j].language+" <br><br></div></div>");
                         //$( "<p>"+result[i].videos[j].episode_title+ ' ----- ' + result[i].videos[j].season+ "'<br>'" ).insertAfter( $( ".row" ) );
                     }
+
                 
+                              
                     
-                    $("#image-container").append("<div><hr></div>"); 
           }
             
  $(".load").click(function(){
@@ -119,20 +119,21 @@
 
 
 
+
                 $("#full-synop").html(txt);
             });
-        var x=0   
+          
             for(var r=0;r<result[i].ratings.length;r++){
                 var value=Number(result[i].ratings[r]);
                 if(typeof value=="num")
                 {
-                  var rat=(result[i].ratings[k])/4;
-                  var rat1=Math.floor(rat);
-                  for(var l=1;l<=rat1;l++){
+                  var rat=(result[i].ratings[k])/2;
                   
-                    $("#ratings"+i).append('<span class="fa fa-star checked"></span>');
-                    x1+=1;
-                  }
+                  
+                  
+                    $("#ratings").append('<span class="fa fa-star"></span>');
+                    
+                  
                 }
 
 
@@ -172,17 +173,17 @@ function topFunction() {
 </script>
 <div class="container" id="surya">
   <ul class="pagination pagination-lg">
-    <li><a href="samplejson.html?i=1&j=10">1</a></li>
+    <li><a href="samplejson.html?i=1&j=11" style="background-color: black; color: white;">1</a></li>
     <li><a href="samplejson.html?i=10&j=20">2</a></li>
-    <li><a href="samplejson.html?i=20&j=30">3</a></li>
+    <li><a href="samplejson.html?i=20&j=30"style="background-color: black; color: white;">3</a></li>
     <li><a href="samplejson.html?i=30&j=40">4</a></li>
-    <li><a href="samplejson.html?i=40&j=50">5</a></li>
+    <li><a href="samplejson.html?i=40&j=50"style="background-color: black; color: white;">5</a></li>
     <li><a href="samplejson.html?i=50&j=60">6</a></li>
-    <li><a href="samplejson.html?i=60&j=70">7</a></li>
+    <li><a href="samplejson.html?i=60&j=70"style="background-color: black; color: white;">7</a></li>
     <li><a href="samplejson.html?i=70&j=80">8</a></li>
-    <li><a href="samplejson.html?i=80&j=90">9</a></li>
-    <li><a href="samplejson.html?i=90&j=100">10</a></li>
-    <li><a href="samplejson.html?i=10&j=110">11</a></li>
+    <li><a href="samplejson.html?i=80&j=90"style="background-color: black; color: white;">9</a></li>
+    <li><a href="samplejson.html?i=100&j=110">10</a></li>
+    <li><a href="samplejson.html?i=110&j=120"style="background-color: black; color: white;">11</a></li>
   </ul>
 </div>
 

@@ -22,6 +22,17 @@
       transition: all 0.4s ease-in-out 0s;
     }
 
+
+
+.scrollTop #a1 {
+  font-size: 18px;
+  color: #fff;
+}
+.load{
+  display:none;
+}
+
+
     .scrollTop #a1 {
       font-size: 18px;
       color: #fff;
@@ -102,7 +113,9 @@
         + result[i].synopsis["short-synopsis"]+'"<span data-toggle="modal" data-target="#myModal" class="seemore" data-synop="'
         +result[i].synopsis["full-synopsis"]+'"data-msynop="'
         +result[i].synopsis["medium-synopsis"]+'" class="btn-default" style="color:red">...seemore</span></p><p><b>Audio:</b>"'
+
         + result[i].audio+'"</p><p><b>Ratings:</b> <span id="ratings'+i+'"></span>  </p><button class="load1 btn btn-primary" data-click="'+i+'">load more</button><div class="load " id="load'+i+'"><span id="'+i+'"><br></span> </div> <button class="btn btn-success"><a href="showpage.html?id='+i+'" style="color:white">show</a></button></div></div><hr>');   
+
       
        for (j in result[i].videos) {
         $("#"+i).append('<div class="container"><div class="row"> <div class="col-sm-3"><img class="img-responsive" src="'
@@ -111,6 +124,7 @@
         +result[i].videos[j].ratings+'"</p><p><b>season:</b>"'
         +result[i].videos[j].season+'"</p></div> </div><hr></div>');
         }
+
         var x=0;
         var x1=0; 
         for( k=0;k<=result[i].ratings.length&&x1==0;k++)
@@ -144,9 +158,9 @@
                     $("#ratings"+i).append('<span class="fa fa-star"></span>');
                     x1+=1;                        
                 }
-              }   
+              }
 
-      }
+               }
 
 
  $(".load1").click(function(){
