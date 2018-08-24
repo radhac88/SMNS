@@ -7,10 +7,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
-
-=======
->>>>>>> 4390fa866785fc8b3fa9c3b55dcd962cc54e5986
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -26,7 +22,7 @@
       transition: all 0.4s ease-in-out 0s;
     }
 
-<<<<<<< HEAD
+
 
 .scrollTop #a1 {
   font-size: 18px;
@@ -37,8 +33,6 @@
 }
 
 
-=======
->>>>>>> 4390fa866785fc8b3fa9c3b55dcd962cc54e5986
     .scrollTop #a1 {
       font-size: 18px;
       color: #fff;
@@ -113,31 +107,24 @@
       for(var i=pi;i<pj;i++)
       {
    
-       $("#container1").append('<br><div class="row"> <div class="col-sm-3"><img src=" '+ result[i].show_key_art 
+       $("#container1").append('<br><div class="row"> <div class="col-sm-3"><img class="img-responsive" src=" '+ result[i].show_key_art 
         +'"/></div><div class="col-sm-9">'+'<b>Title:</b>"'
         + result[i].title +'"'+'<p id="des"><b>Description:</b>"'
         + result[i].synopsis["short-synopsis"]+'"<span data-toggle="modal" data-target="#myModal" class="seemore" data-synop="'
         +result[i].synopsis["full-synopsis"]+'"data-msynop="'
         +result[i].synopsis["medium-synopsis"]+'" class="btn-default" style="color:red">...seemore</span></p><p><b>Audio:</b>"'
-<<<<<<< HEAD
 
-        + result[i].audio+'"</p><p><b>Ratings:</b> "'
-        + result[i].ratings+'"  </p><button class="load1" data-click="'+i+'">load more</button><div class="load" id="load'+i+'"><span id="'+i+'"><br></span> </div> <button id="'+i+'" ><a href="showpage.html?id='+i+'">show</a></button></div></div><hr>');  
-=======
->>>>>>> 4390fa866785fc8b3fa9c3b55dcd962cc54e5986
-        + result[i].audio+'"</p><p><b>Ratings:</b> <span id="ratings'+i+'"></span>  </p><button class="load1 btn btn-primary" data-click="'+i+'">load more</button><div class="load " id="load'+i+'"><span id="'+i+'"><br></span> </div> <button class="btn btn-success"  ><a href="showpage.html?id='+i+'" style="color:white"  >show</a></button></div></div><hr>');   
+        + result[i].audio+'"</p><p><b>Ratings:</b> <span id="ratings'+i+'"></span>  </p><button class="load1 btn btn-primary" data-click="'+i+'">load more</button><div class="load " id="load'+i+'"><span id="'+i+'"><br></span> </div> <button class="btn btn-success"><a href="showpage.html?id='+i+'" style="color:white">show</a></button></div></div><hr>');   
+
       
        for (j in result[i].videos) {
-        $("#"+i).append('<div class="container"><div class="row"> <div class="col-sm-3"><img src="'
+        $("#"+i).append('<div class="container"><div class="row"> <div class="col-sm-3"><img class="img-responsive" src="'
         + result[i].videos[j].video_thumbnail +'"alt="no image" width="250px"/></div><div class="col-sm-9" ><p><b>Episode title:</b>"'
         +result[i].videos[j].episode_title+'"</p><p><b>Rating:</b>"'
         +result[i].videos[j].ratings+'"</p><p><b>season:</b>"'
         +result[i].videos[j].season+'"</p></div> </div><hr></div>');
         }
-<<<<<<< HEAD
 
-=======
->>>>>>> 4390fa866785fc8b3fa9c3b55dcd962cc54e5986
         var x=0;
         var x1=0; 
         for( k=0;k<=result[i].ratings.length&&x1==0;k++)
@@ -171,13 +158,9 @@
                     $("#ratings"+i).append('<span class="fa fa-star"></span>');
                     x1+=1;                        
                 }
-              }   
+              }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4390fa866785fc8b3fa9c3b55dcd962cc54e5986
-      }
+               }
 
 
  $(".load1").click(function(){
