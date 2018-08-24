@@ -1,18 +1,26 @@
 $(document).ready(function () {
+    $('#loading').show();
     var movies = [];
-    $('#error').hide();
+     $('#error').hide();
     function show() {
         $('#loading').hide();
-        $('#error').hide();
         $('#container').fadeIn(2000);
+         $('#error').hide();
     };
+    function error(){
+        $("#loading").hide();
+        $('#error').show();
+
+    }
     $.ajax({
         type: 'GET',
         url: 'http://localhost:1111',
         success: function (response) {
             movies = response;
         },
-
+        error: function (e) {
+            error();
+        },
 
         complete: function () {
             $('#pagination').twbsPagination({
@@ -65,8 +73,14 @@ $(document).ready(function () {
             });
             show();
         }//ajax complete function end
+
     });
+
+
+  
 });//ready func close
+
+
 //for show information (toggle)
 function showInfo(id) {
     $('#menu' + id).toggle();
