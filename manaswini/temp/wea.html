@@ -1,70 +1,48 @@
+<!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="wea.css">
-<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="wea.css">
 
-<script>
-$(document).ready(function(){
-    $("button").click(function(){
-        $.ajax({url: "http://localhost:1111/", success: function(result){
-        	for(i in result)
-        	{
-            $("#con").append('<div class="row"><div class="col-sm-3"><img src="'+result[i].show_key_art+'"/></div><div class="col-sm-9">+<p style="color:black;"><b>Title:</b></p><p style="color:white">'+result[i].title+"</p>"+'<p style="color:black" id="des"><b>Description:<b></p><p style="color:white">'+result[i].synopsis["short-synopsis"]+"<span data-toggle='modal' data-target='#myModal' class='seemore' data-synop='"+result[i].synopsis["full-synopsis"]+"' data-msynop='"+result[i].synopsis["medium-synopsis"]+"' class='btn-default'>see more</span>" +'<p style"color:black"><b>Audio:</b></p><p style="color:white">'+result[i].audio+'</p>'+'<p style="color:black"><b>Ratings:</b></p><p style="color:white">'+result[i].ratings+'</p></div></div>');
-            for(var j=0; j<result[i].videos.length ;j++){
-              
-                        $("#con").append(result[i].videos[j].episode_title+ ' ----- ' + result[i].videos[j].season+ '<br>');
-                          }   
-            $("#con").append("<hr>");
-            }
-            $("#des").click(function(){
-                $("#popup").append(result[i].synopsis["full-synopsis"]);
-            });
-            $(".seemore").click(function(){
-                var synop = $(this).data("synop");
-                if(synop == "undefined"){
-                    synop = $(this).data("msynop");
-                }
-                $("#full-synop").html(synop);
-            });
-        
-        }});
-    });
- 
-});  
-
-
-
-           
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("myBtn").style.display = "block";
-    } else {
-        document.getElementById("myBtn").style.display = "none";
-   }
-}
-
-
-function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-
-}
-</script>
-</script>
+  <!-- Script -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="wea.js"></script>
+  <script type="text/javascript" src="sam.js"></script>
 </head>
 <body>
-  <div id="con" class="container"></div>
-	<button>Get JSON data</button> 
-	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <center>
+  <div id="im"> 
+  <h1 >FUNIMATION</h1>
+  <img id="img" src="fun1.jpg" style="width:50%; height:50%;"> 
+  <!-- <p>your website is loading...</p> -->
+   <!-- <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%;"> -->
 
+</div>
+  <div >
+  <progress  value="0" max="10" id="progressBar"></progress>
+
+  </div>
+   <div class="container">
+   <ul class="pagination" id="sample" >
+    <li><a href="1.html">1</a></li>
+    <li><a href="2.html">2</a></li>
+    <li><a href="3.html">3</a></li>
+    <li><a href="4.html">4</a></li>
+    <li><a href="5.html">5</a></li>
+    <li><a href="6.html">6</a></li>
+    <li><a href="7.html">7</a></li>
+    <li><a href="8.html">8</a></li>
+    <li><a href="9.html">9</a></li>
+    <li><a href="10.html">10</a></li>
+   </ul>
+   </div>
+<!-- <div id="con" class="container"></div>  -->
+  </center>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 	<div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
@@ -82,7 +60,6 @@ function topFunction() {
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-      
     </div>
 </div>
 
