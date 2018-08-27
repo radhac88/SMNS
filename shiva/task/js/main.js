@@ -33,16 +33,16 @@ $(document).ready(function () {
                     // console.log(""+page);
                     for (var i = startIndex; i < endIndex; i++) {
                         $("#page-content").append('<div class="row"><div class="col-sm-3"><img src="'
-                            + movies[i].show_key_art + '"  class="img-responsive img-rounded"  onerror="imgError(this);" /></div><div class="col-sm-9"><b><i>Title: </i></b>'
-                            + movies[i].title + '<p id="des"><b><i>Description: </i></b>'
+                            + movies[i].show_key_art + '"  class="img-responsive img-rounded"  onerror="imgError(this);" /></div><div class="col-sm-9"><div class="para-block"><i>Title: </i>'
+                            + movies[i].title + '</div><div class="para-block"><i>Description: </i>'
                             + movies[i].synopsis["short-synopsis"]
                             + "...<span data-toggle ='modal' data-target= '#myModal'class='seemore' data-synop='"
                             + movies[i].synopsis["full-synopsis"] + "'data-mysynop = '"
                             + movies[i].synopsis["medium-synopsis"] + "' class='btn-default'>seemore</span>"
-                            + '<p><b><i>language: </i></b></p>'
-                            + movies[i].audio + '<p><b><i>Ratings: </i></b>'
+                            + '</div><div class="para-block"><i>language: </i>'
+                            + movies[i].audio + '</div><div class="para-block"><i>Ratings: </i>'
                             + movies[i].ratings
-                            + '<br /> <br /> <button class="btn btn-info" id="showInfoBtn' + i + '" onclick="showInfo(' + i + ')">Show Seasons</button>  <button class="btn btn-success"><a href="carousel.html?id=' + i + '" target="_blank" title="This will open in another tab">Additional Information</a></button></div></div>'
+                            + '</div> <br/> <button class="btn btn-info" id="showInfoBtn' + i + '" onclick="showInfo(' + i + ')">Show Seasons</button>  <button class="btn btn-success"><a href="carousel1.html?id=' + i + '" target="_blank" title="This will open in another tab">Additional Information</a></button></div></div>'
                             + '<div><span id="menu' + i + '"style="display:none"></span>'
                         );
 
@@ -52,7 +52,7 @@ $(document).ready(function () {
                                 + '" width="150px" height="130px"/></div><div class="col-sm-6"><br><p><b>Episode Title</p></b><p>'
                                 + movies[i].videos[j].episode_title
                                 + '</p><p><b>Season</b></p><p>'
-                                + movies[i].videos[j].season + '</p><p><b>atings</p></b><p>'
+                                + movies[i].videos[j].season + '</p><p><b>Ratings</p></b><p>'
                                 + movies[i].videos[j].ratings + '</p></div></div></div>');
 
                         }
@@ -79,6 +79,10 @@ $(document).ready(function () {
 
   
 });//ready func close
+
+
+
+
 
 
 //for show information (toggle)
@@ -110,4 +114,11 @@ function imgError(image) {
     image.onerror = "";
     image.src = "./images/inf.svg";
     return true;
+}
+//for rating 
+function rating(i){
+for (i = startIndex; i < endIndex; i++){
+var  r = movies[i].ratings
+}
+
 }

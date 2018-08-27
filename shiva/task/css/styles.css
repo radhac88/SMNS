@@ -54,6 +54,7 @@
 */
 body{
   background-color:#f0f5f5;
+  color:#565656;
 /*background-image: url("../images/background.jpg");*/
 }
 h1{
@@ -90,3 +91,18 @@ h1{
   display: none;
 }
 /* loading css end 
+*/
+.row{
+	padding-top: 10px;
+}
+/*for div alignment text*/
+.para-block{
+	margin: 20px;
+}
+.para-block i{
+	font-style: normal;
+	font-weight: bold;
+}
+.btn {
+	margin-left: 10px;
+}
