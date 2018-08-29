@@ -51,11 +51,11 @@
   </style>
 </head>
 <body>
+
 <section class="center slider">
-      <div>
-      <img >
+      <div class="event">
+    <img src="./background.jpg">
     </div>
-    <img src="">
     <div>
       <img src="http://placehold.it/350x300?text=2">
     </div>
@@ -82,7 +82,11 @@
     </div>
 </section>
 <script type="text/javascript">
+    var url=window.location.href;
+var id = url.split("=");
+var id1=id[1];
 	 $(document).on('ready', function() {
+    
 	 $(".center").slick({
         dots: true,
         infinite: true,
@@ -90,7 +94,22 @@
         slidesToShow: 5,
         slidesToScroll: 3
       });
+   $.ajax({url: "http://localhost:1111/", success: function(result){//open
+       $("#container1").append('<br><div class="col-sm-3"><img class="img-fluid img-rounded"  src="'
+        + result[id1].show_key_art +'"alt="no image"/></div><div class="col-sm-9"><b>Title:</b>"'
+        + result[id1].title +'"<p><b>Short Description:</b>"'
+        + result[id1].synopsis["short-synopsis"]+'"<p><b>Full Description:</b>"'
+        + result[id1].synopsis["long-synopsis"]+'"</p></p><p><b>Audio:</b>"'
+        + result[id1].audio+'"</p><p><b>Ratings:</b> "'
+        + result[id1].ratings+'" </p></div>');   
+       for (var j=1;j<result[id1].videos.length;j++) {//open
+        // $(".center").append("hey")
+        $('.event').children('img').attr('src', '+ result[id1].videos[j].video_image+');
+        // $("div img").append( '<img src="'+ result[id1].videos[j].video_image+'">');
+        }//for  j loop ends//close
+      }});//ajax calls ends
   });
 </script>
 </body>
 </html>
+
