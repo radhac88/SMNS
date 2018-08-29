@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="435da565-38dd-4918-a4d6-496caaa500b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/shivaprasad.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../task/carousel1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../task/carousel1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../task/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../task/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../temp/temp/carousel1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../temp/temp/carousel1.html" afterDir="false" />
-    </list>
+    <list default="true" id="435da565-38dd-4918-a4d6-496caaa500b1" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +12,7 @@
     <session id="576397372">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.2" value="1" />
@@ -29,11 +23,12 @@
         <counts>
           <entry key="dummy" value="2" />
           <entry key="py" value="265" />
+          <entry key="txt" value="40" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="PLAIN_TEXT" value="42" />
           <entry key="Python" value="265" />
         </counts>
       </usages-collector>
@@ -208,11 +203,32 @@
       <option name="presentableId" value="Default" />
       <updated>1533539460429</updated>
     </task>
+    <task id="LOCAL-00001" summary="carousel edit">
+      <created>1535532747112</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1535532747112</updated>
+    </task>
+    <task id="LOCAL-00002" summary="snake game">
+      <created>1535532788053</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1535532788053</updated>
+    </task>
+    <task id="LOCAL-00003" summary="temp files">
+      <created>1535532826245</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1535532826245</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12802951" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -235,6 +251,12 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="carousel edit" />
+    <MESSAGE value="snake game" />
+    <MESSAGE value="temp files" />
+    <option name="LAST_COMMIT_MESSAGE" value="temp files" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/fact.py">
