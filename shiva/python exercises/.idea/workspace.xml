@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="435da565-38dd-4918-a4d6-496caaa500b1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basicCal.py" beforeDir="false" afterPath="$PROJECT_DIR$/basicCal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../task/funimation.html" beforeDir="false" afterPath="$PROJECT_DIR$/../task/funimation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../task/images/inf.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../task/images/inf.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../task/jquery.countdownTimer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../task/jquery.countdownTimer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../task/jquery.twbsPagination.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../task/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../task/pagination.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../task/styles.css" beforeDir="false" />
-    </list>
+    <list default="true" id="435da565-38dd-4918-a4d6-496caaa500b1" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,58 +12,47 @@
     <session id="576397372">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="188" />
+          <entry key="dummy" value="2" />
+          <entry key="py" value="265" />
+          <entry key="txt" value="40" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="188" />
+          <entry key="PLAIN_TEXT" value="42" />
+          <entry key="Python" value="265" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="7" />
+          <entry key="py" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="7" />
+          <entry key="Python" value="14" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/temp.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/python task snake/snake.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
+            <state relative-caret-position="1581">
+              <caret line="93" selection-start-line="93" selection-end-line="93" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addTwoMatrices.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addTwoNumbers.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/areaOfTraingle.py">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -87,6 +65,8 @@
       <list>
         <option value="$PROJECT_DIR$/temp.py" />
         <option value="$PROJECT_DIR$/basicCal.py" />
+        <option value="$PROJECT_DIR$/python task snake/snake.py" />
+        <option value="$PROJECT_DIR$/python task snake/snake1.py" />
       </list>
     </option>
   </component>
@@ -108,6 +88,11 @@
             <path>
               <item name="python exercises" type="b2602c69:ProjectViewProjectNode" />
               <item name="python exercises" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="python exercises" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python exercises" type="462c0819:PsiDirectoryNode" />
+              <item name="python task snake" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -131,7 +116,49 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.snake1">
+    <configuration name="snake" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="python exercises" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python task snake" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python task snake/snake.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="snake1" type="PythonConfigurationType" factoryName="Python">
+      <module name="python exercises" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python task snake" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python task snake/snake1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="temp" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="python exercises" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -153,8 +180,14 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.temp" />
+      <item itemvalue="Python.snake" />
+      <item itemvalue="Python.snake1" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.snake" />
         <item itemvalue="Python.temp" />
       </list>
     </recent_temporary>
@@ -170,17 +203,39 @@
       <option name="presentableId" value="Default" />
       <updated>1533539460429</updated>
     </task>
+    <task id="LOCAL-00001" summary="carousel edit">
+      <created>1535532747112</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1535532747112</updated>
+    </task>
+    <task id="LOCAL-00002" summary="snake game">
+      <created>1535532788053</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1535532788053</updated>
+    </task>
+    <task id="LOCAL-00003" summary="temp files">
+      <created>1535532826245</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1535532826245</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12802951" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12802951" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36442515" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -197,7 +252,22 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="carousel edit" />
+    <MESSAGE value="snake game" />
+    <MESSAGE value="temp files" />
+    <option name="LAST_COMMIT_MESSAGE" value="temp files" />
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/fact.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evenOdd.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/factorialProg.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/temp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
@@ -205,16 +275,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/addTwoMatrices.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/addTwoNumbers.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/fact.py">
+    <entry file="file://$PROJECT_DIR$/areaOfTraingle.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/evenOdd.py">
+    <entry file="file://$PROJECT_DIR$/addTwoMatrices.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/basicCal.py">
@@ -224,11 +291,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/factorialProg.py">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/python task snake/snake1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="64" lean-forward="true" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/areaOfTraingle.py">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/python task snake/snake.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1581">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

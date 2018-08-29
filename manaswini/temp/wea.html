@@ -1,46 +1,81 @@
+<!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="wea.css">
-<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="wea.css">
+  
+  <!-- Script -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+ 
 
-<script>
-$(document).ready(function(){
-    $("button").click(function(){
-        $.ajax({url: "http://localhost:1111/", success: function(result){
-        	for(i in result)
-        	{
-            $("#con").append('<div class="row"><div class="col-sm-3"><img src="'+result[i].show_key_art+'"/></div><div class="col-sm-9">+<p style="color:black;"><b>Title:</b></p><p style="color:white">'+result[i].title+"</p>"+'<p style="color:black" id="des"><b>Description:<b></p><p style="color:white">'+result[i].synopsis["short-synopsis"]+"<span data-toggle='modal' data-target='#myModal' class='seemore' data-synop='"+result[i].synopsis["full-synopsis"]+"' data-msynop='"+result[i].synopsis["medium-synopsis"]+"' class='btn-default'>see more</span>" +'<p style"color:black"><b>Audio:</b></p><p style="color:white">'+result[i].audio+'</p>'+'<p style="color:black"><b>Ratings:</b></p><p style="color:white">'+result[i].ratings+'</p></div></div>');
-            for(var j=0; j<result[i].videos.length ;j++){
-              
-                        $("#con").append(result[i].videos[j].episode_title+ ' ----- ' + result[i].videos[j].season+ '<br>');
-                          }   
-            $("#con").append("<hr>");
-            }
+</head>
+<body style="background-image: url('img1.jpg')">
+  <script>
+var url=window.location.href;
+  url=url.split("?");
+  var para= url[1].split("&");
+  var p1= para[0].split("=");
+  var pi=p1[1].split(",")
+  var p2=para[1].split("=");
+  var pj=p2[1].split(",");
+  
+  $(document).ready(function(){
+    $.ajax({url: "http://localhost:1111/", success: function(result){
+      for(var i=pi;i<pj;i++)
+      { 
+        $("#con").append('<div class="row" style="background:#fff;border-radius:9px;box-shadow:10px 10px 7px -12px #000; padding:30px 0 0; margin-bottom:20px;"><div class="col-sm-3 image-block"><img class="img-responsive" src="'+result[i].show_key_art+'"/></div><div class="col-sm-9" style="width:74%;">'+'<p style="color:#919196; font-variant:small-caps; font-size:20px"><b>Title:</b></p><p style="color:#696969;">'+result[i].title+"</p>"+'<p style="color:#919196; font-variant:small-caps; font-size:20px" id="des"><b>Description:</b></p><p style="color:#696969">'+result[i].synopsis["short-synopsis"]+"<span data-toggle='modal' data-target='#myModal' class='seemore' data-synop='"+result[i].synopsis["full-synopsis"]+"' data-msynop='"+result[i].synopsis["medium-synopsis"]+"' >see more</span>" +'<p style="color:#919196; font-variant:small-caps; font-size:20px"><b>Audio:</b></p><p style="color:#696969;">'+result[i].audio+'</p>'+'<p style="color:#919196; font-variant:small-caps; font-size:20px"><b>Ratings:</b></p><p style="color:#696969;">'+result[i].ratings+'</p><span id="menu'+i+'" class="menu"></span></div><div class="btn-block"><button class="lm" data-click='+i+'>load more</button><button class="det" id="'+i+'"><a href="coro.html?id='+i+'">details</a></button></div></div>');
+                 
+            
+
+                       for(var j=0; j<result[i].videos.length;j++){
+                            $("#menu"+i).append('<div class="row"><div class="col-sm-3"><img src="'+result[i].videos[j].video_thumbnail+'" width="160px;" height="140px;"/></div><div class="col-sm-6">'+'<p style="color:#919196"><i>episode title</i></p><p style="color:#919196">'+result[i].videos[j].episode_title+'</p>'
+                                +'<p style="color:#919196"><i>season</i></p><p style="color:#919196">'+result[i].videos[j].season+'</p>'
+                                +'<p style="color:#919196"><i>ratings</i></p><p style="color:#919196">'+result[i].videos[j].ratings+'</p></div></div>');                                
+                        }
+                  }
+              $(".lm").click(function(){
+                    var click=$(this).data("click");
+
+                    for(var k=pi;k<pj;k++)
+                    {
+                        if(k==click)
+                        {
+                            $("#menu"+k).toggle();
+                        }
+                        else
+                        {
+                            $("#menu"+k).hide();
+                        }
+                    }
+                });
+      
             $("#des").click(function(){
                 $("#popup").append(result[i].synopsis["full-synopsis"]);
             });
-            $(".seemore").click(function(){
+
+           $(".seemore").click(function(){
+
                 var synop = $(this).data("synop");
+                console.log("synop")
                 if(synop == "undefined"){
                     synop = $(this).data("msynop");
                 }
-                $("#full-synop").html(synop);
+                var txt=synop.replace(/[\u21e5\u21b5]/g," ")
+                $("#full-synop").html(txt);
             });
-        
+               
         }});
+        
     });
+   
+
  
-});  
 
-
-
-           
+        
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
@@ -58,14 +93,14 @@ function topFunction() {
 
 }
 </script>
-</script>
 </head>
-<body>
-  <div id="con" class="container"></div>
-	<button>Get JSON data</button> 
-	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+<body >
+ 
+  <div id="con" class="container" style="margin-top: 20px;"  ></div> 
+    
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
-	<div class="modal fade" id="myModal" role="dialog">
+   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -85,7 +120,20 @@ function topFunction() {
       
     </div>
 </div>
-
+ <div class="container">
+   <ul class="pagination" id="sample" >
+    <li><a href="wea.html?i=0&j=10">1</a></li>
+    <li><a href="wea.html?i=10&j=20">2</a></li>
+    <li><a href="wea.html?i=20&j=30">3</a></li>
+    <li><a href="wea.html?i=30&j=40">4</a></li>
+    <li><a href="wea.html?i=40&j=50">5</a></li>
+    <li><a href="wea.html?i=50&j=60">6</a></li>
+    <li><a href="wea.html?i=60&j=70">7</a></li>
+    <li><a href="wea.html?i=70&j=80">8</a></li>
+    <li><a href="wea.html?i=80&j=90">9</a></li>
+    <li><a href="wea.html?i=90&j=100">10</a></li>
+   </ul>
+   </div>
 </body>
 </html>
 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>carousel temp</title>
+	<meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="./slick/slick.css">
+  <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
+   <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+  <script src="./slick/slick.min.js" type="text/javascript" charset="utf-8"></script>
+  <style type="text/css">
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+    .slider {
+        width: 50%;
+        margin: 100px auto;
+    }
+    .slick-slide {
+      margin: 0px 20px;
+    }
+    .slick-slide img {
+      width: 100%;
+    }
+    .slick-prev:before,
+    .slick-next:before {
+      color: black;
+    }
+    .slick-slide {
+      transition: all ease-in-out .3s;
+      opacity: .2;
+    }
+    .slick-active {
+      opacity: .5;
+    }
+    .slick-current {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+      <div class="row" id="container1"></div>
+</div>
+<section class="center slider">
+    <div >
+      <span class ="image"></span>
+    </div>
+</section>
+<script type="text/javascript">
+var url=window.location.href;
+var id = url.split("=");
+var id1=id[1];
+	 $(document).on('ready', function() {//open
+      $('.slider').slick({
+  accessibility: true,
+  adaptiveHeight: false,
+  arrows: true,
+  asNavFor: null,
+  prevArrow: '<button type="button" data-role="none" class="slick-prev">Previous</button>',
+  nextArrow: '<button type="button" data-role="none" class="slick-next">Next</button>',
+  autoplay: true,
+  autoplaySpeed: 3000,
+  dots: true,
+});
+     $.ajax({url: "http://localhost:1111/", success: function(result){//open
+  		 $("#container1").append('<br><div class="col-sm-3"><img class="img-fluid img-rounded"  src="'
+        + result[id1].show_key_art +'"alt="no image"/></div><div class="col-sm-9"><b>Title:</b>"'
+        + result[id1].title +'"<p><b>Short Description:</b>"'
+        + result[id1].synopsis["short-synopsis"]+'"<p><b>Full Description:</b>"'
+        + result[id1].synopsis["long-synopsis"]+'"</p></p><p><b>Audio:</b>"'
+        + result[id1].audio+'"</p><p><b>Ratings:</b> "'
+        + result[id1].ratings+'" </p></div>');   
+  		 for (var j=1;j<result[id1].videos.length;j++) {//open
+  		 	// $(".center").append("hey")
+        $(".image").append( '<img src="'+ result[id1].videos[j].video_image+'">');
+        }//for  j loop ends//close
+      }});//ajax calls ends
+     //center class ends close
+});//ready function close
+</script>
+</body>
+</html>
