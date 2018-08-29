@@ -8,12 +8,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="pagination.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.js"></script>
 </head>
 
 <style type="text/css">
-body{
-background-color: #ccc;   
-}
+
     .scrollTop {
       position: fixed;
       right: 0%;
@@ -45,31 +45,40 @@ background-color: #ccc;
     .checked,.fa-star-half-full{
       color: orange;
     }
-    .imgs{
-      box-shadow:0px 2px 9px -2px #444444;
-      border-radius: 10px;
-      background-color: #fff;
-    }
-    .data{
-      box-shadow:0px 2px 9px -2px #444444;
-      margin-left:0px;
-      border-radius: 10px;
-      padding-top: 20px;
-      padding-left: 30px;
-      padding-bottom:112px;
-      background-color: #fff;
-      padding-right: 30px;
-    }
+    .wrapper{
+  margin: 60px auto;
+  text-align: center;
+}
+h1{
+  margin-bottom: 1.25em;
+}
+#pagination-demo{
+  display: inline-block;
+  margin-bottom: 1.75em;
+}
+#pagination-demo li{
+  display: inline-block;
+}
+
+.page-content{
+  background: #eee;
+  display: inline-block;
+  padding: 10px;
+  width: 100%;
+  max-width: 660px;
+}
 </style>
 
 <body>
-  
-  <div id="container1" class="container" >  
+  <div id="wrapper">  
+    <div id="container1" class="container content3" >  
     <div id="stop" class="scrollTop">
         <span><a id="a1" href="">Top</a></span>
     </div>
-    <br><br><br>
-  </div>
+     
+    <div>
+</div>
+
   <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog">
@@ -92,9 +101,10 @@ background-color: #ccc;
       </div>
     </div>
 
-    <br><br><br>
-    <center>
-      <ul class="pagination pagination-lg">
+   <ul class="pagination pagination-lg" id="pagination-demo">
+    <ul class="pager">
+  <li><a href="#">Previous</a></li>
+  
         <li><a href="ajajq.html?i=0&j=10">1</a></li>
         <li><a href="ajajq.html?i=10&j=20">2</a></li>
         <li><a href="ajajq.html?i=20&j=30">3</a></li>
@@ -105,27 +115,26 @@ background-color: #ccc;
         <li><a href="ajajq.html?i=70&j=80">8</a></li>
         <li><a href="ajajq.html?i=80&j=90">9</a></li>
         <li><a href="ajajq.html?i=100&j=110">10</a></li> 
-
+        <li><a href="#">Next</a></li>
+</ul>
       </ul>
-    </center>  
-  
-
 <script>
-
-  var url=window.location.href;
-  url=url.split("?");
-  var para= url[1].split("&");
-  var p1= para[0].split("=");
-  var pi=p1[1].split(",")
-  var p2=para[1].split("=");
-  var pj=p2[1].split(",");
+/* $('#pagination-demo').twbsPagination({
+             visiblePages: 6,
+        next: 'Next',
+        prev: 'Prev',
+        onPageClick: function (event, page) {
+            //fetch content and render here
+            $('#content').text('Page ' + page) + ' content here';
+        }
+    });*/
   $(document).ready(function(){
     $.ajax({url: "http://localhost:1111/", success: function(result){
-      for(var i=pi;i<pj;i++)
+      for(var i=0;i<50;i++)
       {
    
-       $("#container1").append('<br><div class="row "> <div class="col-sm-3 imgs"><img class="img-responsive" src="'+ result[i].show_key_art 
-        +'"/></div><div class="col-sm-9 data">'+'<b>Title:</b>"'
+       $("#container1").append('<br><div class="row"> <div class="col-sm-3"><img class="img-responsive" src=" '+ result[i].show_key_art 
+        +'"/></div><div class="col-sm-9">'+'<b>Title:</b>"'
         + result[i].title +'"'+'<p id="des"><b>Description:</b>"'
         + result[i].synopsis["short-synopsis"]+'"<span data-toggle="modal" data-target="#myModal" class="seemore" data-synop="'
         +result[i].synopsis["full-synopsis"]+'"data-msynop="'

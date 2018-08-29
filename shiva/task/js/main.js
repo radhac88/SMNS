@@ -42,7 +42,7 @@ $(document).ready(function () {
                             + '</div><div class="para-block"><i>language: </i>'
                             + movies[i].audio + '</div><div class="para-block"><i>Ratings: </i>'
                             + movies[i].ratings
-                            + '</div> <br/> <button class="btn btn-info" id="showInfoBtn' + i + '" onclick="showInfo(' + i + ')">Show Seasons</button>  <button class="btn btn-success"><a href="carousel1.html?id=' + i + '" target="_blank" title="This will open in another tab">Additional Information</a></button></div></div>'
+                            + '</div> <br/> <button class="btn btn-info" id="showInfoBtn' + i + '" onclick="showInfo(' + i + ')">Show Seasons</button>  <button class="btn btn-success"><a href="carousel2.html?id=' + i + '" target="_blank" title="This will open in another tab">Additional Information</a></button></div></div>'
                             + '<div><span id="menu' + i + '"style="display:none"></span>'
                         );
 
