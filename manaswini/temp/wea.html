@@ -13,7 +13,8 @@
  
 
 </head>
-<body style="background-image: url('img1.jpg')">
+<body style="background-image: url('im-bg3.jpg')">
+
   <script>
 var url=window.location.href;
   url=url.split("?");
@@ -32,9 +33,9 @@ var url=window.location.href;
             
 
                        for(var j=0; j<result[i].videos.length;j++){
-                            $("#menu"+i).append('<div class="row"><div class="col-sm-3"><img src="'+result[i].videos[j].video_thumbnail+'" width="160px;" height="140px;"/></div><div class="col-sm-6">'+'<p style="color:#919196"><i>episode title</i></p><p style="color:#919196">'+result[i].videos[j].episode_title+'</p>'
-                                +'<p style="color:#919196"><i>season</i></p><p style="color:#919196">'+result[i].videos[j].season+'</p>'
-                                +'<p style="color:#919196"><i>ratings</i></p><p style="color:#919196">'+result[i].videos[j].ratings+'</p></div></div>');                                
+                            $("#menu"+i).append('<div class="row"><div class="col-sm-3"><img src="'+result[i].videos[j].video_thumbnail+'" width="160px;" height="140px;"/></div><div class="col-sm-6">'+'<p style="color:#101010"><i>episode title</i></p><p style="color:#919196">'+result[i].videos[j].episode_title+'</p>'
+                                +'<p style="color:#101010"><i>season</i></p><p style="color:#919196">'+result[i].videos[j].season+'</p>'
+                                +'<p style="color:#101010"><i>ratings</i></p><p style="color:#919196">'+result[i].videos[j].ratings+'</p></div></div>');                                
                         }
                   }
               $(".lm").click(function(){
@@ -95,10 +96,9 @@ function topFunction() {
 </script>
 </head>
 <body >
- 
   <div id="con" class="container" style="margin-top: 20px;"  ></div> 
     
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">^</button>
 
    <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -134,6 +134,7 @@ function topFunction() {
     <li><a href="wea.html?i=90&j=100">10</a></li>
    </ul>
    </div>
+
 </body>
 </html>
 
