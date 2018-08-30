@@ -10,7 +10,8 @@
   <!-- Script -->
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.js"></script>
- 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 </head>
 <body style="background-image: url('im-bg3.jpg')">
@@ -28,7 +29,7 @@ var url=window.location.href;
     $.ajax({url: "http://localhost:1111/", success: function(result){
       for(var i=pi;i<pj;i++)
       { 
-        $("#con").append('<div class="row" style="background:#fff;border-radius:9px;box-shadow:10px 10px 7px -12px #000; padding:30px 0 0; margin-bottom:20px;"><div class="col-sm-3 image-block"><img class="img-responsive" src="'+result[i].show_key_art+'"/></div><div class="col-sm-9" style="width:74%;">'+'<p style="color:#919196; font-variant:small-caps; font-size:20px"><b>Title:</b></p><p style="color:#696969;">'+result[i].title+"</p>"+'<p style="color:#919196; font-variant:small-caps; font-size:20px" id="des"><b>Description:</b></p><p style="color:#696969">'+result[i].synopsis["short-synopsis"]+"<span data-toggle='modal' data-target='#myModal' class='seemore' data-synop='"+result[i].synopsis["full-synopsis"]+"' data-msynop='"+result[i].synopsis["medium-synopsis"]+"' >see more</span>" +'<p style="color:#919196; font-variant:small-caps; font-size:20px"><b>Audio:</b></p><p style="color:#696969;">'+result[i].audio+'</p>'+'<p style="color:#919196; font-variant:small-caps; font-size:20px"><b>Ratings:</b></p><p style="color:#696969;">'+result[i].ratings+'</p><span id="menu'+i+'" class="menu"></span></div><div class="btn-block"><button class="lm" data-click='+i+'>load more</button><button class="det" id="'+i+'"><a href="coro.html?id='+i+'">details</a></button></div></div>');
+        $("#con").append('<div class="row" style="background:#fff;border-radius:9px;box-shadow:10px 10px 7px -12px #000; padding:30px 0 0; margin-bottom:20px;"><div class="col-sm-3 image-block"><img class="img-responsive" src="'+result[i].show_key_art+'"/></div><div class="col-sm-9" style="width:74%;">'+'<p style="color:#919196; font-variant:small-caps; font-size:20px"><b>Title:</b></p><p style="color:#696969;">'+result[i].title+"</p>"+'<p style="color:#919196; font-variant:small-caps; font-size:20px" id="des"><b>Description:</b></p><p style="color:#696969">'+result[i].synopsis["short-synopsis"]+"<span data-toggle='modal' data-target='#myModal' class='seemore' data-synop='"+result[i].synopsis["full-synopsis"]+"' data-msynop='"+result[i].synopsis["medium-synopsis"]+"' >see more</span>" +'<p style="color:#919196; font-variant:small-caps; font-size:20px"><b>Audio:</b></p><p style="color:#696969;">'+result[i].audio+'</p>'+'<p id="rat'+i+'" style="color:#919196; font-variant:small-caps; font-size:20px"><b>Ratings:</b></p><p style="color:#696969;">'+result[i].ratings+'</p><span id="menu'+i+'" class="menu"></span></div><div class="btn-block"><button class="lm" data-click='+i+'>load more</button><button class="det" id="'+i+'"><a href="coro.html?id='+i+'">details</a></button></div></div>');
                  
             
 
@@ -37,7 +38,45 @@ var url=window.location.href;
                                 +'<p style="color:#101010"><i>season</i></p><p style="color:#919196">'+result[i].videos[j].season+'</p>'
                                 +'<p style="color:#101010"><i>ratings</i></p><p style="color:#919196">'+result[i].videos[j].ratings+'</p></div></div>');                                
                         }
-                  }
+                 
+                $("#rat").append()
+                 
+
+                 
+                var sum=0;
+                var x=0;
+                 for(k=0; k<result[i].ratings.length;k++){
+                  if(isNaN(result[i].ratings[k] ) )
+                  {
+
+                   }
+                   else
+                   {
+                     sum+=Number(result[i].ratings[k]);
+                     x+=1;
+                   }
+                 }
+                 
+                   var rat=sum/x;
+                   var rat2=rat/4;
+                   
+                    var rat1=Math.floor(rat2);
+                  for(var l=1;l<=rat1;l++)
+                    {
+                      $("#rat"+i).append('<span class="fa fa-star checked"></span>');
+                                           
+                }
+                  var m=5-rat2;
+                  while(m>0){
+                  $("#rat"+i).append('<span class="fa fa-star" ></span>');
+                  m--
+                }
+
+              } 
+
+
+
+
               $(".lm").click(function(){
                     var click=$(this).data("click");
 

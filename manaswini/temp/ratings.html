@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ratings</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript"></script>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  
+  <!-- Script -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+</head>
+<body>
+<script>
+	var ratings= [
+            12, 
+            14,
+            "ps"
+           
+        ];
+
+/*var note = data.results[x].vote_average;
+var numberOfStars = Math.round(note/4);
+    var stars = '';
+
+    for(var index = 0; index < numberOfStars; index++)
+        stars += '<span class="fa fa-star"/>';
+
+    $('#image').append('<li>' + '<h2 class="h2-like mt-4">' + title + '</h2>' + "<img class='img-fluid mb-4' src='" + image + "'>" + '<p class="descr">' + descr + '</p>' + stars + '</li>');
+    }
+*/
+
+         
+str = ratings.replace("[^0-9]+", " ");
+var n=Arrays.asList(str.trim().split(" "));
+document.getElementById("demo").innerHTML = n;
+</script>
+</body>
+</html>
