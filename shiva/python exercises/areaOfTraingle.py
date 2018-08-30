@@ -10,9 +10,9 @@ if choice=='1':
 	num2 = int(input("enter number two:"))
 	print(0.5*num1*num2)
 elif choice=='2':
-	num1 = float(input("enter number one : "))
-	num2 = float(input("enter number two :"))
-	num3 = float(input("enter number three :"))
+	num1 = int(input("enter number one : "))
+	num2 = int(input("enter number two :"))
+	num3 = int(input("enter number three :"))
 	s = float((num1 + num2 + num3) / 2)
 	area = (s*(s-num1)*(s-num2)*(s-num3)) ** 0.5
 	print("""area of traingle 

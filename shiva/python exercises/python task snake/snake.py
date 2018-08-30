@@ -9,7 +9,7 @@ ladders = {4: 10, 9: 22, 20: 38, 28: 56, 40: 19, 51: 16, 63: 18, 71: 20}
 def numofplayers():
     k = 0
     while k < 1:
-        numofplayers = int(input("enter number of players "))
+        numofplayers = int(input("enter number of players: "))
         if numofplayers < 2:
             print("please enter a value between 2-4 ")
         elif numofplayers > 4:
@@ -24,7 +24,7 @@ num = numofplayers()
 
 
 def diceroll():
-    d = random.randint(0, 6)
+    d = random.randint(1, 6)
     return d
 
 
@@ -56,6 +56,7 @@ def move():
         for i in names:
             y = diceroll()
             z = pos[names.index(i)]
+            print("\n")
             input("player : ")
             print(i)
             print("current pos", z)
@@ -78,6 +79,7 @@ def move():
                     print('you go down', snakes[a], 'places')
                     pos[names.index(i)] -= snakes[a]
                     print('you are now on', pos[names.index(i)])
+                    print("\n")
             for a in ladders:
                 if a == pos[names.index(i)]:
                     print("very nice, you re on a ladder! ", i)
@@ -85,6 +87,7 @@ def move():
                     print('you go up', ladders[a], 'places')
                     pos[names.index(i)] += ladders[a]
                     print('you are now on', pos[names.index(i)])
+                    print("\n")
     return i
 
 
@@ -92,7 +95,7 @@ def main():
     players()
     assign()
     winner = move()
-    print("winner :", winner)
+    print("********************\nwinner :{0} \n********************".format(winner))
 
 
 main()
