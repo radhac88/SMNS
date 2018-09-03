@@ -3,10 +3,10 @@
   height: 3px;
 }*/
 
-body{
+/*body{
   background-color: #c3c3c3;
- 
-}
+
+}*/
 button{
 	background-color:grey;
 	color:black;
@@ -15,7 +15,7 @@ button{
 	}
 #con{
 /*background-color: #cccccc;
-/*border: 3px solid black;*/
+/*border: 3px solid black;
 color: white;
 /*opacity: .5;*/
 }
@@ -153,3 +153,35 @@ h1{
     color: white;
 }
 
+.background-image {
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  display: block;
+  background-image: url('img1.jpg');
+  background-repeat: repeat-x;
+  width: 1200px;
+  height: 800px;
+
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+
+}
+
+.content {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.checked{
+  color: orange;
+}
