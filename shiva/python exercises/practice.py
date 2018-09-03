@@ -158,3 +158,5 @@ def percent(func):
 @percent
 def printer(msg):
     print(msg)
+
+printer("hey ...")
