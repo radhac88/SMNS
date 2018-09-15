@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -56,16 +57,9 @@ background-color: #ccc;
       border-radius: 10px;
       padding-top: 20px;
       padding-left: 30px;
-      padding-bottom:117px;
+      padding-bottom:112px;
       background-color: #fff;
       padding-right: 30px;
-    }
-   .box{
-      box-shadow:12px 5px 12px 2px black;
-      border-radius: 10px;
-      background-color: #fff;
-      
-  
     }
 </style>
 
@@ -99,39 +93,28 @@ background-color: #ccc;
       </div>
     </div>
 
-    <br><br><br>
-    <center>
-      <ul class="pagination pagination-lg">
-        <li><a href="ajajq.html?i=0&j=10">1</a></li>
-        <li><a href="ajajq.html?i=10&j=20">2</a></li>
-        <li><a href="ajajq.html?i=20&j=30">3</a></li>
-        <li><a href="ajajq.html?i=30&j=40">4</a></li>
-        <li><a href="ajajq.html?i=40&j=50">5</a></li>
-        <li><a href="ajajq.html?i=50&j=60">6</a></li>
-        <li><a href="ajajq.html?i=60&j=70">7</a></li>
-        <li><a href="ajajq.html?i=70&j=80">8</a></li>
-        <li><a href="ajajq.html?i=80&j=90">9</a></li>
-        <li><a href="ajajq.html?i=100&j=110">10</a></li> 
-
-      </ul>
-    </center>  
-  
-
 <script>
 
-  var url=window.location.href;
-  url=url.split("?");
-  var para= url[1].split("&");
-  var p1= para[0].split("=");
-  var pi=p1[1].split(",")
-  var p2=para[1].split("=");
-  var pj=p2[1].split(",");
-  $(document).ready(function(){
-    $.ajax({url: "http://localhost:1111/", success: function(result){
+   $.ajax({
+        type: 'GET',
+        url: 'http://localhost:1111',
+        success: function (response) {
+            movies = response;
+        },
+
+
+complete: function () {
+  $('#pagination').twbsPagination({
+      totalPages: movies.length / 10,
+      visiblePages: 10,
+      onPageClick: function (event, page) {
+          $("#page-content").html("");
+          let startIndex = (page - 1) * 10;
+          let endIndex = (page * 10) - 1;
       for(var i=pi;i<pj;i++)
       {
    
-       $("#container1").append('<br><div class="row box"> <div class="col-sm-3 imgs"><img class="img-responsive" src="'+ result[i].show_key_art 
+       $("#container1").append('<br><div class="row "> <div class="col-sm-3 imgs"><img class="img-responsive" src="'+ result[i].show_key_art 
         +'"/></div><div class="col-sm-9 data">'+'<b>Title:</b>"'
         + result[i].title +'"'+'<p id="des"><b>Description:</b>"'
         + result[i].synopsis["short-synopsis"]+'"<span data-toggle="modal" data-target="#myModal" class="seemore" data-synop="'
@@ -216,12 +199,9 @@ background-color: #ccc;
                 
 
             });
-    
-
-
-        }});
 
 });
+}
 
  
   var scrollTop = $(".scrollTop");

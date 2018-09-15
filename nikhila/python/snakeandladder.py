@@ -7,7 +7,9 @@ def dice():
 def box(p1,p2):
 	for a in range(100,1,-20):
 		for b in range(a,a-10,-1):
-			if b==p1:
+			if b==p1 and b==p2:
+				print("p1p2",end=" ")
+			elif b==p1:
 				print("p1",end=" ")
 			elif b==p2:
 				print("p2",end=" ")
@@ -15,7 +17,9 @@ def box(p1,p2):
 				print('%3d' %b,end=" ")
 		print("\n")	
 		for b in range(a-19,a-9):
-			if b==p1:
+			if b==p1 and b==p2:
+				print("p1p2",end=" ")
+			elif b==p1:
 				print("p1",end=" ")
 			elif b==p2:
 				print("p2",end=" ")
@@ -54,7 +58,8 @@ while(player1<100 and player2<100):
 			elif player1 in ladders:
 				player1=ladders[player1]
 				print("Hurray!you got ladder..")
-		print("player1 is at "+str(player1)+"\n")
+		print("player1 is at "+str(player1))
+		print("player2 is at "+str(player2)+"\n")
 		box(player1,player2);
 		print("\n**************************")
 		win(player1,player2)	
@@ -74,6 +79,7 @@ while(player1<100 and player2<100):
 				player2=ladders[player2]
 				print("Hurray!you got ladder..")
 		print("player2 is at "+str(player2))
+		print("player1 is at "+str(player1)+"\n")
 		box(player1,player2);
 		print("**************************")
 		win(player1,player2)	

@@ -241,3 +241,297 @@ print(kvps)
 print(theCopy)
 
 
+mystr = "banana"
+myit = iter(mystr)
+
+print(next(myit))
+print(next(myit))
+print(next(myit))
+print(next(myit))
+print(next(myit))
+print(next(myit))
+
+
+
+def my_gen():
+    print('This is printed first')
+    print('hjdgujkejk')
+    print('hehjqk')
+    x=2;
+    # Generator function contains yield statements
+    yield 1
+
+    n += 1
+    print('This is printed second')
+    yield 
+
+    n += 1
+    print('This is printed at last')
+    yield n
+
+  
+a=my_gen();
+x=next(a)
+print(x)
+#next(a)
+
+"""
+
+def print_msg(msg):
+# This is the outer enclosing function
+
+    def printer():
+# This is the nested function
+        print(msg)
+
+
+    printer()
+
+# We execute the function
+# Output: Hello
+print_msg("Hello")
+
+
+def print_msg(msg):
+# This is the outer enclosing function
+
+    def printer():
+# This is the nested function
+        print(msg)
+
+    return printer  # this got changed
+
+# Now let's try calling this function.
+# Output: Hello
+another = print_msg("Hi")
+print(another)
+del print_msg
+another();
+
+
+
+def startAt(start):
+    def incrementBy(inc):
+        return start + inc
+    return incrementBy
+
+f = startAt(10)
+g = startAt(100)
+
+#print f(1), g(2)
+
+mytuple = ["apple", "banana", "cherry"]
+myit = iter(mytuple)
+
+print(myit)"""
+
+
+def rev_str(my_str):
+    length = len(my_str)
+    for i in range(4,-1,-1):
+        yield my_str[i]
+
+# For loop to reverse the string
+# Output:
+# o
+# l
+# l
+# e
+# h
+for char in rev_str("hello"):
+     print(char)
+
+
+
+
+
+
+####
+def rev():
+    for i in range(101,1):
+            yield i
+
+for char in rev():
+         print(char)
+"""
+def make_multiplier_of(n):
+    def multiplier(x):
+        return x * n
+    return multiplier
+
+# Multiplier of 3
+times3 = make_multiplier_of(3)
+print(times3)
+# Multiplier of 5
+times5 = make_multiplier_of(5)
+
+# Output: 27
+print(times3(9))
+
+# Output: 15
+print(times5(3))
+
+# Output: 30
+print(times5(times3(2)))
+
+
+
+
+
+
+
+
+
+print((1, 2) + (3, 4))
+
+
+names = "{1}, {2} and {0}".format('John', 'Bill', 'Sean')
+print(names)"""
+
+
+
+my_list = [1, 3, 6, 10]
+
+# square each term using list comprehension
+# Output: [1, 9, 36, 100]
+print([x**2 for x in my_list])
+
+# same thing can be done using generator expression
+# Output: <generator object <genexpr> at 0x0000000002EBDAF8>
+a=(x**2 for x in my_list)
+print(next(a))
+print(next(a))
+print(next(a))
+
+
+
+def smart_divide(func):
+    def inner(a,b):
+        print("I am going to divide",a,"and",b)
+        if b == 0:
+            print("Whoops! cannot divide")
+            return
+
+        return func(a,b)
+    print(inner)  
+    return inner
+
+@smart_divide
+def divide(a,b):
+    return a/b
+
+x=divide(2,5)
+print(x)
+
+
+def make_pretty(func):
+    print("I got decorated")
+    func()
+    
+
+def ordinary():
+    print("I am ordinary")
+
+
+
+x=int()
+print(x)
+inf = iter(int,1)
+print(next(inf))
+print(next(inf))
+
+#
+#
+
+def is_called():
+    def is_returned():
+        print("Hello")
+    return is_returned
+
+new = is_called()
+print(new)
+#Outputs "Hello"
+new()
+
+
+
+###
+def star(func):
+    def inner(*args):
+        print("*" * 30)
+        func(*args)
+        print("*" * 30)
+    return inner
+
+def percent(func):
+    def inner(*args):
+        print("%" * 30)
+        func(*args)
+        print("%" * 30)
+    return inner
+
+def printer(msg):
+    print(msg)
+printer = star(percent(printer))
+printer('hello')
+
+
+
+###
+def make_pretty(func):
+    print("I got decorated")
+    func()
+
+@make_pretty
+def ordinary():
+    print("I am ordinary")
+
+thisdict =  {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+
+#########
+
+def star(func):
+    def inner(*args, **kwargs):
+        print("*" * 30)
+        func(*args, **kwargs)
+        print("*" * 30)
+    return inner
+
+def percent(func):
+    def inner(*args, **kwargs):
+        print("%" * 30)
+        func(*args, **kwargs)
+        print("%" * 30)
+    return inner
+
+@star
+@percent
+def printer(**kwargs):
+    for key,value in kwargs.items():
+        print(key)
+        print(value)
+
+printer(brand= "Ford",model="Mustang")
+
+
+
+def hello(**kwargs):
+    if kwargs is not None:
+        for key, value in kwargs.items():
+            print (key)
+            print (value)
+
+hello(name="nikhila")
+
+
+###
+def rev_str():
+    for i in range(20,-1,-1):
+        yield i
+
+for char in rev_str():
+     print(char)
