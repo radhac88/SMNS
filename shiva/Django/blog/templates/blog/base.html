@@ -1,0 +1,36 @@
+{% load static %}
+<html lang="en">
+<head>
+    <title>Test blog </title>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="page-header">
+        {% if user.is_authenticated %}
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        {% endif %}
+        <h1><a href="/">Django Base Page</a></h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
+        please click here to give feedback..<a href="/polls/">clickhere</a>
+    </div>
+{% block scripts %}
+{% endblock %}
+</body>
+</html>

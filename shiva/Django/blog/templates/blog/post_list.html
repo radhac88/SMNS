@@ -1,0 +1,64 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+   <form action="{% url 'search_form'%}" method="get">
+        <input type="text" name="search" id="txtSearch" style="width: 50%" placeholder="search titles here .." >
+    </form>
+
+
+{% for post in posts %}
+<div class="post">
+                <p> author : {{post.author}}</p>
+                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h1>
+                <div class="date">
+                    <p> published:{{post.published_date}} </p>
+                </div>
+                <p>colors: {{post.color}}</p>
+                <p>{{post.text|linebreaksbr}}</p>
+            </div>
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">next</a>
+            <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+     $( function() {
+        $("#txtSearch").on('keyup', function(){
+        var value = $(this).val();
+        $.ajax({
+            url: "{% url 'autocomplete' %}",
+            data: {
+              'search': value 
+            },
+            dataType: 'json',
+            success: function (data) {
+                list = data.list;
+                $("#txtSearch").autocomplete({
+                source : list
+                });       
+            }
+        });        
+    });
+ });
+</script>
+
+{% endblock %}
