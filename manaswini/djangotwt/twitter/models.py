@@ -18,4 +18,3 @@ class Signup(models.Model):
 
 # Create your models here.
 
-

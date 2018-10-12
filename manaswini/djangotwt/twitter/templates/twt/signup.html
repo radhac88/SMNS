@@ -29,17 +29,13 @@
 		<i class="fa fa-twitter" style="color: #5ea9dd; margin-left: 155px; margin-top: 10px; font-size: 30px;"></i>
 		<button id="next" style="margin-left: 450px; margin-top: -13px; background-color:#5ea9dd; border:none; color: white;padding: 6px 16px;font-size: 20px;border-radius: 23px;">Next</button>
 	<h2 style="margin-top: 100px;">Create your account</h2>
-	<input type="text" name="name" value="name" placeholder="Name"><div style="margin-left: 407px;">0/50</div>
-	<input type="text" name="phone" value="phone" placeholder="Phone">
-	<div style="margin-left:10px; ">
-	 <a href="">use email instead</a>
+	<form method="POST" class="signup-form" id="signup-form" action="{% url 'signup' %}">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
 	</div>
 	</div>
 </div>
-
-
-
-
-
+  
 </body>
 </html>
