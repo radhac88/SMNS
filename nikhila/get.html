@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+<form action="" target="result" method="get">
+<p>What would you like for lunch?</p>
+<input type="checkbox" name="fruit" value="Apple" class="custom-control-input"> Apple
+<input type="checkbox" name="fruit" value="Orange" class="custom-control-input"> Orange 
+<input type="checkbox" name="fruit" value="Banana" class="custom-control-input"> Banana 
+<p><input type="submit" value="Submit"></p>
+</form>
+<script type="text/javascript">
+	var i = window.location.href.lastIndexOf('?');
+	console.log(i);
+var types = window.location.href.substr(i+1).replace(/fruit=/g,'').split('&');
+console.log(types);
+console.log($.inArray(this.value,types) !== -1);
+$('input[name="fruit"]').prop('checked',function(){
+     return $.inArray(this.value,types) !== -1;
+     
+});
+
+</script>	
+</body>	
+</html>
+
