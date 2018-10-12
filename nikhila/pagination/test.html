@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<style type="text/css">
+body{
+background-color: #ccc;   
+}
+    .scrollTop {
+      position: fixed;
+      right: 0%;
+      bottom: 10px;
+      background-color: #BE3F48;
+      padding: 20px;
+      opacity: 0;
+      transition: all 0.4s ease-in-out 0s;
+    }
+
+
+
+.scrollTop #a1 {
+  font-size: 18px;
+  color: #fff;
+}
+.load{
+  display:none;
+}
+
+
+    .scrollTop #a1 {
+      font-size: 18px;
+      color: #fff;
+    }
+    .load{
+      display:none;
+    }
+    .checked,.fa-star-half-full{
+      color: orange;
+    }
+    .imgs{
+      box-shadow:0px 2px 9px -2px #444444;
+      border-radius: 10px;
+      background-color: #fff;
+    }
+    .data{
+      box-shadow:0px 2px 9px -2px #444444;
+      margin-left:0px;
+      border-radius: 10px;
+      padding-top: 20px;
+      padding-left: 30px;
+      padding-bottom:112px;
+      background-color: #fff;
+      padding-right: 30px;
+    }
+</style>
+
+<body>
+  
+  <div id="container1" class="container" >  
+    <div id="stop" class="scrollTop">
+        <span><a id="a1" href="">Top</a></span>
+    </div>
+    <br><br><br>
+  </div>
+  <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Modal Header</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+          </div>
+          <div class="modal-body">
+            <p id="full-synop"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+<script>
+
+   $.ajax({
+        type: 'GET',
+        url: 'http://localhost:1111',
+        success: function (response) {
+            movies = response;
+        },
+
+
+complete: function () {
+  $('#pagination').twbsPagination({
+      totalPages: movies.length / 10,
+      visiblePages: 10,
+      onPageClick: function (event, page) {
+          $("#page-content").html("");
+          let startIndex = (page - 1) * 10;
+          let endIndex = (page * 10) - 1;
+      for(var i=pi;i<pj;i++)
+      {
+   
+       $("#container1").append('<br><div class="row "> <div class="col-sm-3 imgs"><img class="img-responsive" src="'+ result[i].show_key_art 
+        +'"/></div><div class="col-sm-9 data">'+'<b>Title:</b>"'
+        + result[i].title +'"'+'<p id="des"><b>Description:</b>"'
+        + result[i].synopsis["short-synopsis"]+'"<span data-toggle="modal" data-target="#myModal" class="seemore" data-synop="'
+        +result[i].synopsis["full-synopsis"]+'"data-msynop="'
+        +result[i].synopsis["medium-synopsis"]+'" class="btn-default" style="color:red">...seemore</span></p><p><b>Audio:</b>"'
+
+        + result[i].audio+'"</p><p><b>Ratings:</b> <span id="ratings'+i+'"></span>  </p><button class="load1 btn btn-primary" data-click="'+i+'">load more</button><div class="load " id="load'+i+'"><span id="'+i+'"><br></span> </div> <button class="btn btn-success"><a href="showpage.html?id='+i+'" style="color:white">show</a></button></div></div><hr>');   
+
+      
+       for (j in result[i].videos) {
+        $("#"+i).append('<div class="container"><div class="row"> <div class="col-sm-3"><img class="img-responsive" src="'
+        + result[i].videos[j].video_thumbnail +'"alt="no image" width="250px"/></div><div class="col-sm-9" ><p><b>Episode title:</b>"'
+        +result[i].videos[j].episode_title+'"</p><p><b>Rating:</b>"'
+        +result[i].videos[j].ratings+'"</p><p><b>season:</b>"'
+        +result[i].videos[j].season+'"</p></div> </div><hr></div>');
+        }
+
+        var x=0;
+        var x1=0; 
+        for( k=0;k<=result[i].ratings.length&&x1==0;k++)
+        {
+          var value=Number(result[i].ratings[k]);       
+            if(typeof value == 'number' )
+              {
+                var rat=(result[i].ratings[k])/4;
+                var rat1=Math.floor(rat);
+                for(var l=1;l<=rat1;l++)
+                {
+                  $("#ratings"+i).append('<span class="fa fa-star checked"></span>');
+                x1+=1;
+                }
+
+              }
+    
+        }
+        for(var m=1;m<=(5-rat1)||x1<5;m++)
+              {
+                var str=rat.toString();
+                var n=str.search(".5");
+
+                if(n != -1&&x==0)
+                {
+                  $("#ratings"+i).append('<span class="fa fa-star-half-full"></span>');
+                  x+=1;
+                  x1+=1;
+                }
+                else{
+                    $("#ratings"+i).append('<span class="fa fa-star"></span>');
+                    x1+=1;                        
+                }
+              }
+
+               }
+
+
+ $(".load1").click(function(){
+  var click=$(this).data("click");
+  for(var k=pi;k<pj;k++)
+  {
+
+    if(k==click)
+    {
+     $("#load"+k).toggle();
+    }   
+    else
+    {
+      $("#load"+k).hide(); 
+    }
+
+}
+});
+     $(".seemore").click(function(){
+                var synop = $(this).data("synop");
+                
+                if(synop == "undefined"){
+                    synop = $(this).data("msynop");
+                }
+                var synop1 = synop.replace(/[\u21b5\u21e5]/g,"");
+        
+             
+                $("#full-synop").html(synop1);
+                
+
+            });
+
+});
+}
+
+ 
+  var scrollTop = $(".scrollTop");
+
+  $(window).scroll(function() {
+    var topPos = $(this).scrollTop();
+
+    
+    if (topPos > 100) {
+      $(scrollTop).css("opacity", "1");
+
+    } else {
+      $(scrollTop).css("opacity", "0");
+    }
+
+  });
+  $(scrollTop).click(function() {
+    $('html, body').animate({
+      scrollTop: 0
+    }, 800);
+    return false;
+
+  
+});
+
+ </script>
+
+
+</body>
+</html>

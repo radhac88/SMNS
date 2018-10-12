@@ -7,17 +7,42 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
 
+  body{
+background-color: #ccc;   
+}
+.imgs{
+      box-shadow:0px 2px 9px -2px #444444;
+      border-radius: 10px;
+      background-color: #fff;
+    }
+    .data{
+      box-shadow:0px 2px 9px -2px #444444;
+      margin-left:0px;
+      border-radius: 10px;
+      padding-top: 20px;
+      padding-left: 30px;
+      padding-bottom:117px;
+      background-color: #fff;
+      padding-right: 30px;
+    }
+       .box{
+      box-shadow:12px 5px 12px 2px black;
+      border-radius: 10px;
+      background-color: #fff;
+      
+  
+    }
+</style>
 </head>
 <body>
 	<p id="demo"></p>
-	<div  class="container" >
+	<div  class="container box" >
 		<div class="row" id="container1">
 		</div>
-	</div>
-	<br><br><br >
-	<div class="container">
-	 <div id="myCarousel" class="carousel slide" data-ride="carousel">
+	
+	 <div id="myCarousel" class="carousel slide imgs" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators" id="list">
     </ol>
@@ -46,8 +71,8 @@ var id1=id[1];
 $(document).ready(function(){
 
     $.ajax({url: "http://localhost:1111/", success: function(result){
-  		 $("#container1").append('<br> <div class="col-sm-3"><img class="img-responsive" src=" '
-        + result[id1].show_key_art +'"alt="no image" onerror=this.src="'+result[id1].show_thumbnail+'"/></div><div class="col-sm-9">'+'<b>Title:</b>"'
+  		 $("#container1").append('<br> <div class="col-sm-3 imgs"><img class="img-responsive" src=" '
+        + result[id1].show_key_art +'"alt="no image" onerror=this.src="'+result[id1].show_thumbnail+'"/></div><div class="col-sm-9 .data">'+'<b>Title:</b>"'
         + result[id1].title +'"<p><b>Short Description:</b>"'
         + result[id1].synopsis["short-synopsis"]+'"<p><b>Full Description:</b>"'
         + result[id1].synopsis["long-synopsis"]+'"</p></p><p><b>Audio:</b>"'

@@ -1,15 +1,11 @@
 st = input("enter string you want to print :")
 n = int(input("enter how mant times it need to print:"))
 global var ;
-def string_times(st,n):
-	var = ""
+def string_times(str,n):
+	var = " "
 	while n > 0 :
 		var = var + st;
 		n = n-1; 
-	print(var) 
-string_times(st,n)
+	print(" {0}".format(var)) 
+string_times(str,n)
 
-def stringBasic(n):
-	print("Hi"*n);
-stringBasic(2)
-stringBasic(5)

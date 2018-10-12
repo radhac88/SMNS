@@ -56,9 +56,16 @@ background-color: #ccc;
       border-radius: 10px;
       padding-top: 20px;
       padding-left: 30px;
-      padding-bottom:112px;
+      padding-bottom:117px;
       background-color: #fff;
       padding-right: 30px;
+    }
+   .box{
+      box-shadow:12px 5px 12px 2px black;
+      border-radius: 10px;
+      background-color: #fff;
+      
+  
     }
 </style>
 
@@ -124,7 +131,7 @@ background-color: #ccc;
       for(var i=pi;i<pj;i++)
       {
    
-       $("#container1").append('<br><div class="row "> <div class="col-sm-3 imgs"><img class="img-responsive" src="'+ result[i].show_key_art 
+       $("#container1").append('<br><div class="row box"> <div class="col-sm-3 imgs"><img class="img-responsive" src="'+ result[i].show_key_art 
         +'"/></div><div class="col-sm-9 data">'+'<b>Title:</b>"'
         + result[i].title +'"'+'<p id="des"><b>Description:</b>"'
         + result[i].synopsis["short-synopsis"]+'"<span data-toggle="modal" data-target="#myModal" class="seemore" data-synop="'
