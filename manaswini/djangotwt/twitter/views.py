@@ -1,9 +1,10 @@
 from django.shortcuts import render
+# from django.models import
 # Create your views here.
 def start(request):
 	return render(request, 'twt/start.html',{})
 def signup(request):
-	return render(request, 'twt/signup.html',{})
+	return render(request, 'twt/home.html',{})
 def home(request):
 	return render(request, 'twt/home.html',{})
 def login(request):
