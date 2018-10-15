@@ -1,0 +1,41 @@
+{% load static %} 
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sign up</title>
+	<link rel="stylesheet" href="{% static 'css/stylessignup.css' %}">
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  	<style type="text/css">
+  		input{
+  			height: 30px;
+  			width: 440px;
+  			outline: 0;
+            border-width: 0 0 2px;
+            border-color: grey;
+  		}
+  		input:focus{
+  			border-color: #5ea9dd;
+  		}
+  	</style>
+</head>
+<body style="background-color: lightgrey;">
+<div class="container" style="height: 500px; width: 580px; margin-left: 700px; margin-top: 200PX; background-color: white;" >
+	<div>
+		<i class="fa fa-twitter" style="color: #5ea9dd; margin-left: 155px; margin-top: 10px; font-size: 30px;"></i>
+		<button id="next" style="margin-left: 450px; margin-top: -13px; background-color:#5ea9dd; border:none; color: white;padding: 6px 16px;font-size: 20px;border-radius: 23px;">Next</button>
+	<h2 style="margin-top: 100px;">Create your account</h2>
+	<form method="POST" class="signup-form" id="signup-form" action="{% url 'signup' %}">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+	</div>
+	</div>
+</div>
+  
+</body>
+</html>

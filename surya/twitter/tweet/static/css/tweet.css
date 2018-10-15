@@ -1,0 +1,71 @@
+#surya{
+	background-image: url(images/bird.jpg);
+	height: 800px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: white;
+	
+}
+#surya1{
+	color: white;
+	top:250px;
+	position: relative;
+	height: 35px;
+	margin-left: 200px;
+	font-size:1.5em;
+	
+
+}
+.icon{
+	font-size:1.5em;
+}
+#button{
+	top: 50px;
+	position: relative;
+	box-sizing: border-box;
+	padding: 12px;
+	border-radius: 5px;
+}
+
+.button {
+    
+    
+    color:#0099ff;
+    padding:15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-style: solid;
+    border-color: #0099ff;
+    background-color: white;
+    
+    position: relative; 
+    
+    border-radius: 50px;
+
+}
+
+.btn{
+	width: 350px;
+	border-radius: 20px;
+	border-color: #3366cc;
+}
+.sg{
+	margin-left: 50px;
+}
+.con{
+	background-color: white;
+	margin-left: 300px;
+	height: 400px;
+	margin-top:50px;
+	width: 800px;
+	border-radius: 20px;
+	border-color: solid red;
+
+}
+.form{
+	margin-left: 100px;
+}
