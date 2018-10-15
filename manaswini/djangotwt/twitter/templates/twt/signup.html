@@ -36,6 +36,73 @@
 	</div>
 	</div>
 </div>
-  
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#signup-form").unbind('submit').submit(function(){
+      var phone = $("#id_phonenumber").val();
+       var psw = $("#id_password").val();
+      var con = $("#id_confirmpassword").val();
+      var upper = /[A-Z]/g;
+      var special = /[!@$%^&*)]/g;
+      var num = /[0-9]/g;
+      var lower = /[a-z]/g;
+      console.log(phone);
+      if(!(phone.startsWith("9") || phone.startsWith("8") || phone.startsWith("7"))){
+        alert("enter valid phone number");
+        return false;
+      }
+      else if(!psw.match(upper)){
+        alert("include atleast 1 uppercase");
+        return false;
+      }
+      else if(!psw.match(lower)){
+        alert("include atleast 1 lowercase");
+        return false;
+      }
+      else if(!psw.match(num)){
+        alert("include atleast 1 number");
+        return false;
+      }
+      else if(!(psw.match(special))){
+        alert("include atleast 1 special character");
+        return false; 
+      }
+      else if(!(psw.length>=8)){
+        alert("password should contain minimum 8 characters");
+        return false;
+      }
+      else if (psw != con){
+        alert("password doesn't match!!");
+        return false;
+      }else{
+        return true;
+      }
+    });
+
+  });
+ 
+// $("#signup-form").unbind('submit').submit(function(){
+ //      var psw = $("#id_password").val();
+ //      // var upper = /[A-Z]/ & lower = /[a-z]/ & num = /[0-9]/;
+ //      var upper =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/g;
+ //      if(psw.match(upper)){
+ //        return true;
+ //      }else{
+ //        alert("enter valid password");
+ //        return false;
+ //      }
+ //    });
+
+
+
+
+
+
+</script>
+
+
+
+
+
 </body>
 </html>
