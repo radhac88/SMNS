@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import UserForm,LoginForm
+from .forms import UserForm
 from django.contrib.auth import login, authenticate
 # from django.models import
 # Create your views here.
