@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{% static 'css/tweet.css' %}">
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6" id="surya">
+        <div id="surya1">
+          <span class="glyphicon glyphicon-search ">  <b>Follow your interests.</b></span><br>
+          <span class="glyphicon glyphicon-user"> <b>Hear what people are talking about</b></span>
+          <span class="glyphicon glyphicon-comment"> <b>Join the conversation.</b></span>
+
+        </div>
+      </div>
+      
+      <div class="col-sm-6">
+        <div class="form-group row" id="button">
+              <div class="col-xs-4">
+                
+                <input class="form-control" id="ex1" type="text" placeholder=" phone,email or username">
+              </div>
+              <div class="col-xs-4">
+                <input class="form-control" id="ex2" type="text" placeholder=" password">
+              </div>
+              
+            
+              <button class="button btn-lg">log in</button>
+            </div><br><br><br>
+          <div class="sg">
+            <img src="{% static "css/images/tweet1.jpg" %}">
+          <h2><b>See what’s happening in <br>the world right now</b></h2><br><br><br><br>
+            <h3><b>Join Twitter today.<b></h3>
+            <button type="button" class="btn btn-primary btn-md">Sign Up</button><br><br>
+            <button type="button" class="btn btn-default btn-md">Log in</button>
+          </div>
+            
+            
+      </div>
+      
+      
+      
+        
+        
+    </div>
+  </div>
+
+
+
+
+</body>
+</html>
