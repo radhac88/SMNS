@@ -10,3 +10,8 @@ class UserForm(forms.ModelForm):
 		fields = ('username', 'phonenumber','email','password','confirmpassword',)
 
 
+class LoginForm(forms.ModelForm):
+	
+	class Meta:
+		model = Signup
+		fields = ('username','password',)
