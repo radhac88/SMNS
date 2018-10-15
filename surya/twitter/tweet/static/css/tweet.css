@@ -1,71 +1,66 @@
-#surya{
-	background-image: url(images/bird.jpg);
-	height: 800px;
-	background-size: cover;
-	background-repeat: no-repeat;
-	color: white;
-	
+#pic{
+	background-image: url(images/startlogo.jpg); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    height: 920px;
+    width: 920px;
 }
-#surya1{
-	color: white;
-	top:250px;
+#span{
 	position: relative;
-	height: 35px;
-	margin-left: 200px;
-	font-size:1.5em;
-	
-
+	top: 300px;
+	left: 300px;
 }
-.icon{
-	font-size:1.5em;
+.glyphicon{
+	color: white;
+	font-size: 20px;
 }
-#button{
-	top: 50px;
+#in{
 	position: relative;
-	box-sizing: border-box;
-	padding: 12px;
-	border-radius: 5px;
+	top:20px;
+	left:350px;
 }
-
-.button {
-    
-    
-    color:#0099ff;
-    padding:15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-style: solid;
-    border-color: #0099ff;
-    background-color: white;
-    
-    position: relative; 
-    
-    border-radius: 50px;
+.input{
+	width:200px;
+	height:45px;
+	/*border-radius: 2px;*/
 
 }
-
-.btn{
-	width: 350px;
+.input:focus{
+	border-color: #5ea9dd;
+}
+.button{
 	border-radius: 20px;
-	border-color: #3366cc;
-}
-.sg{
-	margin-left: 50px;
-}
-.con{
 	background-color: white;
-	margin-left: 300px;
-	height: 400px;
-	margin-top:50px;
-	width: 800px;
-	border-radius: 20px;
-	border-color: solid red;
-
+	/*border-color: #5ea9dd;*/
+	height: 40px;
+	border:2px solid #5ea9dd
 }
-.form{
-	margin-left: 100px;
+.img{
+	width:70px;
+	height:70px;
+	margin-top: 250px;
+}
+.in{
+	width: 300px;
+	height: 40px;
+}
+#in1{
+	background-color: #5ea9dd;
+	border-radius: 50px;
+	border:none;
+	color: white;
+	font-size: 19px;
+}
+#in2{
+	border:2px solid #5ea9dd;
+	border-radius: 50px;
+	background-color: white;
+	color: #5ea9dd;
+	font-size: 19px;
+}
+#forgot1{
+	margin-left: 208px;
+}
+.forgot{
+	color: grey;
 }
