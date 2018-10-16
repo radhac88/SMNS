@@ -26,12 +26,12 @@
       <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-top: 15px;margin-left: 250px;"></i></a></li>
       	
     </ul>
-    <form class="navbar-form navbar-left" action="/action_page.php">
+    <form class="navbar-form navbar-left" method='GET' action='{% url "search" %}'>
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search twitter" name="search">
+        <input type="text" class="form-control" placeholder="Search twitter" name='query' value='{{search}}' id="tags">
         <div class="input-group-btn">
-          <button class="btn btn-default" type="submit" style="width: 40px;">
-            <i class="glyphicon glyphicon-search"></i>
+          <button class="btn btn-default" type="submit" style="width: 40px; height:35">
+            <i class="glyphicon glyphicon-search" style="color: blue;"></i>
         </button>
         </div>
       </div>
@@ -59,10 +59,7 @@
 				</div>
 				
 		</div>
-		<div class="col-sm-6">
-			
-			
-		</div>
+		
 	</div>
 
 </div>

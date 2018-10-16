@@ -7,7 +7,7 @@ class Signup(models.Model):
     username = models.CharField(max_length=30, blank=True, null=True)
     phonenumber=models.CharField(max_length=10,default=None, unique=True)
     email = models.EmailField(max_length=254, unique=True, db_index=True, primary_key=True, default=None, blank=True)
-    password = models.CharField(max_length=20, default=None, unique=True)
+    password = models.CharField(max_length=15, default=None, unique=True)
 
     def publish(self):
         self.published_date = timezone.now()

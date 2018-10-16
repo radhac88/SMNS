@@ -1,34 +1,38 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<meta charset="utf-8">
+  <title></title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="{% static 'css/tweet.css' %}">
 </head>
-<body style="background-color:#999999">
-	<div class="container con"><br><br>
-		<div class="form">
-			<h3><b>Log in to Twitter</b></h3>
-			<input type="text" placeholder=" phone,email or username" style="width: 300px;"><br><br>
-			<input type="text" placeholder=" password" style="width: 300px;"><br><br>
-			<div>
-				<button type="button" class="btn btn-primary btn-md" style="width: 90px">Login</button> 
-				<input type="checkbox" name="vehicle1">  	Remember me.<a href="#"> Forgot password?</a>
-			</div><br><br>
-			<div><p>New to Twitter? <a href="#">&nbsp Sign up now >></a></p>
-				<p>Already using Twitter via text message? <a href="#">Activate your account>></a></p>
+<body id="body">
+  <div class="container"><br><br>
+    <div class="form">
+      <h3><b>Log in to Twitter</b></h3>
+      <p>{{msg}}</p>
+      
+      <form method="POST" class="login-form" id="login-form" action="{% url 'login' %}">{% csrf_token %}
+           {{ form.as_p }}
+          <button type="submit" class="save btn btn-default">Login</button>
+      </form>
+      
+    </div>
+        <input type="checkbox" name="vehicle1">   Remember me.<a href="#"> Forgot password?</a>
+      </div><br><br>
+      <div><p>New to Twitter? <a href="#">&nbsp Sign up now >></a></p>
+        <p>Already using Twitter via text message? <a href="#">Activate your account>></a></p>
 
-			</div>
-		</div>
-		
-	</div>
-
-	
+      </div>
+    </div>
+    
+  </div>
+  
 
 
 </body>

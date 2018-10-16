@@ -1,31 +1,3 @@
-# from django.shortcuts import render
-# from .models import Signup
-# def user_list(request):
-# 	surya="surya"
-# 	return render(request, 'tweet/tweet.html', {"resp":surya})
-# def log_in(request):
-# 	surya="surya"
-# 	return render(request, 'tweet/login.html', {"resp":surya})
-# def home_list(request):
-# 	surya="surya"
-# 	return render(request, 'tweet/home.html', {"resp":surya})
-# # def signup(request):
-#     if request.method == "GET":
-#     	return render(request, 'tweet/home.html')
-#     if request.method == "POST":
-#     	form =SignupForm(data = request.POST)
-#     	if form.is_valid():
-#             user = form.save(False)
-#             user.set_password(user.password)
-#             user.save()
-#             user = authenticate(username=user.username, password=request.POST['password'])
-#             login(request, user)
-
-#             return redirect('tweet/home.html')	
-
-
-
-
 from django.shortcuts import render
 from .forms import UserForm,LoginForm
 from django.contrib.auth import login, authenticate
@@ -75,9 +47,29 @@ def login(request):
     else:
         form = LoginForm()
     return render(request, 'tweet/login.html', {'form': form})
+    
+# def search(request):
+#     if 'query' in request.GET and request.GET['query']:
+#         search = request.GET['query']
+        
+#         result = Signup.objects.filter(Q(username__icontains=search))
+       
+#         return render(request, 'tweet/login.html', {'username':result,'search':search})
+#     else:
+#         return render(request, 'blog/logout.html') 
+def search(request):
+    query = request.GET.get('q')
+    results= Signup.objects.filter(Q(username__icontains=query))
 
+    return render(request, 'tweet/login.html', {'results': results})   
 
+# def login(request):
+#     username = request.POST.get('username', '')
+#     password = request.POST.get('password', '')
+#     user = auth.authenticate(username = username, password = password)      
 
-	
-
-# Create your views here.
+#     if user is not None:
+#         auth.login(request, user)
+#         return HttpResponseRedirect(reverse('home'))
+#     else:
+#         return HttpResponseRedirect('/accounts/invalid')

@@ -1,57 +1,46 @@
-{% load static %}
+{% load static %} 
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>Twitter</title>
+  <link rel="stylesheet" href="{% static 'css/tweet.css' %}">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="{% static 'css/tweet.css' %}">
+
 </head>
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-6" id="surya">
-        <div id="surya1">
-          <span class="glyphicon glyphicon-search ">  <b>Follow your interests.</b></span><br>
-          <span class="glyphicon glyphicon-user"> <b>Hear what people are talking about</b></span>
-          <span class="glyphicon glyphicon-comment"> <b>Join the conversation.</b></span>
+<div class="container-fluid">
+<div class="col-sm-6" id="pic">
+  <!-- {% load static %}
+  <img src="{% static "images/startlogo.jpg" %}" alt="twitter image" width="100%" height="920px"> -->
+  <div id="span">
+    <span class="glyphicon glyphicon-search"> Follow your interests</span><br>
+    <span class="glyphicon glyphicon-user">   Hear what people are talking about</span><br>
+    <span class="glyphicon glyphicon-comment">  Join the conversation</span>
 
-        </div>
-      </div>
-      
-      <div class="col-sm-6">
-        <div class="form-group row" id="button">
-              <div class="col-xs-4">
-                
-                <input class="form-control" id="ex1" type="text" placeholder=" phone,email or username">
-              </div>
-              <div class="col-xs-4">
-                <input class="form-control" id="ex2" type="text" placeholder=" password">
-              </div>
-              
-            
-              <button class="button btn-lg">log in</button>
-            </div><br><br><br>
-          <div class="sg">
-            <img src="{% static "css/images/tweet1.jpg" %}">
-          <h2><b>See what’s happening in <br>the world right now</b></h2><br><br><br><br>
-            <h3><b>Join Twitter today.<b></h3>
-            <button type="button" class="btn btn-primary btn-md">Sign Up</button><br><br>
-            <button type="button" class="btn btn-default btn-md">Log in</button>
-          </div>
-            
-            
-      </div>
-      
-      
-      
-        
-        
-    </div>
   </div>
+</div>
+<div class="col-sm-6" id="in">
+  <input class="input" type="text" name="name" value="" placeholder=" phone,email,or username">
+  <input class="input" type="text" name="text_input" class="text_input_style" value="" placeholder=" password">
+  <button class="button">log in</button>
+  <div id="forgot1">
+  <a class="forgot" href="#">forgot password?</a>
+  </div>
+  <div>
+    <img class="img" src="{% static "css/images/download.png" %}">
+    <h3 style="font-size: 30px;">see what's happening in the world rn! </h3><br>
+    <p style="font-size: 23px;">join twitter today</p>
+    <button onclick="location.href='/signup'" class="in" id="in1" name="signup" value="sign up">sign up</button><br><br>
+    <button onclick="location.href='/login'" class="in" id="in2" name="log in" value="log in">log in</button>
+  </div>
+</div>
+</div>
+
+
 
 
 
