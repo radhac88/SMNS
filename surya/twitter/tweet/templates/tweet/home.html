@@ -28,7 +28,7 @@
     </ul>
     <form class="navbar-form navbar-left" method='GET' action='{% url "search" %}'>
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search twitter" name='query' value='{{search}}' id="tags">
+        <input type="text" class="form-control" placeholder="Search twitter" name='query' value='{{search}}'>
         <div class="input-group-btn">
           <button class="btn btn-default" type="submit" style="width: 40px; height:35">
             <i class="glyphicon glyphicon-search" style="color: blue;"></i>
@@ -37,6 +37,15 @@
       </div>
     </form>
     <a href="#"><i class=" fa fa-user-circle-o" style="font-size:35px;margin-top: 15px;margin-left:100px;color:black"></i></a>
+  {% if user.is_authenticated %}
+        {{ request.user }} | <a href="#" onClick="document.getElementById('logoutform').submit()"><button type="button">Logout</button></a>
+    <form id="logoutform" method="POST" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <input type="hidden">
+    </form>
+  {% else %}
+    <a href="{% url 'signup' %}">Sign up</a> | <a href="{% url 'login' %}">login</a>
+  {% endif %}
    <button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white;margin-left:40px; ">tweet</button>
   </div>
 </nav>

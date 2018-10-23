@@ -1,0 +1,87 @@
+#pic{
+	background-image: url(images/startlogo.jpg); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    height: 920px;
+    width: 920px;
+}
+#span{
+	position: relative;
+	top: 300px;
+	left: 300px;
+}
+.glyphicon{
+	color: white;
+	font-size: 20px;
+}
+#in{
+	position: relative;
+	top:20px;
+	left:350px;
+}
+.input{
+	width:200px;
+	height:45px;
+	/*border-radius: 2px;*/
+
+}
+.input:focus{
+	border-color: #5ea9dd;
+}
+.button{
+	border-radius: 20px;
+	background-color: white;
+	/*border-color: #5ea9dd;*/
+	height: 40px;
+	border:2px solid #5ea9dd
+}
+.img{
+	width:70px;
+	height:70px;
+	margin-top: 250px;
+}
+.in{
+	width: 300px;
+	height: 40px;
+}
+#in1{
+	background-color: #5ea9dd;
+	border-radius: 50px;
+	border:none;
+	color: white;
+	font-size: 19px;
+}
+#in2{
+	border:2px solid #5ea9dd;
+	border-radius: 50px;
+	background-color: white;
+	color: #5ea9dd;
+	font-size: 19px;
+}
+#forgot1{
+	margin-left: 208px;
+}
+.forgot{
+	color: grey;
+}
+#kala{
+	color: blue;
+}
+#body{
+	background-color: blue;
+
+}
+/*#id_username{
+	height: 10px;
+	width: 440px;
+	outline: 0;
+	border-width: 0 0 2px;
+	border-color: grey;
+	align-items: right;
+}*/
+/*border: 2px solid black;
+  height:300px;
+  width: 15px;
+  display: inline-block;
+  cursor:pointer;
+*/

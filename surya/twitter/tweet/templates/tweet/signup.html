@@ -3,83 +3,148 @@
 <html>
 <head>
   <title>sign up</title>
-  <link rel="stylesheet" href="{% static 'css/tweet.css' %}">
+  <link rel="stylesheet" href="{% static 'css/twtstyles.css' %}">
   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <style type="text/css">
-      input{
-        height: 30px;
-        width: 440px;
-        outline: 0;
-            border-width: 0 0 2px;
-            border-color: grey;
-      }
-      input:focus{
-        border-color: #5ea9dd;
-      }
-    </style>
+    
 </head>
 <body style="background-color: lightgrey;">
-<div class="container" style="height: 500px; width: 580px; margin-left: 700px; margin-top: 200PX; background-color: white;" >
-  <div>
-    <i class="fa fa-twitter" style="color: #5ea9dd; margin-left: 155px; margin-top: 10px; font-size: 30px;"></i>
-    
-  <h2 style="margin-top: 100px;">Create your account</h2>
-  <form method="POST" class="signup-form" id="signup-form" action="{% url 'signup' %}">{% csrf_token %}
+<div class="row">
+<div class="container">
+  <div class="col-sm-2">rytweytc</div>
+  <div class="col-sm-8">
+    <div class="container" style="height: 500px; width: 600px; margin-top:50PX; background-color: white;" >
+      <div style="margin-top:70px">
+      <form method="POST" class="signup-form" id="signup-form" action="{% url 'signup' %}">
+        {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default" id="save" >Save</button>
-    </form>
+       <button type="submit" class="save btn btn-primary" id="save">Save</button>
+     </form>
+      </div>
+    </div>    
+  
   </div>
-  </div>
-</div>
+  <div class="col-sm-2"></div>
+</div>  
+</div>  
+
+<!-- <div class="container" style="height: 500px; width: 600px; margin-left: 500px; margin-top: 200PX; background-color: white;" > -->
+  
+    
 <script type="text/javascript">
   $(document).ready(function(){
     $("#signup-form").unbind('submit').submit(function(){
       var phone = $("#id_phonenumber").val();
        var psw = $("#id_password").val();
+      var username =$("#id_username").val();
+      var mail=$("#id_email").val();
+      var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
       var con = $("#id_confirmpassword").val();
       var upper = /[A-Z]/g;
-      var special = /[!@$%^&*)]/g;
+      var special = /[!@$%^&*#+=/.,?|<>{}()~]/g;
       var num = /[0-9]/g;
       var lower = /[a-z]/g;
+      var numbers = /^\d{10}$/g;
+
       console.log(phone);
       if(!(phone.startsWith("9") || phone.startsWith("8") || phone.startsWith("7"))){
+
         alert("enter valid phone number");
         return false;
       }
+      
+      else if(!isNaN(username))
+      {
+      alert("Please Enter username with alphabets");
+        return false;
+      }
+      else if(username==""){
+        alert("Please Enter Your Name");
+        return false;
+
+      }
+      /*else if(mail.match(mailformat)){
+        alert("enter ");
+        return false;
+      }*/
+      else if(!phone.match(numbers)){
+        alert("enter valid number in phonenumber");
+        return false;
+      }
       else if(!psw.match(upper)){
-        alert("include atleast 1 uppercase");
+        alert("include atleast 1 uppercase in password");
         return false;
       }
       else if(!psw.match(lower)){
-        alert("include atleast 1 lowercase");
+        alert("include atleast 1 lowercase in password");
         return false;
       }
       else if(!psw.match(num)){
-        alert("include atleast 1 number");
+        alert("include atleast 1 number in password");
         return false;
       }
-      else if(!(psw.match(special))){
-        alert("include atleast 1 special character");
+      /*else if(!psw.match(special)){
+        alert("include atleast 1 special character in password");
         return false; 
-      }
+      }*/
       else if(!(psw.length>=8)){
         alert("password should contain minimum 8 characters");
         return false;
       }
+      else if(!(psw.length<=15)){
+        alert("password should contain maximum 15 characters");
+        return false;
+      }
+      /*else if(psw.length<8 && psw.length>15){
+        alert("password should contain minimum 8 characters and maximum 15 characters");
+        return false;
+      }*/
       else if (psw != con){
         alert("password doesn't match!!");
+        console.log(psw);
+        console.log(con);
+        console.log(psw != con);
+        
         return false;
-      }else{
+
+      }
+      else if(!(mail.match(mailformat))){
+        alert("enter ");
+        return false;
+      }
+      else if(!psw.match(special)){
+        alert("include atleast 1 special character in password");
+        return false; 
+      }
+
+      else{
         return true;
       }
     });
 
   });
+
+
+function reveal()
+{
+if(document.getElementById('box').checked)
+   {document.getElementById("id_password").type='text';
+document.getElementById("id_confirmpassword").type='text';}
+else{
+document.getElementById("id_password").type='password';
+document.getElementById("id_confirmpassword").type='password';
+}
+}
+   
+
+
+
+
  
 // $("#signup-form").unbind('submit').submit(function(){
  //      var psw = $("#id_password").val();

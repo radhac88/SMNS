@@ -16,8 +16,9 @@
     <div class="form">
       <h3><b>Log in to Twitter</b></h3>
       <p>{{msg}}</p>
-      
-      <form method="POST" class="login-form" id="login-form" action="{% url 'login' %}">{% csrf_token %}
+      <p>{{username}}</p>
+      <form method="POST" class="login-form" id="login-form" action="{% url 'login' %}">
+        {% csrf_token %}
            {{ form.as_p }}
           <button type="submit" class="save btn btn-default">Login</button>
       </form>
