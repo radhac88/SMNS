@@ -64,3 +64,12 @@
 .forgot{
 	color: grey;
 }
+#box{
+
+  border: 2px solid black;
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  cursor:pointer;
+
+}

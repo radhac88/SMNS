@@ -7,6 +7,9 @@ from .models import Signup
 from django.db.models import Q
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
+from django.views.generic import View
+
 
 # Create your views here.
 def start(request):
@@ -31,30 +34,32 @@ def home(request):
 
 def logout(request):
 	return render(request, 'twt/logout.html',{})
-
-def login(request):
+def user_log(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
-        userdata = Signup.objects.filter(username=username).filter(password=password)
-        user = Signup.objects.filter(username=username).filter(password=password).count()
-        #login(request, user)
-        if user==1:
-            return render(request, 'twt/home.html', {'user':userdata})
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+        # import ipdb
+        # ipdb.set_trace()
+
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect('twt/home.html')
+            else:
+                return HttpResponse('Your tweet account is disabled!')
         else:
-            return render(request, 'twt/login.html', {'msg':'invalid username and password','form': form})   
+            
+            return HttpResponse("Invalid login details supplied!")
     else:
         form = LoginForm()
-    return render(request, 'twt/login.html', {'form': form})
 
-# def login(request):
-#     username = request.POST.get('username', '')
-#     password = request.POST.get('password', '')
-#     user = auth.authenticate(username = username, password = password)      
+    return render(request, 'twt/login.html', {'form':form})
+def follow(request,event_id):
+    user = request.user
+    event = Event.objects.get(id=event_id)
 
-#     if user is not None:
-#         auth.login(request, user)
-#         return HttpResponseRedirect(reverse('home'))
-#     else:
-#         return HttpResponseRedirect('/accounts/invalid')
+    event.users.add(user)
+    event.save()
