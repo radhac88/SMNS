@@ -74,8 +74,8 @@ def signup(request):
 def home(request):
     return render(request, 'tweet/home.html',{})
 
-def logout(request):
-    return render(request, 'tweet/logout.html',{})
+# def logout(request):
+#     return render(request, 'tweet/logout.html',{})
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)

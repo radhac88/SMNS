@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+
+
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    
+    <ul class="nav navbar-nav" style="width:800px">
+      <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
+      
+      <li><a href="#"><i class=" fa fa-flash" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
+      <li><a href="#"><i class="fa fa-bell-o" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
+      <li><a href="#"><i class="fa fa-envelope-o" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
+      <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-top: 15px;margin-left: 100px;"></i></a></li>
+    </ul>
+    <form class="navbar-form navbar-left" method='GET'>
+      <div class="input-group">
+        <input type="text" class="form-control" style="margin-top: 15px;" placeholder="Search twitter" autocomplete="off" name='query' value='{{search}}'>
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit" style="width: 40px; height:35;margin-top: 15px;">
+            <i class="glyphicon glyphicon-search" style="color:#4286f4;"></i>
+        </button>
+        </div>
+      </div>
+
+    </form>
+    {% if user.is_authenticated %}
+  
+  <p style="font-size:20px;margin-top: 15px;"><a href="{% url 'logout' %}">logout</a>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+    <a href="#"><i class=" fa fa-user-circle-o" style="font-size:35px;margin-top: 15px;color:black"></i></a>
+
+
+</nav>
+
+
+<div style="background-color:#d1e0e0;height:800px; ">
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4">
+			<div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px;">
+				<a href="#"><img src="{% static "css/images/camera.jpg" %}" class="img-circle" id="img" width="70px" height="70px" style="margin-top:80px; margin-left:30px"></a><input type="file" id="profile" name="">
+					<h5><a href="#" style="margin-left:100px;color: black; text-decoration: none;"><b>{{user.username}}</b> <br>  
+					&emsp;&emsp;&nbsp &emsp;&nbsp &emsp;&emsp;<i><b>{{user.email}}</b></i></a></h5>
+					<div class="element">
+						<a href="#" style="text-decoration: none;">&emsp;Tweets</a> <a href="#" style="text-decoration: none;"> &nbsp &emsp; Following</a><a href="#" style="text-decoration: none;">&nbsp &emsp; Followers</a>
+
+					</div>
+				
+				
+			</div>
+			<div style="width: 300px;background-color: white; height:150px;">
+				</div>
+				
+		</div>
+		<div class="col-sm-6">
+			<div style="background-color:#b3f0ff;height:250px;width:500px;margin-top:10px;">
+				<span><a href="#"><i class=" fa fa-user-circle-o"  style="font-size:35px; float: left;margin-left: 5px;margin-top:10px;"></i></a></span>
+        <form method="POST" class="tweet-form"><!-- <textarea rows="4" cols="55" name="query"></textarea> -->
+          {% csrf_token %}
+          {{ form.as_p }}
+
+				
+					<div class="element">
+  						<i class="fa fa-camera" style="margin-left: 20px;margin-bottom: 30px;"></i>
+  						<input type="file" id="choose" name="">
+  						<button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; margin-top:5px;">tweet</button>
+
+ 
+					</div>
+        </form>
+        {% for i in twt1 %}
+          <div class="container" id="twtid" style="height: 300px;width: 504px;margin-top: 10px;margin-left: 0px;border:1px solid black;">
+        
+          <div class="post">
+            <p>tweet:{{i.text|linebreaksbr}}</p>
+            <p>posted on:{{i.created_at}}</p>
+            <p>tweet by:{{i.user}}</p>
+          </div>
+          </div>
+        {% endfor %}
+        
+        <!-- <form method="POST" class="tweet-form">{% csrf_token %}
+          {{ form.as_p }}
+
+          <button type="submit" class="save btn btn-default">save</button>
+        </form> -->
+			</div>
+		</div>
+		
+	</div>
+
+</div>
+</div>
+<script type="text/javascript">
+$("i").click(function () {
+  $("input[type='file']").trigger('click');
+});
+
+$('input[type="file"]').on('change', function() {
+  var val = $(this).val();
+  $(this).siblings('span').text(val);
+})
+$("#img").click(function () {
+  $("input[type='file']").trigger('click');
+});
+
+$('input[type="file"]').on('change', function() {
+  var val = $(this).val();
+  $(this).siblings('span').text(val);
+})
+
+</script>
+
+
+
+
+  
+
+
+
+
+{% endblock %}
