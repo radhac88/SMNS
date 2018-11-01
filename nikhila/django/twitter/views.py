@@ -15,12 +15,18 @@ def signup(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         form1 = LoginForm(request.POST)
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        # email = request.POST.get('password', '')
+        # password = request.POST.get('password', '')
+        if(Signup.objects.filter(username=username)):
+            return render(request, 'twt/signup.html', {'form': form,'msg': 'username already exists'})
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()  
             user.save()
             raw_password = form.cleaned_data.get('confirmpassword')
-            user = authenticate(username=user.username, password=raw_password)
+            # user = authenticate(username=user.username, password=raw_password)
             #login(request, user)
         return render(request, 'twt/login.html', {'form': form1})
     else:
@@ -28,7 +34,8 @@ def signup(request):
     return render(request, 'twt/signup.html', {'form': form})
 
 def home(request):
-	return render(request, 'twt/home.html',{})
+    user=Signup.objects.all()
+    return render(request, 'twt/home.html', {'users':user})
 
 def logout(request):
 	return render(request, 'twt/logout.html',{})

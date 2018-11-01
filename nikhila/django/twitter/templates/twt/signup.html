@@ -29,6 +29,7 @@
 		<i class="fa fa-twitter" style="color: #5ea9dd; margin-left: 155px; margin-top: 10px; font-size: 30px;"></i>
 		<button id="next" style="margin-left: 450px; margin-top: -13px; background-color:#5ea9dd; border:none; color: white;padding: 6px 16px;font-size: 20px;border-radius: 23px;">Next</button>
 	<h2 style="margin-top: 100px;">Create your account</h2>
+
 	<form method="POST" class="signup-form" id="signup-form" action="{% url 'signup' %}">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
