@@ -84,6 +84,7 @@
   </div>
   </div>
 </div>
+
 <script type="text/javascript">
   $(document).ready(function(){
     $("#signup-form").unbind('submit').submit(function(){
@@ -149,10 +150,7 @@
         alert("password should contain maximum 15 characters");
         return false;
       }
-      /*else if(psw.length<8 && psw.length>15){
-        alert("password should contain minimum 8 characters and maximum 15 characters");
-        return false;
-      }*/
+      
       else if (psw != con){
         alert("password doesn't match!!");
         return false;
@@ -213,6 +211,7 @@ document.getElementById("id_confirmpassword").type='password';
 
 
 </script>
+
 
 
 

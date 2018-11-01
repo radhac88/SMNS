@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" href="{% static 'css/tweet.css' %}">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  	<link href="http://twitter.github.com/bootstrap/assets/css/docs.css" rel="stylesheet">
+
+</head>
+<body>
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    
+    <ul class="nav navbar-nav" style="width:800px">
+      <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
+      
+      <li><a href="#"><i class=" fa fa-flash" style="font-size:20px"></i><b>Moments</b></a></li>
+      <li><a href="#"><i class="fa fa-bell-o" style="font-size:20px"></i><b>Notifications</b></a></li>
+      <li><a href="#"><i class="fa fa-envelope-o" style="font-size:24px"></i><b>Messages<b></a></li>
+      <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-top: 15px;margin-left: 250px;"></i></a></li>
+      	
+    </ul>
+    <form class="navbar-form navbar-left" method='GET' action='{% url "search" %}'>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search twitter" name='query' value='{{search}}'>
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit" style="width: 40px; height:35">
+            <i class="glyphicon glyphicon-search" style="color: blue;"></i>
+        </button>
+        </div>
+      </div>
+    </form>
+    <a href="#"><i class=" fa fa-user-circle-o" style="font-size:35px;margin-top: 15px;margin-left:100px;color:black"></i></a>
+    <!-- {% if user.is_authenticated %}
+        <a href="#" onClick="document.getElementById('logoutform').submit()"><button type="button">Logout</button></a>
+      <form id="logoutform" method="POST" action="{% url 'start' %}">
+        {% csrf_token %}
+        <input type="hidden">
+      </form>
+    {% else %}
+      <a href="{% url 'signup' %}">Sign up</a> | <a href="{% url 'start' %}">login</a>
+    {% endif %} -->
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+   <button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white;margin-left:40px; ">tweet</button>
+  </div>
+</nav>
+<div style="background-color:#d1e0e0;height:800px; ">
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4">
+			<div style="background-color:#1a75ff;height: 100px;width:350px;margin-top:30px;">
+				<a href="#"><img src="{% static "css/images/camera.jpg" %}" class="img-circle" alt="Cinque Terre" width="60px" height="90px" style="margin-top:80px; margin-left:30px"></a>
+					<p ><a href="#" style="margin-left:100px;color: black;">suryakalakuruva <br>  
+					&emsp;&emsp;&nbsp &emsp;&nbsp &emsp; @kuruvasuryakala</a></p>
+					<div>
+						<a href="#">&emsp;Tweets</a> <a href="#"> &nbsp &emsp; Following</a><a href="#">&nbsp &emsp; Followers</a>
+
+					</div>
+				
+				
+			</div>
+			<div style="width: 350px;background-color: white; height:180px;">
+				</div>
+				
+		</div>
+		
+	</div>
+
+</div>
+</div>
+
+  
+
+
+
+
+</body>
+</html>

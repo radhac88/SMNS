@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js">
+</script>
+<script type="text/javascript">
+function toggleFollow(val){
+  if (val==1) {
+    $("#follow_btn").hide();
+    $("#unfollow_btn").show();
+
+  }else{
+    $("#unfollow_btn").hide();
+    $("#follow_btn").show();
+  }
+}
+$(document).ready(function(){
+  $("#unfollow_btn").hide();
+  $("#fo").toggle(
+    function(){$("#fo").val("unfollow");},
+    function(){$("#fo").val("follow");
+  });
+});
+
+
+
+</script>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    
+    <ul class="nav navbar-nav">
+      <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
+      
+      <li><a href="#"><i class=" fa fa-flash" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
+      <li><a href="#"><i class="fa fa-bell-o" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
+      <li><a href="#"><i class="fa fa-envelope-o" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
+      <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
+      <li><input class="search-input" type="text" id="search-query" placeholder="Search Twitter" name="q" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-dropdown-1" style="margin-top: 15px;margin-left: 250px;border-radius: 5px;height: 33px;"><button class="btn-primary"><i class="glyphicon glyphicon-search"></i></button></li>
+      <li>{% if user.is_authenticated %}<div class="dropdown">
+         <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+          >
+            
+          </p>
+
+
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+          >
+            
+          </p>
+  
+          <li><a href="{% url 'login' %}">login</a>
+          {% endif %}</li>
+            
+          </ul>
+</div>
+</li>
+      </ul>
+</div>
+    
+
+
+</nav>
+<div id="addpic"></div>
+<div>
+	<h1>{{profile.username}}</h1>
+	<p>{{profile.email}}</p>
+	<p>tweet:{{i.text|linebreaksbr}}</p>
+    
+</div>
+
+<!-- <input type="button" value="follow" id="fo"></input> -->
+<!-- <input type="button" value="{#% if profile.status==1 %}Follow{% else %#}UnFollow" id="fol" onclick="toggleFollow({#{profile.status}#})"></input> -->
+<form method='post'>
+<input type="button" value="Follow" id="follow_btn" onclick="toggleFollow(1)"></input>
+<input type="button" value="UnFollow" id="unfollow_btn" onclick="toggleFollow(0)"></input>
+</form>
+
+{% endblock %}
+</body>
+<script type="text/javascript">
+jQuery(function() {
+    $("#follow_btn").on('click', function(){
+        var value = $(this).val();
+        $.ajax({
+            url: "{% url 'profile' %}",
+            data: {
+              'status': 1
+            },
+            dataType: 'json',
+            success: function (data) {
+                    
+            }
+        });        
+    });
+}); 
+</script> 

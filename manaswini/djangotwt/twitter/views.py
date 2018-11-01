@@ -17,6 +17,7 @@ def start(request):
 def signup(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
+        form1 = LoginForm(request.POST)
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()  
@@ -24,7 +25,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('confirmpassword')
             user = authenticate(username=user.username, password=raw_password)
             #login(request, user)
-        return render(request, 'twt/login.html', {})
+        return render(request, 'twt/login.html', {'form': form1})
     else:
         form = UserForm()
     return render(request, 'twt/signup.html', {'form': form})
@@ -50,6 +51,14 @@ def user_log(request):
                 return HttpResponseRedirect('twt/home.html')
             else:
                 return HttpResponse('Your tweet account is disabled!')
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        #user1 = authenticate(username = username, password = password)
+        userdata = Signup.objects.filter(username=username).filter(password=password)
+        user = Signup.objects.filter(username=username).filter(password=password).count()
+        #login(request, user)
+        if user==1:
+            return render(request, 'twt/home.html', {'user':userdata})
         else:
             
             return HttpResponse("Invalid login details supplied!")
