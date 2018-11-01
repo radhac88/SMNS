@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<h1>Login to your Account</h1>
+<div id="out" class="container">
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Login</button>
+</form>
+</div>
+
+<style type="text/css">
+	#out{
+		margin-left: 610px;
+		margin-top: 92px;
+		background-color: #7bb7e2e0;
+		width: 506px;
+		height: 410px;
+	}
+	p{
+		padding-top: 30px;
+		padding-bottom: 0px;
+		padding-left: 68px;
+	}
+	/*p:second-child{
+		padding-top: 30px;
+		padding-left: 68px;
+	}*/
+	h1{
+		margin-left: 670px;
+		margin-top: 70px;
+		color: #1876b9;
+
+  		}
+  		button{
+	  		margin-top: 50px;
+			margin-left: 175px;
+			font-size: 20px;
+  		}
+  		input{
+  			border-radius: 30px;
+  		}
+</style>
+{% endblock %}
