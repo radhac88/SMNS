@@ -94,17 +94,41 @@ $(document).ready(function(){
 <script type="text/javascript">
 jQuery(function() {
     $("#follow_btn").on('click', function(){
-        var value = $(this).val();
         $.ajax({
-            url: "{% url 'profile' %}",
+            url: "{% url 'profile' pk=1 %}",
             data: {
-              'status': 1
+              'action': 'follow'
+              'id': 2
             },
             dataType: 'json',
-            success: function (data) {
+            success: function () {
                     
             }
         });        
     });
 }); 
+
+// $('a.follow').click(function(e){
+// e.preventDefault();
+// $.post('{% url "user_follow" %}',
+// {
+// id: $(this).data('id'),
+// action: $(this).data('action')
+// },
+// function(data){
+// if (data['status'] == 'ok') {
+// var previous_action = $('a.follow').data('action');
+// // toggle data-action
+// $('a.follow').data('action',
+// previous_action == 'follow' ? 'unfollow' : 'follow');
+
+// // update total followers
+// var previous_followers = parseInt(
+// $('span.count .total').text());
+// $('span.count .total').text(previous_action == 'follow' ?
+// previous_followers + 1 : previous_followers - 1);
+// }
+// }
+// );
+// });
 </script> 
