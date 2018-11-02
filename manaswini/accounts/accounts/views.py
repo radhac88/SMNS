@@ -50,9 +50,18 @@ def home(request):
 
 def profile(request, pk):
 	profile= get_object_or_404(User, pk=pk)
-	if request.method == "POST":
-		follow=Follow.objects.create(followers=request.user,following=profile.id,status='1')
-		follow.save()
+	user_id = request.POST.get('id')
+	action = request.POST.get('action')
+	if user_id and action:
+		try:
+			user = User.objects.get(id=user_id)
+			if action == 'follow':
+				Profile.objects.get_or_create(user_from=request.user,user_to=user)
+			else:
+				Profile.objects.filter(user_form=request.user,user_to=user).delete()
+			return JsonResponse({'status':'ok'})
+		except User.DoesNotExist:
+			return JsonResponse({'status':'ok'})
 	return render(request,'profile.html',{'profile':profile}) 	
 
 

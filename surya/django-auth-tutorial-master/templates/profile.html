@@ -1,0 +1,101 @@
+	{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+
+
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    
+    <ul class="nav navbar-nav">
+      <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
+      
+      <li><a href="#"><i class=" fa fa-flash" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
+      <li><a href="#"><i class="fa fa-bell-o" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
+      <li><a href="#"><i class="fa fa-envelope-o" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
+      <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
+      <li><input class="search-input" type="text" id="search-query" placeholder="Search Twitter" name="q" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-dropdown-1" style="margin-top: 15px;margin-left: 250px;border-radius: 5px;height: 33px;"><button class="btn-primary"><i class="glyphicon glyphicon-search"></i></button></li>
+      <li>{% if user.is_authenticated %}<div class="dropdown">
+         <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+          >
+            
+          </p>
+
+
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+          >
+            
+          </p>
+  
+          <li><a href="{% url 'login' %}">login</a>
+          {% endif %}</li>
+            
+          </ul>
+</div>
+</li>
+      </ul>
+</div>
+    
+
+
+</nav>
+<div id="backround">
+{% for i in pic %}
+  <a href="#"><img src="/{{i.profile_image}}" class="img-circle" id="img" width="200px" height="200px" style="margin-top:150px; margin-left:70px;border: 5px solid white; z-index: 1;position:absolute;"></a>
+ {% endfor %}  
+{% for i in pic %}
+  <img src="/{{i.header_image}}" style="height: 250px; width:100%">
+{% endfor %}  
+
+  
+</div>
+
+<nav class="navbar navbar-default ">
+  <div class="container-fluid">
+     
+    <ul class="nav navbar-nav" style="margin-left:350px;">
+      <li><a href="#"><b>Following</b></a></li>
+      
+      <li><a href="#"><b>Follwers</b></a></li>
+      <li><a href="#"><b>Lists</b></a></li>
+      <li><a href="#"><b>Moments</b></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><button type="button" class="btn btn-default" id="editbtn"><b>Follow</b></button></a></li>
+    </ul>
+  </div>
+</nav><br><br>
+<h2 style="color:black; margin-left: 20px;"><a href="#" style="text-decoration: none;">{{profile.username}}</a></h2>
+<p style="margin-left: 20px;"><a href="#" style="text-decoration: none;"><b>{{profile.email}}</b></a></p>
+<!-- {% for i in twt1 %}
+
+  
+  <p>tweet:{{i.text|linebreaksbr}}</p>
+  <p>posted on:{{i.created_at}}</p>
+{% endfor %} -->
+{% for i in twt1 %}
+          <div class="container" id="twtid" style="height: 300px;width: 504px;margin-top: 10px;margin-left: 0px;border:1px solid black;">
+        
+          <div class="post">
+            <p>tweet:{{i.text|linebreaksbr}}</p>
+            <p>posted on:{{i.created_at}}</p>
+            <!-- <p><a href="{% url 'profile' pk=i.user.pk %}">tweet by:{{i.user}}</a></p> -->
+          </div>
+          </div>
+          
+
+        {% endfor %}
+       
+
+{% endblock %}
+
+
