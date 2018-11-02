@@ -16,5 +16,17 @@ class Signup(models.Model):
     def __str__(self):
         return self.username
 
-# Create your models here.
 
+
+class follow(models.Model):
+	user = models.ForeignKey(User, unique = True, related_name = 'user')
+    follows = models.ManyToManyField('self', related_name='follows', symmetrical=False)
+
+	def publish(self):
+	    self.published_date = timezone.now()
+	    self.save()
+
+	def __str__(self):
+	    return self.username
+
+# Create your models here.
