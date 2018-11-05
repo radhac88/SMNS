@@ -37,5 +37,14 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(self.user)
+class Follow(models.Model):
+    followers = models.ForeignKey(User, related_name='following', on_delete=models.CASCADE,)
+    following = models.ForeignKey(User, related_name='followers', on_delete=models.CASCADE,)
+    status = models.BooleanField(default=True)
+    
+    class Meta:
+        unique_together = ('followers', 'following')
+        
+
 
    
