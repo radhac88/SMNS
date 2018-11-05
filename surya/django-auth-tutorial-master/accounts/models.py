@@ -10,7 +10,6 @@ class Tweet(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userprofile')
     text = models.TextField(max_length=160)
     created_at = models.DateTimeField(auto_now_add=True)
-    Tweet_image = models.ImageField(upload_to='post_image', blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     def publish(self):
