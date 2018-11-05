@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<body style="background-color: #ffffff;">
+<h1>Create Your Account</h1>
+ <div id="signupdiv" class="container">
+
+  <form method="post">
+    {% csrf_token %}
+    <div id="inner">
+     {{ form.as_p }}
+    </div>
+    <!-- <div>
+      <input type="checkbox" name="show password" onclick="reveal()" id="box"> Show password<br><br>
+    </div> -->
+    <button type="submit">Sign up</button>
+ </div>
+  </form>
+
+<style type="text/css">
+      /*input{
+        height: 30px;
+        width: 440px;
+        outline: 0;
+            border-width: 0 0 2px;
+            border-color: grey;
+      }*/
+      input{
+        border-radius: 30px;
+      }
+      input:focus{
+        border-color: #5ea9dd;
+  
+      }
+      #inner{
+        margin-left: 30px;
+        margin-top: 30px;
+      }
+      #signupdiv{
+        margin-left: 620px;
+        margin-top: 115px;
+        width: 500px;
+        height: 385px;
+        background-color: #a4c6de;
+        border-radius: 30px;
+      }
+      .helptext{
+        display: none;
+      }
+      ul{
+        margin-left:60px;
+        display: none;
+
+      }
+      #id_username{
+        width: 418px;
+        height: 23px;
+        margin-left: 0px;
+      }
+      #id_email{
+        width: 418px;
+        height: 23px;
+        margin-left: 0px;
+      }
+      #id_password1{
+        width: 418px;
+        height: 23px;
+        margin-left: 0px;
+
+      }
+      #id_password2{
+        width: 418px;
+        height: 23px;
+        margin-left: 0px;
+
+      }
+      p{
+        font-size: 20px;
+      }
+      p:first-child {
+        padding-top: 40px;
+        
+      }
+      p:second-child{
+        padding-top: 100px;
+
+      }
+      button{
+        font-size: 14px;
+        padding: 6px 18px;
+        background-color: #5ea9dd;
+        margin-left: 190px;
+        margin-top: 45px;
+        border-radius: 12%; 
+      }
+      h1{
+        margin-left: 670px;
+        margin-top: 70px;
+        color: #1876b9;
+
+      }
+    
+    </style>
+    <!-- <script type="text/javascript">
+      function reveal()
+      {
+      if(document.getElementById('box').checked)
+        {document.getElementById("id_password").type='text';
+      document.getElementById("id_confirmpassword").type='text';}
+      else{
+      document.getElementById("id_password").type='password';
+      document.getElementById("id_confirmpassword").type='password';
+      }
+      }
+    </script> -->
+{% endblock %}
+</body>

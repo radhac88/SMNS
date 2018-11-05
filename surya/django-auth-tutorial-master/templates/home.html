@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+
+
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    
+    <ul class="nav navbar-nav">
+      <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
+      
+      <li><a href="#"><i class=" fa fa-flash" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
+      <li><a href="#"><i class="fa fa-bell-o" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
+      <li><a href="#"><i class="fa fa-envelope-o" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
+      <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
+      <li><input class="search-input" type="text" id="search-query" placeholder="Search Twitter" name="q" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-dropdown-1" style="margin-top: 15px;margin-left: 250px;border-radius: 5px;height: 33px;"><button class="btn-primary"><i class="glyphicon glyphicon-search"></i></button></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+      {% else %}
+        <li><a href="{% url 'login' %}">login</a></li>
+      {% endif %}
+        <!-- <div class="dropdown"> -->
+         <!-- <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+          >
+            
+          </p>
+
+
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            
+            <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+          >
+            
+          </p>
+  
+    
+          <li><a href="{% url 'login' %}">login</a>
+          </li>
+            
+          </ul> -->
+</div>
+</li>
+      </ul>
+      
+     
+        
+      
+  
+
+      
+    
+    
+
+
+   
+</div>
+    
+
+
+</nav>
+
+
+<div style="background-color:#d1e0e0;height:800px; ">
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4">
+			<div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px;">
+				<a href="#"><img src="{% static 'css/images/camera.jpg' %}" class="img-circle" id="img" width="70px" height="70px" style="margin-top:80px; margin-left:30px"></a><input type="file" id="profile" name="">
+					<h5><a href="#" style="margin-left:100px;color: black; text-decoration: none;"><b>{{user.username}}</b> <br>  
+					&emsp;&emsp;&nbsp &emsp;&nbsp &emsp;&emsp;<i><b>{{user.email}}</b></i></a></h5>
+					<div class="element">
+						<a href="#" style="text-decoration: none;">&emsp;Tweets</a> <a href="#" style="text-decoration: none;"> &nbsp &emsp; Following</a><a href="#" style="text-decoration: none;">&nbsp &emsp; Followers</a>
+
+					</div>
+				
+				
+			</div>
+			<div style="width: 300px;background-color: white; height:150px;">
+				</div>
+				
+		</div>
+		<div class="col-sm-6">
+			<div style="background-color:#b3f0ff;height:180px;width:500px;margin-top:10px;">
+				<!-- <span><a href="#"><i class=" fa fa-user-circle-o"  style="font-size:35px; float: left;margin-left: 5px;margin-top:10px;"></i></a></span> -->
+        <form method="POST" class="tweet-form"><!-- <textarea rows="4" cols="55" name="query"></textarea> -->
+          {% csrf_token %}
+          {{ form.as_p }}
+
+				
+					<div class="element">
+  						<i class="fa fa-camera" style="margin-left: 20px;margin-bottom: 30px;" id="camera1"></i>
+  						<input type="file" id="choose" >
+  						<button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px;">tweet</button>
+
+ 
+					</div>
+        </form>
+        
+        {% for i in twt1 %}
+          <div class="container" id="twtid" style="height: 300px;width: 504px;margin-top: 10px;margin-left: 0px;border:1px solid black;">
+        
+          <div class="post">
+            <p>tweet:{{i.text|linebreaksbr}}</p>
+            <p>posted on:{{i.created_at}}</p>
+            <p><a href="{% url 'profile' pk=i.user.pk %}">tweet by:{{i.user}}</a></p>
+          </div>
+          </div>
+          
+
+        {% endfor %}
+        
+        <!-- <form method="POST" class="tweet-form">{% csrf_token %}
+          {{ form.as_p }}
+
+          <button type="submit" class="save btn btn-default">save</button>
+        </form> -->
+			</div>
+		</div>
+		
+	</div>
+
+</div>
+</div>
+<!-- <style type="text/css">
+  label{
+    display: none;
+  }
+</style> -->
+<script type="text/javascript">
+$("camera1").click(function () {
+  $("input[type='file']").trigger('click');
+});
+
+$('input[type="file"]').on('change', function() {
+  var val = $(this).val();
+  $(this).siblings('span').text(val);
+})
+$("#img").click(function () {
+  $("input[type='file']").trigger('click');
+});
+
+$('input[type="file"]').on('change', function() {
+  var val = $(this).val();
+  $(this).siblings('span').text(val);
+})
+
+</script>
+<!-- <script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown = document.getElementById("myDropdown");
+      if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+      }
+  }
+}
+</script> -->
+
+
+
+
+  
+
+
+
+
+{% endblock %}
