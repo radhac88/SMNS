@@ -14,8 +14,6 @@ from django.contrib.auth import login, authenticate
 
 
 
-
-
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)

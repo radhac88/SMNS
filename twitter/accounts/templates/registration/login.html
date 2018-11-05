@@ -23,7 +23,7 @@
 {% block content %}
 <body class="three-col logged-out ms-windows" 
 data-fouc-class-names="swift-loading no-nav-banners"
-dir="ltr">
+dir="ltr" onload="myFunction1()">
 <div id="doc" data-at-shortcutkeys="{&quot;Enter&quot;:&quot;Open Tweet details&quot;,&quot;o&quot;:&quot;Expand photo&quot;,&quot;/&quot;:&quot;Search&quot;,&quot;?&quot;:&quot;This menu&quot;,&quot;j&quot;:&quot;Next Tweet&quot;,&quot;k&quot;:&quot;Previous Tweet&quot;,&quot;Space&quot;:&quot;Page down&quot;,&quot;.&quot;:&quot;Load new Tweets&quot;,&quot;gu&quot;:&quot;Go to user\u2026&quot;}" class="route-login login-responsive">
   <div class="topbar js-topbar">
     <div class="global-nav global-nav--newLoggedOut" data-section-term="top_nav">
@@ -75,6 +75,28 @@ dir="ltr">
             </label>
           </div>
         </form>
+<!--       <form role="form"  class="t1-form clearfix signin js-signin" method="post" action="/">
+          {% csrf_token %}
+          <div class="form-group">
+              {% for field in form %}
+                  {% if field.html_name == 'username' %}
+                  <div class="input-group">
+                      <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-user"></span></span>
+                      <input class="form-control" id="{{ field.id_for_label }}" maxlength="30" name="{{ field.html_name }}" placeholder="Username" type="text" style="margin-bottom: 20px;" /> 
+                      {{ field.errors }}
+                  </div>
+                  {% else %}
+                      <div class="input-group">
+                      <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-user"></span></span>
+                      <input class="form-control" id="{{ field.id_for_label }}" maxlength="30" name="{{ field.html_name }}" placeholder="Password" type="password" style="margin-bottom: 20px;"/> 
+                      {{ field.errors }}
+                  </div>
+                  {% endif %}
+              {% endfor %}
+              <button type="submit" class="submit EdgeButton EdgeButton--primary EdgeButtom--medium">Log in</button>
+              <input type="hidden" name="next" value="{{ next }}" />
+          </div>
+      </form> -->
       </div>
       <div class="clearfix mobile has-sms">
         <p class="signup-helper">
@@ -98,10 +120,15 @@ function myFunction() {
         x.type = "password";
     }
 }
+function myFunction1() {
+    document.getElementById("id_username").placeholder = "please enter username";
+    document.getElementById("id_password").placeholder = "please enter password";
+}
 </script>
 <style type="text/css">
   p{
-        margin-bottom: 25px;
+    margin-bottom: 20px;
   }
 </style>
+
 {% endblock %}
