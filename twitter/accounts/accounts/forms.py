@@ -4,7 +4,8 @@ from .models import Follow
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-
+from django.contrib.auth.forms import AuthenticationForm
+from django.forms.widgets import PasswordInput, TextInput
         
 class TweetForm(forms.ModelForm):
 	
@@ -34,9 +35,5 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ('bio','birth_date','location','profile_image','header_image',)
                   
-
-
-
-
 
 

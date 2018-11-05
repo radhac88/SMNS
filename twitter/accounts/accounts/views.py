@@ -10,6 +10,10 @@ from django.utils import timezone
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import User
 from .forms import SignUpForm,ProfileForm
+from django.contrib.auth import login, authenticate
+
+
+
 
 
 def signup(request):
