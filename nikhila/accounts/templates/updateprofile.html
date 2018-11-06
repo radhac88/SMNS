@@ -136,7 +136,7 @@ $('input[type="file"]').on('change', function() {
         <div class="modal-body" style="padding:40px 50px;">
         <button type="submit" class="btn btn-default pull-right" data-dismiss="modal" style="border-radius: 15px; margin-left: 1100px;">Cancel</button>
           
-          <form role="form" method="post" enctype="multipart/form-data">
+          <form role="form"  method="post" enctype="multipart/form-data">
             
               {% csrf_token %}
               <h2><b>{{user.username}}</b></h2> 

@@ -1,0 +1,15 @@
+   {% extends 'base.html' %}
+
+{% block content %}
+    {% for comment in comment %}
+    <div class="comment">
+        <div class="date">{{ comment.created_at }}</div>
+        <strong>{{ comment.twtid }}</strong>
+        <p>{{ comment.text|linebreaks }}</p>
+        <img class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{comment.image }}" />
+    </div>
+{% empty %}
+    <p>No comments here yet :(</p>
+{% endfor %}
+
+{% endblock %}
