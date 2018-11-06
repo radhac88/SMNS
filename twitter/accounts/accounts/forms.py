@@ -4,7 +4,8 @@ from .models import Follow,comment
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-
+from django.contrib.auth.forms import AuthenticationForm
+from django.forms.widgets import PasswordInput, TextInput
         
 class TweetForm(forms.ModelForm):
 	
@@ -20,13 +21,10 @@ class TweetForm(forms.ModelForm):
 
 
 class SignUpForm(UserCreationForm):
-    # first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    # last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
-
+    email = forms.EmailField(max_length=254)
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2', )
+        fields = ('username', 'email', 'password1','password2')
 
 
 class ProfileForm(forms.ModelForm):
@@ -40,9 +38,5 @@ class commentForm(forms.ModelForm):
     class Meta:
         model = comment
         fields = ('text','image',)
-
-
-
-
 
 
