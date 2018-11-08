@@ -168,7 +168,10 @@
 							
 						
 						</div>	
-
+							<a href="{% url 'comments' pk=i.pk %}">Comments: {{ i.comments.count }}</a>
+						<p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'savecomment' pk=i.pk }" data-pk="{{i.pk}}" data-target="#myModal" data-user="{{i.user}}" data-text="{{i.text|linebreaksbr}}" id="modalbutton"></p>
+						<p>posted on:{{i.created_at}}</p>
+						
 						<p>posted on:{{i.created_at}}</p>
 						
 					</div>
@@ -277,12 +280,61 @@ $(document).ready(function(){
  
 
 
-</script>
+<script type="text/javascript">
+					$(modalbutton).click(function() {
+	    			var pk = $(this).data("pk");
+	    			var text = $(this).data("text");
+	    			var user=$(this).data("user");
+	    			var url = "{% url 'savecomment' pk=0 %}";
+
+	    			url = url.replace(0,pk);
+
+	         		$("#form1").attr("action", url);
+	         		$("#user").append(user);
+	         		$("#user1").append("<b>"+user+":</b>");
+	         		$("#text").append(text+"<hr>");
+	        		console.log(pk);
+					});
+					</script>
+
+
+<div id="myModal" class="modal fade " role="dialog" style="height: 700px; width: 100%;">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="user">Reply To </h4>
+      </div>
+      <div class="modal-body">
+      <p id="user1"></p>
+      <p id="text"></p>
+        <form role="form" method="post" class="tweet-form" enctype="multipart/form-data" id="form1"> 
+
+          {% csrf_token %}
+          {{ form1.as_p }}
+
+
+			<button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">Reply</button>
+        </form>
+      </div>
+     
+    </div>
+
+  </div>
+</div>
+
+
+
+</div>
+
+</div>
 
 
 
 
- </body> 
+
+
 
 
 
