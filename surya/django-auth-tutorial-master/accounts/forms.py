@@ -3,6 +3,7 @@ from django import forms
 from .models import Tweet,Profile
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Follow
 
 
 class SignUpForm(UserCreationForm):
@@ -20,7 +21,7 @@ class TweetForm(forms.ModelForm):
 
     class Meta:
         model = Tweet
-        fields = ('text',)
+        fields = ('text','profile_image',)
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile

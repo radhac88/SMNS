@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\surya.kala\Desktop\django-auth-tutorial-master\myvenv"
+VIRTUAL_ENV="C:\gitfiles\SMNS\surya\django-auth-tutorial-master\myvenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

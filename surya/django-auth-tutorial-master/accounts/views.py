@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from .forms import TweetForm
-from .models import Tweet
+from .models import Tweet,Follow
 from django.shortcuts import render,redirect,get_object_or_404
 from django.utils import timezone
 from .forms import SignUpForm,ProfileForm
@@ -40,64 +40,58 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
-# def user_log(request):
-#     if request.method == 'POST':
-#         form = LoginForm(request.POST)
-#         username = request.POST.get('username')
-#         password = request.POST.get('password')
-
-#         user = authenticate(username=username, password=password)
-#         if user is not None:
-#             login(request, user)
-#             import ipdb
-#             ipdb.set_trace()    
-#             return HttpResponseRedirect('/home')
-#         else:
-#             form = LoginForm()
-#             import ipdb
-#             ipdb.set_trace() 
-#         return render(request, 'accounts/login.html', {'form':form})
-            
-        # import ipdb
-        # ipdb.set_trace()
-
-        # if user:
-        #     if user.is_active:
-        #         login(request, user)
-        #         return HttpResponseRedirect('tweet/home.html')
-        #     else:
-        #         return HttpResponse('Your tweet account is disabled!')
-        # else:
-            
-        #     return HttpResponse("Invalid login details supplied!")
-    # else:
-    #     #import ipdb
-    #     #ipdb.set_trace()
-    #     if request.user.is_active:
-    #         return HttpResponseRedirect('/home')
-    #     else:
-    #         form = LoginForm()
-
-    # return render(request, 'tweet/login.html', {'form':form})    
 def home(request):
+    # twt = Tweets.objects.all()
+    followers=Follow.objects.filter(following=request.user).count()
+    following=Follow.objects.filter(followers=request.user).count()
+    tweetscount=Tweets.objects.filter(user=request.user).count()
     if request.method == "POST":
-        form = TweetForm(request.POST)
+        form = TweetForm(request.POST,request.FILES)
+        # followers=Follow.objects.filter(following=request.user).count()
+        # following=Follow.objects.filter(followers=request.user).count()
+        # tweetscount=Tweets.objects.filter(user=request.user).count()
+
         if form.is_valid():
-            tweet = form.save(commit=False)
-            tweet.user=request.user
-            
-            tweet.published_date = timezone.now()
-            twt = Tweet.objects.all().order_by('-published_date')
-            tweet.save()
-            return render(request, 'home.html', {'form': form, 'twt1':twt})  
+            tweets = form.save(commit=False)
+            tweets.profile_image = form.cleaned_data['profile_image']
+            tweets.user=request.user
+            tweets.created_at = timezone.now()
+            # upload(request.FILES['profile_image'])
+
+            tweets.save()
+        twt = Tweets.objects.all().order_by('-created_at')  
+        return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})  
     else:
         if request.user.is_active:
-            twt = Tweet.objects.all().order_by('-published_date')
+            twt = Tweets.objects.all().order_by('-created_at')
             form=TweetForm()
-            return render(request, 'home.html', {'form': form, 'twt1':twt})
+            return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})
         else:
             return render(request, 'start.html')   
-    return render(request, 'home.html', {'form': form})	
+    return render(request, 'home.html', {'form': form})
+    
+# def home(request):
+#     followers=Follow.objects.filter(following=request.user).count()
+#     following=Follow.objects.filter(followers=request.user).count()
+#     tweetscount=Tweets.objects.filter(user=request.user).count()
+#     if request.method == "POST":
+#         form = TweetForm(request.POST)
+#         if form.is_valid():
+#             tweet = form.save(commit=False)
+#             tweet.user=request.user
+            
+#             tweet.published_date = timezone.now()
+#             twt = Tweet.objects.all().order_by('-published_date')
+#             tweet.save()
+#             return render(request, 'home.html', {'form': form, 'twt1':twt})  
+#     else:
+#         if request.user.is_active:
+#             twt = Tweet.objects.all().order_by('-published_date')
+#             form=TweetForm()
+#             return render(request, 'home.html', {'form': form, 'twt1':twt})
+#         else:
+#             return render(request, 'start.html')   
+#     return render(request, 'home.html', {'form': form})	
 def profile(request, pk):
     profile= get_object_or_404(User, pk=pk)
     pic=Profile.objects.filter(user=profile.id)

@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="C:\Users\surya.kala\Desktop\django-auth-tutorial-master\myvenv"
+$env:VIRTUAL_ENV="C:\gitfiles\SMNS\surya\django-auth-tutorial-master\myvenv"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name

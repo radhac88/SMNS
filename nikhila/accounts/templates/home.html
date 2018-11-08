@@ -1,7 +1,22 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{% static 'css/twtstyles.css' %}">
+  <link rel="shortcut icon" href="//abs.twimg.com/favicons/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" sizes="any" href="https://abs.twimg.com/a/1541103114/icons/favicon.svg" color="#1da1f2">
+  <link rel="apple-touch-icon" href="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" sizes="192x192">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css' integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns' crossorigin='anonymous'>
+</head>
 
 
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css' integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns' crossorigin='anonymous'>
 
 
 
@@ -18,25 +33,35 @@
     <ul class="nav navbar-nav">
       <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
       
-      <li><a href="#"><i class=" fa fa-flash" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
-      <li><a href="#"><i class="fa fa-bell-o" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
-      <li><a href="#"><i class="fa fa-envelope-o" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
-      <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
-      <li><input class="search-input" type="text" id="search-query" placeholder="Search Twitter" name="q" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-dropdown-1" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button class="btn-primary"><i class="glyphicon glyphicon-search"></i></button></li>
+      <li><a href="#"><i class=" fas fa-bolt" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
+      <li><a href="#"><i class="far fa-bell" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
+      <li><a href="#"><i class="far fa-envelope" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
+      <li><a href="#"><i class="fab fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
+      <li><input type="text" placeholder="Search.." name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
+    background: #2196F3;
+    color: white;
+    font-size:8px;
+    margin-top:15px;
+    border: 1px solid grey;
+    border-left: none;cursor: pointer;"><i class="fa fa-search example" style="font-size:17px"></i></button></li>
       <li>
-      <div class="dropdown">
-    <p class="dropdown-toggle fa fa-user-circle-o" data-toggle="dropdown" type="button" style="font-size:30px;margin-top: 15px;margin-left: 30px;"aria-haspopup="true" aria-expanded="true" id="ddm1" onclick="one()"></p>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"  id="ddm" >
-    	<li><a href="{% url 'updateprofile' %}">updateprofile</a></li>
+    <div class="dropdown">
+    <p class="dropdown-toggle fas fa-user-circle" data-toggle="dropdown" type="button" style="font-size:40px;margin-top: 15px;margin-left:90px;"aria-haspopup="true" aria-expanded="true"></p>
+    <ul class="dropdown-menu" style="margin-left:100px;">
+    	<li><a class="dropdown-item" href="{% url 'updateprofile' %}"><b>{{user.username}}</b><br>{{user.email}}</a>
+    	<li class="divider"></li>
+    	<li><a class="dropdown-item" href="{% url 'updateprofile' %}">
+    		<font face="verdana">updateprofile</font></a></li>
+    	<li class="divider"></li>
       {% if user.is_authenticated %}
-        <li><a href="{% url 'logout' %}">Logout</a></li>
+        <li><a href="{% url 'logout' %}" >Logout</a></li>
       {% else %}
         <li><a href="{% url 'login' %}">login</a></li>
       {% endif %}
-      </li>
+      
     </ul>
-
-
+  </div>
+</li>
   </ul>    
     
 
@@ -48,7 +73,9 @@
 	<div class="row">
 		<div class="col-sm-4">
 			<div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px; margin-left: 115px;">
-				<a href="#"><img src="{% static "css/images/camera.jpg" %}" class="img-circle" id="img" width="70px" height="70px" style="margin-top:80px; margin-left:30px"></a><input type="file" id="profile" name="">
+				{% for i in pic %}
+					<a href="#"><img src="/{{i.profile_image}}" class="img-circle" width="90px" height="90px" style="margin-top:60px; margin-left:30px"></a>
+				{% endfor %}
 					<h5><a href="#" style="margin-left:100px;color: black; text-decoration: none;"><b>{{user.username}}</b> <br>  
 					&emsp;&emsp;&nbsp &emsp;&nbsp &emsp;&emsp;<i><b>{{user.email}}</b></i></a></h5>
 					
@@ -75,20 +102,23 @@
 				
 		</div>
 		<div class="col-sm-6">
-			<div style="background-color:#b3f0ff;height:180px;width:500px;margin-top:10px;">
+			<div style="background-color:#b3ecff;height:90px;width:600px;margin-top:10px;">
+				<i class="fas fa-user-circle" id="hide" style="float: left; margin-left:10px; margin-top: 20px;font-size: 25px;"></i>
 				
-        <form role="form" method="post" class="tweet-form" enctype="multipart/form-data"> 
+        <form method="POST" class="tweet-form" enctype="multipart/form-data" autocomplete="off"><!-- <textarea rows="4" cols="55" name="query"></textarea> -->
           {% csrf_token %}
           {{ form.as_p }}
 
+
 				
-					<!-- <div class="element"> -->
-  						<!-- <i class="fa fa-camera" style="margin-left: 20px;margin-bottom: 30px;" id="camera"></i>
-  						<input type="file" id="choose" > -->
-  						<button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">tweet</button>
+					<div class="element" id="show" style="background-color:#b3ecff; height: 90px; width: 600px;display: none; ">
+  						<i class="fa fa-camera" style="margin-left:30px;margin-top: 35px;" id="camera"  data-toggle="tooltip" data-placement="top" title="Add photos"" ></i></a>
+  						<input type="file" id="choose" ><i class='fas fa-image' style='margin-left: 40px;margin-top: 30px; font-size:24px'></i><i class='fas fa-poll' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><i class='fas fa-map-marker-alt' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><button class="btn btn-default btn-md" type="submit" style="width:70px;background-color:#3a85ff;color:white;margin-left: 300px; margin-top: 30px;">tweet</button>
+  						<!-- <button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">tweet</button> -->
 
  
-					<!-- </div> -->
+					</div>
+					
         </form>
 			{% for i in twt1 %}
 				<div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;">
@@ -121,6 +151,7 @@
 
 
 
+
 <style type="text/css">
 	#spa{
 		border:0px solid black;
@@ -129,6 +160,17 @@
 		margin-top: 16px;
 		margin-left: 38px;
 		border-radius: 8%;
+	}
+	label:first-child{
+		display: none;
+	}
+	#id_text{
+		margin-left:10px;
+		margin-top:20px;
+		width: 90%; 
+		height:50px;
+		border-radius: 10px;
+
 	}
 	/*p:nth-child(2){
 		margin: 0 15px 10px;
@@ -142,36 +184,40 @@
 	p:nth-child(4){
 		margin:215px 0 0 10px;
 	}
-	/*#id_profile_image{
+	#id_profile_image{
 		display: none;
 	}
-*/
+
 
 </style>
 
 <script type="text/javascript">
-$("i").click(function () {
+$("#camera").click(function () {
   $("input[type='file']").trigger('click');
 });
 
 $('input[type="file"]').on('change', function() {
   var val = $(this).val();
   $(this).siblings('span').text(val);
-})
-$("#img").click(function () {
-  $("input[type='file']").trigger('click');
+})</script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#hide").click(function(){
+        $("#show").hide();
+    });
+    $("#id_text").click(function(){
+        $("#show").show();
+    });
+});	
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
 });
+</script>
 
-$('input[type="file"]').on('change', function() {
-  var val = $(this).val();
-  $(this).siblings('span').text(val);
-})
-/*document.getElementById("#logstart").onclick = function () {
-	location.href = "start/";
-}*/
-$( "#ddm1" ).one( "click", function() {
-   $("#ddm").css("display","block");
-});
+
+
 
 
 
@@ -236,3 +282,5 @@ $( "#ddm1" ).one( "click", function() {
 
 {% endblock %}
 
+</body>
+</html>
