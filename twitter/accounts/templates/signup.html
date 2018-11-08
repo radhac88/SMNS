@@ -18,6 +18,7 @@
 <link rel="alternate" href="android-app://com.twitter.android/twitter/login?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eandroidseo%7Ctwgr%5Elogin">
 <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Twitter">
 <link id="async-css-placeholder">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 {% endblock %}  
 {% block content %}
 <body class="three-col logged-out ms-windows" 
@@ -52,7 +53,7 @@ dir="ltr">
     <div class="page-canvas">
       <div class="signin-wrapper" data-login-message="">
         <h1>Sign Up to Twitter</h1>
-<form method="post">
+<form method="post" action="{%url 'signup'%}">
     {% csrf_token %}
     <div id="inner">
      {{ form.as_p }}
@@ -79,10 +80,13 @@ dir="ltr">
 <script>
 function myFunction() {
     var x = document.getElementById("id_password2");
-    if (x.type === "password") {
+    var y = document.getElementById("id_password1");
+    if (x.type && y.type === "password") {
         x.type = "text";
+        y.type = "text";
     } else {
         x.type = "password";
+        y.type = "password";
     }
 }
 </script>
@@ -90,8 +94,25 @@ function myFunction() {
   p{
         margin-bottom: 25px;
   }
-  .helptext,li{
-  display: none;
-}
+  #id_username{
+        margin-left: 80px;
+  }
+  #id_email{
+        margin-left: 107px;
+  }
+  #id_password1{
+        margin-left: 82px;
+  }
+  li{
+    font-size: 12px;
+    list-style-type: disc;
+  }
+  .helptext{
+    display: -webkit-box;
+    font-size: 12px;
+  }
+  input{
+    width: 279px;
+  }
 </style>
 {% endblock %}

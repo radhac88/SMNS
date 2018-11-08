@@ -73,9 +73,13 @@
 	<div class="row">
 		<div class="col-sm-4">
 			<div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px; margin-left: 115px;">
+<<<<<<< HEAD
 				{% for i in pic %}
 					<a href="#"><img src="/{{i.profile_image}}" class="img-circle" width="90px" height="90px" style="margin-top:60px; margin-left:30px"></a>
 				{% endfor %}
+=======
+				<a href="#"><img src="{% static 'css/images/camera.jpg' %}" class="img-circle" id="img" width="70px" height="70px" style="margin-top:80px; margin-left:30px"></a><input type="file" id="profile" name="">
+>>>>>>> 6400e429fc575f6ca8632debd56eaf534c4a0928
 					<h5><a href="#" style="margin-left:100px;color: black; text-decoration: none;"><b>{{user.username}}</b> <br>  
 					&emsp;&emsp;&nbsp &emsp;&nbsp &emsp;&emsp;<i><b>{{user.email}}</b></i></a></h5>
 					
