@@ -43,10 +43,12 @@ def signup(request):
 
 def home(request):
 	if request.method == "POST":
+		form = TweetForm(request.POST,request.FILES)
 		form = TweetForm(request.POST)
 		form1 = commentForm(request.POST)
 		if form.is_valid():
 			tweet = form.save(commit=False)
+			# tweet.profile_image = form.cleaned_data['profile_image']
 			tweet.user=request.user
 
 			tweet.published_date = timezone.now()

@@ -14,7 +14,13 @@
     </div>
     <!-- <div>
       <input type="checkbox" name="show password" onclick="reveal()" id="box"> Show password<br><br>
-    </div> -->
+    </div -->
+    <!-- {% load my_custom_tags %}
+
+    {% if checkbox|is_checkbox %}
+      document.getElementById("id_password1").type='text';
+      document.getElementById("id_password2").type='text';
+    {% endif %} -->
     <button type="submit">Sign up</button>
  </div>
   </form>
@@ -42,7 +48,7 @@
   			margin-left: 620px;
   			margin-top: 115px;
   			width: 500px;
-  			height: 385px;
+  			height: 500px;
   			background-color: #a4c6de;
   			border-radius: 30px;
   		}
@@ -57,6 +63,12 @@
   			height: 23px;
   			margin-left: 0px;
   		}
+      #id_email{
+        width: 418px;
+        height: 23px;
+        margin-left: 0px;
+
+      }
   		#id_password1{
   			width: 418px;
   			height: 23px;
@@ -99,12 +111,12 @@
     <!-- <script type="text/javascript">
       function reveal()
       {
-      if(document.getElementById('box').checked)
-        {document.getElementById("id_password").type='text';
-      document.getElementById("id_confirmpassword").type='text';}
+      if(document.getElementById('id_checkbox').checked)
+        {document.getElementById("id_password1").type='text';
+      document.getElementById("id_password2").type='text';}
       else{
-      document.getElementById("id_password").type='password';
-      document.getElementById("id_confirmpassword").type='password';
+      document.getElementById("id_password1").type='password';
+      document.getElementById("id_password2").type='password';
       }
       }
     </script> -->

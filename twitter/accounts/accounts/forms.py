@@ -8,16 +8,11 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.forms.widgets import PasswordInput, TextInput
         
 class TweetForm(forms.ModelForm):
-	
+
 
     class Meta:
         model = Tweets
         fields = ('text','profile_image',)
-    # class Meta:
-    # 	model = Follow
-    # 	fields = ('profile_pic',)
-    		
-
 
 
 class SignUpForm(UserCreationForm):
