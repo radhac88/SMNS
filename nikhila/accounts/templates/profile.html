@@ -70,7 +70,7 @@
       <li><a href="#"><b>Moments</b></a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><button type="button" class="btn btn-default" id="editbtn"><b>Follow</b></button></a></li>
+      <li><a href="#"><button type="button" class="btn btn-default" id="follow_btn"><b>Follow</b></button></a></li>
     </ul>
   </div>
 </nav><br><br>
@@ -94,7 +94,32 @@
           
 
         {% endfor %}
-       
+
+<script type="text/javascript">
+ $(document).ready(function(){
+   $("#follow_btn").click(function(){
+  $.ajax({
+            url: "{% url 'profile' pk=1 %}",
+            data: {
+              'action': 'follow'
+              'id': 1
+            },
+            dataType: 'json',
+            success: function () {
+                console.log(success) 
+                $("#follow_btn").hide();
+                $("#unfollow_btn").show();
+
+            }
+        });
+});
+
+
+</script>
+
+
+
+
 
 {% endblock %}
 
