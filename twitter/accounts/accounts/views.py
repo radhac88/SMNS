@@ -11,6 +11,16 @@ from django.shortcuts import render,redirect,get_object_or_404
 from .models import User
 from .forms import SignUpForm,ProfileForm
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
+from .models import Tweets,Follow,Profile
+from .forms import TweetForm
+from django.utils import timezone
+from django.shortcuts import render,redirect,get_object_or_404
+from .models import User
+from .forms import SignUpForm,ProfileForm
+from django.contrib.auth import authenticate,login
 
 
 
@@ -47,19 +57,21 @@ def home(request):
 			followers=Follow.objects.filter(following=request.user).count()
 			following=Follow.objects.filter(followers=request.user).count()
 			tweetscount=Tweets.objects.filter(user=request.user).count()
-			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1})  
+			pic=Profile.objects.filter(user=request.user)
+			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,'pic':pic})  
 	else:
 		if request.user.is_active:
 			twt = Tweets.objects.all().order_by('-created_at')
 			followers=Follow.objects.filter(following=request.user).count()
 			following=Follow.objects.filter(followers=request.user).count()
 			tweetscount=Tweets.objects.filter(user=request.user).count()
+			pic=Profile.objects.filter(user=request.user)
 			form=TweetForm()
 			form1 = commentForm(request.POST)
-			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1})
+			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,'pic':pic})
 		else:
 			return render(request, 'start.html')
-	return render(request, 'home.html', {'form': form})	
+	return render(request, 'home.html', {'form': form,'pic':pic})	
 
 def profile(request, pk):
     profile= get_object_or_404(User, pk=pk)

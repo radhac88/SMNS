@@ -32,6 +32,7 @@ def signup(request):
 
 
 def home(request):
+	pic=Profile.objects.filter(user=request.user)
 	if request.method == "POST":
 		form =TweetForm(request.POST,request.FILES)
 		form1=commentForm(request.POST,request.FILES)
@@ -44,7 +45,7 @@ def home(request):
 			followers=Follow.objects.filter(following=request.user).count()
 			following=Follow.objects.filter(followers=request.user).count()
 			tweetscount=Tweets.objects.filter(user=request.user).count()
-			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1})  
+			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,'pic':pic})  
 		
 	else:
 		if request.user.is_active:
@@ -54,7 +55,7 @@ def home(request):
 			tweetscount=Tweets.objects.filter(user=request.user).count()
 			form=TweetForm()
 			form1=commentForm(request.POST)
-			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1})
+			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,'pic':pic})
 		else:
 			return render(request, 'start.html')
 	return render(request, 'home.html', {'form': form})	
@@ -63,7 +64,20 @@ def profile(request, pk):
     profile= get_object_or_404(User, pk=pk)
     pic=Profile.objects.filter(user=profile.id)
     twt=Tweets.objects.filter(user=profile.id)
-    return render(request,'profile.html',{'profile':profile,'twt1':twt,'pic':pic}) 
+    user_id = request.POST.get('id')
+    action = request.POST.get('action')
+    user = User.objects.get(id=user_id)
+    if user_id and action:
+    	try:
+    		user = User.objects.get(id=user_id)
+    		if action == 'follow':
+    			Follow.objects.get_or_create(followers=request.user,following=user)
+    		else:
+    			Follow.objects.filter(followers=request.user,following=user).delete()
+    		return JsonResponse({'status':'ok'})
+    	except User.DoesNotExist:
+    		return JsonResponse({'status':'ok'})
+    return render(request,'profile.html',{'profile':profile,'twt1':twt,'pic':pic,"action":action,'user':user}) 
 
 def updateprofile(request):
     pic=Profile.objects.filter(user=request.user)
