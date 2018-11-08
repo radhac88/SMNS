@@ -38,7 +38,6 @@ def home(request):
 		if form.is_valid():
 			tweet = form.save(commit=False)
 			tweet.user=request.user
-
 			tweet.published_date = timezone.now()
 			twt = Tweets.objects.all().order_by('-created_at')
 			tweet.save()

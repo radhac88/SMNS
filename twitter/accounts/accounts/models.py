@@ -51,3 +51,5 @@ class comment(models.Model):
 
     def __str__(self):
         return str(self.twtid)
+
+# for likes to post 

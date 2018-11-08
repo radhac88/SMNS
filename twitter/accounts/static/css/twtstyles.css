@@ -5,8 +5,9 @@
     background-size: cover; 
     height: 920px;
     width: 920px;
+    max-width: 100%;
+    height: auto;
 }
-
 #span{
 	position: relative;
 	top: 300px;

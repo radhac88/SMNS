@@ -1,29 +1,17 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-
-
-
-
-
 {% block content %}
 <body style="background-color: #d1e0e0;">
-
-
-
 <div class="container-fluid">
-
-	<nav class="navbar navbar-default">
-  
-   
+	<nav class="navbar navbar-default"> 
     <ul class="nav navbar-nav">
       <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
-      
       <li><a href="#"><i class=" fa fa-flash" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
       <li><a href="#"><i class="fa fa-bell-o" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
       <li><a href="#"><i class="fa fa-envelope-o" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
       <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
       <li><input class="search-input" type="text" id="search-query" placeholder="Search Twitter" name="q" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-dropdown-1" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button class="btn-primary"><i class="glyphicon glyphicon-search"></i></button></li>
-      <li>
+    <li>
       <div class="dropdown">
     <p class="dropdown-toggle fa fa-user-circle-o" data-toggle="dropdown" type="button" style="font-size:30px;margin-top: 15px;margin-left: 30px;"aria-haspopup="true" aria-expanded="true" id="ddm1" onclick="one()"></p>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"  id="ddm" >
@@ -33,25 +21,15 @@
       {% else %}
         <li><a href="{% url 'login' %}">login</a></li>
       {% endif %}
-      </li>
-    </ul>
-
-
+    </li>
   </ul>    
-    
-
-
 </nav>
-
-
-
 	<div class="row">
 		<div class="col-sm-4">
 			<div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px; margin-left: 115px;">
 				<a href="#"><img src="{% static 'css/images/camera.jpg' %}" class="img-circle" id="img" width="70px" height="70px" style="margin-top:80px; margin-left:30px"></a><input type="file" id="profile" name="">
 					<h5><a href="#" style="margin-left:100px;color: black; text-decoration: none;"><b>{{user.username}}</b> <br>  
 					&emsp;&emsp;&nbsp &emsp;&nbsp &emsp;&emsp;<i><b>{{user.email}}</b></i></a></h5>
-					
 						<div class="row">
 							<div class="col-sm-4">
 							<a href="#" style="text-decoration: none; margin-top: 10px;">Tweets</a>
@@ -66,9 +44,6 @@
 							<h6>&emsp;{{followers}}</h6>
 							</div>
 						</div>
-					
-				
-				
 			</div>
 			<div style="width: 300px;background-color: white; height:160px; margin-left: 115px;">
 				</div>
