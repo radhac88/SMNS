@@ -4,12 +4,13 @@ from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
-from .models import Tweets,Follow,Profile
+from .models import Tweets,Follow,Profile,comment
 from .forms import TweetForm
 from django.utils import timezone
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import User
-from .forms import SignUpForm,ProfileForm
+from .forms import SignUpForm,ProfileForm,commentForm
+from django.contrib.auth import authenticate,login
 
 
 def signup(request):
@@ -32,18 +33,19 @@ def signup(request):
 
 def home(request):
 	if request.method == "POST":
-		form = TweetForm(request.POST)
+		form =TweetForm(request.POST,request.FILES)
+		form1=commentForm(request.POST,request.FILES)
 		if form.is_valid():
 			tweet = form.save(commit=False)
 			tweet.user=request.user
-
-			tweet.published_date = timezone.now()
-			twt = Tweets.objects.all().order_by('-created_at')
+			tweet.profile_image = form.cleaned_data['profile_image']
 			tweet.save()
+			twt = Tweets.objects.all().order_by('-created_at')
 			followers=Follow.objects.filter(following=request.user).count()
 			following=Follow.objects.filter(followers=request.user).count()
 			tweetscount=Tweets.objects.filter(user=request.user).count()
-			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})  
+			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1})  
+		
 	else:
 		if request.user.is_active:
 			twt = Tweets.objects.all().order_by('-created_at')
@@ -51,7 +53,8 @@ def home(request):
 			following=Follow.objects.filter(followers=request.user).count()
 			tweetscount=Tweets.objects.filter(user=request.user).count()
 			form=TweetForm()
-			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})
+			form1=commentForm(request.POST)
+			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1})
 		else:
 			return render(request, 'start.html')
 	return render(request, 'home.html', {'form': form})	
@@ -79,7 +82,7 @@ def updateprofile(request):
 	        form =ProfileForm(instance=request.user.profile)
 	        return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt})  
     except:
-    	form =ProfileForm(request.POST)
+    	form =ProfileForm(request.POST,request.FILES)
     	if form.is_valid():
             profile = form.save(commit=False)
             profile.user=request.user
@@ -88,3 +91,23 @@ def updateprofile(request):
             profile.save()
     	return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt})	
     return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt})
+
+def comments(request, pk):
+		post = get_object_or_404(Tweets, pk=pk)
+		comments=comment.objects.filter(twtid=post.pk)
+		return render(request, 'comments.html', {'post': post,'comment':comments})
+
+def savecomment(request,pk):
+	tweets = get_object_or_404(Tweets, pk=pk)
+	if request.method == "POST":
+			form1=commentForm(request.POST,request.FILES)
+			if form1.is_valid():
+					tweet = form1.save(commit=False)
+					tweet.twtid=get_object_or_404(Tweets, pk=pk)
+					tweet.image = form1.cleaned_data['image']
+					tweet.save()
+					# twt = Tweets.objects.all().order_by('-created_at')
+					# followers=Follow.objects.filter(following=request.user).count()
+					# following=Follow.objects.filter(followers=request.user).count()
+					# tweetscount=Tweets.objects.filter(user=request.user).count()
+					return redirect('home')

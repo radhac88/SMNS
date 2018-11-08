@@ -8,9 +8,13 @@
 {% block content %}
 <body style="background-color: #d1e0e0;">
 
+
+
+<div class="container-fluid">
+
 	<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    
+  
+   
     <ul class="nav navbar-nav">
       <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
       
@@ -21,19 +25,19 @@
       <li><input class="search-input" type="text" id="search-query" placeholder="Search Twitter" name="q" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-dropdown-1" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button class="btn-primary"><i class="glyphicon glyphicon-search"></i></button></li>
       <li>
       <div class="dropdown">
-    <p class="dropdown-toggle fa fa-user-circle-o" data-toggle="dropdown" type="button" style="font-size:30px;margin-top: 15px;margin-left: 30px;"aria-haspopup="true" aria-expanded="true"></p>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <p class="dropdown-toggle fa fa-user-circle-o" data-toggle="dropdown" type="button" style="font-size:30px;margin-top: 15px;margin-left: 30px;"aria-haspopup="true" aria-expanded="true" id="ddm1" onclick="one()"></p>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"  id="ddm" >
     	<li><a href="{% url 'updateprofile' %}">updateprofile</a></li>
       {% if user.is_authenticated %}
         <li><a href="{% url 'logout' %}">Logout</a></li>
       {% else %}
         <li><a href="{% url 'login' %}">login</a></li>
       {% endif %}
-      
+      </li>
     </ul>
-  </div>
-</li>
-      
+
+
+  </ul>    
     
 
 
@@ -41,11 +45,6 @@
 
 
 
-
-
-
-<div >
-<div class="container-fluid" >
 	<div class="row">
 		<div class="col-sm-4">
 			<div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px; margin-left: 115px;">
@@ -78,23 +77,23 @@
 		<div class="col-sm-6">
 			<div style="background-color:#b3f0ff;height:180px;width:500px;margin-top:10px;">
 				
-        <form method="POST" class="tweet-form" enctype="multipart/form-data"><!-- <textarea rows="4" cols="55" name="query"></textarea> -->
+        <form role="form" method="post" class="tweet-form" enctype="multipart/form-data"> 
           {% csrf_token %}
           {{ form.as_p }}
 
 				
-					<div class="element">
-  						<i class="fa fa-camera" style="margin-left: 20px;margin-bottom: 30px;" id="camera"></i>
-  						<input type="file" id="choose" >
+					<!-- <div class="element"> -->
+  						<!-- <i class="fa fa-camera" style="margin-left: 20px;margin-bottom: 30px;" id="camera"></i>
+  						<input type="file" id="choose" > -->
   						<button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">tweet</button>
 
  
-					</div>
+					<!-- </div> -->
         </form>
 			{% for i in twt1 %}
 				<div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;">
 				
-					<div class="post">
+				<div class="post">
 						<a href="{% url 'profile' pk=i.user.pk %}">{{i.user}}</a>
 						<p>{{i.text|linebreaksbr}}</p>
 						
@@ -104,18 +103,23 @@
 
 						
 						</div>	
+						<a href="{% url 'comments' pk=i.pk %}">Comments: {{ i.comments.count }}</a>
+						<p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'savecomment' pk=i.pk }" data-pk="{{i.pk}}" data-target="#myModal" data-user="{{i.user}}" data-text="{{i.text|linebreaksbr}}" id="modalbutton"></p>
 						<p>posted on:{{i.created_at}}</p>
 						
+	
+
+
+
+
 					</div>
 				</div>
-			{% endfor %}
-			</div>
-		</div>
-
-	</div>
+					
+				{% endfor %}
 
 </div>
-</div>
+
+
 
 <style type="text/css">
 	#spa{
@@ -138,10 +142,10 @@
 	p:nth-child(4){
 		margin:215px 0 0 10px;
 	}
-	#id_profile_image{
+	/*#id_profile_image{
 		display: none;
 	}
-
+*/
 
 </style>
 
@@ -165,13 +169,67 @@ $('input[type="file"]').on('change', function() {
 /*document.getElementById("#logstart").onclick = function () {
 	location.href = "start/";
 }*/
+$( "#ddm1" ).one( "click", function() {
+   $("#ddm").css("display","block");
+});
+
+
+
+ 
 
 </script>
 
+<script type="text/javascript">
+					$(modalbutton).click(function() {
+	    			var pk = $(this).data("pk");
+	    			var text = $(this).data("text");
+	    			var user=$(this).data("user");
+	    			var url = "{% url 'savecomment' pk=0 %}";
+
+	    			url = url.replace(0,pk);
+
+	         		$("#form1").attr("action", url);
+	         		$("#user").append(user);
+	         		$("#user1").append("<b>"+user+":</b>");
+	         		$("#text").append(text+"<hr>");
+	        		console.log(pk);
+					});
+					</script>
+
+
+<div id="myModal" class="modal fade " role="dialog" style="height: 700px; width: 100%;">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="user">Reply To </h4>
+      </div>
+      <div class="modal-body">
+      <p id="user1"></p>
+      <p id="text"></p>
+        <form role="form" method="post" class="tweet-form" enctype="multipart/form-data" id="form1"> 
+
+          {% csrf_token %}
+          {{ form1.as_p }}
+
+
+			<button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">Reply</button>
+        </form>
+      </div>
+     
+    </div>
+
+  </div>
+</div>
 
 
 
- </body> 
+</div>
+
+</div>
+
+
 
 
 
