@@ -70,7 +70,7 @@
       <li><a href="#"><b>Moments</b></a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><button type="button" class="btn btn-default" id="editbtn"><b>Follow</b></button></a></li>
+      <li><a href="#"><button type="button" class="btn btn-default" data-pk={{profile.pk}} id="follow_btn"><b>Follow</b></button></a></li>
     </ul>
   </div>
 </nav><br><br>
@@ -94,7 +94,49 @@
           
 
         {% endfor %}
-       
+<p>{{action}}</p>
+<script type="text/javascript">
+          $(follow_btn).click(function() {
+            var value = 'follow';
+            var pk = $(this).data("pk");
+            console.log(pk);
+            console.log(value);
+        $.ajax({url: "{% url 'profile' pk=1 %}", 
+          data:{
+            'action':value,
+            'id': pk
+          },
+          success: function(result){
+        $("#follow_btn").hide();
+    }});
+          });
+          </script>
+
+
+<!-- <script type="text/javascript">
+ $(document).ready(function(){
+  console.log("success")
+   $(follow_btn).click(function(){
+     console.log("success")
+  $.ajax({
+            url: "{% url 'profile' pk=1 %}",
+            data: {
+              'action': 'follow'
+              'id': 1
+            },
+            dataType: 'json',
+            success: function () {
+                console.log(success) 
+                $("#follow_btn").hide();
+               
+            }
+        });
+});
+
+
+</script>
+
+ -->
 
 {% endblock %}
 

@@ -1,112 +1,118 @@
+
 {% extends 'base.html' %}
-
-{% block title %}Sign Up{% endblock %}
-
+{% block title %}Sign up{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="https://abs.twimg.com/a/1541103114/css/t1/twitter_core.bundle.css" class="coreCSSBundles">
+<link rel="stylesheet" class="moreCSSBundles" href="https://abs.twimg.com/a/1541103114/css/t1/twitter_more_1.bundle.css">
+<link rel="stylesheet" class="moreCSSBundles" href="https://abs.twimg.com/a/1541103114/css/t1/twitter_more_2.bundle.css">
+<link rel="dns-prefetch" href="https://pbs.twimg.com">
+<link rel="dns-prefetch" href="https://t.co">
+<link rel="preload" href="https://abs.twimg.com/k/en/init.en.3ed38089cf03448b4149.js" as="script">
+<link rel="preload" href="https://abs.twimg.com/k/en/0.commons.en.d4794bee8ef7a28c3406.js" as="script">  
+<link rel="mask-icon" sizes="any" href="https://abs.twimg.com/a/1541103114/icons/favicon.svg" color="#1da1f2">
+<link rel="shortcut icon" href="//abs.twimg.com/favicons/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" sizes="192x192">
+<link rel="canonical" href="https://twitter.com/login">
+<link rel="alternate" hreflang="x-default" href="https://twitter.com/login?prefetchTimestamp=1541411189145">
+<link rel="alternate" media="handheld, only screen and (max-width: 640px)" href="https://mobile.twitter.com/session/new">
+<link rel="alternate" href="android-app://com.twitter.android/twitter/login?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eandroidseo%7Ctwgr%5Elogin">
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Twitter">
+<link id="async-css-placeholder">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+{% endblock %}  
 {% block content %}
-<body style="background-color: #ffffff;">
-<h1>Create Your Account</h1>
- <div id="signupdiv" class="container">
-
-  <form method="post">
+<body class="three-col logged-out ms-windows" 
+data-fouc-class-names="swift-loading no-nav-banners"
+dir="ltr">
+<div id="doc" data-at-shortcutkeys="{&quot;Enter&quot;:&quot;Open Tweet details&quot;,&quot;o&quot;:&quot;Expand photo&quot;,&quot;/&quot;:&quot;Search&quot;,&quot;?&quot;:&quot;This menu&quot;,&quot;j&quot;:&quot;Next Tweet&quot;,&quot;k&quot;:&quot;Previous Tweet&quot;,&quot;Space&quot;:&quot;Page down&quot;,&quot;.&quot;:&quot;Load new Tweets&quot;,&quot;gu&quot;:&quot;Go to user\u2026&quot;}" class="route-login login-responsive">
+  <div class="topbar js-topbar">
+    <div class="global-nav global-nav--newLoggedOut" data-section-term="top_nav">
+      <div class="global-nav-inner">
+        <div class="container">
+          <ul class="nav js-global-actions" role="navigation" id="global-actions">
+            <li id="global-nav-home" class="home" data-global-action="home">
+              <a class="js-nav js-tooltip js-dynamic-tooltip" data-placement="bottom" href="/" data-component-context="home_nav" data-nav="home">
+                <span class="Icon Icon--bird Icon--large"></span>
+                <span class="text" aria-hidden="true">Home</span>
+                <span class="u-hiddenVisually a11y-inactive-page-text">Home</span>
+                <span class="u-hiddenVisually a11y-active-page-text">Home, current page.</span>
+              </a>
+            </li>
+            <li id="global-nav-about" class="about" data-global-action="about">
+              <a class="js-tooltip js-dynamic-tooltip" data-placement="bottom" href="#" data-component-context="about_nav" data-nav="about" rel="noopener">
+                <span class="text">About</span>
+              </a>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="page-outer">
+  <div id="page-container" class="AppContent wrapper wrapper-login">
+    <div class="page-canvas">
+      <div class="signin-wrapper" data-login-message="">
+        <h1>Sign Up to Twitter</h1>
+<form method="post" action="{%url 'signup'%}">
     {% csrf_token %}
     <div id="inner">
      {{ form.as_p }}
+
     </div>
-    <!-- <div>
-      <input type="checkbox" name="show password" onclick="reveal()" id="box"> Show password<br><br>
-    </div> -->
-    <button type="submit">Sign up</button>
+    <input type="checkbox" value="0" name="remember_me" onclick="myFunction()">Show Password &nbsp;&nbsp;&nbsp;
+    <button type="submit" class="submit EdgeButton EdgeButton--primary EdgeButtom--medium">Sign up</button>
+    <input onclick="window.location.href='../login'" type="button"class="submit EdgeButton EdgeButton--primary EdgeButtom--medium"value="Go Back">
  </div>
-  </form>
-
-<style type="text/css">
-  		/*input{
-  			height: 30px;
-  			width: 440px;
-  			outline: 0;
-            border-width: 0 0 2px;
-            border-color: grey;
-  		}*/
-  		input{
-  			border-radius: 30px;
-  		}
-  		input:focus{
-  			border-color: #5ea9dd;
-  
-  		}
-  		#inner{
-  			margin-left: 30px;
-  			margin-top: 30px;
-  		}
-  		#signupdiv{
-  			margin-left: 620px;
-  			margin-top: 115px;
-  			width: 500px;
-  			height: 385px;
-  			background-color: #a4c6de;
-  			border-radius: 30px;
-  		}
-  		.helptext{
-  			display: none;
-  		}
-  		ul{
-  			display: none;
-  		}
-  		#id_username{
-  			width: 418px;
-  			height: 23px;
-  			margin-left: 0px;
-  		}
-  		#id_password1{
-  			width: 418px;
-  			height: 23px;
-  			margin-left: 0px;
-
-  		}
-  		#id_password2{
-  			width: 418px;
-  			height: 23px;
-  			margin-left: 0px;
-
-  		}
-  		p{
-  			font-size: 20px;
-  		}
-  		p:first-child {
-  			padding-top: 40px;
-  			
-  		}
-  		p:second-child{
-  			padding-top: 100px;
-
-  		}
-  		button{
-  			font-size: 14px;
-  			padding: 6px 18px;
-  			background-color: #5ea9dd;
-  			margin-left: 190px;
-    		margin-top: 45px;
-    		border-radius: 12%;	
-  		}
-  		h1{
-  			margin-left: 670px;
-  			margin-top: 70px;
-  			color: #1876b9;
-
-  		}
-  	
-  	</style>
-    <!-- <script type="text/javascript">
-      function reveal()
-      {
-      if(document.getElementById('box').checked)
-        {document.getElementById("id_password").type='text';
-      document.getElementById("id_confirmpassword").type='text';}
-      else{
-      document.getElementById("id_password").type='password';
-      document.getElementById("id_confirmpassword").type='password';
-      }
-      }
-    </script> -->
-{% endblock %}
+</form>
+      </div>
+      <div class="clearfix mobile has-sms">
+        <p class="signup-helper">
+          Feel Free To revert Your questions <a href="#">here</a> ! 
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 </body>
+{% endblock %}
+{% block scripts %}
+<script>
+function myFunction() {
+    var x = document.getElementById("id_password2");
+    var y = document.getElementById("id_password1");
+    if (x.type && y.type === "password") {
+        x.type = "text";
+        y.type = "text";
+    } else {
+        x.type = "password";
+        y.type = "password";
+    }
+}
+</script>
+<style type="text/css">
+  p{
+        margin-bottom: 25px;
+  }
+  #id_username{
+        margin-left: 80px;
+  }
+  #id_email{
+        margin-left: 107px;
+  }
+  #id_password1{
+        margin-left: 82px;
+  }
+  li{
+    font-size: 12px;
+    list-style-type: disc;
+  }
+  .helptext{
+    display: -webkit-box;
+    font-size: 12px;
+  }
+  input{
+    width: 279px;
+  }
+</style>
+{% endblock %}
