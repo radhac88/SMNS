@@ -32,7 +32,6 @@ def signup(request):
 
 
 def home(request):
-	pic=Profile.objects.filter(user=request.user)
 	if request.method == "POST":
 		form =TweetForm(request.POST,request.FILES)
 		form1=commentForm(request.POST,request.FILES)
@@ -45,6 +44,7 @@ def home(request):
 			followers=Follow.objects.filter(following=request.user).count()
 			following=Follow.objects.filter(followers=request.user).count()
 			tweetscount=Tweets.objects.filter(user=request.user).count()
+			pic=Profile.objects.filter(user=request.user)
 			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,'pic':pic})  
 		
 	else:
@@ -53,6 +53,7 @@ def home(request):
 			followers=Follow.objects.filter(following=request.user).count()
 			following=Follow.objects.filter(followers=request.user).count()
 			tweetscount=Tweets.objects.filter(user=request.user).count()
+			pic=Profile.objects.filter(user=request.user)
 			form=TweetForm()
 			form1=commentForm(request.POST)
 			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,'pic':pic})
@@ -66,18 +67,19 @@ def profile(request, pk):
     twt=Tweets.objects.filter(user=profile.id)
     user_id = request.POST.get('id')
     action = request.POST.get('action')
-    user = User.objects.get(id=user_id)
     if user_id and action:
     	try:
-    		user = User.objects.get(id=user_id)
     		if action == 'follow':
-    			Follow.objects.get_or_create(followers=request.user,following=user)
+    			followers=Follow.objects.filter(following=request.user).count()
+    			Follow.objects.create(followers=request.user,following=profile.user)
     		else:
-    			Follow.objects.filter(followers=request.user,following=user).delete()
+    			followers=Follow.objects.filter(following=request.user).count()
+    			Follow.objects.filter(followers=request.user,following=profile.user).delete()
     		return JsonResponse({'status':'ok'})
     	except User.DoesNotExist:
+    		followers=Follow.objects.filter(following=request.user).count()
     		return JsonResponse({'status':'ok'})
-    return render(request,'profile.html',{'profile':profile,'twt1':twt,'pic':pic,"action":action,'user':user}) 
+    return render(request,'profile.html',{'profile':profile,'twt1':twt,'pic':pic,"action":action,'followers':followers}) 
 
 def updateprofile(request):
     pic=Profile.objects.filter(user=request.user)
