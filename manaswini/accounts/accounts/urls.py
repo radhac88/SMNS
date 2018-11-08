@@ -7,5 +7,5 @@ urlpatterns = [
  	path('home/', views.home, name='home'),
  	# path('new/',views.new,name='new'),
  	path('profile/<int:pk>/',views.profile, name='profile'),
-       
+      
 ]

@@ -1,4 +1,3 @@
-<!-- {% load static %}  -->
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
@@ -13,37 +12,42 @@
 </head>
 <body>
 <div class="container-fluid">
-<div class="col-sm-6" id="pic">
-	<!-- {% load static %}
-	<img src="{% static "images/startlogo.jpg" %}" alt="twitter image" width="100%" height="920px"> -->
-	<div id="span">
-		<span class="glyphicon glyphicon-search">	Follow your interests</span><br>
-		<span class="glyphicon glyphicon-user"> 	Hear what people are talking about</span><br>
+	<div class="row">
+		<div class="col-sm-6" id="pic">
+		<div id="span">
+			<br><br>
+		<span class="glyphicon glyphicon-search">	Follow our interests</span><br><br>
+		<span class="glyphicon glyphicon-user"> 	Hear what people are talking about</span><br><br>
 		<span class="glyphicon glyphicon-comment"> 	Join the conversation</span>
-
-	</div>
-</div>
-<!-- <div class="col-sm-6" id="in">
-	<input class="input" type="text" name="name" value="" placeholder=" phone,email,or username">
-	<input class="input" type="text" name="text_input" class="text_input_style" value="" placeholder=" password">
-	<button class="button">log in</button>
-	<div id="forgot1">
-	<a class="forgot" href="#">forgot password?</a>
-	</div> -->
-	<div align="center">
+		</div>
+		</div>
+		<div class="col-sm-6" align="center">
 		<img class="img" src="{% static "css/images/download.png" %}">
-		<h3 style="font-size: 30px;">see what's happening in the world rn! </h3><br>
-		<p style="font-size: 23px;">join twitter today</p>
-		<button onclick="location.href='signup'" class="in" id="in1" name="signup" value="sign up">sign up</button><br><br>
-		<button onclick="location.href='login'" class="in" id="in2" name="log in" value="log in">log in</button>
+		<h3 style="font-size: 22px;"><b>See what's happening in the world right now </b></h3><br>
+		<p style="font-size: 22px;"><b>Join twitter today</b></p>
+		<button onclick="location.href='signup'" class="in" id="in1" name="signup" value="sign up">Sign Up</button><br><br>
+		<button onclick="location.href='login'" class="in" id="in2" name="log in" value="log in">Log in</button>
+		</div>
 	</div>
 </div>
+<div class="container-fluid">
+	<div class="row">
+	<div class="footer">
+	<p style="text-align: center ">
+	<a href="#" style="color:#7c8790">About</a>&nbsp;&nbsp;
+	<a href="#" style="color:#7c8790">HelpCenter</a>&nbsp;&nbsp;
+	<a href="#" style="color:#7c8790">Blog</a>&nbsp;&nbsp;
+	<a href="#" style="color:#7c8790">Blog</a>&nbsp;&nbsp;
+	<a href="#" style="color:#7c8790">Status</a>&nbsp;&nbsp;
+	<a href="#" style="color:#7c8790">Jobs</a>&nbsp;&nbsp;
+	<a href="#" style="color:#7c8790">Terms</a>&nbsp;&nbsp;
+	<a href="#" style="color:#7c8790">Brand</a>&nbsp;&nbsp;
+	<a href="#" style="color:#7c8790">Apps</a>&nbsp;&nbsp;
+	<a href="#" style="color:#7c8790">Advertise</a>&nbsp;&nbsp;
+	<a href="#" style="color:#7c8790">Marketing</a>&nbsp;&nbsp;
+	<a href="#" style="color:#7c8790">Businesses</a>&nbsp;&nbsp; &copy 2018 Twitter</p>	
+	</div>	
+	</div>
 </div>
-
-
-
-
-
-
 </body>
 </html>

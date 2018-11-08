@@ -37,3 +37,16 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+
+class comment(models.Model):
+    twtid = models.ForeignKey(Tweets, on_delete=models.CASCADE, related_name='twtid', default='None')
+    text = models.CharField(max_length=160,default=None,blank=True)
+    created_at = models.DateTimeField(default=timezone.now,null=True)
+    image = models.ImageField(upload_to='static/img', null=True, blank=True)
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return str(self.twtid)
