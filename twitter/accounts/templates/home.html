@@ -18,7 +18,10 @@
 
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css' integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns' crossorigin='anonymous'>
 
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script> 
+        <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+</head>
 
 {% block content %}
 <body style="background-color: #d1e0e0;">
@@ -33,13 +36,14 @@
       <li><a href="#"><i class="far fa-bell" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
       <li><a href="#"><i class="far fa-envelope" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
       <li><a href="#"><i class="fab fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
-      <li><input type="text" placeholder="Search.." name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
+      <li><form type="get" action="{% url 'search' %}" accept-charset="utf-8">
+      	<input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
     background: #2196F3;
     color: white;
     font-size:8px;
     margin-top:15px;
     border: 1px solid grey;
-    border-left: none;cursor: pointer;"><i class="fa fa-search example" style="font-size:17px"></i></button></li>
+    border-left: none;cursor: pointer;"><i class="fa fa-search example" style="font-size:17px"></i></button></form></li>
       <li>
 
     <div class="dropdown">
@@ -275,10 +279,29 @@ $(document).ready(function(){
 
 
 
+<script type="text/javascript">
 
-
- 
-
+$( function() {
+        $("#search").on('keyup', function(){
+        var value = $(this).val();
+        $.ajax({
+            url: "{% url 'ajax_autocomplete' %}",
+            data: {
+              'search': value 
+            },
+            dataType: 'json',
+            success: function (data) {
+                list = data.list;
+                console.log(list);
+                $("#search").autocomplete({
+                source : list
+                
+                });       
+            }
+        });        
+    });
+ });
+    </script>
 
 <script type="text/javascript">
 					$(modalbutton).click(function() {

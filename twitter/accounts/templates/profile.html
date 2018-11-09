@@ -19,7 +19,14 @@
       <li><a href="#"><i class="fa fa-bell-o" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
       <li><a href="#"><i class="fa fa-envelope-o" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
       <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
-      <li><input class="search-input" type="text" id="search-query" placeholder="Search Twitter" name="q" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-dropdown-1" style="margin-top: 15px;margin-left: 250px;border-radius: 5px;height: 33px;"><button class="btn-primary"><i class="glyphicon glyphicon-search"></i></button></li>
+      <li><form type="get" action="{% url 'search' %}" accept-charset="utf-8">
+        <input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
+    background: #2196F3;
+    color: white;
+    font-size:8px;
+    margin-top:15px;
+    border: 1px solid grey;
+    border-left: none;cursor: pointer;"><i class="fa fa-search example" style="font-size:17px"></i></button></form></li>
       <li>{% if user.is_authenticated %}<div class="dropdown">
          <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
           >
@@ -70,8 +77,16 @@
       <li><a href="#"><b>Moments</b></a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><button type="button" class="btn btn-default" id="editbtn"><b>Follow</b></button></a></li>
+     <li><a href="#"><button type="button" class="btn btn-default" data-pk={{profile.pk}} data-status="follow"  id="follow_btn"><b>Follow</b></button></a></li>
+  
+   
+      <li><a href="#"><button type="button" class="btn btn-default" data-pk={{profile.pk}} data-status="unfollow" id="unfollow_btn"><b>UnFollow</b></button></a></li>
     </ul>
+     {% for i in status %}
+
+   <p id="status" >{{i.pk}}</p>
+  
+  {% endfor %}
   </div>
 </nav><br><br>
 <h2 style="color:black; margin-left: 20px;"><a href="#" style="text-decoration: none;">{{profile.username}}</a></h2>
@@ -94,7 +109,95 @@
           
 
         {% endfor %}
+<script type="text/javascript">
+          $(follow_btn).click(function() {
+            var value =$(this).data("status");
+            var pk = $(this).data("pk");
+            var url1="{% url 'profile' pk=1 %}"
+            url1 = url1.replace(1,pk);
+            console.log(pk);
+            console.log(value);
+        $.ajax({
+          url: url1, 
+          data:{
+            'action':value,
+            'id': pk
+          },
+          success: function(data){ 
+            data1=data.data1;
+            console.log(data)
+          $("#follow_btn").hide();
+          $("#unfollow_btn").show();
        
+        }
+    });
+});
+        $(unfollow_btn).click(function() {
+            var value =$(this).data("status");
+            var pk = $(this).data("pk");
+            var url1="{% url 'profile' pk=1 %}"
+            url1 = url1.replace(1,pk);
+            console.log(pk);
+            console.log(value);
+        $.ajax({
+          url: url1, 
+          data:{
+            'action':value,
+            'id': pk
+          },
+          success: function(data){ 
+            data1=data.data1;
+            console.log(data)
+            $("#follow_btn").show();
+            $("#unfollow_btn").hide();
+        
+        }
+    });
+    });     
+
+          $(document).ready(function(){
+          $("#status").hide();
+          var value =$("#status").text();
+          console.log(Number(value));
+          console.log((Number(value))==0); 
+          if((Number(value))==0)
+          {
+            $("#follow_btn").show();
+             $("#unfollow_btn").hide();
+          }
+          else {
+            
+             $("#unfollow_btn").show();
+             $("#follow_btn").hide();
+          }
+        
+          });
+          </script>
+
+<script type="text/javascript">
+
+$( function() {
+        $("#search").on('keyup', function(){
+        var value = $(this).val();
+        $.ajax({
+            url: "{% url 'ajax_autocomplete' %}",
+            data: {
+              'search': value 
+            },
+            dataType: 'json',
+            success: function (data) {
+                list = data.list;
+                console.log(list);
+                $("#search").autocomplete({
+                source : list
+                
+                });       
+            }
+        });        
+    });
+ });
+    </script>
+
 
 {% endblock %}
 
