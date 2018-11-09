@@ -74,20 +74,24 @@ def home(request):
 	return render(request, 'home.html', {'form': form,'pic':pic})	
 
 def profile(request, pk):
-    profile= get_object_or_404(User, pk=pk)
-    pic=Profile.objects.filter(user=profile.id)
-    twt=Tweets.objects.filter(user=profile.id)
-    status=Follow.objects.filter(followers=request.user,following=profile)
-    if request.is_ajax():
-        user_id = request.GET.get('id')
-        action = request.GET.get('action')
-        if action == "follow":
-            Follow.objects.get_or_create(followers=request.user,following=profile)
-            return JsonResponse({'status':'ok','data1':'follow'})
-        elif action == "unfollow":
-            Follow.objects.filter(followers=request.user,following=profile).delete()
-            return JsonResponse({'status':'ok','data1':'unfollow'})
-    return render(request,'profile.html',{'profile':profile,'twt1':twt,'pic':pic,'status':status}) 
+	form =ProfileForm(instance=request.user.profile)
+	profile= get_object_or_404(User, pk=pk)
+	pic=Profile.objects.filter(user=profile.id)
+	twt=Tweets.objects.filter(user=profile.id)
+	if(request.user!= profile):
+		status=Follow.objects.filter(followers=request.user,following=profile)
+	else:
+		status="ok"
+	if request.is_ajax():
+	    user_id = request.GET.get('id')
+	    action = request.GET.get('action')
+	    if action == "follow":
+	        Follow.objects.get_or_create(followers=request.user,following=profile)
+	        return JsonResponse({'status':'ok','data1':'follow'})
+	    elif action == "unfollow":
+	        Follow.objects.filter(followers=request.user,following=profile).delete()
+	        return JsonResponse({'status':'ok','data1':'unfollow'})
+	return render(request,'profile.html',{'profile':profile,'twt1':twt,'pic':pic,'status':status,'form': form,}) 
 
 
 def updateprofile(request):
@@ -121,7 +125,8 @@ def updateprofile(request):
 def comments(request, pk):
 		post = get_object_or_404(Tweets, pk=pk)
 		comments=comment.objects.filter(twtid=post.pk)
-		return render(request, 'comments.html', {'post': post,'comment':comments})
+		twt=Tweets.objects.filter(twtid=post.pk)
+		return render(request, 'comments.html', {'post': twt,'comment':comments})
 
 def savecomment(request,pk):
 	tweets = get_object_or_404(Tweets, pk=pk)

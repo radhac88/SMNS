@@ -20,7 +20,7 @@
       <li><a href="#"><i class="fa fa-envelope-o" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
       <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
       <li><form type="get" action="{% url 'search' %}" accept-charset="utf-8">
-        <input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-right: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
+        <input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
     background: #2196F3;
     color: white;
     font-size:8px;
@@ -168,11 +168,13 @@
             $("#follow_btn").show();
              $("#unfollow_btn").hide();
           }
-          else {
+          else if(!(Number(value))==0){
             
              $("#unfollow_btn").show();
              $("#follow_btn").hide();
           }
+
+
         
           });
           </script>

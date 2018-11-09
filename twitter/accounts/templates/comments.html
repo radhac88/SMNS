@@ -1,15 +1,43 @@
    {% extends 'base.html' %}
 
 {% block content %}
-    {% for comment in comment %}
-    <div class="comment">
-        <div class="date">{{ comment.created_at }}</div>
-        <strong>{{ comment.twtid }}</strong>
-        <p>{{ comment.text|linebreaks }}</p>
-        <img class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{comment.image }}" />
-    </div>
-{% empty %}
-    <p>No comments here yet :(</p>
-{% endfor %}
 
+
+    {% for comment in comment %}
+
+
+<div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;">
+				
+					<div class="post" style="height: auto;width: auto;">
+						<strong> {{ comment.twtid }}</strong>
+						<!-- <p>{{i.email}}</p> -->
+						<p>{{i.text|linebreaksbr}}</p>
+						
+						<div id="spa">
+							
+							<img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{comment.image }}" />
+							
+						
+						</div>	
+						<p>posted on:{{ comment.created_at }}</p>
+					
+						
+					</div>
+				</div>
+{% empty %}
+<div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;">
+				
+					<div class="post" style="height: auto;width: auto;">
+						<br><br>
+    <p>&nbsp;&ensp;&emsp;No comments here yet :(</p>
+<br><br>
+</div>
+	
+</div>
+{% endfor %}
+<style type="text/css">
+	body{
+		background-color: #f2f2f2;
+	}
+</style>
 {% endblock %}

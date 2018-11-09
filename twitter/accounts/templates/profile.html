@@ -81,12 +81,14 @@
   
    
       <li><a href="#"><button type="button" class="btn btn-default" data-pk={{profile.pk}} data-status="unfollow" id="unfollow_btn"><b>UnFollow</b></button></a></li>
+      <li><button type="button"  id="editprofile" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit Profile</button></li>
     </ul>
      {% for i in status %}
 
    <p id="status" >{{i.pk}}</p>
   
   {% endfor %}
+  <p id="status1" >{{status}}</p>
   </div>
 </nav><br><br>
 <h2 style="color:black; margin-left: 20px;"><a href="#" style="text-decoration: none;">{{profile.username}}</a></h2>
@@ -109,6 +111,43 @@
           
 
         {% endfor %}
+
+        <div class="modal fade" id="myModal" role="dialog" style="height: 700px; width: 100%;">
+    <div class="modal-dialog" style="height:500px;width: 100%; margin-top: 100px;">
+    
+      <!-- Modal content-->
+      
+      <div class="modal-content">
+         
+        <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;<span style="color: red;"></span></button>
+          {% for i in pic %} 
+          <img class="img-responsive"  src="/{{i.header_image}}" / style="width: 100%; height:250px;">
+          {% endfor %}
+         
+          <!--  {% for i in pic %}  -->
+          <!-- <a href="#"><h4><img class="img-responsive"  src="/{{i.header_image}}" /><span class="glyphicon glyphicon-camera" style="margin-top:250px;" id="headimg"></span>&nbsp; Add header photo</h4></a>
+          <input type="file" id="profile" name=""> -->
+          <!-- {% endfor %} -->
+        </div>
+        
+        <div class="modal-body" style="padding:40px 50px;">
+        <button type="submit" class="btn btn-default pull-right" data-dismiss="modal" style="border-radius: 15px; margin-left: 1100px;">Cancel</button>
+          
+          <form role="form" action="{%url 'updateprofile' %}" method="post" enctype="multipart/form-data">
+            
+              {% csrf_token %}
+              <h2><b>{{user.username}}</b></h2> 
+              {{ form.as_p }}
+              <button type="submit" class="btn btn-default pull-right" style="border-radius:20px;border-color: #0080ff; color: #0080ff; margin-bottom:50px;"><b>Save changes</b></button>
+            </form>
+
+              
+        </div>
+      
+      </div>
+      
+    </div>
+  </div> 
 <script type="text/javascript">
           $(follow_btn).click(function() {
             var value =$(this).data("status");
@@ -128,6 +167,7 @@
             console.log(data)
           $("#follow_btn").hide();
           $("#unfollow_btn").show();
+          $("#editprofile").hide();
        
         }
     });
@@ -150,6 +190,7 @@
             console.log(data)
             $("#follow_btn").show();
             $("#unfollow_btn").hide();
+            $("#editprofile").hide();
         
         }
     });
@@ -157,18 +198,27 @@
 
           $(document).ready(function(){
           $("#status").hide();
+          $("#status1").hide();
           var value =$("#status").text();
-          console.log(Number(value));
+          var value2 =$("#status1").text();
+          console.log(value2);
           console.log((Number(value))==0); 
-          if((Number(value))==0)
+          if(value2=="ok")
+          {
+             $("#follow_btn").hide();
+              $("#unfollow_btn").hide();
+          }
+         else if((Number(value))==0)
           {
             $("#follow_btn").show();
              $("#unfollow_btn").hide();
+             $("#editprofile").hide();
           }
-          else {
+          else if(!(Number(value))==0) {
             
              $("#unfollow_btn").show();
              $("#follow_btn").hide();
+                $("#editprofile").hide();
           }
         
           });

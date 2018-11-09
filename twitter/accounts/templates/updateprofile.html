@@ -43,13 +43,20 @@ $('input[type="file"]').on('change', function() {
   <div class="container-fluid">
     
     <ul class="nav navbar-nav">
-      <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
+      <li><a href="{%url 'home' %}"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
       
       <li><a href="#"><i class=" fa fa-flash" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
       <li><a href="#"><i class="fa fa-bell-o" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
       <li><a href="#"><i class="fa fa-envelope-o" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
       <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
-      <li><input class="search-input" type="text" id="search-query" placeholder="Search Twitter" name="q" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-dropdown-1" style="margin-top: 15px;margin-left: 250px;border-radius: 5px;height: 33px;"><button class="btn-primary"><i class="glyphicon glyphicon-search"></i></button></li>
+      <li><form type="get" action="{% url 'search' %}" accept-charset="utf-8">
+        <input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
+    background: #2196F3;
+    color: white;
+    font-size:8px;
+    margin-top:15px;
+    border: 1px solid grey;
+    border-left: none;cursor: pointer;"><i class="fa fa-search example" style="font-size:17px"></i></button></form></li>
       <li>{% if user.is_authenticated %}<div class="dropdown">
          <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
           >
@@ -154,7 +161,29 @@ $('input[type="file"]').on('change', function() {
 
 
  
+<script type="text/javascript">
 
+$( function() {
+        $("#search").on('keyup', function(){
+        var value = $(this).val();
+        $.ajax({
+            url: "{% url 'ajax_autocomplete' %}",
+            data: {
+              'search': value 
+            },
+            dataType: 'json',
+            success: function (data) {
+                list = data.list;
+                console.log(list);
+                $("#search").autocomplete({
+                source : list
+                
+                });       
+            }
+        });        
+    });
+ });
+    </script>
 
 
 

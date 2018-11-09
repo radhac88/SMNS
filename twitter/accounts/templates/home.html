@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -151,8 +151,9 @@
 
 
 					<div class="element" id="show" style="background-color:#b3ecff; height: 90px; width: 600px;display: none; ">
-  						<i class="fa fa-camera" style="margin-left:30px;margin-top: 35px;" id="camera"  data-toggle="tooltip" data-placement="top" title="Add photos"" ></i></a>
-  						<input type="file" id="choose" ><i class='fas fa-image' style='margin-left: 40px;margin-top: 30px; font-size:24px'></i><i class='fas fa-poll' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><i class='fas fa-map-marker-alt' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><button class="btn btn-default btn-md" type="submit" style="width:70px;background-color:#3a85ff;color:white;margin-left: 300px; margin-top: 30px;">tweet</button>
+  						<i class="fa fa-camera" style="margin-left:30px;margin-top: 35px;" id="camera"  data-toggle="tooltip" data-placement="top" title="Add photos"" ></i>
+  						<!-- <input type="file" id="choose" > -->
+  						<i class='fas fa-image' style='margin-left: 40px;margin-top: 30px; font-size:24px'></i><i class='fas fa-poll' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><i class='fas fa-map-marker-alt' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><button class="btn btn-default btn-md" type="submit" style="width:70px;background-color:#3a85ff;color:white;margin-left: 300px; margin-top: 30px;">tweet</button>
   						<!-- <button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">tweet</button> -->
 
  
@@ -238,6 +239,12 @@
 
 	}*/
 	#id_profile_image{
+		display: none;
+	}
+	#id_image{
+		display: none;
+	}
+	.errorlist{
 		display: none;
 	}
 	#twtimg{
@@ -338,7 +345,7 @@ $( function() {
           {% csrf_token %}
           {{ form1.as_p }}
 
-
+          	<i class="fa fa-camera" style="margin-left:30px;margin-top: 35px;" id="camera"  data-toggle="tooltip" data-placement="top" title="Add photos"" ></i>
 			<button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">Reply</button>
         </form>
       </div>
