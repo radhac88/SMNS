@@ -15,7 +15,6 @@ class TweetForm(forms.ModelForm):
 
 class SignUpForm(UserCreationForm):
 
-    # email = forms.EmailField(widget=forms.EmailInput(attrs={'size':90,}))
     email = forms.EmailField(max_length=254, help_text='Required: Inform a valid email address.')
     class Meta:
         model = User
@@ -44,3 +43,4 @@ class UniqueEmailForm(SignUpForm):
                     'That email address is already in use')
             else:
                 return self.cleaned_data['email']
+
