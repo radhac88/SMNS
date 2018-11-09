@@ -9,6 +9,8 @@ urlpatterns = [
   	path('updateprofile/',views.updateprofile,name='updateprofile'),
   	path('comments/<int:pk>/',views.comments, name='comments'),
   	path('savecomment/<int:pk>/',views.savecomment, name='savecomment'),
+  	path('search',views.search,name='search'),
+  	path('autocomplete',views.autocomplete,name='ajax_autocomplete'),
 
        
 ]
