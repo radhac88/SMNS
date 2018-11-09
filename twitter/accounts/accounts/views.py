@@ -1,6 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
@@ -21,6 +19,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from .models import User
 from .forms import SignUpForm,ProfileForm
 from django.contrib.auth import authenticate,login
+from django.http import HttpResponseRedirect,HttpResponse
 
 
 
@@ -48,7 +47,6 @@ def home(request):
 		form1 = commentForm(request.POST)
 		if form.is_valid():
 			tweet = form.save(commit=False)
-			# tweet.profile_image = form.cleaned_data['profile_image']
 			tweet.user=request.user
 			tweet.published_date = timezone.now()
 			twt = Tweets.objects.all().order_by('-created_at')
@@ -120,8 +118,6 @@ def savecomment(request,pk):
 					tweet.twtid=get_object_or_404(Tweets, pk=pk)
 					tweet.image = form.cleaned_data['image']
 					tweet.save()
-					# twt = Tweets.objects.all().order_by('-created_at')
-					# followers=Follow.objects.filter(following=request.user).count()
-					# following=Follow.objects.filter(followers=request.user).count()
-					# tweetscount=Tweets.objects.filter(user=request.user).count()
 					return redirect('home')
+
+

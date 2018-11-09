@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,21 +14,15 @@
   <link rel="apple-touch-icon" href="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" sizes="192x192">
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css' integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns' crossorigin='anonymous'>
 </head>
-
-
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css' integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns' crossorigin='anonymous'>
-
 
 
 {% block content %}
 <body style="background-color: #d1e0e0;">
-
-	<nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
-    
     <ul class="nav navbar-nav">
       <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
-      
       <li><a href="#"><i class=" fas fa-bolt" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
       <li><a href="#"><i class="far fa-bell" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
       <li><a href="#"><i class="far fa-envelope" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
@@ -41,7 +35,6 @@
     border: 1px solid grey;
     border-left: none;cursor: pointer;"><i class="fa fa-search example" style="font-size:17px"></i></button></li>
       <li>
-
     <div class="dropdown">
     <p class="dropdown-toggle fas fa-user-circle" data-toggle="dropdown" type="button" style="font-size:40px;margin-top: 15px;margin-left:90px;"aria-haspopup="true" aria-expanded="true"></p>
     <ul class="dropdown-menu" style="margin-left:100px;">
@@ -50,45 +43,22 @@
     	<li><a class="dropdown-item" href="{% url 'updateprofile' %}">
     		<font face="verdana">updateprofile</font></a></li>
     	<li class="divider"></li>
-
       {% if user.is_authenticated %}
         <li><a href="{% url 'logout' %}" >Logout</a></li>
       {% else %}
         <li><a href="{% url 'login' %}">login</a></li>
-      {% endif %}
-
-      
+      {% endif %} 
     </ul>
-  </div>
-</li>
-
-  </ul>    
-
-    
-
-
+  </div>  
 </nav>
-
-
-
-
-
-
-<div >
 <div class="container-fluid" >
-
 	<div class="row">
 		<div class="col-sm-4">
-
-
 			<div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px ">
-
 				{% for i in pic %}
 					<a href="#"><img src="/{{i.profile_image}}" class="img-circle" width="90px" height="90px" style="margin-top:60px; margin-left:30px"></a>
 				{% endfor %}
-
 					<h5><a href="#" style="margin-left:100px;color: black; text-decoration: none;"><b>{{user.username}}</b> <br>  
-
 					&emsp;&emsp;&nbsp &emsp;&nbsp &emsp;&emsp;<i><b>{{user.email}}</b></i></a></h5>
 						<div class="row">
 							<div class="col-sm-4">
@@ -104,7 +74,6 @@
 							<h6>&emsp;{{followers}}</h6>
 							</div>
 						</div>
-
 			</div>
 			<div style="width: 300px;background-color: white; height:160px; margin-left: 115px;  margin-inline-start:100px">
 			</div><br>
@@ -130,63 +99,75 @@
 				<b><a href="#">#Nirvana</b></a><br>
 				<p>1,13,255 Tweets</p><br>
 				</ul>			
-
-
 			</div>	
 		</div>
-		<div class="col-sm-6">
-
+	<div class="col-sm-4">
 			<div style="background-color:#b3ecff;height:90px;width:600px;margin-top:10px;">
-				<i class="fas fa-user-circle" id="hide" style="float: left; margin-left:10px; margin-top: 20px;font-size: 25px;"></i>
-				
-        <form method="POST" class="tweet-form" enctype="multipart/form-data" autocomplete="off"><!-- <textarea rows="4" cols="55" name="query"></textarea> -->
-
+			<i class="fas fa-user-circle" id="hide" style="float: left; margin-left:10px; margin-top: 20px;font-size: 25px;"></i>	
+    	<form method="POST" class="tweet-form" enctype="multipart/form-data" autocomplete="off">
           {% csrf_token %}
           {{ form.as_p }}
-
-
-
-					<div class="element" id="show" style="background-color:#b3ecff; height: 90px; width: 600px;display: none; ">
+				<div class="element" id="show" style="background-color:#b3ecff; height: 90px; width: 600px;display: none; ">
   						<i class="fa fa-camera" style="margin-left:30px;margin-top: 35px;" id="camera"  data-toggle="tooltip" data-placement="top" title="Add photos"" ></i></a>
   						<input type="file" id="choose" ><i class='fas fa-image' style='margin-left: 40px;margin-top: 30px; font-size:24px'></i><i class='fas fa-poll' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><i class='fas fa-map-marker-alt' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><button class="btn btn-default btn-md" type="submit" style="width:70px;background-color:#3a85ff;color:white;margin-left: 300px; margin-top: 30px;">tweet</button>
-  						<!-- <button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">tweet</button> -->
-
- 
-					</div>
-					
-        </form>
+				</div>
+    	</form>
 			{% for i in twt1 %}
 				<div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;">
 				
 					<div class="post" style="height: auto;width: auto;">
 						<a href="{% url 'profile' pk=i.user.pk %}" style="margin:2px 0 0 10px;">{{i.user}}</a>
-						<!-- <p>{{i.email}}</p> -->
+
 						<p>{{i.text|linebreaksbr}}</p>
-						
 						<div id="spa">
-							
 							<img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.profile_image }}" />
+						</div>
+	
 							
-						
-						</div>	
-							<a href="{% url 'comments' pk=i.pk %}">Comments: {{ i.comments.count }}</a>
+							<a href="{% url 'comments' pk=i.pk %}">Comments: {{ i.comments.count }}</a> 
+
 						<p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'savecomment' pk=i.pk }" data-pk="{{i.pk}}" data-target="#myModal" data-user="{{i.user}}" data-text="{{i.text|linebreaksbr}}" id="modalbutton"></p>
-						<p>posted on:{{i.created_at}}</p>
-						
-						<p>posted on:{{i.created_at}}</p>
-						
+						<p>posted on:{{i.created_at}}</p>	
 					</div>
 				</div>
 			{% endfor %}
-			</div>
+
 		</div>
 
 	</div>
+	<div class="col-sm-4"  id="sta" style ="margin-top:18px">
+				<p><h5><b style="width: 30%">Who to follow</b></h5> <a href="#">Refresh</a> <a href="#">View all</a></p>
+    <a class="account-group js-recommend-link js-user-profile-link user-thumb" href="#" rel="noopener">
+      <img class="avatar js-action-profile-avatar " src="https://pbs.twimg.com/profile_images/597865661264596992/NnOqToId_bigger.jpg" alt="">
+      <span class="account-group-inner" data-user-id="19895282">
+        <strong class="fullname">A.R.Rahman</strong><span class="UserBadges"><span class="Icon Icon--verified"><span class="u-hiddenVisually"></span></span></span><span class="UserNameBreak">&nbsp;</span><span class="username u-dir u-textTruncate" dir="ltr">@<b>arrahman</b></span>
+      </span>
+    </a><br><br>
+    <a class="account-group js-recommend-link js-user-profile-link user-thumb" href="/impradeepmachi" data-user-id="2415750469" rel="noopener">
+      <img class="avatar js-action-profile-avatar " src="https://pbs.twimg.com/profile_images/935539751674716160/SHJkFyg8_bigger.jpg" alt="">
+      <span class="account-group-inner" data-user-id="2415750469">
+        <strong class="fullname">Pradeep</strong><span class="UserBadges"><span class="Icon Icon--verified"><span class="u-hiddenVisually"></span></span></span><span class="UserNameBreak">&nbsp;</span><span class="username u-dir u-textTruncate" dir="ltr">@<b>impradeepmachi</b></span>
+      </span>
+    </a><br><br>
+    <a class="account-group js-recommend-link js-user-profile-link user-thumb" href="#" data-user-id="1336693794" rel="noopener">
+      
+      <img class="avatar js-action-profile-avatar " src="https://pbs.twimg.com/profile_images/961528353369960449/yIL7X5dN_bigger.jpg" alt="">
+      <span class="account-group-inner" data-user-id="1336693794">
+        <strong class="fullname">Raashi </strong><span class="UserBadges"><span class="Icon Icon--verified"><span class="u-hiddenVisually"></span></span></span><span class="UserNameBreak">&nbsp;</span><span class="username u-dir u-textTruncate" dir="ltr">@<b>RaashiKhanna</b></span>
+      </span>
+    </a><br><br>
+    <a class="account-group js-recommend-link js-user-profile-link user-thumb" href="#" data-user-id="149093702" rel="noopener">
+      
+      <img class="avatar js-action-profile-avatar " src="https://pbs.twimg.com/profile_images/886125265222459392/Rx2-E894_bigger.jpg" alt="">
+      <span class="account-group-inner" data-user-id="149093702">
+        <strong class="fullname">koratala siva</strong><span class="UserBadges"><span class="Icon Icon--verified"><span class="u-hiddenVisually"></span></span></span><span class="UserNameBreak">&nbsp;</span><span class="username u-dir u-textTruncate" dir="ltr">@<b>sivakoratala</b></span>
+      </span>
+    </a><br><br>
+</div>	
+</div>
 
 </div>
 </div>
-
-
 <style type="text/css">
 	#sta{
 		display: block;
@@ -242,17 +223,11 @@
 	    padding: 1px;
 	    width: 100%;
 	}
-
-
-
 </style>
-
 <script type="text/javascript">
 $("#camera").click(function () {
   $("input[type='file']").trigger('click');
 });
-
-
 $('input[type="file"]').on('change', function() {
   var val = $(this).val();
   $(this).siblings('span').text(val);
@@ -272,15 +247,6 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
 </script>
-
-
-
-
-
-
- 
-
-
 <script type="text/javascript">
 					$(modalbutton).click(function() {
 	    			var pk = $(this).data("pk");
@@ -297,7 +263,6 @@ $(document).ready(function(){
 	        		console.log(pk);
 					});
 					</script>
-
 
 <div id="myModal" class="modal fade " role="dialog" style="height: 700px; width: 100%;">
   <div class="modal-dialog">
@@ -324,21 +289,6 @@ $(document).ready(function(){
 
   </div>
 </div>
-
-
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-
-
 
 {% endblock %}
 

@@ -8,18 +8,13 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.forms.widgets import PasswordInput, TextInput
         
 class TweetForm(forms.ModelForm):
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 95ee03725d2ea98c459bf9522e19923b0e2b0d08
     class Meta:
         model = Tweets
         fields = ('text','profile_image',)
 
 class SignUpForm(UserCreationForm):
 
-    # email = forms.EmailField(widget=forms.EmailInput(attrs={'size':90,}))
     email = forms.EmailField(max_length=254, help_text='Required: Inform a valid email address.')
     class Meta:
         model = User
@@ -48,3 +43,4 @@ class UniqueEmailForm(SignUpForm):
                     'That email address is already in use')
             else:
                 return self.cleaned_data['email']
+
