@@ -1,4 +1,4 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,11 +54,13 @@
     	<li><a class="dropdown-item" href="{% url 'updateprofile' %}">
     		<font face="verdana">updateprofile</font></a></li>
     	<li class="divider"></li>
+
       {% if user.is_authenticated %}
         <li><a href="{% url 'logout' %}" >Logout</a></li>
       {% else %}
         <li><a href="{% url 'login' %}">login</a></li>
       {% endif %}
+
       
     </ul>
   </div>
@@ -78,6 +80,7 @@
 
 <div >
 <div class="container-fluid" >
+
 	<div class="row">
 		<div class="col-sm-4">
 
@@ -91,7 +94,6 @@
 					<h5><a href="#" style="margin-left:100px;color: black; text-decoration: none;"><b>{{user.username}}</b> <br>  
 
 					&emsp;&emsp;&nbsp &emsp;&nbsp &emsp;&emsp;<i><b>{{user.email}}</b></i></a></h5>
-					
 						<div class="row">
 							<div class="col-sm-4">
 							<a href="#" style="text-decoration: none; margin-top: 10px;">Tweets</a>
@@ -106,8 +108,7 @@
 							<h6>&emsp;{{followers}}</h6>
 							</div>
 						</div>
-				
-				
+
 			</div>
 			<div style="width: 300px;background-color: white; height:160px; margin-left: 115px;  margin-inline-start:100px">
 			</div><br>
@@ -234,7 +235,7 @@
 	}
 	/*p:nth-child(4){
 		margin:215px 0 0 10px;
-<<<<<<< HEAD
+
 	}*/
 	#id_profile_image{
 		display: none;
