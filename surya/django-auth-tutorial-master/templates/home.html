@@ -3,13 +3,11 @@
 
 
 
-{% block title %}Home{% endblock %}
+
 
 {% block content %}
-
-
-
-	<nav class="navbar navbar-default">
+<body style="background-color: #d1e0e0;">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     
     <ul class="nav navbar-nav">
@@ -20,13 +18,8 @@
       <li><a href="#"><i class="fa fa-envelope-o" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
       <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
       <li><input class="search-input" type="text" id="search-query" placeholder="Search Twitter" name="q" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-dropdown-1" style="margin-top: 15px;margin-left: 250px;border-radius: 5px;height: 33px;"><button class="btn-primary"><i class="glyphicon glyphicon-search"></i></button></li>
-      {% if user.is_authenticated %}
-        <li><a href="{% url 'logout' %}">Logout</a></li>
-      {% else %}
-        <li><a href="{% url 'login' %}">login</a></li>
-      {% endif %}
-        <!-- <div class="dropdown"> -->
-         <!-- <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+      <li>{% if user.is_authenticated %}<div class="dropdown">
+         <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
           >
             
           </p>
@@ -35,107 +28,163 @@
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
             <li><a href="{% url 'logout' %}">Logout</a></li>
-            
+            {% else %}
             <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
           >
             
           </p>
   
-    
           <li><a href="{% url 'login' %}">login</a>
-          </li>
+          {% endif %}</li>
             
-          </ul> -->
+          </ul>
 </div>
 </li>
       </ul>
-      
-     
         
-      
-  
-
-      
-    
-    
-
-
-   
 </div>
     
 
 
 </nav>
 
+<!-- <body style="background-color: #d1e0e0;">
 
-<div style="background-color:#d1e0e0;height:800px; ">
-<div class="container">
-	<div class="row">
-		<div class="col-sm-4">
-			<div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px;">
-				<a href="#"><img src="{% static 'css/images/camera.jpg' %}" class="img-circle" id="img" width="70px" height="70px" style="margin-top:80px; margin-left:30px"></a><input type="file" id="profile" name="">
-					<h5><a href="#" style="margin-left:100px;color: black; text-decoration: none;"><b>{{user.username}}</b> <br>  
-					&emsp;&emsp;&nbsp &emsp;&nbsp &emsp;&emsp;<i><b>{{user.email}}</b></i></a></h5>
-					<div class="element">
-						<a href="#" style="text-decoration: none;">&emsp;Tweets</a> <a href="#" style="text-decoration: none;"> &nbsp &emsp; Following</a><a href="#" style="text-decoration: none;">&nbsp &emsp; Followers</a>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid" >
+    
+    <ul class="nav navbar-nav" style="width:800px">
+      <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
+      
+      <li><a href="#"><i class=" fa fa-flash" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
+      <li><a href="#"><i class="fa fa-bell-o" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
+      <li><a href="#"><i class="fa fa-envelope-o" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
+      <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-top: 15px;margin-left: 100px;"></i></a></li>
+    </ul>
+    <form class="navbar-form navbar-left" method='GET'>
+      <div class="input-group">
+        <input type="text" class="form-control" style="margin-top: 15px;" placeholder="Search twitter" autocomplete="off" name='query' value='{{search}}'>
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit" style="width: 40px; height:35;margin-top: 15px;">
+            <i class="glyphicon glyphicon-search" style="color:#4286f4;"></i>
+        </button>
+        </div>
+      </div>
 
-					</div>
-				
-				
-			</div>
-			<div style="width: 300px;background-color: white; height:150px;">
-				</div>
-				
-		</div>
-		<div class="col-sm-6">
-			<div style="background-color:#b3f0ff;height:180px;width:500px;margin-top:10px;">
-				<!-- <span><a href="#"><i class=" fa fa-user-circle-o"  style="font-size:35px; float: left;margin-left: 5px;margin-top:10px;"></i></a></span> -->
-        <form method="POST" class="tweet-form"><!-- <textarea rows="4" cols="55" name="query"></textarea> -->
+    </form>
+    {% if user.is_authenticated %}
+  
+  <p style="font-size:20px;margin-top: 15px;"><a href="{% url 'logout' %}" id="logstart">logout</a>
+    
+{% endif %}
+    <a href="#"><i class=" fa fa-user-circle-o" style="font-size:35px;margin-top: 15px;color:black"></i></a>
+
+
+</nav> -->
+
+
+<div >
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-sm-4">
+      <div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px; margin-left: 115px;">
+        <a href="#"><img src="{% static "css/images/camera.jpg" %}" class="img-circle" id="img" width="70px" height="70px" style="margin-top:80px; margin-left:30px"></a><input type="file" id="profile" name="">
+          <h5><a href="#" style="margin-left:100px;color: black; text-decoration: none;"><b>{{user.username}}</b> <br>  
+          &emsp;&emsp;&nbsp &emsp;&nbsp &emsp;&emsp;<i><b>{{user.email}}</b></i></a></h5>
+          
+            <div class="row">
+              <div class="col-sm-4">
+              <a href="#" style="text-decoration: none; margin-top: 10px;">Tweets</a>
+              <h6>&emsp;{{twtcount}}</h6>
+              </div>
+              <div class="col-sm-4">
+              <a href="#" style="text-decoration: none;">Following</a>
+              <h6>&emsp;{{following}}</h6>
+              </div>
+              <div class="col-sm-4">
+              <a href="#" style="text-decoration: none;">Followers</a>
+              <h6>&emsp;{{followers}}</h6>
+              </div>
+            </div>
+          
+        
+        
+      </div>
+      <div style="width: 300px;background-color: white; height:160px; margin-left: 115px;">
+        </div>
+        
+    </div>
+    <div class="col-sm-6">
+      <div style="background-color:#b3f0ff;height:180px;width:500px;margin-top:10px;">
+        
+        <form method="POST" class="tweet-form" enctype="multipart/form-data"><!-- <textarea rows="4" cols="55" name="query"></textarea> -->
           {% csrf_token %}
           {{ form.as_p }}
 
-				
-					<div class="element">
-  						<i class="fa fa-camera" style="margin-left: 20px;margin-bottom: 30px;" id="camera1"></i>
-  						<input type="file" id="choose" >
-  						<button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px;">tweet</button>
+        
+          <div class="element">
+              <i class="fa fa-camera" style="margin-left: 20px;margin-bottom: 30px;" id="camera"></i>
+              <input type="file" id="choose" >
+              <button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">tweet</button>
 
  
-					</div>
+          </div>
         </form>
-        
-        {% for i in twt1 %}
-          <div class="container" id="twtid" style="height: 300px;width: 504px;margin-top: 10px;margin-left: 0px;border:1px solid black;">
+      {% for i in twt1 %}
+        <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: auto;height: auto;margin-top: 65px;">
         
           <div class="post">
-            <p>tweet:{{i.text|linebreaksbr}}</p>
+            <a href="{% url 'profile' pk=i.user.pk %}">{{i.user}}</a>
+            <p>{{i.text|linebreaksbr}}</p>
+            
+            <div id="spa">
+              
+              <img class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.profile_image }}" />
+
+            
+            </div>  
             <p>posted on:{{i.created_at}}</p>
-            <p><a href="{% url 'profile' pk=i.user.pk %}">tweet by:{{i.user}}</a></p>
+            
           </div>
-          </div>
-          
+        </div>
+      {% endfor %}
+      </div>
+    </div>
 
-        {% endfor %}
-        
-        <!-- <form method="POST" class="tweet-form">{% csrf_token %}
-          {{ form.as_p }}
-
-          <button type="submit" class="save btn btn-default">save</button>
-        </form> -->
-			</div>
-		</div>
-		
-	</div>
+  </div>
 
 </div>
 </div>
-<!-- <style type="text/css">
-  label{
+<style type="text/css">
+  #spa{
+    border:0px solid black;
+    width: auto;
+    height: auto;
+    margin-top: 16px;
+    margin-left: 38px;
+    border-radius: 8%;
+  }
+  /*p:nth-child(2){
+    margin: 0 15px 10px;
+  }
+  p:nth-child(1){
+    margin: 0 0 10px;
+  }*/
+  p{
+    margin:2px 0 0 10px;
+  }
+  p:nth-child(4){
+    margin:215px 0 0 10px;
+  }
+  #id_profile_image{
     display: none;
   }
-</style> -->
+
+
+</style>
+
 <script type="text/javascript">
-$("camera1").click(function () {
+$("i").click(function () {
   $("input[type='file']").trigger('click');
 });
 
@@ -151,32 +200,19 @@ $('input[type="file"]').on('change', function() {
   var val = $(this).val();
   $(this).siblings('span').text(val);
 })
+/*document.getElementById("#logstart").onclick = function () {
+  location.href = "start/";
+}*/
 
 </script>
-<!-- <script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(e) {
-  if (!e.target.matches('.dropbtn')) {
-    var myDropdown = document.getElementById("myDropdown");
-      if (myDropdown.classList.contains('show')) {
-        myDropdown.classList.remove('show');
-      }
-  }
-}
-</script> -->
 
 
 
 
-  
+ </body> 
 
 
 
 
 {% endblock %}
+

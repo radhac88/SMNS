@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set "VIRTUAL_ENV=C:\Users\surya.kala\Desktop\django-auth-tutorial-master\myvenv"
+set "VIRTUAL_ENV=C:\gitfiles\SMNS\surya\django-auth-tutorial-master\myvenv"
 
 if not defined PROMPT (
     set "PROMPT=$P$G"
