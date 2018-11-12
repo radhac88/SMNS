@@ -174,3 +174,11 @@ def autocomplete(request):
         }
         return JsonResponse(data)
 
+
+def following_page(request,user_id=1):
+	following_list = Follow.objects.filter(followers=request.user)
+	return render(request,'following_page.html', {'following_list':following_list})
+
+def followers_page(request):
+	followers_list = Follow.objects.filter(following=request.user)
+	return render(request,'followers_page.html', {'followers_list':followers_list})

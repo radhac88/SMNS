@@ -70,11 +70,11 @@
 							<h6 style="font-size:18px;">&emsp;&emsp;{{twtcount}}</h6>
 							</div>
 							<div class="col-sm-4">
-							<a href="#" style="text-decoration: none;color:#3a85ff"><b>Following</b></a>
+							<a href="{% url 'following_page' %}" style="text-decoration: none;color:#3a85ff"><b>Following</b></a>
 							<h6 style="font-size: 17px;">&emsp;{{following}}</h6>
 							</div>
 							<div class="col-sm-4">
-							<a href="#" style="text-decoration: none;color: #3a85ff"><b>Followers</b></a>
+							<a href="{% url 'followers_page' %}" style="text-decoration: none;color: #3a85ff"><b>Followers</b></a>
 							<h6 style="font-size: 17px;">&emsp;{{followers}}</h6>
 							</div>
 						</div>

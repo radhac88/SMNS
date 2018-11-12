@@ -16,6 +16,9 @@ urlpatterns = [
   	path('savecomment/<int:pk>/',views.savecomment, name='savecomment'),
   	path('search',views.search,name='search'),
   	path('autocomplete',views.autocomplete,name='ajax_autocomplete'),
+  	path('followers_page/',views.followers_page, name='followers_page'),
+  	path('following_page/',views.following_page, name='following_page'),
+
 
 
 ]
