@@ -1,15 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-
-
-
 {% block title %}Home{% endblock %}
 {% block content %}
 <style type="text/css">
-  label:first-child{
-    
+  label:first-child{   
     float: left;
-
   }
 </style>
 <script>
@@ -35,25 +30,18 @@ $('input[type="file"]').on('change', function() {
   var val = $(this).val();
   $(this).siblings('span').text(val);
 })
-
 </script>  
-
-
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    
     <ul class="nav navbar-nav">
-      <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
-      
+      <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li>  
       <li><a href="#"><i class=" fa fa-flash" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
       <li><a href="#"><i class="fa fa-bell-o" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
       <li><a href="#"><i class="fa fa-envelope-o" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
       <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
       <li><input class="search-input" type="text" id="search-query" placeholder="Search Twitter" name="q" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-dropdown-1" style="margin-top: 15px;margin-left: 250px;border-radius: 5px;height: 33px;"><button class="btn-primary"><i class="glyphicon glyphicon-search"></i></button></li>
       <li>{% if user.is_authenticated %}<div class="dropdown">
-         <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
-          >
-            
+         <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           </p>
 
 
