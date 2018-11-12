@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>following list</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+{% block content %}
+<body style="background-color: aliceblue;">
+<div id="div">
+{% for i in followers_list %}
+	<div class="grid-container" >
+  		<div class="grid-item">
+  			<a href="{% url 'profile' pk=i.followers.pk %}" style="font-size: 30px;">{{i.followers}}</a>
+  			<p style="font-size: 15px;">{{i.followers.email}}</p>
+  		</div>
+  	</div>
+{% empty %}
+    <p style="font-size: 20px;">No followers yet! :(</p>
+{% endfor %}  
+</div>
+
+
+<style type="text/css">
+	.grid-container {
+		display: inline-grid;
+		grid-template-columns: auto auto auto auto;
+		background-color:#44a0cc52;
+		padding: 10px;
+	}
+	.grid-item {
+		background-color:white;
+		border: 1px solid black;
+		padding: 20px;
+		font-size: 20px;
+		text-align: center;
+		height: 250px;
+		width: 350px;
+	}
+	#div{
+		padding: 100px;
+		
+	}
+</style>
+
+{% endblock %}
+</body>
+</html>

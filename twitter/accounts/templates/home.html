@@ -94,11 +94,11 @@
 							<h6>&emsp;{{twtcount}}</h6>
 							</div>
 							<div class="col-sm-4">
-							<a href="#" style="text-decoration: none;">Following</a>
+							<a href="{% url 'following_page' %}" style="text-decoration: none;">Following</a>
 							<h6>&emsp;{{following}}</h6>
 							</div>
 							<div class="col-sm-4">
-							<a href="#" style="text-decoration: none;">Followers</a>
+							<a href="{% url 'followers_page' %}" style="text-decoration: none;">Followers</a>
 							<h6>&emsp;{{followers}}</h6>
 							</div>
 						</div>
@@ -146,8 +146,8 @@
 
 
 					<div class="element" id="show" style="background-color:#b3ecff; height: 90px; width: 600px;display: none; ">
-  						<i class="fa fa-camera" style="margin-left:30px;margin-top: 35px;" id="camera"  data-toggle="tooltip" data-placement="top" title="Add photos"" ></i></a>
-  						<input type="file" id="choose" ><i class='fas fa-image' style='margin-left: 40px;margin-top: 30px; font-size:24px'></i><i class='fas fa-poll' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><i class='fas fa-map-marker-alt' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><button class="btn btn-default btn-md" type="submit" style="width:70px;background-color:#3a85ff;color:white;margin-left: 300px; margin-top: 30px;">tweet</button>
+  						<i class="fa fa-camera" style="margin-left:30px;margin-top: 35px;" id="camera"  data-toggle="tooltip" data-placement="top" title="Add photos" onclick="choosefile()"></i>
+  						<i class='fas fa-image' style='margin-left: 40px;margin-top: 30px; font-size:24px'></i><i class='fas fa-poll' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><i class='fas fa-map-marker-alt' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><button class="btn btn-default btn-md" id="clr" type="submit" style="width:70px;background-color:#3a85ff;color:white;margin-left: 300px; margin-top: 30px;">tweet</button>
   						<!-- <button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">tweet</button> -->
 
  
@@ -155,7 +155,7 @@
 					
         </form>
 			{% for i in twt1 %}
-				<div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;">
+				<div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 600px;height:auto;margin-top: 65px;">
 				
 					<div class="post" style="height: auto;width: auto;">
 						<a href="{% url 'profile' pk=i.user.pk %}" style="margin:2px 0 0 10px;">{{i.user}}</a>
@@ -168,10 +168,10 @@
 							
 						
 						</div>	
-							<a href="{% url 'comments' pk=i.pk %}">Comments: {{ i.comments.count }}</a>
+						<!-- 	<a href="{% url 'comments' pk=i.pk %}">{{ i.comments.count }}comments</a> -->
 						<p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'savecomment' pk=i.pk }" data-pk="{{i.pk}}" data-target="#myModal" data-user="{{i.user}}" data-text="{{i.text|linebreaksbr}}" id="modalbutton"></p>
-						<p>posted on:{{i.created_at}}</p>
-						
+						<a href="{% url 'comments' pk=i.pk %}">{{ i.comments.count }}comments</a>
+
 						<p>posted on:{{i.created_at}}</p>
 						
 					</div>
@@ -218,6 +218,7 @@
 		border-radius: 10px;
 
 	}
+
 	/*p:nth-child(2){
 		margin: 0 15px 10px;
 	}
@@ -242,21 +243,23 @@
 	    width: 100%;
 	}
 
-
-
 </style>
 
 <script type="text/javascript">
-$("#camera").click(function () {
-  $("input[type='file']").trigger('click');
-});
+// $("#camera").click(function () {
+//   $("input[type='file']").trigger('click');
+// });
 
+function choosefile()
+{
+	document.getElementById("id_profile_image").click();
+}
 
 $('input[type="file"]').on('change', function() {
   var val = $(this).val();
   $(this).siblings('span').text(val);
-})</script>
-<script type="text/javascript">
+})
+
 $(document).ready(function(){
     $("#hide").click(function(){
         $("#show").hide();
@@ -265,13 +268,20 @@ $(document).ready(function(){
         $("#show").show();
     });
 });	
-</script>
-<script>
+
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
-</script>
 
+
+// $(document).ready(function(){
+// 	$(".tooltip.fade.top.in").hide();
+// });
+
+// $(document).ready(function(){
+// 	$(".fade").addClass("hidden");
+// }
+</script>
 
 
 
