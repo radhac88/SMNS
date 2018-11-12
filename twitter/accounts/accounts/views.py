@@ -53,6 +53,7 @@ def home(request):
 			tweet.published_date = timezone.now()
 			twt = Tweets.objects.all().order_by('-created_at')
 			tweet.save()
+			form=TweetForm()
 			followers=Follow.objects.filter(following=request.user).count()
 			following=Follow.objects.filter(followers=request.user).count()
 			tweetscount=Tweets.objects.filter(user=request.user).count()
@@ -77,6 +78,10 @@ def profile(request, pk):
 	profile= get_object_or_404(User, pk=pk)
 	pic=Profile.objects.filter(user=profile.id)
 	twt=Tweets.objects.filter(user=profile.id)
+	followers=Follow.objects.filter(following=profile.id).count()
+	following=Follow.objects.filter(followers=profile.id).count()
+	tweetscount=Tweets.objects.filter(user=profile.id).count()
+	form1 = commentForm(request.POST)
 	if(request.user!= profile):
 		status=Follow.objects.filter(followers=request.user,following=profile)
 	else:
@@ -90,12 +95,15 @@ def profile(request, pk):
 	    elif action == "unfollow":
 	        Follow.objects.filter(followers=request.user,following=profile).delete()
 	        return JsonResponse({'status':'ok','data1':'unfollow'})
-	return render(request,'profile.html',{'profile':profile,'twt1':twt,'pic':pic,'status':status,'form': form,}) 
+	return render(request,'profile.html',{'profile':profile,'twt1':twt,'pic':pic,'status':status,'form': form,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,}) 
 
 
 def updateprofile(request):
     pic=Profile.objects.filter(user=request.user)
     twt=Tweets.objects.filter(user=request.user)
+    followers=Follow.objects.filter(following=request.user).count()
+    following=Follow.objects.filter(followers=request.user).count()
+    tweetscount=Tweets.objects.filter(user=request.user).count()
     try:
 	    if request.method == "POST":
 	        form = ProfileForm(request.POST,request.FILES, instance=request.user.profile)
@@ -105,10 +113,10 @@ def updateprofile(request):
 	            profile.profile_image = form.cleaned_data['profile_image']
 	            profile.header_image = form.cleaned_data['header_image']
 	            profile.save()
-	        return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt})  
+	        return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})  
 	    else:
 	        form =ProfileForm(instance=request.user.profile)
-	        return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt})  
+	        return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})  
     except:
     	form =ProfileForm(request.POST)
     	if form.is_valid():
@@ -117,15 +125,16 @@ def updateprofile(request):
             profile.profile_image = form.cleaned_data['profile_image']
             profile.header_image = form.cleaned_data['header_image']
             profile.save()
-    	return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt})	
-    return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt})
+    	return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})	
+    return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})
 
 
 def comments(request, pk):
 		post = get_object_or_404(Tweets, pk=pk)
+		pic=Profile.objects.filter(user=request.user)
 		comments=comment.objects.filter(twtid=post.pk)
-		twt=Tweets.objects.filter(twtid=post.pk)
-		return render(request, 'comments.html', {'post': twt,'comment':comments})
+		twt=Tweets.objects.filter(user=post.pk)
+		return render(request, 'comments.html', {'post': twt,'pic':pic,'comment':comments})
 
 def savecomment(request,pk):
 	tweets = get_object_or_404(Tweets, pk=pk)

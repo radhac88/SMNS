@@ -13,12 +13,11 @@
   <div class="container-fluid">
     
     <ul class="nav navbar-nav">
-      <li><a href="{%url 'home'%}"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
-      
-      <li><a href="#"><i class=" fa fa-flash" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
-      <li><a href="#"><i class="fa fa-bell-o" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
-      <li><a href="#"><i class="fa fa-envelope-o" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
-      <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
+      <li><a href="{% url 'home' %}"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
+      <li><a href="#"><i class=" fas fa-bolt" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
+      <li><a href="#"><i class="far fa-bell" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
+      <li><a href="#"><i class="far fa-envelope" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
+     <li><a href="#"><i class="fab fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
       <li><form type="get" action="{% url 'search' %}" accept-charset="utf-8">
         <input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
     background: #2196F3;
@@ -27,33 +26,22 @@
     margin-top:15px;
     border: 1px solid grey;
     border-left: none;cursor: pointer;"><i class="fa fa-search example" style="font-size:17px"></i></button></form></li>
-      <li>{% if user.is_authenticated %}<div class="dropdown">
-         <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
-          >
-            
-          </p>
-
-
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-            {% else %}
-            <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
-          >
-            
-          </p>
-  
-          <li><a href="{% url 'login' %}">login</a>
-          {% endif %}</li>
-            
-          </ul>
-</div>
-</li>
-      </ul>
-</div>
-    
-
-
+      <li>
+    <div class="dropdown">
+    <p class="dropdown-toggle fas fa-user-circle" data-toggle="dropdown" type="button" style="font-size:40px;margin-top: 15px;margin-left:90px;"aria-haspopup="true" aria-expanded="true"></p>
+    <ul class="dropdown-menu" style="margin-left:100px;">
+      <li><a class="dropdown-item" href="{% url 'updateprofile' %}"><b>{{user.username}}</b><br>{{user.email}}</a>
+      <li class="divider"></li>
+      <li><a class="dropdown-item" href="{% url 'updateprofile' %}">
+        <font face="verdana">updateprofile</font></a></li>
+      <li class="divider"></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}" >Logout</a></li>
+      {% else %}
+        <li><a href="{% url 'login' %}">login</a></li>
+      {% endif %} 
+    </ul>
+  </div>  
 </nav>
 <div id="backround">
 {% for i in pic %}
@@ -70,11 +58,13 @@
   <div class="container-fluid">
      
     <ul class="nav navbar-nav" style="margin-left:350px;">
-      <li><a href="#"><b>Following</b></a></li>
+      <li><a href="#"><b>Following</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{following}}</b></li>
+
       
-      <li><a href="#"><b>Follwers</b></a></li>
-      <li><a href="#"><b>Lists</b></a></li>
-      <li><a href="#"><b>Moments</b></a></li>
+      <li><a href="#"><b>Follwers</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{followers}}</b></li>
+      <li><a href="#"><b>Tweets</b></a>&emsp;&emsp;<b style="color:#3399ff;
+      font-size:20px;">{{twtcount}}</b></li>
+      <li><a href="#"><b>Moments</b></a>&emsp;&emsp; <b style="color:#3399ff; font-size:20px;">0</b></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
      <li><a href="#"><button type="button" class="btn btn-default" data-pk={{profile.pk}} data-status="follow"  id="follow_btn"><b>Follow</b></button></a></li>
@@ -91,6 +81,7 @@
   <p id="status1" >{{status}}</p>
   </div>
 </nav><br><br>
+<body style="background-color:#d1e0e0; ">
 <h2 style="color:black; margin-left: 20px;"><a href="#" style="text-decoration: none;">{{profile.username}}</a></h2>
 <p style="margin-left: 20px;"><a href="#" style="text-decoration: none;"><b>{{profile.email}}</b></a></p>
 <!-- {% for i in twt1 %}
@@ -100,17 +91,33 @@
   <p>posted on:{{i.created_at}}</p>
 {% endfor %} -->
 {% for i in twt1 %}
-          <div class="container" id="twtid" style="height: 300px;width: 504px;margin-top: 10px;margin-left: 0px;border:1px solid black;">
+        <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;">
         
-          <div class="post">
-            <p>tweet:{{i.text|linebreaksbr}}</p>
+          <div class="post" style="height: auto;width: auto;">
+            {% for i in pic %}
+              <a href="#"><img src="/{{i.profile_image}}" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
+            {% endfor %}
+            <a href="{% url 'profile' pk=i.user.pk %}" style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></a><br><br>
+            <!-- <p>{{i.email}}</p> -->
+            <p style="margin-left: 20px;">{{i.text|linebreaksbr}}</p>
+            
+            <div id="spa">
+              
+              <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.profile_image }}" />
+              
+            
+            </div>  
+              <a href="{% url 'comments' pk=i.pk %}">{{ i.comments.count }}</a>
+            <p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'savecomment' pk=i.pk }" data-pk="{{i.pk}}" data-target="#myModal1" data-user="{{i.user}}" data-text="{{i.text|linebreaksbr}}" id="modalbutton1" style="color: #3399ff;margin-left:20px;" title="comments"></p><a href="#" data-toggle="tooltip" title="retweet"><i class="fas fa-retweet" style="color: #3399ff;margin-left:50px; font-size: 20px;"></i></a><a href="#" data-toggle="tooltip" title="likes"><i class="fas fa-heart" style="margin-left: 80px;color: #3399ff;font-size: 20px;"></i></a><i class="far fa-envelope" style="margin-left:90px; color:#3399ff;font-size:20px;"></i>
+            <i style="margin-left: 80px;color: #3399ff;font-size: 15px;"><a href="{% url 'comments' pk=i.pk %}">{{ count }}Comments: </a></i>
+            <hr>
             <p>posted on:{{i.created_at}}</p>
-            <!-- <p><a href="{% url 'profile' pk=i.user.pk %}">tweet by:{{i.user}}</a></p> -->
+            
+            
+            
           </div>
-          </div>
-          
-
-        {% endfor %}
+        </div>
+      {% endfor %}
 
         <div class="modal fade" id="myModal" role="dialog" style="height: 700px; width: 100%;">
     <div class="modal-dialog" style="height:500px;width: 100%; margin-top: 100px;">
@@ -148,6 +155,33 @@
       
     </div>
   </div> 
+
+  <div id="myModal1" class="modal fade " role="dialog" style="height: 700px; width: 100%;">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="user">Reply To </h4>
+      </div>
+      <div class="modal-body">
+      <p id="user1"></p>
+      <p id="text"></p>
+        <form role="form" method="post" class="tweet-form" enctype="multipart/form-data" id="form1"> 
+
+          {% csrf_token %}
+          {{ form1.as_p }}
+          <i class="fa fa-camera" onclick="chooseFile()" style="margin-left:30px;margin-top: 35px;" id="camera"  data-toggle="tooltip" data-placement="top" title="Add photos"" ></i>
+          <input type="file" id="choose" >
+       
+      <button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">Reply</button>
+        </form>
+      </div>
+     
+    </div>
+
+  </div>
+</div>
 <script type="text/javascript">
           $(follow_btn).click(function() {
             var value =$(this).data("status");
@@ -246,8 +280,41 @@ $( function() {
         });        
     });
  });
+$(document).ready(function(){
+    $("#id_image").hide();
+    });
+
+   function chooseFile() {
+      document.getElementById("id_image").click();
+   }
+
+
+
+          $("#modalbutton1").click(function() {
+            var pk = $(this).data("pk");
+            var text = $(this).data("text");
+            var user=$(this).data("user");
+            var url = "{% url 'savecomment' pk=0 %}";
+
+            url = url.replace(0,pk);
+
+              $("#form1").attr("action", url);
+              $("#user").append(user);
+              $("#user1").append("<b>"+user+":</b>");
+              $("#text").append(text+"<hr>");
+              console.log(pk);
+          });
+      
     </script>
 
+<style type="text/css">
+  label:first-child{
+    display: none;
+  }
+  .errorlist{
+    display: none;
+  }
+</style>
 
 {% endblock %}
 

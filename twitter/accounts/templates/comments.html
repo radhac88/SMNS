@@ -3,27 +3,67 @@
 {% block content %}
 
 
-    {% for comment in comment %}
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    
+    <ul class="nav navbar-nav">
+      <li><a href="{% url 'home' %}"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
+      <li><a href="#"><i class=" fas fa-bolt" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
+      <li><a href="#"><i class="far fa-bell" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
+      <li><a href="#"><i class="far fa-envelope" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
+     <li><a href="#"><i class="fab fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
+      <li><form type="get" action="{% url 'search' %}" accept-charset="utf-8">
+        <input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
+    background: #2196F3;
+    color: white;
+    font-size:8px;
+    margin-top:15px;
+    border: 1px solid grey;
+    border-left: none;cursor: pointer;"><i class="fa fa-search example" style="font-size:17px"></i></button></form></li>
+      <li>
+    <div class="dropdown">
+    <p class="dropdown-toggle fas fa-user-circle" data-toggle="dropdown" type="button" style="font-size:40px;margin-top: 15px;margin-left:90px;"aria-haspopup="true" aria-expanded="true"></p>
+    <ul class="dropdown-menu" style="margin-left:100px;">
+      <li><a class="dropdown-item" href="{% url 'updateprofile' %}"><b>{{user.username}}</b><br>{{user.email}}</a>
+      <li class="divider"></li>
+      <li><a class="dropdown-item" href="{% url 'updateprofile' %}">
+        <font face="verdana">updateprofile</font></a></li>
+      <li class="divider"></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}" >Logout</a></li>
+      {% else %}
+        <li><a href="{% url 'login' %}">login</a></li>
+      {% endif %} 
+    </ul>
+  </div>  
+</nav>
 
+{% for i in comment %}
+        <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;">
+        
+          <div class="post" style="height: auto;width: auto;">
+            {% for i in pic %}
+              <a href="#"><img src="/{{i.profile_image}}" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
+            {% endfor %}
+            <i style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.twtid}}</b></i><br><br>
+            <!-- <p>{{i.email}}</p> -->
+            <p style="margin-left: 20px;">{{i.text|linebreaksbr}}</p>
+            
+            <div id="spa">
+              
+              <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.image }}" />
+              
+            
+            </div>  
+        
+            <hr>
+            <p>posted on:{{i.created_at}}</p>
+            
+            
+            
+          </div>
+        </div>
 
-<div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;">
-				
-					<div class="post" style="height: auto;width: auto;">
-						<strong> {{ comment.twtid }}</strong>
-						<!-- <p>{{i.email}}</p> -->
-						<p>{{i.text|linebreaksbr}}</p>
-						
-						<div id="spa">
-							
-							<img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{comment.image }}" />
-							
-						
-						</div>	
-						<p>posted on:{{ comment.created_at }}</p>
-					
-						
-					</div>
-				</div>
 {% empty %}
 <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;">
 				
@@ -34,10 +74,12 @@
 </div>
 	
 </div>
-{% endfor %}
+      {% endfor %}
+
 <style type="text/css">
 	body{
-		background-color: #f2f2f2;
+		background-color: #d1e0e0;
 	}
 </style>
+
 {% endblock %}
