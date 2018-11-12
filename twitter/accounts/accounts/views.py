@@ -151,13 +151,7 @@ def savecomment(request,pk):
 					# following=Follow.objects.filter(followers=request.user).count()
 					# tweetscount=Tweets.objects.filter(user=request.user).count()
 					return redirect('home')
-def following_page(request,user_id=1):
-	following_list = Follow.objects.filter(followers=request.user)
-	return render(request,'following_page.html', {'following_list':following_list})
 
-def followers_page(request):
-	followers_list = Follow.objects.filter(following=request.user)
-	return render(request,'followers_page.html', {'followers_list':followers_list})
 
 
 def search(request):
@@ -190,7 +184,12 @@ def autocomplete(request):
 
 def following_page(request,user_id=1):
 	following_list = Follow.objects.filter(followers=request.user)
-	return render(request,'following_page.html', {'following_list':following_list})
+	piclist=[]
+	for i in following_list:
+		pic=Profile.objects.filter(user=i.following)
+		piclist.append(pic)
+	return render(request,'following_page.html', {'following_list':following_list,'piclist':piclist})
+
 
 def followers_page(request):
 	followers_list = Follow.objects.filter(following=request.user)
