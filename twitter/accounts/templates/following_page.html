@@ -3,13 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
+
         <title>following list</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-=======
-	<title>following list</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
->>>>>>> de12439e9ecb450faf20535eaf333884a692b6af
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -18,21 +15,13 @@
 <body style="background-color: aliceblue;">
 <div id="div">
 {% for i in following_list %}
-<<<<<<< HEAD
-        <div class="grid-container" >
-                  <div class="grid-item">
-                          <a href="{% url 'profile' pk=i.following.pk %}" style="font-size: 30px;">{{i.following}}</a>
-                          <p style="font-size: 15px;">{{i.following.email}}</p> 
-                  </div>
-          </div>
-=======
+
 	<div class="grid-container" >
   		<div class="grid-item">
   			<a href="{% url 'profile' pk=i.following.pk %}" style="font-size: 30px;">{{i.following}}</a>
   			<p style="font-size: 15px;">{{i.following.email}}</p> 
   		</div>
   	</div>
->>>>>>> de12439e9ecb450faf20535eaf333884a692b6af
 {% empty %}
     <p style="font-size: 20px;">You're not following anyone! :(</p>
 {% endfor %} 
@@ -41,7 +30,7 @@
 
 
 <style type="text/css">
-<<<<<<< HEAD
+
         .grid-container {
                 display: inline-grid;
                 grid-template-columns: auto auto auto auto;
@@ -61,34 +50,9 @@
                 padding: 100px;
                 
         }
-=======
-	.grid-container {
-		display: inline-grid;
-		grid-template-columns: auto auto auto auto;
-		background-color:#44a0cc52;
-		padding: 10px;
-	}
-	.grid-item {
-		background-color:white;
-		border: 1px solid black;
-		padding: 20px;
-		font-size: 20px;
-		text-align: center;
-		height: 250px;
-		width: 350px;
-	}
-	#div{
-		padding: 100px;
-		
-	}
->>>>>>> de12439e9ecb450faf20535eaf333884a692b6af
 </style>
 
 {% endblock %}
 </body>
-<<<<<<< HEAD
-</html>
 
-=======
 </html>
->>>>>>> de12439e9ecb450faf20535eaf333884a692b6af
