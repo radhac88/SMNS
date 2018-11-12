@@ -60,7 +60,7 @@
 		<div class="col-sm-4">
 			<div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px ">
 				{% for i in pic %}
-					<a href="#"><img src="/{{i.profile_image}}" class="img-circle" width="90px" height="90px" style="margin-top:60px; margin-left:30px"></a>
+					<a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="90px" height="90px" style="margin-top:60px; margin-left:30px"></a>
 				{% endfor %}
 					<h5><a href="#" style="margin-left:100px;color: black; text-decoration: none;"><b>{{user.username}}</b> <br>  
 					&emsp;&emsp;&nbsp &emsp;&nbsp &emsp;&emsp;<i><b>{{user.email}}</b></i></a></h5>
@@ -70,12 +70,23 @@
 							<h6 style="font-size:18px;">&emsp;&emsp;{{twtcount}}</h6>
 							</div>
 							<div class="col-sm-4">
+<<<<<<< HEAD
 							<a href="{% url 'following_page' %}" style="text-decoration: none;color:#3a85ff"><b>Following</b></a>
 							<h6 style="font-size: 17px;">&emsp;{{following}}</h6>
 							</div>
 							<div class="col-sm-4">
 							<a href="{% url 'followers_page' %}" style="text-decoration: none;color: #3a85ff"><b>Followers</b></a>
 							<h6 style="font-size: 17px;">&emsp;{{followers}}</h6>
+=======
+
+							<a href="{% url 'following_page' %}" style="text-decoration: none;">Following</a>
+							<h6>&emsp;{{following}}</h6>
+							</div>
+							<div class="col-sm-4">
+							<a href="{% url 'followers_page' %}" style="text-decoration: none;">Followers</a>
+							<h6>&emsp;{{followers}}</h6>
+						
+>>>>>>> de12439e9ecb450faf20535eaf333884a692b6af
 							</div>
 						</div>
 			</div>
@@ -113,9 +124,11 @@
           {{ form.as_p }}
 
 					<div class="element" id="show" style="background-color:#b3ecff; height: 90px; width: 600px;display: none; ">
+
   						<i class="fa fa-camera" style="margin-left:30px;margin-top: 35px;" id="camera"  data-toggle="tooltip" data-placement="top" title="Add photos" onclick="chooseFile1()" ></i>
   						<!-- <input type="file" id="choose" > -->
   						<i class='fas fa-image' style='margin-left: 40px;margin-top: 30px; font-size:24px'></i><i class='fas fa-poll' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><i class='fas fa-map-marker-alt' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><button class="btn btn-default btn-md" type="submit" style="width:70px;background-color:#3a85ff;color:white;margin-left: 300px; margin-top: 30px;">tweet</button>
+
   						<!-- <button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">tweet</button> -->
 
  
@@ -123,8 +136,9 @@
 					
         </form>
 
-				{% for i in twt1 %}
-				<div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;">
+			{% for i in twt1 %}
+				<div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 600px;height:auto;margin-top: 65px;">
+
 				
 					<div class="post" style="height: auto;width: auto;">
 						{% for i in pic %}
@@ -140,14 +154,14 @@
 							
 						
 						</div>	
+
 							<a href="{% url 'comments' pk=i.pk %}">{{ i.comments.count }}</a>
 						<p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'savecomment' pk=i.pk }" data-pk="{{i.pk}}" data-target="#myModal" data-user="{{i.user}}" data-text="{{i.text|linebreaksbr}}" id="modalbutton" style="color: #3399ff;margin-left:20px;" title="comments"></p><a href="#" data-toggle="tooltip" title="retweet"><i class="fas fa-retweet" style="color: #3399ff;margin-left:50px; font-size: 20px;"></i></a><a href="#" data-toggle="tooltip" title="likes"><i class="fas fa-heart" style="margin-left: 80px;color: #3399ff;font-size: 20px;"></i></a><i class="far fa-envelope" style="margin-left:90px; color:#3399ff;font-size:20px;"></i>
 						<i style="margin-left: 80px;color: #3399ff;font-size: 15px;"><a href="{% url 'comments' pk=i.pk %}">{{ count }}Comments: </a></i>
 						<hr>
 						<p>posted on:{{i.created_at}}</p>
 						
-						
-						
+
 					</div>
 				</div>
 			{% endfor %}
@@ -220,6 +234,7 @@
 		border-radius: 10px;
 
 	}
+
 	/*p:nth-child(2){
 		margin: 0 15px 10px;
 	}
@@ -248,20 +263,22 @@
 	    border-radius: 0px;*/
 	    padding: 1px;
 	    width: 100%;
-	}
+
 </style>
 <script type="text/javascript">
 // $("#camera").click(function () {
 //   $("input[type='file']").trigger('click');
 // });
+
 function chooseFile1() {
       document.getElementById("id_profile_image").click();
    }
+
 $('input[type="file"]').on('change', function() {
   var val = $(this).val();
   $(this).siblings('span').text(val);
-})</script>
-<script type="text/javascript">
+})
+
 $(document).ready(function(){
     $("#hide").click(function(){
         $("#show").hide();
@@ -270,13 +287,20 @@ $(document).ready(function(){
         $("#show").show();
     });
 });	
-</script>
-<script>
+
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
-</script>
 
+
+// $(document).ready(function(){
+// 	$(".tooltip.fade.top.in").hide();
+// });
+
+// $(document).ready(function(){
+// 	$(".fade").addClass("hidden");
+// }
+</script>
 
 
 

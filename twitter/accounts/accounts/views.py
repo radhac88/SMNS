@@ -53,7 +53,7 @@ def home(request):
 			tweet.published_date = timezone.now()
 			twt = Tweets.objects.all().order_by('-created_at')
 			tweet.save()
-			form=TweetForm()
+			form = TweetForm()
 			followers=Follow.objects.filter(following=request.user).count()
 			following=Follow.objects.filter(followers=request.user).count()
 			tweetscount=Tweets.objects.filter(user=request.user).count()
@@ -145,7 +145,20 @@ def savecomment(request,pk):
 					tweet.twtid=get_object_or_404(Tweets, pk=pk)
 					tweet.image = form.cleaned_data['image']
 					tweet.save()
+
+					# twt = Tweets.objects.all().order_by('-created_at')
+					# followers=Follow.objects.filter(following=request.user).count()
+					# following=Follow.objects.filter(followers=request.user).count()
+					# tweetscount=Tweets.objects.filter(user=request.user).count()
 					return redirect('home')
+def following_page(request,user_id=1):
+	following_list = Follow.objects.filter(followers=request.user)
+	return render(request,'following_page.html', {'following_list':following_list})
+
+def followers_page(request):
+	followers_list = Follow.objects.filter(following=request.user)
+	return render(request,'followers_page.html', {'followers_list':followers_list})
+
 
 def search(request):
     if 'search' in request.GET and request.GET['search']:

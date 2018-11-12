@@ -16,6 +16,10 @@ class TweetForm(forms.ModelForm):
 class SignUpForm(UserCreationForm):
 
     email = forms.EmailField(max_length=254, help_text='Required: Inform a valid email address.')
+    def clean_email(self):
+        if User.objects.filter(email__iexact=self.cleaned_data['email']):
+            raise forms.ValidationError(("This email address is already in use. Please supply a different email address."))
+        return self.cleaned_data['email']
     class Meta:
         model = User
         fields = ('username', 'email', 'password1','password2',)
@@ -32,15 +36,4 @@ class commentForm(forms.ModelForm):
     class Meta:
         model = comment
         fields = ('text','image',)
-
-class UniqueEmailForm(SignUpForm):
-        def clean_email(self):
-            qs = User.objects.filter(email=self.cleaned_data['email'])
-            if self.instance:
-                qs = qs.exclude(pk=self.instance.pk)
-            if qs.count():
-                raise forms.ValidationError(
-                    'That email address is already in use')
-            else:
-                return self.cleaned_data['email']
 

@@ -18,7 +18,7 @@ class Follow(models.Model):
     following = models.ForeignKey(User, related_name='followers', on_delete=models.CASCADE,)
     
     class Meta:
-        unique_together = ('followers', 'following')
+        unique_together = ('followers', 'following',)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
