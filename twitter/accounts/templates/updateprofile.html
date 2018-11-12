@@ -1,15 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-
-
-
 {% block title %}Home{% endblock %}
 {% block content %}
 <style type="text/css">
-  label:first-child{
-    
+  label:first-child{   
     float: left;
-
   }
 </style>
 <script>
@@ -35,45 +30,39 @@ $('input[type="file"]').on('change', function() {
   var val = $(this).val();
   $(this).siblings('span').text(val);
 })
-
 </script>  
-
-
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    
     <ul class="nav navbar-nav">
-      <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
-      
-      <li><a href="#"><i class=" fa fa-flash" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
-      <li><a href="#"><i class="fa fa-bell-o" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
-      <li><a href="#"><i class="fa fa-envelope-o" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
-      <li><a href="#"><i class="fa fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
-      <li><input class="search-input" type="text" id="search-query" placeholder="Search Twitter" name="q" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-dropdown-1" style="margin-top: 15px;margin-left: 250px;border-radius: 5px;height: 33px;"><button class="btn-primary"><i class="glyphicon glyphicon-search"></i></button></li>
-      <li>{% if user.is_authenticated %}<div class="dropdown">
-         <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
-          >
-            
-          </p>
-
-
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-            {% else %}
-            <p class="dropdown-toggle  fa fa-user-circle-o" style="font-size:30px;margin-top: 15px;margin-left: 30px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
-          >
-            
-          </p>
-  
-          <li><a href="{% url 'login' %}">login</a>
-          {% endif %}</li>
-            
-          </ul>
-</div>
-</li>
-      </ul>
-</div>
+     <li><a href="{% url 'home' %}"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
+      <li><a href="#"><i class=" fas fa-bolt" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
+      <li><a href="#"><i class="far fa-bell" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
+      <li><a href="#"><i class="far fa-envelope" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
+     <li><a href="#"><i class="fab fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
+      <li><form type="get" action="{% url 'search' %}" accept-charset="utf-8">
+        <input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
+    background: #2196F3;
+    color: white;
+    font-size:8px;
+    margin-top:15px;
+    border: 1px solid grey;
+    border-left: none;cursor: pointer;"><i class="fa fa-search example" style="font-size:17px"></i></button></form></li>
+      <li>
+    <div class="dropdown">
+    <p class="dropdown-toggle fas fa-user-circle" data-toggle="dropdown" type="button" style="font-size:40px;margin-top: 15px;margin-left:90px;"aria-haspopup="true" aria-expanded="true"></p>
+    <ul class="dropdown-menu" style="margin-left:100px;">
+      <li><a class="dropdown-item" href="{% url 'updateprofile' %}"><b>{{user.username}}</b><br>{{user.email}}</a>
+      <li class="divider"></li>
+      <li><a class="dropdown-item" href="{% url 'updateprofile' %}">
+        <font face="verdana">updateprofile</font></a></li>
+      <li class="divider"></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}" >Logout</a></li>
+      {% else %}
+        <li><a href="{% url 'login' %}">login</a></li>
+      {% endif %} 
+    </ul>
+  </div>  
 </nav>
 <div id="backround">
 {% for i in pic %}
@@ -104,17 +93,31 @@ $('input[type="file"]').on('change', function() {
 <a href="#" style="text-decoration: none;"><h2 style="color:black; margin-left: 20px;">{{user.username}}</h2></a>
 <a href="#" style="text-decoration: none;"><p style="margin-left: 20px;"><b>{{user.email}}</b></p></a>
         {% for i in twt1 %}
-          <!-- <div class="container" style="height: 300px;width: 504px;margin-top: 10px;margin-left: 0px;border:1px solid black;">
-         -->
-          <div class="post">
-            <p>tweet:{{i.text|linebreaksbr}}</p>
-            <p>posted on:{{i.created_at}}</p>
-            <!-- <p><a href="{% url 'profile' pk=i.user.pk %}">tweet by:{{i.user}}</a></p> -->
-          </div>
-          </div>
-          
+        <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;">
+        
+          <div class="post" style="height: auto;width: auto;">
+            {% for i in pic %}
+              <a href="#"><img src="/{{i.profile_image}}" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
+            {% endfor %}
+            <a href="{% url 'profile' pk=i.user.pk %}" style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></a><br><br>
+            <!-- <p>{{i.email}}</p> -->
+            <p style="margin-left: 20px;">{{i.text|linebreaksbr}}</p>
+            
+            <div id="spa">
+              
+              <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.profile_image }}" />
+              
+            
+            </div>  
 
-        {% endfor %}
+            <hr>
+            <p>posted on:{{i.created_at}}</p>
+            
+            
+            
+          </div>
+        </div>
+      {% endfor %}
 <div class="modal fade" id="myModal" role="dialog" style="height: 700px; width: 100%;">
     <div class="modal-dialog" style="height:500px;width: 100%; margin-top: 100px;">
     
@@ -154,7 +157,36 @@ $('input[type="file"]').on('change', function() {
 
 
  
+<script type="text/javascript">
 
+$( function() {
+        $("#search").on('keyup', function(){
+        var value = $(this).val();
+        $.ajax({
+            url: "{% url 'ajax_autocomplete' %}",
+            data: {
+              'search': value 
+            },
+            dataType: 'json',
+            success: function (data) {
+                list = data.list;
+                console.log(list);
+                $("#search").autocomplete({
+                source : list
+                
+                });       
+            }
+        });        
+    });
+ });
+$(document).ready(function(){
+    $("#id_image").hide();
+    });
+
+   function chooseFile() {
+      document.getElementById("id_image").click();
+   }
+    </script>
 
 
 

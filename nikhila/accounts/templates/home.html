@@ -13,10 +13,14 @@
   <link rel="mask-icon" sizes="any" href="https://abs.twimg.com/a/1541103114/icons/favicon.svg" color="#1da1f2">
   <link rel="apple-touch-icon" href="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" sizes="192x192">
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css' integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns' crossorigin='anonymous'>
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript">
+        </script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script> -->
+        <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
 </head>
 
 
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css' integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns' crossorigin='anonymous'>
 
 
 
@@ -37,13 +41,14 @@
       <li><a href="#"><i class="far fa-bell" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
       <li><a href="#"><i class="far fa-envelope" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
       <li><a href="#"><i class="fab fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
-      <li><input type="text" placeholder="Search.." name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
+      <li><form type="get" action="{% url 'search' %}" accept-charset="utf-8">
+      	<input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
     background: #2196F3;
     color: white;
     font-size:8px;
     margin-top:15px;
     border: 1px solid grey;
-    border-left: none;cursor: pointer;"><i class="fa fa-search example" style="font-size:17px"></i></button></li>
+    border-left: none;cursor: pointer;"><i class="fa fa-search example" style="font-size:17px"></i></button></form></li>
       <li>
     <div class="dropdown">
     <p class="dropdown-toggle fas fa-user-circle" data-toggle="dropdown" type="button" style="font-size:40px;margin-top: 15px;margin-left:90px;"aria-haspopup="true" aria-expanded="true"></p>
@@ -113,7 +118,8 @@
 				
 					<div class="element" id="show" style="background-color:#b3ecff; height: 90px; width: 600px;display: none; ">
   						<i class="fa fa-camera" style="margin-left:30px;margin-top: 35px;" id="camera"  data-toggle="tooltip" data-placement="top" title="Add photos"" ></i></a>
-  						<input type="file" id="choose" ><i class='fas fa-image' style='margin-left: 40px;margin-top: 30px; font-size:24px'></i><i class='fas fa-poll' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><i class='fas fa-map-marker-alt' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><button class="btn btn-default btn-md" type="submit" style="width:70px;background-color:#3a85ff;color:white;margin-left: 300px; margin-top: 30px;">tweet</button>
+  						<!-- <input type="file" id="choose" > -->
+  						<i class='fas fa-image' style='margin-left: 40px;margin-top: 30px; font-size:24px'></i><i class='fas fa-poll' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><i class='fas fa-map-marker-alt' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><button class="btn btn-default btn-md" type="submit" style="width:70px;background-color:#3a85ff;color:white;margin-left: 300px; margin-top: 30px;">tweet</button>
   						<!-- <button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">tweet</button> -->
 
  
@@ -133,7 +139,7 @@
 
 						
 						</div>	
-						<a href="{% url 'comments' pk=i.pk %}">Comments: {{ i.comments.count }}</a>
+						<a href="{% url 'comments' pk=i.pk %}">{{ count }}Comments: </a>
 						<p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'savecomment' pk=i.pk }" data-pk="{{i.pk}}" data-target="#myModal" data-user="{{i.user}}" data-text="{{i.text|linebreaksbr}}" id="modalbutton"></p>
 						<p>posted on:{{i.created_at}}</p>
 						
@@ -184,9 +190,9 @@
 	p:nth-child(4){
 		margin:215px 0 0 10px;
 	}
-	#id_profile_image{
+/*	#id_profile_image{
 		display: none;
-	}
+	}*/
 
 
 </style>
@@ -213,6 +219,9 @@ $(document).ready(function(){
 <script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
+
+
+    
 });
 </script>
 
@@ -223,8 +232,28 @@ $(document).ready(function(){
 
  
 
-</script>
-
+<script>
+ $( function() {
+        $("#search").on('keyup', function(){
+        var value = $(this).val();
+        $.ajax({
+            url: "{% url 'ajax_autocomplete' %}",
+            data: {
+              'search': value 
+            },
+            dataType: 'json',
+            success: function (data) {
+                list = data.list;
+                console.log(list);
+                $("#search").autocomplete({
+                source : list
+                
+                });       
+            }
+        });        
+    });
+ });
+    </script>
 <script type="text/javascript">
 					$(modalbutton).click(function() {
 	    			var pk = $(this).data("pk");

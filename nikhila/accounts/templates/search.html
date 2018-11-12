@@ -1,0 +1,14 @@
+   {% extends 'base.html' %}
+
+{% block content %}
+    {% for i in profile %}
+    <div class="comment">
+        <a href="{%url 'profile' pk=i.pk%}" >{{ i.username }}</div>
+        <div>{{i.}}
+        <!-- <img class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{comment.image }}" /> -->
+    </div>
+{% empty %}
+    <p>No comments here yet :(</p>
+{% endfor %}
+
+{% endblock %}

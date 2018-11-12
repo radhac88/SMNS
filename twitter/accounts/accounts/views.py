@@ -1,6 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
@@ -21,6 +19,9 @@ from django.shortcuts import render,redirect,get_object_or_404
 from .models import User
 from .forms import SignUpForm,ProfileForm
 from django.contrib.auth import authenticate,login
+from django.http import HttpResponseRedirect,HttpResponse
+from django.http import JsonResponse
+
 
 
 
@@ -48,7 +49,6 @@ def home(request):
 		form1 = commentForm(request.POST)
 		if form.is_valid():
 			tweet = form.save(commit=False)
-			# tweet.profile_image = form.cleaned_data['profile_image']
 			tweet.user=request.user
 			tweet.published_date = timezone.now()
 			twt = Tweets.objects.all().order_by('-created_at')
@@ -74,14 +74,36 @@ def home(request):
 	return render(request, 'home.html', {'form': form,'pic':pic})	
 
 def profile(request, pk):
-    profile= get_object_or_404(User, pk=pk)
-    pic=Profile.objects.filter(user=profile.id)
-    twt=Tweets.objects.filter(user=profile.id)
-    return render(request,'profile.html',{'profile':profile,'twt1':twt,'pic':pic}) 
+	form =ProfileForm(instance=request.user.profile)
+	profile= get_object_or_404(User, pk=pk)
+	pic=Profile.objects.filter(user=profile.id)
+	twt=Tweets.objects.filter(user=profile.id)
+	followers=Follow.objects.filter(following=profile.id).count()
+	following=Follow.objects.filter(followers=profile.id).count()
+	tweetscount=Tweets.objects.filter(user=profile.id).count()
+	form1 = commentForm(request.POST)
+	if(request.user!= profile):
+		status=Follow.objects.filter(followers=request.user,following=profile)
+	else:
+		status="ok"
+	if request.is_ajax():
+	    user_id = request.GET.get('id')
+	    action = request.GET.get('action')
+	    if action == "follow":
+	        Follow.objects.get_or_create(followers=request.user,following=profile)
+	        return JsonResponse({'status':'ok','data1':'follow'})
+	    elif action == "unfollow":
+	        Follow.objects.filter(followers=request.user,following=profile).delete()
+	        return JsonResponse({'status':'ok','data1':'unfollow'})
+	return render(request,'profile.html',{'profile':profile,'twt1':twt,'pic':pic,'status':status,'form': form,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,}) 
+
 
 def updateprofile(request):
     pic=Profile.objects.filter(user=request.user)
     twt=Tweets.objects.filter(user=request.user)
+    followers=Follow.objects.filter(following=request.user).count()
+    following=Follow.objects.filter(followers=request.user).count()
+    tweetscount=Tweets.objects.filter(user=request.user).count()
     try:
 	    if request.method == "POST":
 	        form = ProfileForm(request.POST,request.FILES, instance=request.user.profile)
@@ -91,10 +113,10 @@ def updateprofile(request):
 	            profile.profile_image = form.cleaned_data['profile_image']
 	            profile.header_image = form.cleaned_data['header_image']
 	            profile.save()
-	        return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt})  
+	        return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})  
 	    else:
 	        form =ProfileForm(instance=request.user.profile)
-	        return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt})  
+	        return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})  
     except:
     	form =ProfileForm(request.POST)
     	if form.is_valid():
@@ -103,14 +125,16 @@ def updateprofile(request):
             profile.profile_image = form.cleaned_data['profile_image']
             profile.header_image = form.cleaned_data['header_image']
             profile.save()
-    	return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt})	
-    return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt})
+    	return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})	
+    return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})
 
 
 def comments(request, pk):
 		post = get_object_or_404(Tweets, pk=pk)
+		pic=Profile.objects.filter(user=request.user)
 		comments=comment.objects.filter(twtid=post.pk)
-		return render(request, 'comments.html', {'post': post,'comment':comments})
+		twt=Tweets.objects.filter(user=post.pk)
+		return render(request, 'comments.html', {'post': twt,'pic':pic,'comment':comments})
 
 def savecomment(request,pk):
 	tweets = get_object_or_404(Tweets, pk=pk)
@@ -121,6 +145,7 @@ def savecomment(request,pk):
 					tweet.twtid=get_object_or_404(Tweets, pk=pk)
 					tweet.image = form.cleaned_data['image']
 					tweet.save()
+
 					# twt = Tweets.objects.all().order_by('-created_at')
 					# followers=Follow.objects.filter(following=request.user).count()
 					# following=Follow.objects.filter(followers=request.user).count()
@@ -133,3 +158,32 @@ def following_page(request,user_id=1):
 def followers_page(request):
 	followers_list = Follow.objects.filter(following=request.user)
 	return render(request,'followers_page.html', {'followers_list':followers_list})
+
+
+def search(request):
+    if 'search' in request.GET and request.GET['search']:
+        search = request.GET['search']
+        po1= User.objects.filter(username__icontains=search)
+        # po=Profile.objects.filter(user_id=po1.id)
+        #po=Profile.objects.filter(user=po1)
+        # twt=Tweets.objects.filter(user=po.id)
+       # if po.exists() :
+        #    pass
+       # else:
+        #    po = Post.objects.filter(text__icontains=search)
+        return render(request,'search.html',{'profile':po1}) 
+    else:
+        return HttpResponse('Please submit a search term.')
+
+
+def autocomplete(request):
+    if request.is_ajax():
+        queryset = User.objects.filter(username__icontains=request.GET.get('search', None)) 
+        list = []        
+        for i in queryset:
+            list.append(i.username)
+        data = {
+            'list': list,
+        }
+        return JsonResponse(data)
+
