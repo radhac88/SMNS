@@ -1,6 +1,6 @@
 from django import forms
 from .models import Tweets,Profile
-from .models import Follow,comment
+from .models import Follow,comment,Replycomment
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -38,4 +38,19 @@ class commentForm(forms.ModelForm):
     class Meta:
         model = comment
         fields = ('text','image',)
+class replycommentForm(forms.ModelForm):
 
+    class Meta:
+        model = Replycomment
+        fields = ('text','image',)
+
+# from django import forms
+# from django.core.validators import MinValueValidator, MaxValueValidator
+
+# class GenerateRandomUserForm(forms.Form):
+#     total = forms.IntegerField(
+#         validators=[
+#             MinValueValidator(50),
+#             MaxValueValidator(500)
+#         ]
+#     )

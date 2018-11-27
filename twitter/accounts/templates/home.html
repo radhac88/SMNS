@@ -1,4 +1,5 @@
    {% extends 'base.html' %}
+
 {% load static %}
 
 
@@ -6,14 +7,14 @@
 <body style="background-color: #d1e0e0;">
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <ul class="nav navbar-nav">
+  	<ul class="nav navbar-nav">
       <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
       <li><a href="#"><i class=" fas fa-bolt" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
       <li><a href="#"><i class="far fa-bell" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
       <li><a href="#"><i class="far fa-envelope" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
       <li><a href="#"><i class="fab fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
       <li><form type="get" action="{% url 'search' %}" accept-charset="utf-8">
-      	<input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
+        <input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
     background: #2196F3;
     color: white;
     font-size:8px;
@@ -35,26 +36,34 @@
         <li><a href="{% url 'login' %}">login</a></li>
       {% endif %} 
     </ul>
+    
   </div>  
 </nav>
 <div class="container-fluid" >
 	<div class="row">
 		<div class="col-sm-4">
+<!-- <<<<<<< HEAD -->
       {% for i in pic %}
 		  	<div style="height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px ">
         <img src="/{{i.header_image}}" onerror="this.src='../static/img/background.jpg';" style="height: 100px;width:300px;margin-top:0px; margin-left: 115px; margin-inline-start:0px ">
 				
 					<a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="90px" height="90px" style="margin-top:-40px; margin-left:20px"></a>
+<!-- =======
+			<div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px;border-radius:5px; ">
+				{% for i in pic %}
+					<a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="90px" height="90px" style="margin-top:60px; margin-left:30px"></a>
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
 				{% endfor %}
 					<h5><a href="#" style="margin-left:100px;color: black; text-decoration: none;"><b>{{user.username}}</b> <br>  
 					&emsp;&emsp;&nbsp &emsp;&nbsp &emsp;&emsp;<i><b>{{user.email}}</b></i></a></h5>
-												<div class="row">
+							<div class="row">
 							<div class="col-sm-4">
 							<a href="#" style="text-decoration: none; margin-top: 10px; margin-left:20px; color:#3a85ff; "><b>Tweets</b></a>
 							<h6 style="font-size:18px;">&emsp;&emsp;{{twtcount}}</h6>
 							</div>
 							<div class="col-sm-4">
-
+<!-- 
+<<<<<<< HEAD -->
 							<a href="{% url 'following_page' pk=user.pk %}" style="text-decoration: none;color:#3a85ff; ">Following</a>
 							<h6>&emsp;{{following}}</h6>
 							</div>
@@ -62,10 +71,19 @@
 							<a href="{% url 'followers_page' pk=user.pk %}" style="text-decoration: none;">Followers</a>
 							<h6>&emsp;{{followers}}</h6>
 						
+<!-- =======
+							<a href="{% url 'following_page' pk=user.pk %}" style="text-decoration: none;color:#3a85ff"><b>Following</b></a>
+							<h6 style="font-size: 17px;">&emsp;{{following}}</h6>
+							</div>
+							<div class="col-sm-4">
+							<a href="{% url 'followers_page' pk=user.pk %}" style="text-decoration: none;color: #3a85ff"><b>Followers</b></a>
+							<h6 style="font-size: 17px;">&emsp;{{followers}}</h6>
+
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
 							</div>
 						</div>
 			</div>
-			<div style="width: 300px;background-color: white; height:160px; margin-left: 115px;  margin-inline-start:100px">
+			<div style="width: 300px;background-color: white; height:160px; margin-left: 115px;  margin-inline-start:100px;border-radius: 5px;">
 			</div><br>
 			<div class="container" id="sta">
 				<h5><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Trends For You</b></h5>
@@ -91,6 +109,8 @@
 				</ul>			
 			</div>	
 		</div>
+		<!-- <p>{{commentslist}}</p> -->
+		
 	<div class="col-sm-4">
 			<div style="background-color:#b3ecff;height:90px;width:600px;margin-top:10px;">
 			<i class="fas fa-user-circle" id="hide" style="float: left; margin-left:10px; margin-top: 20px;font-size: 25px;"></i>	
@@ -111,13 +131,17 @@
 					
         </form>
 
-			{% for i in twt1 %}
+			{% for i,j,k in twtlist %}
 				<div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 600px;height:auto;margin-top: 65px;">
 
 				
 					<div class="post" style="height: auto;width: auto;">
 						{% for i in pic %}
+<!-- <<<<<<< HEAD
 							<a href="#"><img src="/{{i.profile_image}}" class="img-circle" width="50px" height="50px" style="margin-top:10px; margin-left:10px"></a>
+======= -->
+							<a href="#"><img src="/{{i.profile_image}}" class="img-circle" onerror="this.src='../static/img/default.jpg';"width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
+<!-- >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
 						{% endfor %}
 						<a href="{% url 'profile' pk=i.user.pk %}" style="margin-top:30px;"><b style="color:#3399ff; font-size:18px; margin-left:10px;">{{i.user}}</b></a><br><br>
 						<!-- <p>{{i.email}}</p> -->
@@ -132,18 +156,64 @@
 
 							<a href="{% url 'comments' pk=i.pk %}">{{ i.comments.count }}</a>
 						<p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'savecomment' pk=i.pk }" data-pk="{{i.pk}}" data-target="#myModal" data-user="{{i.user}}" data-text="{{i.text|linebreaksbr}}" id="modalbutton" style="color: #3399ff;margin-left:20px;" title="comments"></p><a href="#" data-toggle="tooltip" title="retweet"><i class="fas fa-retweet" style="color: #3399ff;margin-left:50px; font-size: 20px;"></i></a><a href="#" data-toggle="tooltip" title="likes"><i class="fas fa-heart" style="margin-left: 80px;color: #3399ff;font-size: 20px;"></i></a><i class="far fa-envelope" style="margin-left:90px; color:#3399ff;font-size:20px;"></i>
-						<i style="margin-left: 80px;color: #3399ff;font-size: 15px;"><a href="{% url 'comments' pk=i.pk %}">{{ count }}Comments: </a></i>
+						<i style="margin-left: 80px;color: #3399ff;font-size: 15px;"></i><button class="btn btn-info" onclick="ch('{{i.pk}}')">comments</button>
 						<hr>
 						<p>posted on:{{i.created_at}}</p>
+<div id="comments_hide{{i.pk}}" style="display: none;">					
+{% for i in j %}
+        <!-- <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;"> -->
+        
+          <div class="post" style="height: auto;width: auto;>
+            {% for i in pic %}
+              <a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
+            {% endfor %}
+            <i style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></i><br><br>
+            <!-- <p>{{i.email}}</p> -->
+            <p style="margin-left: 20px;">{{i.text|linebreaksbr}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            <a href="{% url 'replycomments' pk=i.pk %}">{{ i.replycomments.count }}</a>
+						<p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'replysavecomment' pk=i.pk }" data-pk1="{{i.pk}}" data-target="#myModal1" data-user1="{{i.user}}" data-text1="{{i.text|linebreaksbr}}" id="modalbutton1" style="color: #3399ff;margin-left:20px;" title="comments"></p>
+			<i style="margin-left: 80px;color: #3399ff;font-size: 15px;"><a href="{% url 'replycomments' pk=i.pk %}">{{ count }}Comments: </a></i>			
+
+            
+            <div id="spa">
+              
+              <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.image }}" />
+              
+            
+            </div>  
+        
+            <hr>
+            <p>posted on:{{i.created_at}}</p>
+            
+            
+            
+          </div>
+        
+
+{% empty %}
+<div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width:auto;height:auto;margin-top: 65px;">
+				
+	<div class="post" style="height:10px;width: 500px;">
 						
+   
+
+</div>
+	
+</div>
+      {% endfor %}</div>
+
 
 					</div>
 				</div>
+
+
+
 			{% endfor %}
 
 		</div>
 
 	</div>
+<!-- <<<<<<< HEAD -->
 	<div class="col-sm-4"  id="sta" style ="margin-top:18px">
 				<p><h5><b style="width: 30%">Who to follow</b></h5> <!-- <a href="#">Refresh</a> <a href="#">View all</a></p> -->
 	{% for j in random_users %}
@@ -154,11 +224,24 @@
    
       <span class="account-group-inner" data-user-id="19895282">
         <a href="{% url 'profile' pk=j.user.pk %}" ><strong class="fullname">{{ j.user }}</strong></a><span class="UserBadges"><span class="Icon Icon--verified">&nbsp;&nbsp;&emsp;&emsp;&emsp;<span class="u-hiddenVisually"></span></span></span><span class="UserNameBreak"></span><p style="margin-left: 60px; margin-top: -20px;">{{j.user.email}}</p><!-- <span class="username u-dir u-textTruncate" dir="ltr">@<b>{{ j.user }}</b></span> -->
+<!-- =======
+	<div class="col-sm-3"  id="sta" style ="margin-top:18px;margin-right:0px;">
+				<p><h5><b style="width: 30%">Who to follow</b></h5> <a href="#">Refresh</a> <a href="#">View all</a></p>
+				{% for j in random_users %}
+				<img src="/{{j.profile_image}}"  onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px">
+			{{j.user.email}}<br> -->
+			 <!-- <img src="/{{jpg.profile_image}}"  onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"> -->
+  <!--   <a class="account-group js-recommend-link js-user-profile-link user-thumb" href="#" rel="noopener">
+   
+      <span class="account-group-inner" data-user-id="19895282">
+        <strong class="fullname">{{ j.user }}</strong><span class="UserBadges"><span class="Icon Icon--verified"><span class="u-hiddenVisually"></span></span></span><span class="UserNameBreak">&nbsp;</span><span class="username u-dir u-textTruncate" dir="ltr">@<b>{{ j.user }}</b></span>
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
       </span>
     </a><br><br>
     {% endfor %}
 
 
+<!-- <<<<<<< HEAD
 
 
 
@@ -168,9 +251,22 @@
 
 
 
+=======
+    
+</div>	
+</div>
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
 
 </div>
 </div>
+<script>
+$(document).ready(function(){
+    $("#btn_hide").click(function(){
+        $("comments_hide").toggle();
+    });
+});
+</script>
+
 <style type="text/css">
 	#sta{
 		display: block;
@@ -180,6 +276,9 @@
 	    background-color:white;
 	    margin-inline-start:100px;
 	    margin-top: -10px;
+	   border-radius:20px;
+	   border-color: #1a75ff;
+	   border-width:2px;
 	}
 	#spa{
 		border:0px solid black;
@@ -232,8 +331,11 @@
 	    border-radius: 0px;*/
 	    padding: 1px;
 	    width: 100%;
+	}
+
 
 </style>
+
 <script type="text/javascript">
 // $("#camera").click(function () {
 //   $("input[type='file']").trigger('click');
@@ -271,10 +373,13 @@ $(document).ready(function(){
 // }
 </script>
 
-
-
 <script type="text/javascript">
+	 $("#id_text").attr("placeholder", "What's happening?");
 
+
+
+
+<!-- <<<<<<< HEAD -->
 $( function() {
         $("#search").on('keyup', function(){
         var value = $(this).val();
@@ -297,6 +402,8 @@ $( function() {
     });
  });
     </script>
+<!-- =======
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
 
 <script type="text/javascript">
 					$(modalbutton).one("click",function() {
@@ -341,7 +448,55 @@ $( function() {
 
   </div>
 </div>
-<script>
+
+<script type="text/javascript">
+					$(modalbutton1).click(function() {
+	    			var pk = $(this).data("pk1");
+	    			var text = $(this).data("text1");
+	    			var user=$(this).data("user1");
+	    			var url = "{% url 'replysavecomment' pk=0 %}";
+
+	    			url = url.replace(0,pk);
+
+	         		$("#form2").attr("action", url);
+	         		$("#newuser").html(user);
+	         		$("#user2").html("<b>"+user+":</b>");
+	         		$("#text2").html(text+"<hr>");
+	        		console.log(pk);
+	        		console.log(text);
+	        		console.log(user);
+	        		
+					});
+					</script>
+
+<div id="myModal1" class="modal fade " role="dialog" style="height: 700px; width: 100%;">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="newuser">Reply To </h4>
+      </div>
+      <div class="modal-body">
+      <p id="user2"></p>
+      <p id="text2"></p>
+        <form role="form" method="post" class="tweet-form" enctype="multipart/form-data" id="form2"> 
+
+          {% csrf_token %}
+          {{ form2.as_p }}
+          <i class="fa fa-camera" onclick="chooseFile()" style="margin-left:30px;margin-top: 35px;" id="camera"  data-toggle="tooltip" data-placement="top" title="Add photos"" ></i>
+          <input type="file" id="choose" >
+       
+			<button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">Reply</button>
+        </form>
+      </div>
+     
+    </div>
+
+  </div>
+</div>
+<script>	
+
 	$(document).ready(function(){
 		$("#id_image").hide();
     });
@@ -349,6 +504,27 @@ $( function() {
    function chooseFile() {
       document.getElementById("id_image").click();
    }
+
+$( function() {
+        $("#search").on('keyup', function(){
+        var value = $(this).val();
+        $.ajax({
+            url: "{% url 'ajax_autocomplete' %}",
+            data: {
+              'search': value 
+            },
+            dataType: 'json',
+            success: function (data) {
+                list = data.list;
+                console.log(list);
+                $("#search").autocomplete({
+                source : list
+                
+                });       
+            }
+        });        
+    });
+ });
 </script>
 
 {% endblock %}

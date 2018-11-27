@@ -1,7 +1,13 @@
 
-{% extends 'base.html' %}
-{% block title %}Sign up{% endblock %}
-{% block stylesheets %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://abs.twimg.com/a/1541103114/css/t1/twitter_core.bundle.css" class="coreCSSBundles">
 <link rel="stylesheet" class="moreCSSBundles" href="https://abs.twimg.com/a/1541103114/css/t1/twitter_more_1.bundle.css">
 <link rel="stylesheet" class="moreCSSBundles" href="https://abs.twimg.com/a/1541103114/css/t1/twitter_more_2.bundle.css">
@@ -19,8 +25,11 @@
 <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Twitter">
 <link id="async-css-placeholder">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-{% endblock %}  
-{% block content %}
+
+
+  
+</head>
+
 <body class="three-col logged-out ms-windows" 
 data-fouc-class-names="swift-loading no-nav-banners"
 dir="ltr">
@@ -51,7 +60,11 @@ dir="ltr">
 <div id="page-outer">
   <div id="page-container" class="AppContent wrapper wrapper-login">
     <div class="page-canvas">
+<!-- <<<<<<< HEAD
       <div class="signin-wrapper" data-login-message="" style="max-width: 100%;padding-left: 20px;">
+======= -->
+      <div class="signin-wrapper" data-login-message="" style="max-width:90%;padding-left: 20px;">
+<!-- >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
         <h1>Sign Up To Twitter</h1>
 <form method="post" action="{%url 'signup'%}">
     {% csrf_token %}
@@ -75,8 +88,7 @@ dir="ltr">
 </div>
 </div>
 </body>
-{% endblock %}
-{% block scripts %}
+
 <script>
 function myFunction() {
     var x = document.getElementById("id_password2");
@@ -92,7 +104,11 @@ function myFunction() {
 </script>
 <script type="text/javascript">
   $(document).ready(function(){
-    $("#id_username").before("<span class='star'>*</span>");
+// <<<<<<< HEAD
+//     $("#id_username").before("<span class='star'>*</span>");
+// =======
+    $("#id_username").before("<span class='star'>*</span> <br>");
+// >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
     var err_username = '<span id="err_username" class="surya"></span>';
     $("#id_username").after(err_username);
     
@@ -126,7 +142,11 @@ function myFunction() {
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $("#id_email").before("<span class='star'>*</span>");
+// <<<<<<< HEAD
+//     $("#id_email").before("<span class='star'>*</span>");
+// =======
+    $("#id_email").before("<span class='star'>*</span><br>");
+// >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
     
     var err_email = '<span id="err_email" class="surya"></span>';
     $("#id_email").after(err_email);
@@ -160,7 +180,11 @@ function myFunction() {
 </script>
 <script type="text/javascript">
   $(document).ready(function(){
-    $("#id_password1").before("<span class='star'>*</span>");
+// <<<<<<< HEAD
+//     $("#id_password1").before("<span class='star'>*</span>");
+// =======
+    $("#id_password1").before("<span class='star'>*</span><br>");
+// >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
     
     var err_password1 = '<span id="err_password1" class="surya"></span>';
     $("#id_password1").after(err_password1);
@@ -192,11 +216,50 @@ function myFunction() {
 });
   
 </script>
+<!-- <<<<<<< HEAD
 
+======= -->
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#id_password2").before("<span class='star'>*</span><br>");
+    
+    var err_password2 = '<span id="err_password2" class="surya"></span>';
+    $("#id_password2").after(err_password2);
+    
+    $("#id_password2").blur(function(){
+      
+      
+   /* $("#inner p:first-child span").append("<p>surya</p>");*/
+    var psw=$("#id_password2").val();
+    var con = $("#id_password2").val();
+    
+    if(psw!=con){
+      // $("#inner p:first-child span").html("enter");
+      
+      $("#err_password2").html("password doesn't match!!");
+       $("#id_password2").css("border-color", "red");
+
+        
+        return false;
+
+      }
+
+    else{
+        $("#err_password2").text("");
+          $("#id_password2").css("border-color", "black");
+        return true;
+      }  
+        
+    });
+});
+  
+</script>
+<!-- >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
 <style type="text/css">
   p{
         margin-bottom: 25px;
   }
+/*<<<<<<< HEAD
   #id_username{
         margin-left:102px;
 
@@ -216,41 +279,12 @@ function myFunction() {
  
   
   li{
-    font-size: 12px;
-    list-style-type: disc;
-  }
-  .helptext{
-    display: none;
-    font-size: 12px;
-  }
-  input{
-    width: 279px;
-  }
-  #inner ul:nth-child(4){
-    display: none;
+=======*/
+  ul{
     color: red;
-  }
-  .surya{
-    color: red;
-  }
-  .star{
-    color: red;
-    font-size: 20px;
-    margin-top: 50px;
   }
   #inner p:nth-child(2) span:last-child{
     display: none;
-
-  }
-  /*div:nth-child(9){
-    max-width: 100%;
-    padding-left: 20px;
-  }*/
-  #err_email{
-    margin-left:6px;
-  }
-  .errorlist{
-    color: red;
 
   }
   #inner p label{
@@ -259,17 +293,121 @@ function myFunction() {
     font-family:-webkit-body;
 
   }
+   li{
+/*>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b*/
+    font-size: 12px;
+    list-style-type: disc;
+  }
+  .surya{
+    color: red;
+  }
+  .helptext{
+    display: none;
+    font-size: 12px;
+  }
+  #inner ul:nth-child(4){
+    display: none;
+    color: red;
+  }
+  h1{
+    /*margin-left: 221px;*/
+    font-size: 34px;
+}
+  /*#id_username{
+        margin-left:106px;
+        position: relative;
+
+  }
+  #id_email{
+        margin-left:138px;
+        position: relative;
+  }
+  #id_password1{
+        margin-left:109px;
+        position: relative;
+  }
+  
+  #id_password2{
+    margin-left:13px;
+    position: relative;
+  }
+ */
+  
+ 
+  
+  input{
+    width: 279px;
+  }
+/*<<<<<<< HEAD*/
+  #inner ul:nth-child(4){
+    display: none;
+    color: red;
+  }
+  .surya{
+    color: red;
+  }
+/*=======
+ 
+  
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b*/
+  .star{
+    color: red;
+    font-size: 20px;
+    margin-top: 50px;
+  }
+/*<<<<<<< HEAD*/
+  #inner p:nth-child(2) span:last-child{
+    display: none;
+
+  }
+/*=======
+  
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b*/
+  /*div:nth-child(9){
+    max-width: 100%;
+    padding-left: 20px;
+  }*/
+/*<<<<<<< HEAD
+  #err_email{
+=======*/
+  /*#err_email{
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
+    margin-left:6px;
+  }
+  .errorlist{
+    color: red;
+
+  }
+<<<<<<< HEAD
+  #inner p label{
+    font-size: 18px;
+    font-style: italic;
+    font-family:-webkit-body;
+
+  }
+=======
+  
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
   h1{
     margin-left: 221px;
     font-size: 34px;
 
+<<<<<<< HEAD
   }
+=======
+  }*/
+/*>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b*/
   /*#err_password1{
     margin-left:px;
   }
 */
+/*<<<<<<< HEAD
   .ul{
     color: black;
-  }
+  }*/
 </style>
 {% endblock %}
+<!-- =======
+
+</style> -->
+<!-- >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b --> 
