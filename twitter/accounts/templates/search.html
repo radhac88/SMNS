@@ -38,34 +38,38 @@
   </div>  
 </nav>
 
-{% for i in profile %}
-        <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 300px;height:200px;margin-top: 65px;">
+{% for i,j in searchlist %}
+  <div class="grid-container" >
+      <div class="grid-item">
         
-          <div class="post" style="height: 200px;width: 200px;">
-           <div class="comment">
-       <h3> <a href="{%url 'profile' pk=i.pk%}" ><center><br><br>{{ i.username }}</center></div></h3>
-        <div>{{i.}}
-        <!-- <img class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{comment.image }}" /> -->
-    </div>
-        <!-- <img class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{comment.image }}" /> -->
-    </div>
+            {% for j in j %}
+                <img src="/{{j.profile_image}}" onerror="this.src='../static/img/default.jpg';"  class="img-circle" id="img" width="100px" height="100px" style="margin-top:80px; margin-left:7px;border: 3px solid white; z-index: 1;position: absolute;"></a>
 
+                <img src="/{{j.header_image}}" onerror="this.src='../static/img/background.jpg';" style="height: 130px; width:100%">
+            {% endfor %} 
+
+
+            <a href="{% url 'profile' pk=i.pk %}" style="font-size: 30px; margin-left: 40px;">{{i.username}}</a>
+            <p style="font-size: 15px; margin-left: 80px;">{{i.email}}</p> 
+                  
+      </div>
+  </div>
 {% empty %}
 <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 550px;height:300px;margin-top: 65px;">
-				
-					<div class="post" style="height: 500px;width: 500px;">
-						
-    <h1 style="margin-top:100px; font-size: 50"><center>&nbsp;&ensp;&emsp;No names matching :(</center></h1>
+        
+          <div class="post" style="height: 500px;width: 500px;">
+            
+    <h1 style="margin-top:100px; font-size: 50"><center>&nbsp;&ensp;&emsp;No name's matching :(</center></h1>
 <br><br>
 </div>
-	
+  
 </div>
       {% endfor %}
 
 <style type="text/css">
-	body{
-		background-color: #d1e0e0;
-	}
+  body{
+    background-color: #d1e0e0;
+  }
 </style>
 <script type="text/javascript">
 
@@ -82,7 +86,8 @@ $( function() {
                 list = data.list;
                 console.log(list);
                 $("#search").autocomplete({
-                source : list
+                source : list,
+                minLength:1
                 
                 });       
             }
@@ -93,6 +98,31 @@ $( function() {
 
 </script>
 
+<style type="text/css">
+
+        .grid-container {
+                display: inline-grid;
+                grid-template-columns: auto auto auto auto;
+                background-color:#44a0cc52;
+                padding: 3px;
+
+        }
+        .grid-item {
+                background-color:white;
+                /*border: 1px solid black;*/
+                padding: 3px;
+                font-size: 20px;
+                text-align: center;
+                height: 300px;
+                width: 400px;
+        }
+        #div{
+                padding: 100px;
+                
+        }
+</style>
+
+
+
+
 {% endblock %}
-
-

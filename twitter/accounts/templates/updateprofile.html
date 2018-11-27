@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+
+
+
 {% block title %}Home{% endblock %}
 {% block content %}
 <style type="text/css">
-  label:first-child{   
+  label:first-child{
+    
     float: left;
+
   }
 </style>
 <script>
@@ -30,15 +35,19 @@ $('input[type="file"]').on('change', function() {
   var val = $(this).val();
   $(this).siblings('span').text(val);
 })
+
 </script>  
+
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
+    
     <ul class="nav navbar-nav">
-     <li><a href="{% url 'home' %}"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
+      <li><a href="{% url 'home' %}"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
       <li><a href="#"><i class=" fas fa-bolt" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
       <li><a href="#"><i class="far fa-bell" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
       <li><a href="#"><i class="far fa-envelope" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
-     <li><a href="#"><i class="fab fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
+      <li><a href="#"><i class="fab fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
       <li><form type="get" action="{% url 'search' %}" accept-charset="utf-8">
         <input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
     background: #2196F3;
@@ -69,7 +78,7 @@ $('input[type="file"]').on('change', function() {
   <a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';"  class="img-circle" id="img" width="200px" height="200px" style="margin-top:150px; margin-left:70px;border: 5px solid white; z-index: 1;position:absolute;"></a>
  {% endfor %}  
 {% for i in pic %}
-  <img src="/{{i.header_image}}" onerror="this.src='../static/img/background.jpg';" style="height: 250px; width:100%">
+  <img src="/{{i.header_image}}" onerror="this.src='../static/img/background.jpg';"  style="height: 250px; width:100%">
 {% endfor %}  
 
   
@@ -78,26 +87,39 @@ $('input[type="file"]').on('change', function() {
 <nav class="navbar navbar-default ">
   <div class="container-fluid">
      
-    <ul class="nav navbar-nav" style="margin-left:350px;">
-      <li><a href="#"><b>Following</b></a></li>
+     <ul class="nav navbar-nav" style="margin-left:350px;">
+      <li><a href="{% url 'following_page' pk=user.pk %}"><b>Following</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{following}}</b></li>
+
       
-      <li><a href="#"><b>Follwers</b></a></li>
-      <li><a href="#"><b>Lists</b></a></li>
-      <li><a href="#"><b>Moments</b></a></li>
+      <li><a href="{% url 'followers_page' pk=user.pk %}"><b>Followers</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{followers}}</b></li>
+      <li><a href="#"><b>Tweets</b></a>&emsp;&emsp;<b style="color:#3399ff;
+      font-size:20px;">{{twtcount}}</b></li>
+      <li><a href="#"><b>Moments</b></a>&emsp;&emsp; <b style="color:#3399ff; font-size:20px;">0</b></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><button type="button" class="btn btn-default" data-target="#myModal" data-toggle="modal" id="editbtn"><b>Edit profile</b></button></a></li>
+      <li><a href="#"><button type="button" class="btn btn-default" id="editbtn"><b>Edit profile</b></button></a></li>
     </ul>
   </div>
 </nav><br><br>
-<a href="#" style="text-decoration: none;"><h2 style="color:black; margin-left: 20px;">{{user.username}}</h2></a>
+<body style="background-color:#d1e0e0">
+  <div class="container-fluid">
+<div class="row">
+  
+    <div class="col-sm-3">
+      <a href="#" style="text-decoration: none;"><h2 style="color:black; margin-left: 20px;">{{user.username}}</h2></a>
 <a href="#" style="text-decoration: none;"><p style="margin-left: 20px;"><b>{{user.email}}</b></p></a>
-        {% for i in twt1 %}
-        <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;">
+      
+    </div>
+    <div class="col-sm-5">
+      
+      
+     {% for i,j,k in twtlist %}
+        <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 600px;height:auto;margin-top: 65px;">
+
         
           <div class="post" style="height: auto;width: auto;">
             {% for i in pic %}
-              <a href="#"><img src="/{{i.profile_image}}" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
+              <a href="#"><img src="/{{i.profile_image}}" class="img-circle" onerror="this.src='../static/img/default.jpg';"width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
             {% endfor %}
             <a href="{% url 'profile' pk=i.user.pk %}" style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></a><br><br>
             <!-- <p>{{i.email}}</p> -->
@@ -105,19 +127,75 @@ $('input[type="file"]').on('change', function() {
             
             <div id="spa">
               
-              <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.profile_image }}" />
+              <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.profile_image }}" / style="margin-left: 20px;">
               
             
             </div>  
 
+              <a href="{% url 'comments' pk=i.pk %}">{{ i.comments.count }}</a>
+            <p type="button" class="fa fa-comments fa-lg" style="color: #3399ff;margin-left:20px;" title="comments"></p><a href="#" data-toggle="tooltip" title="retweet"><i class="fas fa-retweet" style="color: #3399ff;margin-left:50px; font-size: 20px;"></i></a><a href="#" data-toggle="tooltip" title="likes"><i class="fas fa-heart" style="margin-left: 80px;color: #3399ff;font-size: 20px;"></i></a><i class="far fa-envelope" style="margin-left:90px; color:#3399ff;font-size:20px;"></i>
+            <i style="margin-left: 80px;color: #3399ff;font-size: 15px;"></i><button class="btn btn-info" onclick="ch('{{i.pk}}')">comments</button>
             <hr>
-            <p>posted on:{{i.created_at}}</p>
+            <p style="margin-left: 20px;">posted on:{{i.created_at}}</p>
+<div id="comments_hide{{i.pk}}" style="display: none;">         
+{% for i in j %}
+        <!-- <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;"> -->
+        
+          <div class="post" style="height: auto;width: auto;>
+            {% for i in pic %}
+              <a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
+            {% endfor %}
+            <i style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></i><br><br>
+            <!-- <p>{{i.email}}</p> -->
+            <p style="margin-left: 20px;">{{i.text|linebreaksbr}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            <a href="{% url 'replycomments' pk=i.pk %}">{{ i.replycomments.count }}</a>
+            <p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'replysavecomment' pk=i.pk }" data-pk1="{{i.pk}}" data-target="#myModal1" data-user1="{{i.user}}" data-text1="{{i.text|linebreaksbr}}" id="modalbutton1" style="color: #3399ff;margin-left:20px;" title="comments"></p>
+      <i style="margin-left: 80px;color: #3399ff;font-size: 15px;"><a href="{% url 'replycomments' pk=i.pk %}">{{ count }}Comments: </a></i>      
+
+            
+            <div id="spa">
+              
+              <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.image }}" />
+              
+            
+            </div>  
+        
+            <hr>
+            <p style="margin-left: 20px;">posted on:{{i.created_at}}</p>
             
             
             
           </div>
+        
+
+{% empty %}
+<div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width:auto;height:auto;margin-top: 65px;">
+        
+  <div class="post" style="height:10px;width: 500px;">
+            
+   
+
+</div>
+  
+</div>
+      {% endfor %}</div>
+
+
+          </div>
         </div>
+
+
+
       {% endfor %}
+
+
+    
+    </div>
+
+  </div>
+</div>  
+
+        
 <div class="modal fade" id="myModal" role="dialog" style="height: 700px; width: 100%;">
     <div class="modal-dialog" style="height:500px;width: 100%; margin-top: 100px;">
     
@@ -135,6 +213,7 @@ $('input[type="file"]').on('change', function() {
           <input type="file" id="profile" name=""> -->
           <!-- {% endfor %} -->
         </div>
+
         
         <div class="modal-body" style="padding:40px 50px;">
         <button type="submit" class="btn btn-default pull-right" data-dismiss="modal" style="border-radius: 15px; margin-left: 1100px;">Cancel</button>
@@ -154,8 +233,16 @@ $('input[type="file"]').on('change', function() {
       
     </div>
   </div> 
-
-
+</body>
+<style type="text/css">
+  #twtimg{
+    /*border: 1px solid #ddd;
+      border-radius: 0px;*/
+      padding: 1px;
+      width: 90%;
+  }
+  
+</style>
  
 <script type="text/javascript">
 
@@ -179,13 +266,8 @@ $( function() {
         });        
     });
  });
-
-
 </script>
 
+
+
 {% endblock %}
-<!-- <ul>
-  <li>Username: {{ user.username }}</li>
-  <li>Location: {{ user.profile.location }}</li>
-  <li>Birth Date: {{ user.profile.birth_date }}</li>
-</ul> -->
