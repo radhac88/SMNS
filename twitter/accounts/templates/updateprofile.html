@@ -79,14 +79,14 @@ $('input[type="file"]').on('change', function() {
   <div class="container-fluid">
      
     <ul class="nav navbar-nav" style="margin-left:350px;">
-      <li><a href="#"><b>Following</b></a></li>
+      <li><a href="{% url 'following_page' pk=user.pk %}"><b>Following</b><h5>&emsp;{{following}}</h5></a></li>
       
-      <li><a href="#"><b>Follwers</b></a></li>
+      <li><a href="{% url 'followers_page' pk=user.pk %}"><b>Follwers</b><h5>&emsp;{{followers}}</h5></a></li>
       <li><a href="#"><b>Lists</b></a></li>
       <li><a href="#"><b>Moments</b></a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><button type="button" class="btn btn-default" id="editbtn"><b>Edit profile</b></button></a></li>
+      <li><a href="#"><button type="button" class="btn btn-default" data-target="#myModal" data-toggle="modal" id="editbtn"><b>Edit profile</b></button></a></li>
     </ul>
   </div>
 </nav><br><br>
@@ -172,24 +172,17 @@ $( function() {
                 list = data.list;
                 console.log(list);
                 $("#search").autocomplete({
-                source : list
+                source : list,
+                minLength:1
                 
                 });       
             }
         });        
     });
  });
-$(document).ready(function(){
-    $("#id_image").hide();
-    });
-
-   function chooseFile() {
-      document.getElementById("id_image").click();
-   }
-    </script>
 
 
-
+</script>
 
 {% endblock %}
 <!-- <ul>
@@ -197,3 +190,5 @@ $(document).ready(function(){
   <li>Location: {{ user.profile.location }}</li>
   <li>Birth Date: {{ user.profile.birth_date }}</li>
 </ul> -->
+
+>pampu okasari

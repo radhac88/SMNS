@@ -45,10 +45,10 @@
 </nav>
 <div id="backround">
 {% for i in pic %}
-  <a href="#"><img src="/{{i.profile_image}}" class="img-circle" id="img" width="200px" height="200px" style="margin-top:150px; margin-left:70px;border: 5px solid white; z-index: 1;position:absolute;"></a>
+  <a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../../static/img/default.jpg';" class="img-circle" id="img" width="200px" height="200px" style="margin-top:150px; margin-left:70px;border: 5px solid white; z-index: 1;position:absolute;"></a>
  {% endfor %}  
 {% for i in pic %}
-  <img src="/{{i.header_image}}" style="height: 250px; width:100%">
+  <img src="/{{i.header_image}}" onerror="this.src='../../static/img/background.jpg';"   style="height: 250px; width:100%">
 {% endfor %}  
 
   
@@ -56,12 +56,13 @@
 
 <nav class="navbar navbar-default ">
   <div class="container-fluid">
-     
+    
+
     <ul class="nav navbar-nav" style="margin-left:350px;">
-      <li><a href="#"><b>Following</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{following}}</b></li>
+      <li><a href="{% url 'following_page' pk=profile.pk %}"><b>Following</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{following}}</b></li>
 
       
-      <li><a href="#"><b>Follwers</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{followers}}</b></li>
+      <li><a href="{% url 'followers_page' pk=profile.pk %}"><b>Followers</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{followers}}</b></li>
       <li><a href="#"><b>Tweets</b></a>&emsp;&emsp;<b style="color:#3399ff;
       font-size:20px;">{{twtcount}}</b></li>
       <li><a href="#"><b>Moments</b></a>&emsp;&emsp; <b style="color:#3399ff; font-size:20px;">0</b></li>
@@ -73,6 +74,7 @@
       <li><a href="#"><button type="button" class="btn btn-default" data-pk={{profile.pk}} data-status="unfollow" id="unfollow_btn"><b>UnFollow</b></button></a></li>
       <li><button type="button"  id="editprofile" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit Profile</button></li>
     </ul>
+   
      {% for i in status %}
 
    <p id="status" >{{i.pk}}</p>
@@ -128,7 +130,7 @@
          
         <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;<span style="color: red;"></span></button>
           {% for i in pic %} 
-          <img class="img-responsive"  src="/{{i.header_image}}" / style="width: 100%; height:250px;">
+          <img class="img-responsive"  src="/{{i.header_image}}"  style="width: 100%; height:250px;">
           {% endfor %}
          
           <!--  {% for i in pic %}  -->

