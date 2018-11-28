@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
 
+        <title>following list</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+{% block content %}
+<body style="background-color: aliceblue;">
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
@@ -36,45 +47,36 @@
   </div>  
 </nav>
 
-
-<div style="height: 100px; width: 100%;">
-    {% for i in twt1 %}
-      <!-- <div style="height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px "> -->
-        <img class="img-responsive" src="/{{i.header_image}}"  onerror="this.src='../static/img/background.jpg';" style="height: 100px;width:100%;margin-top:0px; margin-left: 115px; margin-inline-start:0px ">
-    
-          <img class="img-responsive" src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="90px" height="90px" style="margin-top:-40px; margin-left:20px">
-    {% endfor %}
-</div>
- 
- 
-
 <div id="div">
 {% for i,j in mylist %}
 
-  <div class="grid-container" >
-      <div class="grid-item">
-        
+    <div class="grid-container" >
+        <div class="grid-item">
+            
             {% for j in j %}
+<!-- <<<<<<< HEAD -->
+                <img src="/{{j.profile_image}}" onerror="this.src='../../static/img/default.jpg';"  class="img-circle" id="img" width="100px" height="100px" style="margin-top:80px; margin-left:7px;border: 3px solid white; z-index: 1;position: absolute;"></a>
+
+                <img src="/{{j.header_image}}" onerror="this.src='../../static/img/background.jpg';" style="height: 130px; width:100%">
+<!-- =======
                 <img src="/{{j.profile_image}}" onerror="this.src='../static/img/default.jpg';"  class="img-circle" id="img" width="100px" height="100px" style="margin-top:80px; margin-left:7px;border: 3px solid white; z-index: 1;position: absolute;"></a>
 
                 <img src="/{{j.header_image}}" onerror="this.src='../static/img/background.jpg';" style="height: 130px; width:100%">
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
             {% endfor %} 
             <a href="{% url 'profile' pk=i.following.pk %}" style="font-size: 30px; margin-left: 40px;">{{i.following}}</a>
             <p style="font-size: 15px; margin-left: 80px;">{{i.following.email}}</p> 
-                  
+                    
         </div>
     </div>
 {% empty %}
-    <p style="font-size: 20px;">You're not following anyone! :(</p>
+    <p style="font-size: 20px;">you're not following anyone :(</p>
 {% endfor %} 
 
 </div>
 
 
 <p>{{piclist}}</p>
-
-
-
 
 <style type="text/css">
 
@@ -99,12 +101,30 @@
                 
         }
 </style>
-
+<script type="text/javascript">
+$( function() {
+        $("#search").on('keyup', function(){
+        var value = $(this).val();
+        $.ajax({
+            url: "{% url 'ajax_autocomplete' %}",
+            data: {
+              'search': value 
+            },
+            dataType: 'json',
+            success: function (data) {
+                list = data.list;
+                console.log(list);
+                $("#search").autocomplete({
+                source : list,
+                minLength:1
+                
+                });       
+            }
+        });        
+    });
+ });
+</script>
 {% endblock %}
+</body>
 
-{% block scripts %}
-
-{% endblock %}
-
-
-
+</html>

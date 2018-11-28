@@ -1,15 +1,77 @@
-  {% extends 'base.html' %}
-{% load staticfiles %}
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Django Auth Tutorial{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/twtstyles.css' %}">
+    <link rel="stylesheet" href="{% static 'js/script1.js' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="http://twitter.github.com/bootstrap/assets/css/docs.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+    <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css' integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns' crossorigin='anonymous'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+   
+
+    {% endblock %}
+    {% block scripts %}
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+    {% endblock %}
+</head>
+<body>
 
 
-
-{% block title %}Home{% endblock %}
 
 {% block content %}
+<style type="text/css">
+  label:first-child{
+    
+    float: left;
+
+  }
+</style>
+<script>
+$(document).ready(function(){
+    $("#editbtn").click(function(){
+        $("#myModal").modal();
+    });
+});
+
+$("#img").click(function () {
+  $("input[type='file']").trigger('click');
+});
+
+$('input[type="file"]').on('change', function() {
+  var val = $(this).val();
+  $(this).siblings('span').text(val);
+})
+$("#headimg").click(function () {
+  $("input[type='file']").trigger('click');
+});
+
+$('input[type="file"]').on('change', function() {
+  var val = $(this).val();
+  $(this).siblings('span').text(val);
+})
+
+</script>  
 
 
-
-  <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     
     <ul class="nav navbar-nav">
@@ -17,7 +79,7 @@
       <li><a href="#"><i class=" fas fa-bolt" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
       <li><a href="#"><i class="far fa-bell" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
       <li><a href="#"><i class="far fa-envelope" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
-     <li><a href="#"><i class="fab fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
+      <li><a href="#"><i class="fab fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
       <li><form type="get" action="{% url 'search' %}" accept-charset="utf-8">
         <input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
     background: #2196F3;
@@ -45,10 +107,10 @@
 </nav>
 <div id="backround">
 {% for i in pic %}
-  <a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../../static/img/default.jpg';" class="img-circle" id="img" width="200px" height="200px" style="margin-top:150px; margin-left:70px;border: 5px solid white; z-index: 1;position:absolute;"></a>
+  <a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';"  class="img-circle" id="img" width="200px" height="200px" style="margin-top:150px; margin-left:70px;border: 5px solid white; z-index: 1;position:absolute;"></a>
  {% endfor %}  
 {% for i in pic %}
-  <img src="/{{i.header_image}}" onerror="this.src='../../static/img/background.jpg';"   style="height: 250px; width:100%">
+  <img src="/{{i.header_image}}" onerror="this.src='../static/img/background.jpg';"  style="height: 250px; width:100%">
 {% endfor %}  
 
   
@@ -56,49 +118,40 @@
 
 <nav class="navbar navbar-default ">
   <div class="container-fluid">
-    
-
-    <ul class="nav navbar-nav" style="margin-left:350px;">
-      <li><a href="{% url 'following_page' pk=profile.pk %}"><b>Following</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{following}}</b></li>
+     
+     <ul class="nav navbar-nav" style="margin-left:350px;">
+      <li><a href="{% url 'following_page' pk=user.pk %}"><b>Following</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{following}}</b></li>
 
       
-      <li><a href="{% url 'followers_page' pk=profile.pk %}"><b>Followers</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{followers}}</b></li>
+      <li><a href="{% url 'followers_page' pk=user.pk %}"><b>Followers</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{followers}}</b></li>
       <li><a href="#"><b>Tweets</b></a>&emsp;&emsp;<b style="color:#3399ff;
       font-size:20px;">{{twtcount}}</b></li>
       <li><a href="#"><b>Moments</b></a>&emsp;&emsp; <b style="color:#3399ff; font-size:20px;">0</b></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-     <li><a href="#"><button type="button" class="btn btn-default" data-pk={{profile.pk}} data-status="follow"  id="follow_btn"><b>Follow</b></button></a></li>
-  
-   
-      <li><a href="#"><button type="button" class="btn btn-default" data-pk={{profile.pk}} data-status="unfollow" id="unfollow_btn"><b>UnFollow</b></button></a></li>
-      <li><button type="button"  id="editprofile" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit Profile</button></li>
+      <li><a href="#"><button type="button" class="btn btn-default" id="editbtn"><b>Edit profile</b></button></a></li>
     </ul>
-   
-     {% for i in status %}
-
-   <p id="status" >{{i.pk}}</p>
-  
-  {% endfor %}
-  <p id="status1" >{{status}}</p>
   </div>
 </nav><br><br>
-<body style="background-color:#d1e0e0; ">
-<h2 style="color:black; margin-left: 20px;"><a href="#" style="text-decoration: none;">{{profile.username}}</a></h2>
-<p style="margin-left: 20px;"><a href="#" style="text-decoration: none;"><b>{{profile.email}}</b></a></p>
-<!-- {% for i in twt1 %}
-
+<body style="background-color:#d1e0e0">
+  <div class="container-fluid">
+<div class="row">
   
-  <p>tweet:{{i.text|linebreaksbr}}</p>
-  <p>posted on:{{i.created_at}}</p>
-{% endfor %} -->
-{% for i,j,k in twtlist %}
+    <div class="col-sm-3">
+      <a href="#" style="text-decoration: none;"><h2 style="color:black; margin-left: 20px;">{{user.username}}</h2></a>
+<a href="#" style="text-decoration: none;"><p style="margin-left: 20px;"><b>{{user.email}}</b></p></a>
+      
+    </div>
+    <div class="col-sm-5">
+      
+      
+     {% for i,j,k in twtlist %}
         <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 600px;height:auto;margin-top: 65px;">
 
         
           <div class="post" style="height: auto;width: auto;">
             {% for i in pic %}
-              <a href="#"><img src="/{{i.profile_image}}" class="img-circle"onerror="this.src='../../static/img/default.jpg';"width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
+              <a href="#"><img src="/{{i.profile_image}}" class="img-circle" onerror="this.src='../static/img/default.jpg';"width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
             {% endfor %}
             <a href="{% url 'profile' pk=i.user.pk %}" style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></a><br><br>
             <!-- <p>{{i.email}}</p> -->
@@ -120,11 +173,10 @@
 {% for i in j %}
         <!-- <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;"> -->
         
-          <div class="post" style="width: auto;height: auto;">
+          <div class="post" style="height: auto;width: auto;>
             {% for i in pic %}
-              <a href="#"><img src="/{{i.profile_image}}" class="img-circle"onerror="this.src='../../static/img/default.jpg';"width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
+              <a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
             {% endfor %}
-
             <i style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></i><br><br>
             <!-- <p>{{i.email}}</p> -->
             <p style="margin-left: 20px;">{{i.text|linebreaksbr}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
@@ -169,7 +221,14 @@
       {% endfor %}
 
 
-        <div class="modal fade" id="myModal" role="dialog" style="height: 700px; width: 100%;">
+    
+    </div>
+
+  </div>
+</div>  
+
+        
+<div class="modal fade" id="myModal" role="dialog" style="height: 700px; width: 100%;">
     <div class="modal-dialog" style="height:500px;width: 100%; margin-top: 100px;">
     
       <!-- Modal content-->
@@ -178,7 +237,7 @@
          
         <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;<span style="color: red;"></span></button>
           {% for i in pic %} 
-          <img class="img-responsive"  src="/{{i.header_image}}"  style="width: 100%; height:250px;">
+          <img class="img-responsive"  src="/{{i.header_image}}" / style="width: 100%; height:250px;">
           {% endfor %}
          
           <!--  {% for i in pic %}  -->
@@ -186,11 +245,12 @@
           <input type="file" id="profile" name=""> -->
           <!-- {% endfor %} -->
         </div>
+
         
         <div class="modal-body" style="padding:40px 50px;">
         <button type="submit" class="btn btn-default pull-right" data-dismiss="modal" style="border-radius: 15px; margin-left: 1100px;">Cancel</button>
           
-          <form role="form" action="{%url 'updateprofile' %}" method="post" enctype="multipart/form-data">
+          <form role="form" method="post" enctype="multipart/form-data">
             
               {% csrf_token %}
               <h2><b>{{user.username}}</b></h2> 
@@ -205,109 +265,17 @@
       
     </div>
   </div> 
-
-  <div id="myModal1" class="modal fade " role="dialog" style="height: 700px; width: 100%;">
-  <div class="modal-dialog">
-
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" id="user">Reply To </h4>
-      </div>
-      <div class="modal-body">
-      <p id="user1"></p>
-      <p id="text"></p>
-        <form role="form" method="post" class="tweet-form" enctype="multipart/form-data" id="form1"> 
-
-          {% csrf_token %}
-          {{ form1.as_p }}
-          <i class="fa fa-camera" onclick="chooseFile()" style="margin-left:30px;margin-top: 35px;" id="camera"  data-toggle="tooltip" data-placement="top" title="Add photos"" ></i>
-          <input type="file" id="choose" >
-       
-      <button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">Reply</button>
-        </form>
-      </div>
-     
-    </div>
-
-  </div>
-</div>
-<script type="text/javascript">
-          $(follow_btn).click(function() {
-            var value =$(this).data("status");
-            var pk = $(this).data("pk");
-            var url1="{% url 'profile' pk=1 %}"
-            url1 = url1.replace(1,pk);
-            console.log(pk);
-            console.log(value);
-        $.ajax({
-          url: url1, 
-          data:{
-            'action':value,
-            'id': pk
-          },
-          success: function(data){ 
-            data1=data.data1;
-            console.log(data)
-          $("#follow_btn").hide();
-          $("#unfollow_btn").show();
-          $("#editprofile").hide();
-       
-        }
-    });
-});
-        $(unfollow_btn).click(function() {
-            var value =$(this).data("status");
-            var pk = $(this).data("pk");
-            var url1="{% url 'profile' pk=1 %}"
-            url1 = url1.replace(1,pk);
-            console.log(pk);
-            console.log(value);
-        $.ajax({
-          url: url1, 
-          data:{
-            'action':value,
-            'id': pk
-          },
-          success: function(data){ 
-            data1=data.data1;
-            console.log(data)
-            $("#follow_btn").show();
-            $("#unfollow_btn").hide();
-            $("#editprofile").hide();
-        
-        }
-    });
-    });     
-
-          $(document).ready(function(){
-          $("#status").hide();
-          $("#status1").hide();
-          var value =$("#status").text();
-          var value2 =$("#status1").text();
-          console.log(value2);
-          console.log((Number(value))==0); 
-          if(value2=="ok")
-          {
-             $("#follow_btn").hide();
-              $("#unfollow_btn").hide();
-          }
-         else if((Number(value))==0)
-          {
-            $("#follow_btn").show();
-             $("#unfollow_btn").hide();
-             $("#editprofile").hide();
-          }
-          else if(!(Number(value))==0) {
-            
-             $("#unfollow_btn").show();
-             $("#follow_btn").hide();
-                $("#editprofile").hide();
-          }
-        
-          });
-          </script>
-
+</body>
+<style type="text/css">
+  #twtimg{
+    /*border: 1px solid #ddd;
+      border-radius: 0px;*/
+      padding: 1px;
+      width: 90%;
+  }
+  
+</style>
+ 
 <script type="text/javascript">
 
 $( function() {
@@ -330,42 +298,10 @@ $( function() {
         });        
     });
  });
-$(document).ready(function(){
-    $("#id_image").hide();
-    });
-
-   function chooseFile() {
-      document.getElementById("id_image").click();
-   }
+</script>
 
 
-
-          $("#modalbutton1").click(function() {
-            var pk = $(this).data("pk");
-            var text = $(this).data("text");
-            var user=$(this).data("user");
-            var url = "{% url 'savecomment' pk=0 %}";
-
-            url = url.replace(0,pk);
-
-              $("#form1").attr("action", url);
-              $("#user").append(user);
-              $("#user1").append("<b>"+user+":</b>");
-              $("#text").append(text+"<hr>");
-              console.log(pk);
-          });
-      
-    </script>
-
-<style type="text/css">
-  label:first-child{
-    display: none;
-  }
-  .errorlist{
-    display: none;
-  }
-</style>
 
 {% endblock %}
-
-
+</body>
+</html>

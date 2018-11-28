@@ -28,8 +28,8 @@
     	<li><a class="dropdown-item" href="{% url 'updateprofile' %}"><b>{{user.username}}</b><br>{{user.email}}</a>
     	<li class="divider"></li>
     	<li><a class="dropdown-item" href="{% url 'updateprofile' %}">
-    		<font face="verdana">updateprofile</font></a></li>
-    	<li class="divider"></li>
+    		<font face="verdana">updateprofile</font></a></li><hr>
+    
       {% if user.is_authenticated %}
         <li><a href="{% url 'logout' %}" >Logout</a></li>
       {% else %}
@@ -42,10 +42,27 @@
 <div class="container-fluid" >
 	<div class="row">
 		<div class="col-sm-4">
-			<div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px;border-radius:5px; ">
+			{% for i in pic %}
+		  		<div style="height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px ">
+        		<img src="/{{i.header_image}}" onerror="this.src='../static/img/background.jpg';" style="height: 100px;width:300px;margin-top:0px; margin-left: 115px; margin-inline-start:0px ">
+				
+					<a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="90px" height="90px" style="margin-top:-40px; margin-left:20px"></a>
+			{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+<!-- 			<div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px;border-radius:5px; ">
 				{% for i in pic %}
 					<a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="90px" height="90px" style="margin-top:60px; margin-left:30px"></a>
-				{% endfor %}
+				{% endfor %} -->
 					<h5><a href="#" style="margin-left:100px;color: black; text-decoration: none;"><b>{{user.username}}</b> <br>  
 					&emsp;&emsp;&nbsp &emsp;&nbsp &emsp;&emsp;<i><b>{{user.email}}</b></i></a></h5>
 							<div class="row">
@@ -135,13 +152,13 @@
 							<a href="{% url 'comments' pk=i.pk %}">{{ i.comments.count }}</a>
 						<p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'savecomment' pk=i.pk }" data-pk="{{i.pk}}" data-target="#myModal" data-user="{{i.user}}" data-text="{{i.text|linebreaksbr}}" id="modalbutton" style="color: #3399ff;margin-left:20px;" title="comments"></p><a href="#" data-toggle="tooltip" title="retweet"><i class="fas fa-retweet" style="color: #3399ff;margin-left:50px; font-size: 20px;"></i></a><a href="#" data-toggle="tooltip" title="likes"><i class="fas fa-heart" style="margin-left: 80px;color: #3399ff;font-size: 20px;"></i></a><i class="far fa-envelope" style="margin-left:90px; color:#3399ff;font-size:20px;"></i>
 						<i style="margin-left: 80px;color: #3399ff;font-size: 15px;"></i><button class="btn btn-info" onclick="ch('{{i.pk}}')">comments</button>
-						<hr>
-						<p>posted on:{{i.created_at}}</p>
+						
+						<p>posted on:{{i.created_at}}</p><hr>
 <div id="comments_hide{{i.pk}}" style="display: none;">					
 {% for i in j %}
         <!-- <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;"> -->
         
-          <div class="post" style="height: auto;width: auto;>
+          <div class="post" style="height: auto;width: auto;">
             {% for i in pic %}
               <a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
             {% endfor %}
@@ -160,8 +177,8 @@
             
             </div>  
         
-            <hr>
-            <p>posted on:{{i.created_at}}</p>
+            
+            <p>posted on:{{i.created_at}}</p><hr>
             
             
             
@@ -191,22 +208,38 @@
 		</div>
 
 	</div>
-	<div class="col-sm-3"  id="sta" style ="margin-top:18px;margin-right:0px;">
-				<p><h5><b style="width: 30%">Who to follow</b></h5> <a href="#">Refresh</a> <a href="#">View all</a></p>
+<!-- 	<div class="col-sm-3"  id="sta" style ="margin-top:18px;margin-right:0px;">
+				<p><h5><b style="width: 30%">Who to follow</b></h5> </p>
 				{% for j in random_users %}
 				<img src="/{{j.profile_image}}"  onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px">
-			{{j.user.email}}<br>
+			{{j.user.email}}<br> -->
 			 <!-- <img src="/{{jpg.profile_image}}"  onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"> -->
-    <a class="account-group js-recommend-link js-user-profile-link user-thumb" href="#" rel="noopener">
+<!--     <a class="account-group js-recommend-link js-user-profile-link user-thumb" href="{% url 'profile' pk=j.user.pk %}" rel="noopener">
    
       <span class="account-group-inner" data-user-id="19895282">
         <strong class="fullname">{{ j.user }}</strong><span class="UserBadges"><span class="Icon Icon--verified"><span class="u-hiddenVisually"></span></span></span><span class="UserNameBreak">&nbsp;</span><span class="username u-dir u-textTruncate" dir="ltr">@<b>{{ j.user }}</b></span>
       </span>
     </a><br><br>
     {% endfor %}
+ -->
+ 		<div class="col-sm-4"  id="sta" style ="margin-top:18px">
+				<p><h5><b style="width: 30%">Who to follow</b></h5> <!-- <a href="#">Refresh</a> <a href="#">View all</a></p> -->
+	{% for j in random_users %}
+	 <img src="/{{j.profile_image}}"  onerror="this.src='../static/img/default.jpg';" class="img-circle" width="50px" height="50px" style="margin-top:10px; margin-left:10px">
+		
+			
+    <!-- <a class="account-group js-recommend-link js-user-profile-link user-thumb" href="#" rel="noopener"> -->
+   
+      <span class="account-group-inner" data-user-id="19895282">
+        <a href="{% url 'profile' pk=j.user.pk %}" ><strong class="fullname">{{ j.user }}</strong></a><span class="UserBadges"><span class="Icon Icon--verified">&nbsp;&nbsp;&emsp;&emsp;&emsp;<span class="u-hiddenVisually"></span></span></span><span class="UserNameBreak"></span><p style="margin-left: 60px; margin-top: -20px;">{{j.user.email}}</p>
+        </span>
+    </a><br><br>
+    {% endfor %}
+  
 
 
-    
+
+
 </div>	
 </div>
 
