@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\surya.kala\Desktop\twitter\accounts\myvenv"
+VIRTUAL_ENV="C:\gitfiles\SMNS\twitter\accounts\myvenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

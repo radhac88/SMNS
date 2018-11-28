@@ -1,4 +1,4 @@
-   {% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 
@@ -46,21 +46,12 @@
               <a href="#"><img src="/{{i.profile_image}}" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
             {% endfor %}
             <i style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></i><br><br>
-            <!-- <p>{{i.email}}</p> -->
-            <p style="margin-left: 20px;">{{i.text|linebreaksbr}}</p>
-            
-            <div id="spa">
-              
-              <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.image }}" />
-              
-            
+            <p style="margin-left: 20px;">{{i.text|linebreaksbr}}</p>  
+            <div id="spa">  
+              <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.image }}" />  
             </div>  
-        
             <hr>
-            <p>posted on:{{i.created_at}}</p>
-            
-            
-            
+            <p>posted on:{{i.created_at}}</p>    
           </div>
         </div>
 
