@@ -1,3 +1,6 @@
+<<<<<<< HEAD:twitter/accounts/templates/replycomment.html
+{% extends 'base.html' %}
+=======
   {% extends 'base.html' %}
 {% load static %}
 
@@ -12,9 +15,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+>>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/replycomment.html
 {% block content %}
-
-
   <nav class="navbar navbar-default">
   <div class="container-fluid">
     
@@ -59,7 +61,7 @@
               <a href="#"><img src="/{{i.profile_image}}" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
             {% endfor %}
             <i style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></i><br><br>
-            <!-- <p>{{i.email}}</p> -->
+
             <p style="margin-left: 20px;">{{i.text|linebreaksbr}}</p>
             
             <div id="spa">

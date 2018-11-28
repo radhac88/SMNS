@@ -1,11 +1,7 @@
-   {% extends 'base.html' %}
-
+{% extends 'base.html' %}
 {% block content %}
-
-
   <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    
+  <div class="container-fluid">    
     <ul class="nav navbar-nav">
       <li><a href="{% url 'home' %}"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
       <li><a href="#"><i class=" fas fa-bolt" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
@@ -47,7 +43,10 @@
 
                 <img src="/{{j.header_image}}" onerror="this.src='../static/img/background.jpg';" style="height: 130px; width:100%">
             {% endfor %} 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
             <a href="{% url 'profile' pk=i.pk %}" style="font-size: 30px; margin-left: 40px;">{{i.username}}</a>
             <p style="font-size: 15px; margin-left: 80px;">{{i.email}}</p> 
                   
@@ -55,20 +54,29 @@
   </div>
 {% empty %}
 <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 550px;height:300px;margin-top: 65px;">
+<<<<<<< HEAD
 
 				
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 					<div class="post" style="height: 500px;width: 500px;">
 						
     <h1 style="margin-top:100px; font-size: 50"><center>&nbsp;&ensp;&emsp;No name's matching :(</center></h1>
 <br><br>
 </div>
+<<<<<<< HEAD
 	
 
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 </div>
       {% endfor %}
 
 <style type="text/css">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
   body{
     background-color: #d1e0e0;
   }
@@ -111,7 +119,6 @@ $( function() {
         }
         .grid-item {
                 background-color:white;
-                /*border: 1px solid black;*/
                 padding: 3px;
                 font-size: 20px;
                 text-align: center;
@@ -123,8 +130,5 @@ $( function() {
                 
         }
 </style>
-
-
-
 
 {% endblock %}

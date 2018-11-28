@@ -57,11 +57,13 @@ def home(request):
 			followers=Follow.objects.filter(following=request.user).count()
 			following=Follow.objects.filter(followers=request.user).count()
 			ran = Tweets.objects.all().order_by('?')[:5]
-
 			tweetscount=Tweets.objects.filter(user=request.user).count()
 			pic=Profile.objects.filter(user=request.user)
+<<<<<<< HEAD
 
 			
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 			commentslist=[]
 			for i in twt:
 				comments=comment.objects.filter(twtid=i.id)
@@ -72,7 +74,10 @@ def home(request):
 				replycommentlist.append(reply)
 			twtlist=zip(twt,commentslist,replycommentlist)
 			return render(request, 'home.html', {'form': form, 'form2':form2 ,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,'pic':pic,'random_users': ran,'twtlist':twtlist})  
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 	else:
 		if request.user.is_active:
 			twt = Tweets.objects.all().order_by('-created_at')
@@ -80,11 +85,13 @@ def home(request):
 			following=Follow.objects.filter(followers=request.user).count()
 			tweetscount=Tweets.objects.filter(user=request.user).count()
 			ran = Profile.objects.all().order_by('?')[:5]
-
 			pic=Profile.objects.filter(user=request.user)
 			form=TweetForm()
 			form1 = commentForm(request.POST)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 			form2=replycommentForm(request.POST)
 			commentslist=[]
 			for i in twt:
@@ -96,7 +103,10 @@ def home(request):
 				replycommentlist.append(reply)	
 			twtlist=zip(twt,commentslist,replycommentlist)
 			return render(request, 'home.html', {'form': form,'form2':form2, 'random_users': ran,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,'pic':pic,'twtlist':twtlist})
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 		else:
 			return render(request, 'start.html')
 	return render(request, 'home.html', {'form': form,'random_users': ran,'pic':pic})	
@@ -125,7 +135,10 @@ def profile(request, pk):
 		    elif action == "unfollow":
 		        Follow.objects.filter(followers=request.user,following=profile).delete()
 		        return JsonResponse({'status':'ok','data1':'unfollow'})
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 		commentslist=[]
 		for i in twt:
 				comments=comment.objects.filter(twtid=i.id)
@@ -136,7 +149,10 @@ def profile(request, pk):
 				replycommentlist.append(reply)	
 		stwtlist=zip(twt,commentslist,replycommentlist)
 		return render(request,'profile.html',{'profile':profile,'twt1':twt,'pic':pic,'twtlist':twtlist,'status':status,'form': form,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,}) 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 	except:
 		form =ProfileForm()
 		profile= get_object_or_404(User, pk=pk)
@@ -159,7 +175,10 @@ def profile(request, pk):
 		    elif action == "unfollow":
 		        Follow.objects.filter(followers=request.user,following=profile).delete()
 		        return JsonResponse({'status':'ok','data1':'unfollow'})
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 		commentslist=[]
 		for i in twt:
 				comments=comment.objects.filter(twtid=i.id)
@@ -171,6 +190,7 @@ def profile(request, pk):
 		twtlist=zip(twt,commentslist,replycommentlist)        
 		return render(request,'profile.html',{'profile':profile,'twt1':twt,'twtlist':twtlist,'pic':pic,'status':status,'form': form,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,}) 
 
+<<<<<<< HEAD
 
 
 
@@ -181,6 +201,8 @@ def profile(request, pk):
 
 
 
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 def updateprofile(request):
     pic=Profile.objects.filter(user=request.user)
     twt=Tweets.objects.filter(user=request.user)
@@ -197,7 +219,10 @@ def updateprofile(request):
 	            profile.profile_image = form.cleaned_data['profile_image']
 	            profile.header_image = form.cleaned_data['header_image']
 	            profile.save()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 	        commentslist=[]
 	        for i in twt:
 	        	comments=comment.objects.filter(twtid=i.id)
@@ -221,7 +246,10 @@ def updateprofile(request):
 	    			replycommentlist.append(reply)
 	    		twtlist=zip(twt,commentslist,replycommentlist)
 	    		return render(request, 'updateprofile.html', {'form': form,'twtlist':twtlist,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})  
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
     except:
     	form =ProfileForm(request.POST)
     	if form.is_valid():
@@ -242,15 +270,12 @@ def updateprofile(request):
             return render(request, 'updateprofile.html', {'form': form,'twtlist':twtlist,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})	
     return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})
 
-
-# 
 def replycomments(request, pk):
 		post = get_object_or_404(comment, pk=pk)
 		pic=Profile.objects.filter(user=request.user)
 		comments=Replycomment.objects.filter(replyid=post.pk)
 		twt=comment.objects.filter(user=post.pk)
 		return render(request, 'replycomment.html', {'post': twt,'pic':pic,'comment':comments})		
-
 
 def replysavecomment(request,pk):
 	tweets = get_object_or_404(comment, pk=pk)
@@ -262,8 +287,11 @@ def replysavecomment(request,pk):
 					tweet.user=request.user
 					tweet.image = form.cleaned_data['image']
 					tweet.save()
+<<<<<<< HEAD
 
 					
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 					return redirect('home')
 
 def comments(request, pk):
@@ -283,10 +311,14 @@ def savecomment(request,pk):
 					tweet.twtid=get_object_or_404(Tweets, pk=pk)
 					tweet.image = form.cleaned_data['image']
 					tweet.save()
+<<<<<<< HEAD
 
 					
 					return redirect('home')
 
+=======
+					return redirect('home')
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 
 def following_page(request,pk):
 	user = get_object_or_404(User, pk=pk)
@@ -308,7 +340,10 @@ def followers_page(request,pk):
 	mylist=zip(followers_list,piclist)
 	return render(request,'followers_page.html', {'mylist':mylist})
 
+<<<<<<< HEAD
 #
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 def search(request):
     if 'search' in request.GET and request.GET['search']:
         search = request.GET['search']
@@ -318,12 +353,13 @@ def search(request):
         	pic=Profile.objects.filter(user=i.id)
         	piclist.append(pic)
         searchlist=zip(po1,piclist)
+<<<<<<< HEAD
         
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
         return render(request,'search.html',{'searchlist':searchlist}) 
     else:
         return HttpResponse('Please submit a search term.')
-
-
 
 def autocomplete(request):
     if request.is_ajax():
@@ -339,4 +375,7 @@ def autocomplete(request):
 
 def about(request):
 	return render(request,'about.html', {})
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
