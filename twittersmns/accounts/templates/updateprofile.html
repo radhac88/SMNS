@@ -119,6 +119,14 @@ $('input[type="file"]').on('change', function() {
 <nav class="navbar navbar-default ">
   <div class="container-fluid">
      
+<!-- <<<<<<< HEAD -->
+    <ul class="nav navbar-nav" style="margin-left:350px;">
+      <li><a href="{% url 'following_page' pk=user.pk %}"><b>Following</b><h5>&emsp;{{following}}</h5></a></li>
+      
+      <li><a href="{% url 'followers_page' pk=user.pk %}"><b>Follwers</b><h5>&emsp;{{followers}}</h5></a></li>
+      <li><a href="#"><b>Lists</b></a></li>
+      <li><a href="#"><b>Moments</b></a></li>
+<!-- =======
      <ul class="nav navbar-nav" style="margin-left:350px;">
       <li><a href="{% url 'following_page' pk=user.pk %}"><b>Following</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{following}}</b></li>
 
@@ -127,9 +135,10 @@ $('input[type="file"]').on('change', function() {
       <li><a href="#"><b>Tweets</b></a>&emsp;&emsp;<b style="color:#3399ff;
       font-size:20px;">{{twtcount}}</b></li>
       <li><a href="#"><b>Moments</b></a>&emsp;&emsp; <b style="color:#3399ff; font-size:20px;">0</b></li>
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><button type="button" class="btn btn-default" id="editbtn"><b>Edit profile</b></button></a></li>
+      <li><a href="#"><button type="button" class="btn btn-default" data-target="#myModal" data-toggle="modal" id="editbtn"><b>Edit profile</b></button></a></li>
     </ul>
   </div>
 </nav><br><br>
@@ -291,17 +300,35 @@ $( function() {
                 list = data.list;
                 console.log(list);
                 $("#search").autocomplete({
-                source : list
+                source : list,
+                minLength:1
                 
                 });       
             }
         });        
     });
  });
+// <<<<<<< HEAD
+// =======
+</script>
+<!-- >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
+
+
 </script>
 
-
-
 {% endblock %}
+<<<<<<< HEAD:twittersmns/accounts/templates/updateprofile.html
 </body>
 </html>
+=======
+<!-- <<<<<<< HEAD -->
+<!-- <ul>
+  <li>Username: {{ user.username }}</li>
+  <li>Location: {{ user.profile.location }}</li>
+  <li>Birth Date: {{ user.profile.birth_date }}</li>
+</ul> -->
+
+
+<!-- =======
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
+>>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/updateprofile.html

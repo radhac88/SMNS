@@ -36,6 +36,7 @@ def signup(request):
             email = form.cleaned_data.get('email')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            Profile.objects.create(user=request.user)
             return redirect('home')
     else:
         form = SignUpForm()
@@ -62,6 +63,14 @@ def home(request):
 
 			tweetscount=Tweets.objects.filter(user=request.user).count()
 			pic=Profile.objects.filter(user=request.user)
+# <<<<<<< HEAD
+# 			ran = Profile.objects.all().order_by('?')[:5]
+# 			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,'pic':pic,'random_users': ran})  
+			
+
+
+
+# =======
 			
 			commentslist=[]
 			for i in twt:
@@ -73,6 +82,7 @@ def home(request):
 				replycommentlist.append(reply)
 			twtlist=zip(twt,commentslist,replycommentlist)
 			return render(request, 'home.html', {'form': form, 'form2':form2 ,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,'pic':pic,'random_users': ran,'twtlist':twtlist})  
+# >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
 	else:
 		if request.user.is_active:
 			twt = Tweets.objects.all().order_by('-created_at')
@@ -84,6 +94,10 @@ def home(request):
 			pic=Profile.objects.filter(user=request.user)
 			form=TweetForm()
 			form1 = commentForm(request.POST)
+# <<<<<<< HEAD
+# 			ran = Profile.objects.all().order_by('?')[:5]
+# 			return render(request, 'home.html', {'form': form, 'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,'pic':pic,'random_users': ran})
+# =======
 			form2=replycommentForm(request.POST)
 			commentslist=[]
 			for i in twt:
@@ -95,6 +109,7 @@ def home(request):
 				replycommentlist.append(reply)	
 			twtlist=zip(twt,commentslist,replycommentlist)
 			return render(request, 'home.html', {'form': form,'form2':form2, 'random_users': ran,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,'pic':pic,'twtlist':twtlist})
+# >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
 		else:
 			return render(request, 'start.html')
 	return render(request, 'home.html', {'form': form,'random_users': ran,'pic':pic})	
@@ -123,6 +138,9 @@ def profile(request, pk):
 		    elif action == "unfollow":
 		        Follow.objects.filter(followers=request.user,following=profile).delete()
 		        return JsonResponse({'status':'ok','data1':'unfollow'})
+# <<<<<<< HEAD
+# 		return render(request,'profile.html',{'profile':profile,'twt1':twt,'pic':pic,'status':status,'form': form,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,}) 
+# =======
 		commentslist=[]
 		for i in twt:
 				comments=comment.objects.filter(twtid=i.id)
@@ -133,6 +151,7 @@ def profile(request, pk):
 				replycommentlist.append(reply)	
 		stwtlist=zip(twt,commentslist,replycommentlist)
 		return render(request,'profile.html',{'profile':profile,'twt1':twt,'pic':pic,'twtlist':twtlist,'status':status,'form': form,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,}) 
+# >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
 	except:
 		form =ProfileForm()
 		profile= get_object_or_404(User, pk=pk)
@@ -155,6 +174,9 @@ def profile(request, pk):
 		    elif action == "unfollow":
 		        Follow.objects.filter(followers=request.user,following=profile).delete()
 		        return JsonResponse({'status':'ok','data1':'unfollow'})
+# <<<<<<< HEAD
+# 		return render(request,'profile.html',{'profile':profile,'twt1':twt,'pic':pic,'status':status,'form': form,'followers':followers,'following':following,'twtcount':tweetscount,'form1':form1,}) 
+# =======
 		commentslist=[]
 		for i in twt:
 				comments=comment.objects.filter(twtid=i.id)
@@ -170,6 +192,7 @@ def profile(request, pk):
 
 
 
+# >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
 
 
 
@@ -217,6 +240,12 @@ def updateprofile(request):
 	            profile.profile_image = form.cleaned_data['profile_image']
 	            profile.header_image = form.cleaned_data['header_image']
 	            profile.save()
+# <<<<<<< HEAD
+# 	            return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})  
+# 	        else:
+# 	        	form =ProfileForm(instance=request.user.profile)
+# 	        	return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})  
+# =======
 	        commentslist=[]
 	        for i in twt:
 	        	comments=comment.objects.filter(twtid=i.id)
@@ -240,6 +269,7 @@ def updateprofile(request):
 	    			replycommentlist.append(reply)
 	    		twtlist=zip(twt,commentslist,replycommentlist)
 	    		return render(request, 'updateprofile.html', {'form': form,'twtlist':twtlist,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})  
+# >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
     except:
     	form =ProfileForm(request.POST)
     	if form.is_valid():
@@ -326,6 +356,30 @@ def savecomment(request,pk):
 					# following=Follow.objects.filter(followers=request.user).count()
 					# tweetscount=Tweets.objects.filter(user=request.user).count()
 					return redirect('home')
+# <<<<<<< HEAD
+
+def following_page(request,pk):
+	user = get_object_or_404(User, pk=pk)
+	following_list = Follow.objects.filter(followers=user)
+	piclist=[]
+	for i in following_list:
+		pic=Profile.objects.filter(user=i.following)
+		piclist.append(pic)
+	mylist=zip(following_list,piclist)
+	return render(request,'following_page.html', {'mylist':mylist})
+
+def followers_page(request,pk):
+	user = get_object_or_404(User, pk=pk)
+	followers_list = Follow.objects.filter(following=user)
+	piclist=[]
+	for i in followers_list:
+		pic=Profile.objects.filter(user=i.followers)
+		piclist.append(pic)
+	mylist=zip(followers_list,piclist)
+	return render(request,'followers_page.html', {'mylist':mylist})
+
+# =======
+# >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
 
 def search(request):
     if 'search' in request.GET and request.GET['search']:
@@ -361,25 +415,29 @@ def autocomplete(request):
         }
         return JsonResponse(data)
 
-def following_page(request,pk):
-	user = get_object_or_404(User, pk=pk)
-	following_list = Follow.objects.filter(followers=user)
-	piclist=[]
-	for i in following_list:
-		pic=Profile.objects.filter(user=i.following)
-		piclist.append(pic)
-	mylist=zip(following_list,piclist)
-	return render(request,'following_page.html', {'mylist':mylist})
+<<<<<<< HEAD
+def about(request):
+	return render(request,'about.html', {})
+# =======
+# def following_page(request,pk):
+# 	user = get_object_or_404(User, pk=pk)
+# 	following_list = Follow.objects.filter(followers=user)
+# 	piclist=[]
+# 	for i in following_list:
+# 		pic=Profile.objects.filter(user=i.following)
+# 		piclist.append(pic)
+# 	mylist=zip(following_list,piclist)
+# 	return render(request,'following_page.html', {'mylist':mylist})
 
-def followers_page(request,pk):
-	user = get_object_or_404(User, pk=pk)
-	followers_list = Follow.objects.filter(following=user)
-	piclist=[]
-	for i in followers_list:
-		pic=Profile.objects.filter(user=i.followers)
-		piclist.append(pic)
-	mylist=zip(followers_list,piclist)
-	return render(request,'followers_page.html', {'mylist':mylist})
+# def followers_page(request,pk):
+# 	user = get_object_or_404(User, pk=pk)
+# 	followers_list = Follow.objects.filter(following=user)
+# 	piclist=[]
+# 	for i in followers_list:
+# 		pic=Profile.objects.filter(user=i.followers)
+# 		piclist.append(pic)
+# 	mylist=zip(followers_list,piclist)
+# 	return render(request,'followers_page.html', {'mylist':mylist})
 
 
 # def following_page(request,user_id=1):
@@ -400,8 +458,8 @@ def followers_page(request,pk):
 # 	mylist=zip(followers_list,piclist)
 # 	return render(request,'followers_page.html', {'mylist':mylist})
 
-def about(request):
-	return render(request,'about.html', {})
+# def about(request):
+# 	return render(request,'about.html', {})
 # from django.contrib.auth.models import User
 # from django.contrib import messages
 # from django.views.generic.edit import FormView
@@ -419,3 +477,4 @@ def about(request):
 #         create_random_user_accounts.delay(total)
 #         messages.success(self.request, 'We are generating your random users! Wait a moment and refresh this page.')
 #         return redirect('users_list')	
+# >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
