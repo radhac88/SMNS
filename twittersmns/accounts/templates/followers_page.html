@@ -46,18 +46,7 @@
     </ul>
   </div>  
 </nav>
-<<<<<<< HEAD:twittersmns/accounts/templates/followers_page.html
-=======
 
-
-<!-- <<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
->>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/followers_page.html
 <div id="div">
 {% for i,j in mylist %}
 
@@ -65,15 +54,15 @@
         <div class="grid-item">
             
             {% for j in j %}
-<!-- <<<<<<< HEAD -->
+
                 <img src="/{{j.profile_image}}" onerror="this.src='../../static/img/default.jpg';"  class="img-circle" id="img" width="100px" height="100px" style="margin-top:80px; margin-left:7px;border: 3px solid white; z-index: 1;position: absolute;"></a>
 
                 <img src="/{{j.header_image}}" onerror="this.src='../../static/img/background.jpg';" style="height: 130px; width:100%">
-<!-- =======
-                <img src="/{{j.profile_image}}" onerror="this.src='../static/img/default.jpg';"  class="img-circle" id="img" width="100px" height="100px" style="margin-top:80px; margin-left:7px;border: 3px solid white; z-index: 1;position: absolute;"></a>
 
-                <img src="/{{j.header_image}}" onerror="this.src='../static/img/background.jpg';" style="height: 130px; width:100%">
->>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
+                <!-- <img src="/{{j.profile_image}}" onerror="this.src='../static/img/default.jpg';"  class="img-circle" id="img" width="100px" height="100px" style="margin-top:80px; margin-left:7px;border: 3px solid white; z-index: 1;position: absolute;"></a>
+
+                <img src="/{{j.header_image}}" onerror="this.src='../static/img/background.jpg';" style="height: 130px; width:100%"> -->
+
             {% endfor %} 
             <a href="{% url 'profile' pk=i.following.pk %}" style="font-size: 30px; margin-left: 40px;">{{i.followers}}</a>
             <p style="font-size: 15px; margin-left: 80px;">{{i.followers.email}}</p> 
@@ -87,15 +76,7 @@
 
 
 <p>{{piclist}}</p>
-<<<<<<< HEAD:twittersmns/accounts/templates/followers_page.html
 
-=======
-<!-- <<<<<<< HEAD
-=======
-<button id="nikhila">hello</button>
-<p id="mana">suryakaa</p>
->>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
->>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/followers_page.html
 <style type="text/css">
 
         .grid-container {

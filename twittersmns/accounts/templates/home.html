@@ -1,4 +1,4 @@
-   {% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% load static %}
 
@@ -42,42 +42,14 @@
 <div class="container-fluid" >
 	<div class="row">
 		<div class="col-sm-4">
-<<<<<<< HEAD:twittersmns/accounts/templates/home.html
-			{% for i in pic %}
-		  		<div style="height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px ">
-        		<img src="/{{i.header_image}}" onerror="this.src='../static/img/background.jpg';" style="height: 100px;width:300px;margin-top:0px; margin-left: 115px; margin-inline-start:0px ">
-				
-					<a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="90px" height="90px" style="margin-top:-40px; margin-left:20px"></a>
-			{% endfor %}
-
-
-
-
-
-
-
-
-
-
-
-<!-- 			<div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px;border-radius:5px; ">
-				{% for i in pic %}
-					<a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="90px" height="90px" style="margin-top:60px; margin-left:30px"></a>
-				{% endfor %} -->
-=======
-<!-- <<<<<<< HEAD -->
-      {% for i in pic %}
+		{% for i in pic %}
 		  	<div style="height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px ">
         <img src="/{{i.header_image}}" onerror="this.src='../static/img/background.jpg';" style="height: 100px;width:300px;margin-top:0px; margin-left: 115px; margin-inline-start:0px ">
 				
 					<a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="90px" height="90px" style="margin-top:-40px; margin-left:20px"></a>
-<!-- =======
-			<div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px;border-radius:5px; ">
-				{% for i in pic %}
-					<a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="90px" height="90px" style="margin-top:60px; margin-left:30px"></a>
->>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
+
 				{% endfor %}
->>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/home.html
+
 					<h5><a href="#" style="margin-left:100px;color: black; text-decoration: none;"><b>{{user.username}}</b> <br>  
 					&emsp;&emsp;&nbsp &emsp;&nbsp &emsp;&emsp;<i><b>{{user.email}}</b></i></a></h5>
 							<div class="row">
@@ -86,16 +58,7 @@
 							<h6 style="font-size:18px;">&emsp;&emsp;{{twtcount}}</h6>
 							</div>
 							<div class="col-sm-4">
-<!-- 
-<<<<<<< HEAD -->
-							<a href="{% url 'following_page' pk=user.pk %}" style="text-decoration: none;color:#3a85ff; ">Following</a>
-							<h6>&emsp;{{following}}</h6>
-							</div>
-							<div class="col-sm-4">
-							<a href="{% url 'followers_page' pk=user.pk %}" style="text-decoration: none;">Followers</a>
-							<h6>&emsp;{{followers}}</h6>
-						
-<!-- =======
+
 							<a href="{% url 'following_page' pk=user.pk %}" style="text-decoration: none;color:#3a85ff"><b>Following</b></a>
 							<h6 style="font-size: 17px;">&emsp;{{following}}</h6>
 							</div>
@@ -103,7 +66,8 @@
 							<a href="{% url 'followers_page' pk=user.pk %}" style="text-decoration: none;color: #3a85ff"><b>Followers</b></a>
 							<h6 style="font-size: 17px;">&emsp;{{followers}}</h6>
 
->>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
+						
+
 							</div>
 						</div>
 			</div>
@@ -133,7 +97,7 @@
 				</ul>			
 			</div>	
 		</div>
-		<!-- <p>{{commentslist}}</p> -->
+		
 		
 	<div class="col-sm-4">
 			<div style="background-color:#b3ecff;height:90px;width:600px;margin-top:10px;">
@@ -147,11 +111,7 @@
   						<i class="fa fa-camera" style="margin-left:30px;margin-top: 35px;" id="camera"  data-toggle="tooltip" data-placement="top" title="Add photos" onclick="chooseFile1()" ></i>
   						<!-- <input type="file" id="choose" > -->
   						<i class='fas fa-image' style='margin-left: 40px;margin-top: 30px; font-size:24px'></i><i class='fas fa-poll' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><i class='fas fa-map-marker-alt' style='margin-left: 20px;margin-top: 30px; font-size:24px'></i><button class="btn btn-default btn-md" type="submit" style="width:70px;background-color:#3a85ff;color:white;margin-left: 300px; margin-top: 30px;">tweet</button>
-
-  						<!-- <button class="btn btn-default btn-md" type="submit" style="width:70px;margin-bottom:20px;background-color:#3a85ff;color:white; margin-left:350px; ">tweet</button> -->
-
- 
-					</div>
+  					</div>
 					
         </form>
 
@@ -161,14 +121,12 @@
 				
 					<div class="post" style="height: auto;width: auto;">
 						{% for i in pic %}
-<!-- <<<<<<< HEAD
-							<a href="#"><img src="/{{i.profile_image}}" class="img-circle" width="50px" height="50px" style="margin-top:10px; margin-left:10px"></a>
-======= -->
+
 							<a href="#"><img src="/{{i.profile_image}}" class="img-circle" onerror="this.src='../static/img/default.jpg';"width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
-<!-- >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
+
 						{% endfor %}
 						<a href="{% url 'profile' pk=i.user.pk %}" style="margin-top:30px;"><b style="color:#3399ff; font-size:18px; margin-left:10px;">{{i.user}}</b></a><br><br>
-						<!-- <p>{{i.email}}</p> -->
+					
 						<p style="margin-left: 20px;">{{i.text|linebreaksbr}}</p>
 						
 						<div id="spa">
@@ -185,14 +143,14 @@
 						<p>posted on:{{i.created_at}}</p><hr>
 <div id="comments_hide{{i.pk}}" style="display: none;">					
 {% for i in j %}
-        <!-- <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 500px;height:auto;margin-top: 65px;"> -->
+        
         
           <div class="post" style="height: auto;width: auto;">
             {% for i in pic %}
               <a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
             {% endfor %}
             <i style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></i><br><br>
-            <!-- <p>{{i.email}}</p> -->
+            
             <p style="margin-left: 20px;">{{i.text|linebreaksbr}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             <a href="{% url 'replycomments' pk=i.pk %}">{{ i.replycomments.count }}</a>
 						<p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'replysavecomment' pk=i.pk }" data-pk1="{{i.pk}}" data-target="#myModal1" data-user1="{{i.user}}" data-text1="{{i.text|linebreaksbr}}" id="modalbutton1" style="color: #3399ff;margin-left:20px;" title="comments"></p>
@@ -202,16 +160,9 @@
             <div id="spa">
               
               <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.image }}" />
-              
-            
-            </div>  
-        
-            
-            <p>posted on:{{i.created_at}}</p><hr>
-            
-            
-            
-          </div>
+            	</div> 
+            	<p>posted on:{{i.created_at}}</p><hr>
+      		</div>
         
 
 {% empty %}
@@ -237,63 +188,27 @@
 		</div>
 
 	</div>
-<<<<<<< HEAD:twittersmns/accounts/templates/home.html
-<!-- 	<div class="col-sm-3"  id="sta" style ="margin-top:18px;margin-right:0px;">
-				<p><h5><b style="width: 30%">Who to follow</b></h5> </p>
-=======
-<!-- <<<<<<< HEAD -->
+
 	<div class="col-sm-4"  id="sta" style ="margin-top:18px">
-				<p><h5><b style="width: 30%">Who to follow</b></h5> <!-- <a href="#">Refresh</a> <a href="#">View all</a></p> -->
+				<p><h5><b style="width: 30%">Who to  follow</b></h5>
 	{% for j in random_users %}
 	 <img src="/{{j.profile_image}}"  onerror="this.src='../static/img/default.jpg';" class="img-circle" width="50px" height="50px" style="margin-top:10px; margin-left:10px">
 		
 			
-    <!-- <a class="account-group js-recommend-link js-user-profile-link user-thumb" href="#" rel="noopener"> -->
-   
-      <span class="account-group-inner" data-user-id="19895282">
-        <a href="{% url 'profile' pk=j.user.pk %}" ><strong class="fullname">{{ j.user }}</strong></a><span class="UserBadges"><span class="Icon Icon--verified">&nbsp;&nbsp;&emsp;&emsp;&emsp;<span class="u-hiddenVisually"></span></span></span><span class="UserNameBreak"></span><p style="margin-left: 60px; margin-top: -20px;">{{j.user.email}}</p><!-- <span class="username u-dir u-textTruncate" dir="ltr">@<b>{{ j.user }}</b></span> -->
-<!-- =======
-	<div class="col-sm-3"  id="sta" style ="margin-top:18px;margin-right:0px;">
-				<p><h5><b style="width: 30%">Who to follow</b></h5> <a href="#">Refresh</a> <a href="#">View all</a></p>
->>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/home.html
-				{% for j in random_users %}
-				<img src="/{{j.profile_image}}"  onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px">
-			{{j.user.email}}<br> -->
-			 <!-- <img src="/{{jpg.profile_image}}"  onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"> -->
-<<<<<<< HEAD:twittersmns/accounts/templates/home.html
-<!--     <a class="account-group js-recommend-link js-user-profile-link user-thumb" href="{% url 'profile' pk=j.user.pk %}" rel="noopener">
-=======
-  <!--   <a class="account-group js-recommend-link js-user-profile-link user-thumb" href="#" rel="noopener">
->>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/home.html
-   
-      <span class="account-group-inner" data-user-id="19895282">
-        <strong class="fullname">{{ j.user }}</strong><span class="UserBadges"><span class="Icon Icon--verified"><span class="u-hiddenVisually"></span></span></span><span class="UserNameBreak">&nbsp;</span><span class="username u-dir u-textTruncate" dir="ltr">@<b>{{ j.user }}</b></span>
->>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
-      </span>
-    </a><br><br>
-    {% endfor %}
- -->
- 		<div class="col-sm-4"  id="sta" style ="margin-top:18px">
-				<p><h5><b style="width: 30%">Who to follow</b></h5> <!-- <a href="#">Refresh</a> <a href="#">View all</a></p> -->
-	{% for j in random_users %}
-	 <img src="/{{j.profile_image}}"  onerror="this.src='../static/img/default.jpg';" class="img-circle" width="50px" height="50px" style="margin-top:10px; margin-left:10px">
-		
-			
-    <!-- <a class="account-group js-recommend-link js-user-profile-link user-thumb" href="#" rel="noopener"> -->
+    
    
       <span class="account-group-inner" data-user-id="19895282">
         <a href="{% url 'profile' pk=j.user.pk %}" ><strong class="fullname">{{ j.user }}</strong></a><span class="UserBadges"><span class="Icon Icon--verified">&nbsp;&nbsp;&emsp;&emsp;&emsp;<span class="u-hiddenVisually"></span></span></span><span class="UserNameBreak"></span><p style="margin-left: 60px; margin-top: -20px;">{{j.user.email}}</p>
-        </span>
+      </span>
     </a><br><br>
     {% endfor %}
+
+ 
   
 
 
 
 
-<<<<<<< HEAD:twittersmns/accounts/templates/home.html
-=======
-<!-- <<<<<<< HEAD
 
 
 
@@ -303,12 +218,10 @@
 
 
 
-=======
-    
->>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/home.html
-</div>	
+
+
 </div>
->>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
+</div>
 
 </div>
 </div>
@@ -356,32 +269,20 @@ $(document).ready(function(){
 
 	}
 
-	/*p:nth-child(2){
-		margin: 0 15px 10px;
-	}
-	p:nth-child(1){
-		margin: 0 0 10px;
-	}*/
-
+	
 	p{
 		margin:2px 0 0 10px;
 	}
-	/*p:nth-child(4){
-		margin:215px 0 0 10px;
-
-	}*/
+	
 	#id_profile_image{
 		display: none;
 	}
-	/*#id_image{
-		display: none;
-	}*/
+	
 	.errorlist{
 		display: none;
 	}
 	#twtimg{
-		/*border: 1px solid #ddd;
-	    border-radius: 0px;*/
+		
 	    padding: 1px;
 	    width: 100%;
 	}
@@ -390,9 +291,7 @@ $(document).ready(function(){
 </style>
 
 <script type="text/javascript">
-// $("#camera").click(function () {
-//   $("input[type='file']").trigger('click');
-// });
+
 
 function chooseFile1() {
       document.getElementById("id_profile_image").click();
@@ -417,13 +316,7 @@ $(document).ready(function(){
 });
 
 
-// $(document).ready(function(){
-// 	$(".tooltip.fade.top.in").hide();
-// });
 
-// $(document).ready(function(){
-// 	$(".fade").addClass("hidden");
-// }
 </script>
 
 <script type="text/javascript">
@@ -432,7 +325,6 @@ $(document).ready(function(){
 
 
 
-<!-- <<<<<<< HEAD -->
 $( function() {
         $("#search").on('keyup', function(){
         var value = $(this).val();
@@ -455,8 +347,7 @@ $( function() {
     });
  });
     </script>
-<!-- =======
->>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
+
 
 <script type="text/javascript">
 					$(modalbutton).one("click",function() {
@@ -581,6 +472,3 @@ $( function() {
 </script>
 
 {% endblock %}
-
-</body>
-</html>
