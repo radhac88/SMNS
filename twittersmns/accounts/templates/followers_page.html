@@ -3,8 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>following list</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <title>followers list</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -44,29 +46,56 @@
     </ul>
   </div>  
 </nav>
+<<<<<<< HEAD:twitter/accounts/templates/followers_page.html
+=======
+<<<<<<< HEAD:twittersmns/accounts/templates/followers_page.html
+=======
+
+
+<!-- <<<<<<< HEAD
+
+
+
+
+=======
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
+>>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/followers_page.html
+>>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/followers_page.html
 <div id="div">
 {% for i,j in mylist %}
 
     <div class="grid-container" >
-        <div class="grid-item">  
+        <div class="grid-item">
+            
             {% for j in j %}
                 <img src="/{{j.profile_image}}" onerror="this.src='../../static/img/default.jpg';"  class="img-circle" id="img" width="100px" height="100px" style="margin-top:80px; margin-left:7px;border: 3px solid white; z-index: 1;position: absolute;"></a>
                 <img src="/{{j.header_image}}" onerror="this.src='../../static/img/background.jpg';" style="height: 130px; width:100%">
             {% endfor %} 
-            <a href="{% url 'profile' pk=i.following.pk %}" style="font-size: 30px; margin-left: 40px;">{{i.following}}</a>
-            <p style="font-size: 15px; margin-left: 80px;">{{i.following.email}}</p> 
+            <a href="{% url 'profile' pk=i.following.pk %}" style="font-size: 30px; margin-left: 40px;">{{i.followers}}</a>
+            <p style="font-size: 15px; margin-left: 80px;">{{i.followers.email}}</p> 
                     
         </div>
     </div>
 {% empty %}
-    <p style="font-size: 20px;">you're not following anyone :(</p>
+    <p style="font-size: 20px;">No Followers Yet! :(</p>
 {% endfor %} 
-
 </div>
 
 
 <p>{{piclist}}</p>
+<<<<<<< HEAD:twitter/accounts/templates/followers_page.html
 
+=======
+<<<<<<< HEAD:twittersmns/accounts/templates/followers_page.html
+
+=======
+<!-- <<<<<<< HEAD
+=======
+<button id="nikhila">hello</button>
+<p id="mana">suryakaa</p>
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
+>>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/followers_page.html
+>>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/followers_page.html
 <style type="text/css">
 
         .grid-container {
@@ -85,7 +114,7 @@
                 width: 400px;
         }
         #div{
-                padding: 100px;
+                padding-left: 100px;
                 
         }
 </style>

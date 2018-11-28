@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<<<<<<< HEAD:twitter/accounts/templates/following_page.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>following list</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+=======
+<<<<<<< HEAD:twittersmns/accounts/templates/following_page.html
+=======
+<!-- <<<<<<< HEAD -->
+>>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/following_page.html
+<!DOCTYPE html>
+<html>
+<head>
+
+        <title>following list</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<<<<<<< HEAD:twittersmns/accounts/templates/following_page.html
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+{% block content %}
+<body style="background-color: aliceblue;">
+=======
+
+>>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+{% block content %}
+<body style="background-color: aliceblue;">
+<<<<<<< HEAD:twitter/accounts/templates/following_page.html
+=======
+<!-- ======= -->
+{% block content %}
+
+<!-- >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
+>>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/following_page.html
+>>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="{% url 'home' %}"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
+      <li><a href="#"><i class=" fas fa-bolt" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
+      <li><a href="#"><i class="far fa-bell" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
+      <li><a href="#"><i class="far fa-envelope" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
+      <li><a href="#"><i class="fab fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
+      <li><form type="get" action="{% url 'search' %}" accept-charset="utf-8">
+        <input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
+    background: #2196F3;
+    color: white;
+    font-size:8px;
+    margin-top:15px;
+    border: 1px solid grey;
+    border-left: none;cursor: pointer;"><i class="fa fa-search example" style="font-size:17px"></i></button></form></li>
+      <li>
+    <div class="dropdown">
+    <p class="dropdown-toggle fas fa-user-circle" data-toggle="dropdown" type="button" style="font-size:40px;margin-top: 15px;margin-left:90px;"aria-haspopup="true" aria-expanded="true"></p>
+    <ul class="dropdown-menu" style="margin-left:100px;">
+        <li><a class="dropdown-item" href="{% url 'updateprofile' %}"><b>{{user.username}}</b><br>{{user.email}}</a>
+        <li class="divider"></li>
+        <li><a class="dropdown-item" href="{% url 'updateprofile' %}">
+            <font face="verdana">updateprofile</font></a></li>
+        <li class="divider"></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}" >Logout</a></li>
+      {% else %}
+        <li><a href="{% url 'login' %}">login</a></li>
+      {% endif %} 
+    </ul>
+  </div>  
+</nav>
+<<<<<<< HEAD:twitter/accounts/templates/following_page.html
+=======
+
+<<<<<<< HEAD:twittersmns/accounts/templates/following_page.html
+<div id="div">
+{% for i,j in mylist %}
+
+    <div class="grid-container" >
+        <div class="grid-item">
+            
+=======
+
+<!-- <<<<<<< HEAD -->
+<!-- <div style="height: 100px; width: 100%;">
+    {% for i in twt1 %}
+  
+=======
+<div style="height: 100px; width: 100%;">
+    {% for i in twt1 %}
+        --><!--  <div style="height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px "> -->
+<!-- >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
+        <img class="img-responsive" src="/{{i.header_image}}"  onerror="this.src='../static/img/background.jpg';" style="height: 100px;width:100%;margin-top:0px; margin-left: 115px; margin-inline-start:0px ">
+    
+          <img class="img-responsive" src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="90px" height="90px" style="margin-top:-40px; margin-left:20px">
+    {% endfor %}
+<!-- <<<<<<< HEAD -->
+</div> -->
+ 
+ 
+
+
+
+
+
+>>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html
+<div id="div">
+{% for i,j in mylist %}
+
+    <div class="grid-container" >
+        <div class="grid-item">  
+            {% for j in j %}
+                <img src="/{{j.profile_image}}" onerror="this.src='../../static/img/default.jpg';"  class="img-circle" id="img" width="100px" height="100px" style="margin-top:80px; margin-left:7px;border: 3px solid white; z-index: 1;position: absolute;"></a>
+                <img src="/{{j.header_image}}" onerror="this.src='../../static/img/background.jpg';" style="height: 130px; width:100%">
+            {% endfor %} 
+            <a href="{% url 'profile' pk=i.following.pk %}" style="font-size: 30px; margin-left: 40px;">{{i.following}}</a>
+            <p style="font-size: 15px; margin-left: 80px;">{{i.following.email}}</p> 
+<<<<<<< HEAD:twitter/accounts/templates/following_page.html
+=======
+              		
+        </div>
+  	</div>
+<!-- ======= -->
+</div>
+ 
+ 
+
+<!-- <div id="div">
+{% for i,j in mylist %}
+
+  <div class="grid-container" >
+      <div class="grid-item">
+        
+>>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/following_page.html
+            {% for j in j %}
+<!-- <<<<<<< HEAD -->
+                <img src="/{{j.profile_image}}" onerror="this.src='../../static/img/default.jpg';"  class="img-circle" id="img" width="100px" height="100px" style="margin-top:80px; margin-left:7px;border: 3px solid white; z-index: 1;position: absolute;"></a>
+
+                <img src="/{{j.header_image}}" onerror="this.src='../../static/img/background.jpg';" style="height: 130px; width:100%">
+<!-- =======
+                <img src="/{{j.profile_image}}" onerror="this.src='../static/img/default.jpg';"  class="img-circle" id="img" width="100px" height="100px" style="margin-top:80px; margin-left:7px;border: 3px solid white; z-index: 1;position: absolute;"></a>
+
+                <img src="/{{j.header_image}}" onerror="this.src='../static/img/background.jpg';" style="height: 130px; width:100%">
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
+            {% endfor %} 
+            <a href="{% url 'profile' pk=i.following.pk %}" style="font-size: 30px; margin-left: 40px;">{{i.following}}</a>
+            <p style="font-size: 15px; margin-left: 80px;">{{i.following.email}}</p> 
+>>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html
+                    
+        </div>
+    </div>
+{% empty %}
+    <p style="font-size: 20px;">you're not following anyone :(</p>
+{% endfor %} 
+
+</div>
+
+
+<p>{{piclist}}</p>
+<<<<<<< HEAD:twitter/accounts/templates/following_page.html
+
+=======
+<!-- <<<<<<< HEAD
+=======
+
+<<<<<<< HEAD:twittersmns/accounts/templates/following_page.html
+=======
+
+
+
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
+>>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/following_page.html
+>>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html
+<style type="text/css">
+
+        .grid-container {
+                display: inline-grid;
+                grid-template-columns: auto auto auto auto;
+                background-color:#44a0cc52;
+                padding: 3px;
+
+        }
+        .grid-item {
+                background-color:white;
+                padding: 3px;
+                font-size: 20px;
+                text-align: center;
+                height: 300px;
+                width: 400px;
+        }
+        #div{
+                padding: 100px;
+                
+        }
+</style>
+<<<<<<< HEAD:twitter/accounts/templates/following_page.html
+=======
+<<<<<<< HEAD:twittersmns/accounts/templates/following_page.html
+>>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html
+<script type="text/javascript">
+$( function() {
+        $("#search").on('keyup', function(){
+        var value = $(this).val();
+        $.ajax({
+            url: "{% url 'ajax_autocomplete' %}",
+            data: {
+              'search': value 
+            },
+            dataType: 'json',
+            success: function (data) {
+                list = data.list;
+                console.log(list);
+                $("#search").autocomplete({
+                source : list,
+                minLength:1
+                
+                });       
+            }
+        });        
+    });
+ });
+</script>
+<<<<<<< HEAD:twitter/accounts/templates/following_page.html
+=======
+=======
+
+>>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html
+{% endblock %}
+</body>
+
+</html>
+<<<<<<< HEAD:twitter/accounts/templates/following_page.html
+=======
+<!-- ======= -->
+
+{% block scripts %}
+
+>>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/following_page.html
+{% endblock %}
+</body>
+
+<<<<<<< HEAD:twittersmns/accounts/templates/following_page.html
+</html>
+=======
+
+<!-- 
+>>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
+>>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/following_page.html
+>>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html

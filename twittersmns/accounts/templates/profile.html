@@ -90,10 +90,23 @@
               <a href="#"><img src="/{{i.profile_image}}" class="img-circle"onerror="this.src='../../static/img/default.jpg';"width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
             {% endfor %}
             <a href="{% url 'profile' pk=i.user.pk %}" style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></a><br><br>
+<<<<<<< HEAD:twitter/accounts/templates/profile.html
             <p style="margin-left: 20px;">{{i.text|linebreaksbr}}</p>  
             <div id="spa">  
               <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.profile_image }}" / style="margin-left: 20px;">  
             </div>  
+=======
+            <!-- <p>{{i.email}}</p> -->
+            <p style="margin-left: 20px;">{{i.text|linebreaksbr}}</p>
+            
+            <div id="spa">
+              
+              <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.profile_image }}" / style="margin-left: 20px; max-width: 90%;">
+              
+            
+            </div> <br> 
+
+>>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/profile.html
               <a href="{% url 'comments' pk=i.pk %}">{{ i.comments.count }}</a>
             <p type="button" class="fa fa-comments fa-lg" style="color: #3399ff;margin-left:20px;" title="comments"></p><a href="#" data-toggle="tooltip" title="retweet"><i class="fas fa-retweet" style="color: #3399ff;margin-left:50px; font-size: 20px;"></i></a><a href="#" data-toggle="tooltip" title="likes"><i class="fas fa-heart" style="margin-left: 80px;color: #3399ff;font-size: 20px;"></i></a><i class="far fa-envelope" style="margin-left:90px; color:#3399ff;font-size:20px;"></i>
             <i style="margin-left: 80px;color: #3399ff;font-size: 15px;"></i><button class="btn btn-info" onclick="ch('{{i.pk}}')">comments</button>
