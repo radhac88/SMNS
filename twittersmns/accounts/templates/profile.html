@@ -90,17 +90,7 @@
               <a href="#"><img src="/{{i.profile_image}}" class="img-circle"onerror="this.src='../../static/img/default.jpg';"width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
             {% endfor %}
             <a href="{% url 'profile' pk=i.user.pk %}" style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></a><br><br>
-<<<<<<< HEAD
-          
-=======
-<<<<<<< HEAD:twitter/accounts/templates/profile.html
-            <p style="margin-left: 20px;">{{i.text|linebreaksbr}}</p>  
-            <div id="spa">  
-              <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.profile_image }}" / style="margin-left: 20px;">  
-            </div>  
-=======
-            <!-- <p>{{i.email}}</p> -->
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
+
             <p style="margin-left: 20px;">{{i.text|linebreaksbr}}</p>
             
             <div id="spa">
@@ -110,7 +100,7 @@
             
             </div> <br> 
 
->>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/profile.html
+
               <a href="{% url 'comments' pk=i.pk %}">{{ i.comments.count }}</a>
             <p type="button" class="fa fa-comments fa-lg" style="color: #3399ff;margin-left:20px;" title="comments"></p><a href="#" data-toggle="tooltip" title="retweet"><i class="fas fa-retweet" style="color: #3399ff;margin-left:50px; font-size: 20px;"></i></a><a href="#" data-toggle="tooltip" title="likes"><i class="fas fa-heart" style="margin-left: 80px;color: #3399ff;font-size: 20px;"></i></a><i class="far fa-envelope" style="margin-left:90px; color:#3399ff;font-size:20px;"></i>
             <i style="margin-left: 80px;color: #3399ff;font-size: 15px;"></i><button class="btn btn-info" onclick="ch('{{i.pk}}')">comments</button>
@@ -118,20 +108,13 @@
             <p style="margin-left: 20px;">posted on:{{i.created_at}}</p>
 <div id="comments_hide{{i.pk}}" style="display: none;">         
 {% for i in j %}
-<<<<<<< HEAD
-        
-        
-=======
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
+
           <div class="post" style="width: auto;height: auto;">
             {% for i in pic %}
               <a href="#"><img src="/{{i.profile_image}}" class="img-circle"onerror="this.src='../../static/img/default.jpg';"width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
             {% endfor %}
             <i style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></i><br><br>
-<<<<<<< HEAD
-          
-=======
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
+
             <p style="margin-left: 20px;">{{i.text|linebreaksbr}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             <a href="{% url 'replycomments' pk=i.pk %}">{{ i.replycomments.count }}</a>
             <p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'replysavecomment' pk=i.pk }" data-pk1="{{i.pk}}" data-target="#myModal1" data-user1="{{i.user}}" data-text1="{{i.text|linebreaksbr}}" id="modalbutton1" style="color: #3399ff;margin-left:20px;" title="comments"></p>
@@ -157,11 +140,7 @@
 
         <div class="modal fade" id="myModal" role="dialog" style="height: 700px; width: 100%;">
     <div class="modal-dialog" style="height:500px;width: 100%; margin-top: 100px;">
-<<<<<<< HEAD
-    
-      
-=======
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
+
       
       <div class="modal-content">
          
@@ -169,11 +148,7 @@
           {% for i in pic %} 
           <img class="img-responsive"  src="/{{i.header_image}}"  style="width: 100%; height:250px;">
           {% endfor %}
-<<<<<<< HEAD
-         
-          
-=======
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
+
         </div>
         
         <div class="modal-body" style="padding:40px 50px;">

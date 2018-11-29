@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD:twitter/accounts/templates/updateprofile.html
-{% extends 'base.html' %}
-{% load staticfiles %}
-{% block title %}Home{% endblock %}
-=======
 
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
+
+
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -40,13 +34,7 @@
     {% endblock %}
 </head>
 <body>
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/updateprofile.html
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 {% block content %}
 <style type="text/css">
   label:first-child{  
@@ -127,10 +115,7 @@ $('input[type="file"]').on('change', function() {
 
 <nav class="navbar navbar-default ">
   <div class="container-fluid">
-<<<<<<< HEAD
-     
-=======
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
+
      <ul class="nav navbar-nav" style="margin-left:350px;">
       <li><a href="{% url 'following_page' pk=user.pk %}"><b>Following</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{following}}</b></li>      
       <li><a href="{% url 'followers_page' pk=user.pk %}"><b>Followers</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{followers}}</b></li>
@@ -178,19 +163,13 @@ $('input[type="file"]').on('change', function() {
             <p style="margin-left: 20px;">posted on:{{i.created_at}}</p>
 <div id="comments_hide{{i.pk}}" style="display: none;">         
 {% for i in j %}
-<<<<<<< HEAD
-        
-=======
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
+
           <div class="post" style="height: auto;width: auto;>
             {% for i in pic %}
               <a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
             {% endfor %}
             <i style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></i><br><br>
-<<<<<<< HEAD
-           
-=======
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
+
             <p style="margin-left: 20px;">{{i.text|linebreaksbr}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             <a href="{% url 'replycomments' pk=i.pk %}">{{ i.replycomments.count }}</a>
             <p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'replysavecomment' pk=i.pk }" data-pk1="{{i.pk}}" data-target="#myModal1" data-user1="{{i.user}}" data-text1="{{i.text|linebreaksbr}}" id="modalbutton1" style="color: #3399ff;margin-left:20px;" title="comments"></p>
@@ -219,25 +198,19 @@ $('input[type="file"]').on('change', function() {
 
         
 <div class="modal fade" id="myModal" role="dialog" style="height: 700px; width: 100%;">
-<<<<<<< HEAD
     <div class="modal-dialog" style="height:500px;width: 100%; margin-top: 100px;">
     
       
-      <div class="modal-content">
+      <!-- <div class="modal-content"> -->
          
-=======
     <div class="modal-dialog" style="height:500px;width: 100%; margin-top: 100px;">  
       <div class="modal-content">   
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
+
         <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;<span style="color: red;"></span></button>
           {% for i in pic %} 
           <img class="img-responsive"  src="/{{i.header_image}}" / style="width: 100%; height:250px;">
           {% endfor %}
-<<<<<<< HEAD
-         
-         
-=======
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
+
         </div>
         <div class="modal-body" style="padding:40px 50px;">
         <button type="submit" class="btn btn-default pull-right" data-dismiss="modal" style="border-radius: 15px; margin-left: 1100px;">Cancel</button>  
@@ -254,10 +227,7 @@ $('input[type="file"]').on('change', function() {
 </body>
 <style type="text/css">
   #twtimg{
-<<<<<<< HEAD
-    
-=======
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
+
       padding: 1px;
       width: 90%;
   }
@@ -287,33 +257,10 @@ $( function() {
     });
  });
 </script>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD:twitter/accounts/templates/updateprofile.html
-{% endblock %}
-=======
-<!-- >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
+
 
 
 
 {% endblock %}
 </body>
-<<<<<<< HEAD
-</head>
-=======
 </html>
-=======
-<!-- <<<<<<< HEAD -->
-<!-- <ul>
-  <li>Username: {{ user.username }}</li>
-  <li>Location: {{ user.profile.location }}</li>
-  <li>Birth Date: {{ user.profile.birth_date }}</li>
-</ul> -->
-
-
-<!-- =======
->>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
->>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/updateprofile.html
->>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/updateprofile.html
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff

@@ -1,51 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD:twitter/accounts/templates/following_page.html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>following list</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-=======
-<<<<<<< HEAD:twittersmns/accounts/templates/following_page.html
-=======
-<!-- <<<<<<< HEAD -->
->>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/following_page.html
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
-<!DOCTYPE html>
-<html>
-<head>
-
-        <title>following list</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 
->>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-
-
+{% block content %}
 <body style="background-color: aliceblue;">
-<<<<<<< HEAD
 
-{% block content %}
-
-
-=======
-<<<<<<< HEAD:twitter/accounts/templates/following_page.html
-=======
-<!-- ======= -->
-{% block content %}
-
-<!-- >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
->>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/following_page.html
->>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
@@ -79,68 +38,7 @@
     </ul>
   </div>  
 </nav>
-<<<<<<< HEAD:twitter/accounts/templates/following_page.html
-=======
-
-<<<<<<< HEAD
-
-
-=======
-<<<<<<< HEAD:twittersmns/accounts/templates/following_page.html
 <div id="div">
-{% for i,j in mylist %}
-
-    <div class="grid-container" >
-        <div class="grid-item">
-            
-=======
-
-<!-- <<<<<<< HEAD -->
-<!-- <div style="height: 100px; width: 100%;">
-    {% for i in twt1 %}
-  
-=======
-<div style="height: 100px; width: 100%;">
-    {% for i in twt1 %}
-        --><!--  <div style="height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px "> -->
-<!-- >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
-        <img class="img-responsive" src="/{{i.header_image}}"  onerror="this.src='../static/img/background.jpg';" style="height: 100px;width:100%;margin-top:0px; margin-left: 115px; margin-inline-start:0px ">
-    
-          <img class="img-responsive" src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="90px" height="90px" style="margin-top:-40px; margin-left:20px">
-    {% endfor %}
-<!-- <<<<<<< HEAD -->
-</div> -->
- 
- 
-
-
-
-
-
->>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html
-<div id="div">
-{% for i,j in mylist %}
-
-    <div class="grid-container" >
-        <div class="grid-item">  
-            {% for j in j %}
-                <img src="/{{j.profile_image}}" onerror="this.src='../../static/img/default.jpg';"  class="img-circle" id="img" width="100px" height="100px" style="margin-top:80px; margin-left:7px;border: 3px solid white; z-index: 1;position: absolute;"></a>
-                <img src="/{{j.header_image}}" onerror="this.src='../../static/img/background.jpg';" style="height: 130px; width:100%">
-            {% endfor %} 
-            <a href="{% url 'profile' pk=i.following.pk %}" style="font-size: 30px; margin-left: 40px;">{{i.following}}</a>
-            <p style="font-size: 15px; margin-left: 80px;">{{i.following.email}}</p> 
-<<<<<<< HEAD:twitter/accounts/templates/following_page.html
-=======
-              		
-        </div>
-  	</div>
-<!-- ======= -->
-</div>
- 
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
- 
-
- <div id="div">
 {% for i,j in mylist %}
 
   <div class="grid-container" >
@@ -154,14 +52,11 @@
             {% endfor %} 
             <a href="{% url 'profile' pk=i.following.pk %}" style="font-size: 30px; margin-left: 40px;">{{i.following}}</a>
             <p style="font-size: 15px; margin-left: 80px;">{{i.following.email}}</p> 
->>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html
+
                     
         </div>
     </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 {% empty %}
     <p style="font-size: 20px;">you're not following anyone :(</p>
 {% endfor %} 
@@ -170,24 +65,7 @@
 
 
 <p>{{piclist}}</p>
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD:twitter/accounts/templates/following_page.html
-
-=======
-<!-- <<<<<<< HEAD
-=======
-
-<<<<<<< HEAD:twittersmns/accounts/templates/following_page.html
-=======
-
-
-
->>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
->>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/following_page.html
->>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 <style type="text/css">
 
         .grid-container {
@@ -210,14 +88,7 @@
                 
         }
 </style>
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD:twitter/accounts/templates/following_page.html
-=======
-<<<<<<< HEAD:twittersmns/accounts/templates/following_page.html
->>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 <script type="text/javascript">
 $( function() {
         $("#search").on('keyup', function(){
@@ -241,30 +112,5 @@ $( function() {
     });
  });
 </script>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD:twitter/accounts/templates/following_page.html
-=======
-=======
 
->>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
 {% endblock %}
-</body>
-</html>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD:twitter/accounts/templates/following_page.html
-=======
-<!-- ======= -->
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
-
-
-
-<<<<<<< HEAD
-=======
-<!-- 
->>>>>>> c23780c21d620240d733d35107e75dc0d79d052b -->
->>>>>>> 2e0e97686d3bcd2d259113d41eadee92163c320a:twitter/accounts/templates/following_page.html
->>>>>>> 96ae94bf5ccaa1e00556b460b015c38ed0b3def6:twittersmns/accounts/templates/following_page.html
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff

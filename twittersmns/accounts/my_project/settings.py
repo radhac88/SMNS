@@ -135,7 +135,7 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # MEDIA_URL='/accounts/images/'
 MEDIA_URL='/media/'
-<<<<<<< HEAD
+
 
 
 # REDIS related settings 
@@ -150,23 +150,3 @@ BROKER_URL = 'amqp://guest:guest@localhost//'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASKS_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-=======
-# <<<<<<< HEAD
-
-# # REDIS related settings 
-# =======
-# >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
-# REDIS_HOST = 'localhost'
-# REDIS_PORT = '6379'
-# BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
-# BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600} 
-# <<<<<<< HEAD
-# CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
-# =======
-# CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'   
-# BROKER_URL = 'amqp://guest:guest@localhost//'
-# CELERY_ACCEPT_CONTENT = ['json']
-# CELERY_TASKS_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
-# >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
->>>>>>> 2a4576c692ca926c527bd56b2cdc348152965bff
