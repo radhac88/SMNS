@@ -135,7 +135,7 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # MEDIA_URL='/accounts/images/'
 MEDIA_URL='/media/'
-
+MAX_UPLOAD_SIZE = "20971520"
 
 
 # REDIS related settings 

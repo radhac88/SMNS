@@ -14,7 +14,7 @@
       <li><a href="#"><i class="fab fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
       <li><form type="get" action="{% url 'search' %}" accept-charset="utf-8">
       <input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;background: #2196F3;color: white;font-size:8px;margin-top:15px;border: 1px solid grey;border-left: none;cursor: pointer;"><i class="fa fa-search example" style="font-size:17px">
-      	<i></button></form></li>
+      	</i></button></form></li>
     <li>
    	<div class="dropdown">
     	<p class="dropdown-toggle fas fa-user-circle" data-toggle="dropdown" type="button" style="font-size:40px;margin-top: 15px;margin-left:90px;"aria-haspopup="true" aria-expanded="true"></p>
@@ -36,10 +36,12 @@
 <div class="container-fluid" >
 	<div class="row">
 		<div class="col-sm-4">
-			<div style="background-color:#1a75ff;height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px;border-radius:5px; ">
-				{% for i in pic %}
-					<a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="90px" height="90px" style="margin-top:60px; margin-left:30px"></a>
-				{% endfor %}
+			{% for i in pic %}
+		  		<div style="height: 100px;width:300px;margin-top:10px; margin-left: 115px; margin-inline-start:100px ">
+        		<img src="/{{i.header_image}}" onerror="this.src='../static/img/background.jpg';" style="height: 100px;width:300px;margin-top:0px; margin-left: 115px; margin-inline-start:0px ">
+				
+					<a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="90px" height="90px" style="margin-top:-40px; margin-left:20px"></a>
+			{% endfor %}
 
 			
 
@@ -154,20 +156,23 @@
 			{% endfor %}
 
 		</div>
-		<div class="col-sm-3"  id="sta" style ="margin-top:18px;">
+	</div>
+
+		<div class="col-sm-3" id="sta" style ="margin-top:18px;">
 			<p><h5><b style="width: 30%">Who to follow</b></h5> </p>
 			{% for j in random_users %}
 				<img src="/{{j.profile_image}}"  onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px">
 				{{j.user.email}}<br>
 				<a class="account-group js-recommend-link js-user-profile-link user-thumb" href="{% url 'profile' pk=j.user.pk %}" rel="noopener">
 				<span class="account-group-inner" data-user-id="19895282">
-	        	<strong class="fullname">{{ j.user }}</strong><span class="UserBadges"><span class="Icon Icon--verified"><span class="u-hiddenVisually"></span></span></span><span class="UserNameBreak">&nbsp;</span><span class="username u-dir u-textTruncate" dir="ltr">@<b>{{ j.user }}</b></span>
+	        	<strong class="fullname" style="margin-left:50px;">{{ j.user }}</strong><span class="UserBadges"><span class="Icon Icon--verified"><span class="u-hiddenVisually"></span></span></span><span class="UserNameBreak">&nbsp;</span><span class="username u-dir u-textTruncate" dir="ltr">@<b>{{ j.user }}</b></span>
 	        	</span></a><br><br>
     		{% endfor %}
  
  		</div>
 	</div>
 </div>
+
 
 <script>
 $(document).ready(function(){
@@ -352,7 +357,7 @@ $( function() {
 		display: block;
 		border:1px solid white;
 		width: 300px;
-	    margin-left: 115px;
+	    /*margin-left: 115px;*/
 	    background-color:white;
 	    margin-inline-start:100px;
 	    margin-top: -10px;
