@@ -27,7 +27,11 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
+<<<<<<< HEAD
 $env:VIRTUAL_ENV="D:\SMNS\twittersmns\accounts\myvenv"
+=======
+$env:VIRTUAL_ENV="C:\gitfiles\SMNS\twittersmns\accounts\myvenv"
+>>>>>>> e7bd91b1cdf7cd470e6f4257ac6dcf08bc1c795d
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name

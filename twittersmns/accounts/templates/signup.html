@@ -48,7 +48,6 @@ dir="ltr">
               <a class="js-tooltip js-dynamic-tooltip" data-placement="bottom" href="{% url 'about' %}" data-component-context="about_nav" data-nav="about" rel="noopener">
                 <span class="text">About</span>
               </a>
-              
             </li>
           </ul>
       </div>
@@ -65,7 +64,6 @@ dir="ltr">
     {% csrf_token %}
     <div id="inner">
      {{ form.as_p }}
-
     </div>
     <input type="checkbox" value="0" name="remember_me" onclick="myFunction()">Show Password &nbsp;&nbsp;&nbsp;
     <button type="submit" class="submit EdgeButton EdgeButton--primary EdgeButtom--medium">Sign up</button>
@@ -79,7 +77,7 @@ dir="ltr">
 </div>
 </div>
 </body>
-
+<!-- checkbox validation(on check the password fields displays the text and on uncheck it displays in encrypted form) -->
 <script>
 function myFunction() {
     var x = document.getElementById("id_password2");
@@ -93,18 +91,18 @@ function myFunction() {
     }
 }
 </script>
+<!-- validations for username -->
+<!-- onerror the outline of the field is displayed in red color and also the error message is displayed in red color beside it -->
+<!-- the data entered is valid then the outline of the field is in black color -->
+<!-- on blur the error message is displayed -->
 <script type="text/javascript">
   $(document).ready(function(){
 
     $("#id_username").before("<span class='star'>*</span> <br>");
-
-
-    var err_username = '<span id="err_username" class="surya"></span>';
+    var err_username = '<span id="err_username" class="errmsg"></span>';
     $("#id_username").after(err_username);  
     $("#id_username").blur(function(){
-      
-      
-   
+     
     var username =$("#id_username").val();
     if(username==""){
       $("#id_username").css("border-color", "red");
@@ -116,121 +114,94 @@ function myFunction() {
 
         return false;
       }
-
     else{
         $("#err_username").text("");
           $("#id_username").css("border-color", "black");
-
         return true;
-      }  
-        
+      }          
     });
 });
 </script>
-
+<!-- validations for email -->
+<!-- onerror the outline of the field is displayed in red color and also the error message is displayed in red color beside it -->
+<!-- the data entered is valid then the outline of the field is in black color -->
+<!-- on blur the error message is displayed -->
 <script type="text/javascript">
   $(document).ready(function(){
-
-
-    $("#id_email").before("<span class='star'>*</span><br>");
-
-
-    var err_email = '<span id="err_email" class="surya"></span>';
+    $("#id_email").before("<span class='star'>*</span><br>");  
+    var err_email = '<span id="err_email" class="errmsg"></span>';
     $("#id_email").after(err_email);  
-    $("#id_email").blur(function(){
-
-  
+    $("#id_email").blur(function(){  
     var mail=$("#id_email").val();
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
     if(!(mail.match(mailformat))){
-      
-
       $("#err_email").text("Invalid email address");
        $("#id_email").css("border-color", "red");  
         return false;
       }
-
     else{
         $("#err_email").text("");
           $("#id_email").css("border-color", "black");
         return true;
-      }  
-        
+      }          
     });
-});
-  
+}); 
 </script>
+<!-- validations for password -->
+<!-- onerror the outline of the field is displayed in red color and also the error message is displayed in red color beside it -->
+<!-- the data entered is valid then the outline of the field is in black color -->
+<!-- on blur the error message is displayed -->
 <script type="text/javascript">
   $(document).ready(function(){
 
 
     $("#id_password1").before("<span class='star'>*</span><br>");
-    
-
-    var err_password1 = '<span id="err_password1" class="surya"></span>';
+    var err_password1 = '<span id="err_password1" class="errmsg"></span>';
     $("#id_password1").after(err_password1);  
-    $("#id_password1").blur(function(){
-      
-      
-  
-    var psw=$("#id_password1").val();
-    
-    if(!(psw.length>=8)){
-      
-      
-
+    $("#id_password1").blur(function(){  
+    var psw=$("#id_password1").val();    
+    if(!(psw.length>=8)){            
       $("#err_password1").html("password should contain minimum 8 characters");
        $("#id_password1").css("border-color", "red");  
         return false;
       }
-
     else{
         $("#err_password1").text("");
         $("#id_password1").css("border-color", "black");
         return true;
-      }  
-        
+      }          
     });
-});
-  
+});  
 </script>
-
+<!-- validations for password confirmation -->
+<!-- onerror the outline of the field is displayed in red color and also the error message is displayed in red color beside it -->
+<!-- the data entered is valid then the outline of the field is in black color -->
+<!-- on blur the error message is displayed -->
 <script type="text/javascript">
   $(document).ready(function(){
     $("#id_password2").before("<span class='star'>*</span><br>");  
     var err_password2 = '<span id="err_password2" class="surya"></span>';
     $("#id_password2").after(err_password2);  
-    $("#id_password2").blur(function(){
-
-      
-      
-   
+    $("#id_password2").blur(function(){             
     var psw=$("#id_password2").val();
-    var con = $("#id_password2").val();
-    
-    if(psw!=con){
-     
-      
-
+    var con = $("#id_password2").val();    
+    if(psw!=con){           
       $("#err_password2").html("password doesn't match!!");
        $("#id_password2").css("border-color", "red");  
         return false;
       }
-
     else{
         $("#err_password2").text("");
           $("#id_password2").css("border-color", "black");
         return true;
-      }  
-        
+      }          
     });
-});
-  
+});  
 </script>
-
+<!-- styles  -->
 <style type="text/css">
   p{
-        margin-bottom: 25px;
+    margin-bottom: 25px;
   }
 
   ul{
@@ -238,25 +209,23 @@ function myFunction() {
   }
   #inner p:nth-child(2) span:last-child{
     display: none;
-
   }
   #inner p label{
     font-size: 18px;
     font-style: italic;
     font-family:-webkit-body;
-
   }
    li{
 
     font-size: 12px;
     list-style-type: disc;
   }
-  .surya{
+  .errmsg{
     color: red;
   }
   .helptext{
     display: none;
-    font-size: 12px;
+    font-size: 120px;
   }
   #inner ul:nth-child(4){
     display: none;
@@ -266,28 +235,21 @@ function myFunction() {
     
     font-size: 34px;
 }
- 
- 
-  
-
   input{
     width: 279px;
   }
-
   #inner ul:nth-child(4){
     display: none;
     color: red;
   }
-  
-
   .star{
     color: red;
     font-size: 20px;
     margin-top: 50px;
   }
-
-  
-</style>
-{% endblock %}
+  #inner p:nth-child(2) span:last-child{
+    display: none;
+  }
 </style> 
+{% endblock %}
 </html>

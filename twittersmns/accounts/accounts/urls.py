@@ -2,8 +2,6 @@ from django.urls import path
 from django.conf.urls import url
 from . import views
 
-
-
 urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('',views.home,name='home'),
@@ -18,8 +16,4 @@ urlpatterns = [
   	path('followers_page/<int:pk>/',views.followers_page, name='followers_page'),
   	path('following_page/<int:pk>/',views.following_page, name='following_page'),
     path('about/',views.about,name='about'), 
-
-
-
-
 ]

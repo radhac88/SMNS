@@ -37,7 +37,11 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
+<<<<<<< HEAD
 VIRTUAL_ENV="D:\SMNS\twittersmns\accounts\myvenv"
+=======
+VIRTUAL_ENV="C:\gitfiles\SMNS\twittersmns\accounts\myvenv"
+>>>>>>> e7bd91b1cdf7cd470e6f4257ac6dcf08bc1c795d
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -16,58 +16,20 @@
     <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css' integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns' crossorigin='anonymous'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-   
-
     {% endblock %}
     {% block scripts %}
-    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-    
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
-    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
-    
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>  
     {% endblock %}
 </head>
 <body>
-
 {% block content %}
-<style type="text/css">
-  label:first-child{  
-    float: left;
-  }
-</style>
-<script>
-$(document).ready(function(){
-    $("#editbtn").click(function(){
-        $("#myModal").modal();
-    });
-});
-
-$("#img").click(function () {
-  $("input[type='file']").trigger('click');
-});
-
-$('input[type="file"]').on('change', function() {
-  var val = $(this).val();
-  $(this).siblings('span').text(val);
-})
-$("#headimg").click(function () {
-  $("input[type='file']").trigger('click');
-});
-
-$('input[type="file"]').on('change', function() {
-  var val = $(this).val();
-  $(this).siblings('span').text(val);
-})
-
-</script>  
-
-
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    
+  <div class="container-fluid">    
     <ul class="nav navbar-nav">
       <li><a href="{% url 'home' %}"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
       <li><a href="#"><i class=" fas fa-bolt" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
@@ -99,6 +61,7 @@ $('input[type="file"]').on('change', function() {
     </ul>
   </div>  
 </nav>
+
 <div id="backround">
 {% for i in pic %}
   <a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';"  class="img-circle" id="img" width="200px" height="200px" style="margin-top:150px; margin-left:70px;border: 5px solid white; z-index: 1;position:absolute;"></a>
@@ -106,8 +69,6 @@ $('input[type="file"]').on('change', function() {
 {% for i in pic %}
   <img src="/{{i.header_image}}" onerror="this.src='../static/img/background.jpg';"  style="height: 250px; width:100%">
 {% endfor %}  
-
-  
 </div>
 
 <nav class="navbar navbar-default ">
@@ -128,39 +89,28 @@ $('input[type="file"]').on('change', function() {
 <body style="background-color:#d1e0e0">
   <div class="container-fluid">
 <div class="row">
-  
     <div class="col-sm-3">
       <a href="#" style="text-decoration: none;"><h2 style="color:black; margin-left: 20px;">{{user.username}}</h2></a>
-<a href="#" style="text-decoration: none;"><p style="margin-left: 20px;"><b>{{user.email}}</b></p></a>    
+      <a href="#" style="text-decoration: none;"><p style="margin-left: 20px;"><b>{{user.email}}</b></p></a>    
     </div>
     <div class="col-sm-5">  
      {% for i,j,k in twtlist %}
-        <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 600px;height:auto;margin-top: 65px;">
-
-        
+        <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 600px;height:auto;margin-top: 65px;">        
           <div class="post" style="height: auto;width: auto;">
             {% for i in pic %}
               <a href="#"><img src="/{{i.profile_image}}" class="img-circle" onerror="this.src='../static/img/default.jpg';"width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
             {% endfor %}
             <a href="{% url 'profile' pk=i.user.pk %}" style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></a><br><br>
-
-            <p style="margin-left: 20px;">{{i.text|linebreaksbr}}</p>
-            
-            <div id="spa">
-              
-              <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.profile_image }}" / style="margin-left: 20px;">
-              
-            
-            </div> <br>
-
-              <a href="{% url 'comments' pk=i.pk %}">{{ i.comments.count }}</a>
+            <p style="margin-left: 20px;">{{i.text|linebreaksbr}}</p>            
+            <div id="spa">             
+              <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.profile_image }}" / style="margin-left: 20px;">  
+            </div><br>
+            <a href="{% url 'comments' pk=i.pk %}">{{ i.comments.count }}</a>
             <p type="button" class="fa fa-comments fa-lg" style="color: #3399ff;margin-left:20px;" title="comments"></p><a href="#" data-toggle="tooltip" title="retweet"><i class="fas fa-retweet" style="color: #3399ff;margin-left:50px; font-size: 20px;"></i></a><a href="#" data-toggle="tooltip" title="likes"><i class="fas fa-heart" style="margin-left: 80px;color: #3399ff;font-size: 20px;"></i></a><i class="far fa-envelope" style="margin-left:90px; color:#3399ff;font-size:20px;"></i>
             <i style="margin-left: 80px;color: #3399ff;font-size: 15px;"></i><button class="btn btn-info" onclick="ch('{{i.pk}}')">comments</button>
-            
-            <p style="margin-left: 20px;">posted on:{{i.created_at}}</p>
-<div id="comments_hide{{i.pk}}" style="display: none;">         
-{% for i in j %}
-
+                      <p style="margin-left: 20px;">posted on:{{i.created_at}}</p>
+    <div id="comments_hide{{i.pk}}" style="display: none;">         
+      {% for i in j %}
           <div class="post" style="height: auto;width: auto;>
             {% for i in pic %}
               <a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
@@ -170,21 +120,18 @@ $('input[type="file"]').on('change', function() {
             <p style="margin-left: 20px;">{{i.text|linebreaksbr}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             <a href="{% url 'replycomments' pk=i.pk %}">{{ i.replycomments.count }}</a>
             <p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'replysavecomment' pk=i.pk }" data-pk1="{{i.pk}}" data-target="#myModal1" data-user1="{{i.user}}" data-text1="{{i.text|linebreaksbr}}" id="modalbutton1" style="color: #3399ff;margin-left:20px;" title="comments"></p>
-      <i style="margin-left: 80px;color: #3399ff;font-size: 15px;"><a href="{% url 'replycomments' pk=i.pk %}">{{ count }}Comments: </a></i>        
+            <i style="margin-left: 80px;color: #3399ff;font-size: 15px;"><a href="{% url 'replycomments' pk=i.pk %}">{{ count }}Comments: </a></i>        
             <div id="spa">  
               <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.image }}" />  
             </div>  
             <hr>
             <p style="margin-left: 20px;">posted on:{{i.created_at}}</p>    
           </div>
-        
-
-{% empty %}
-<div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width:auto;height:auto;margin-top: 65px;">        
-  <div class="post" style="height:10px;width: 500px;">
-</div>
-  
-</div>
+      {% empty %}
+        <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width:auto;height:auto;margin-top: 65px;">        
+          <div class="post" style="height:10px;width: 500px;">
+          </div>
+        </div>
       {% endfor %}</div>
           </div>
         </div>
@@ -192,22 +139,15 @@ $('input[type="file"]').on('change', function() {
     </div>
   </div>
 </div>  
-
-        
+<!-- modal for details and edit profile and header images -->
 <div class="modal fade" id="myModal" role="dialog" style="height: 700px; width: 100%;">
-    <div class="modal-dialog" style="height:500px;width: 100%; margin-top: 100px;">
-    
-      
-      <!-- <div class="modal-content"> -->
-         
+    <div class="modal-dialog" style="height:500px;width: 100%; margin-top: 100px;">             
     <div class="modal-dialog" style="height:500px;width: 100%; margin-top: 100px;">  
       <div class="modal-content">   
-
         <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;<span style="color: red;"></span></button>
           {% for i in pic %} 
           <img class="img-responsive"  src="/{{i.header_image}}" / style="width: 100%; height:250px;">
           {% endfor %}
-
         </div>
         <div class="modal-body" style="padding:40px 50px;">
         <button type="submit" class="btn btn-default pull-right" data-dismiss="modal" style="border-radius: 15px; margin-left: 1100px;">Cancel</button>  
@@ -222,18 +162,41 @@ $('input[type="file"]').on('change', function() {
     </div>
   </div> 
 </body>
+<!-- styles -->
 <style type="text/css">
   #twtimg{
 
       padding: 1px;
       width: 90%;
   }
-
-  
+  label:first-child{  
+    float: left;
+  }
 </style>
- 
+<!-- modal for edit profile -->
+<script>
+$(document).ready(function(){
+    $("#editbtn").click(function(){
+        $("#myModal").modal();
+    });
+});
+$("#img").click(function () {
+  $("input[type='file']").trigger('click');
+});
+$('input[type="file"]').on('change', function() {
+  var val = $(this).val();
+  $(this).siblings('span').text(val);
+})
+$("#headimg").click(function () {
+  $("input[type='file']").trigger('click');
+});
+$('input[type="file"]').on('change', function() {
+  var val = $(this).val();
+  $(this).siblings('span').text(val);
+})
+</script>  
+<!-- autocomplete -->
 <script type="text/javascript">
-
 $( function() {
         $("#search").on('keyup', function(){
         var value = $(this).val();
@@ -255,10 +218,6 @@ $( function() {
     });
  });
 </script>
-
-
-
-
 {% endblock %}
 </body>
 </html>

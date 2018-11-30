@@ -8,7 +8,11 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
+<<<<<<< HEAD
 set "VIRTUAL_ENV=D:\SMNS\twittersmns\accounts\myvenv"
+=======
+set "VIRTUAL_ENV=C:\gitfiles\SMNS\twittersmns\accounts\myvenv"
+>>>>>>> e7bd91b1cdf7cd470e6f4257ac6dcf08bc1c795d
 
 if not defined PROMPT (
     set "PROMPT=$P$G"

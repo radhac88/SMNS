@@ -1,38 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<body style="background-color: #d1e0e0;">
-	
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-  	<ul class="nav navbar-nav">
-      <li><a href="#"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
-      <li><a href="#"><i class=" fas fa-bolt" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
-      <li><a href="#"><i class="far fa-bell" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
-      <li><a href="#"><i class="far fa-envelope" style="font-size:24px"></i><b> &nbspMessages</b></a>
-      </li>
-      <li><a href="#"><i class="fab fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
-      <li><form type="get" action="{% url 'search' %}" accept-charset="utf-8">
-      <input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;background: #2196F3;color: white;font-size:8px;margin-top:15px;border: 1px solid grey;border-left: none;cursor: pointer;"><i class="fa fa-search example" style="font-size:17px">
-      	</i></button></form></li>
-    <li>
-   	<div class="dropdown">
-    	<p class="dropdown-toggle fas fa-user-circle" data-toggle="dropdown" type="button" style="font-size:40px;margin-top: 15px;margin-left:90px;"aria-haspopup="true" aria-expanded="true"></p>
-		<ul class="dropdown-menu" style="margin-left:100px;">
-			<li><a class="dropdown-item" href="{% url 'updateprofile' %}"><b>{{user.username}}</b><br>{{user.email}}</a>
-			<li class="divider"></li>
-			<li><a class="dropdown-item" href="{% url 'updateprofile' %}">
-				<font face="verdana">updateprofile</font></a></li><hr>
-
-		  {% if user.is_authenticated %}
-		    <li><a href="{% url 'logout' %}" >Logout</a></li>
-		  {% else %}
-		    <li><a href="{% url 'login' %}">login</a></li>
-		  {% endif %} 
-    	</ul>
-    
-  	</div>  
-</nav>
+<body style="background-color: #d1e0e0;">	
 <div class="container-fluid" >
 	<div class="row">
 		<div class="col-sm-4">
@@ -42,9 +11,6 @@
 				
 					<a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="90px" height="90px" style="margin-top:-40px; margin-left:20px"></a>
 			{% endfor %}
-
-			
-
 				<h5><a href="#" style="margin-left:100px;color: black; text-decoration: none;"><b>{{user.username}}</b> <br>  
 				&emsp;&emsp;&nbsp &emsp;&nbsp &emsp;&emsp;<i><b>{{user.email}}</b></i></a></h5>
 				<div class="row">
@@ -157,23 +123,22 @@
 
 		</div>
 	</div>
-
-		<div class="col-sm-3" id="sta" style ="margin-top:18px;">
-			<p><h5><b style="width: 30%">Who to follow</b></h5> </p>
-			{% for j in random_users %}
-				<img src="/{{j.profile_image}}"  onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px">
-				{{j.user.email}}<br>
-				<a class="account-group js-recommend-link js-user-profile-link user-thumb" href="{% url 'profile' pk=j.user.pk %}" rel="noopener">
-				<span class="account-group-inner" data-user-id="19895282">
-	        	<strong class="fullname" style="margin-left:50px;">{{ j.user }}</strong><span class="UserBadges"><span class="Icon Icon--verified"><span class="u-hiddenVisually"></span></span></span><span class="UserNameBreak">&nbsp;</span><span class="username u-dir u-textTruncate" dir="ltr">@<b>{{ j.user }}</b></span>
-	        	</span></a><br><br>
-    		{% endfor %}
+ 		<div class="col-sm-4"  id="sta" style ="margin-top:18px">
+				<p><h5><b style="width: 30%">Who to follow</b></h5> 
+	{% for j in random_users %}
+	 <img src="/{{j.profile_image}}"  onerror="this.src='../static/img/default.jpg';" class="img-circle" width="50px" height="50px" style="margin-top:10px; margin-left:10px">
+   
+      <span class="account-group-inner" data-user-id="19895282">
+        <a href="{% url 'profile' pk=j.user.pk %}" ><strong class="fullname">{{ j.user }}</strong></a><span class="UserBadges"><span class="Icon Icon--verified">&nbsp;&nbsp;&emsp;&emsp;&emsp;<span class="u-hiddenVisually"></span></span></span><span class="UserNameBreak"></span><p style="margin-left: 60px; margin-top: -20px;">{{j.user.email}}</p>
+        </span>
+    </a><br><br>
+    {% endfor %}
  
- 		</div>
-	</div>
+</div>	
 </div>
-
-
+</div>
+</div>
+<!-- toggle comments -->
 <script>
 $(document).ready(function(){
     $("#btn_hide").click(function(){
@@ -181,7 +146,57 @@ $(document).ready(function(){
     });
 });
 </script>
+<style type="text/css">
 
+	#sta{
+		display: block;
+		border:1px solid white;
+		width: 300px;
+	    margin-left: 115px;
+	    background-color:white;
+	    margin-inline-start:100px;
+	    margin-top: -10px;
+	   border-radius:20px;
+	   border-color: #1a75ff;
+	   border-width:2px;
+	}
+	#spa{
+		border:0px solid black;
+		width: auto;
+		height: auto;
+		margin-top: 16px;
+		margin-left: 20px;
+		margin-right: 20px;
+		margin-bottom: 20px;
+		border-radius: 8%;
+	}
+
+	label:first-child{
+		display: none;
+	}
+	#id_text{
+		margin-left:10px;
+		margin-top:20px;
+		width: 90%; 
+		height:50px;
+		border-radius: 10px;
+
+	}
+	p{
+		margin:2px 0 0 10px;
+	}
+	#id_profile_image{
+		display: none;
+	}
+
+	.errorlist{
+		display: none;
+	}
+	#twtimg{
+	    padding: 1px;
+	    width: 100%;
+	}
+</style>
 <script type="text/javascript">
 
 function chooseFile1() {
@@ -210,30 +225,11 @@ $(document).ready(function(){
 
 
 <script type="text/javascript">
-	 $("#id_text").attr("placeholder", "What's happening?");
-$( function() {
-	$("#search").on('keyup', function(){
-        var value = $(this).val();
-        $.ajax({
-            url: "{% url 'ajax_autocomplete' %}",
-            data: {
-              'search': value 
-            },
-            dataType: 'json',
-            success: function (data) {
-                list = data.list;
-                console.log(list);
-                $("#search").autocomplete({
-                source : list,
-                minLength:1
-                
-                });       
-            }
-        });        
-    });
- });
-</script>
-
+					$(modalbutton).one("click",function() {
+	    			var pk = $(this).data("pk");
+	    			var text = $(this).data("text");
+	    			var user=$(this).data("user");
+	    			var url = "{% url 'savecomment' pk=0 %}";
 
 <script type="text/javascript">
 	$(modalbutton).one("click",function() {
@@ -320,7 +316,6 @@ $( function() {
 </div>
 
 <script>	
-
 	$(document).ready(function(){
 		$("#id_image").hide();
     });
@@ -328,28 +323,6 @@ $( function() {
    function chooseFile() {
       document.getElementById("id_image").click();
    }
-
-$( function() {
-        $("#search").on('keyup', function(){
-        var value = $(this).val();
-        $.ajax({
-            url: "{% url 'ajax_autocomplete' %}",
-            data: {
-              'search': value 
-            },
-            dataType: 'json',
-            success: function (data) {
-                list = data.list;
-                console.log(list);
-                $("#search").autocomplete({
-                source : list,
-                minLength:1
-                
-                });       
-            }
-        });        
-    });
- });
 </script>
 <style type="text/css">
 

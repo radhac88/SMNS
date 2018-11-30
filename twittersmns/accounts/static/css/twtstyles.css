@@ -2,13 +2,9 @@
 	background-image: url(images/startlogo.jpg); 
     background-repeat: no-repeat; 
     background-size: cover; 
-    /*height: 920px;
-    width: 920px;*/
     max-width: 100%;
     height: -webkit-fill-available;
 }
-
-
 .glyphicon{
 	color: white;
 	font-size: 20px;
@@ -21,8 +17,6 @@
 .input{
 	width:200px;
 	height:45px;
-	/*border-radius: 2px;*/
-
 }
 .input:focus{
 	border-color: #5ea9dd;
@@ -30,11 +24,9 @@
 .button{
 	border-radius: 20px;
 	background-color: white;
-	/*border-color: #5ea9dd;*/
 	height: 40px;
 	border:2px solid #5ea9dd
 }
-
 .in{
 	width: 300px;
 	height: 40px;
@@ -67,13 +59,11 @@
   display: inline-block;
   cursor:pointer;
 }
-/**/
 #surya{
 	color: red;
 	
 }
 textarea{
-	/*margin-left: 40px;*/
 	margin-top: 20px;
 	border-color:#4286f4 ;
 	border-radius: 10px;
@@ -103,8 +93,7 @@ i:hover {
     margin-left: 30px;
 }
 #surya{
-	color: red;
-	
+	color: red;	
 }
 textarea{
 	
@@ -137,8 +126,6 @@ i:hover {
     height: 100px;
     margin-left: 30px;
 }
-
-
 .glyphicon{
 	color: white;
 	font-size: 20px;
@@ -151,8 +138,6 @@ i:hover {
 .input{
 	width:200px;
 	height:45px;
-	/*border-radius: 2px;*/
-
 }
 .input:focus{
 	border-color: #5ea9dd;
@@ -160,7 +145,6 @@ i:hover {
 .button{
 	border-radius: 20px;
 	background-color: white;
-	/*border-color: #5ea9dd;*/
 	height: 40px;
 	border:2px solid #5ea9dd
 }
