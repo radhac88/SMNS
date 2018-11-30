@@ -1,116 +1,49 @@
 {% extends 'base.html' %}
 {% block content %}
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">    
-    <ul class="nav navbar-nav">
-      <li><a href="{% url 'home' %}"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
-      <li><a href="#"><i class=" fas fa-bolt" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
-      <li><a href="#"><i class="far fa-bell" style="font-size:20px"></i><b>&nbsp Notifications</b></a></li>
-      <li><a href="#"><i class="far fa-envelope" style="font-size:24px"></i><b> &nbspMessages</b></a></li>
-     <li><a href="#"><i class="fab fa-twitter" style="font-size:30px;color:#4286f4; margin-left: 250px;"></i></a></li>
-      <li><form type="get" action="{% url 'search' %}" accept-charset="utf-8">
-        <input type="text" placeholder="Search.." id='search' value='{{search}}' class="searchfield ui-widget" autocomplete='off' name="search" style="margin-top: 15px;margin-left: 100px;border-radius: 5px;height: 33px;"><button type="submit" id="btn" style="float:right;padding: 7px;
-    background: #2196F3;
-    color: white;
-    font-size:8px;
-    margin-top:15px;
-    border: 1px solid grey;
-    border-left: none;cursor: pointer;"><i class="fa fa-search example" style="font-size:17px"></i></button></form></li>
-      <li>
-    <div class="dropdown">
-    <p class="dropdown-toggle fas fa-user-circle" data-toggle="dropdown" type="button" style="font-size:40px;margin-top: 15px;margin-left:90px;"aria-haspopup="true" aria-expanded="true"></p>
-    <ul class="dropdown-menu" style="margin-left:100px;">
-      <li><a class="dropdown-item" href="{% url 'updateprofile' %}"><b>{{user.username}}</b><br>{{user.email}}</a>
-      <li class="divider"></li>
-      <li><a class="dropdown-item" href="{% url 'updateprofile' %}">
-        <font face="verdana">updateprofile</font></a></li>
-      <li class="divider"></li>
-      {% if user.is_authenticated %}
-        <li><a href="{% url 'logout' %}" >Logout</a></li>
-      {% else %}
-        <li><a href="{% url 'login' %}">login</a></li>
-      {% endif %} 
-    </ul>
-  </div>  
-</nav>
-
 {% for i,j in searchlist %}
   <div class="grid-container" >
-      <div class="grid-item">
-        
+      <div class="grid-item">        
             {% for j in j %}
                 <img src="/{{j.profile_image}}" onerror="this.src='../static/img/default.jpg';"  class="img-circle" id="img" width="100px" height="100px" style="margin-top:80px; margin-left:7px;border: 3px solid white; z-index: 1;position: absolute;"></a>
-
                 <img src="/{{j.header_image}}" onerror="this.src='../static/img/background.jpg';" style="height: 130px; width:100%">
             {% endfor %} 
             <a href="{% url 'profile' pk=i.pk %}" style="font-size: 30px; margin-left: 40px;">{{i.username}}</a>
-            <p style="font-size: 15px; margin-left: 80px;">{{i.email}}</p> 
-                  
+            <p style="font-size: 15px; margin-left: 80px;">{{i.email}}</p>                 
       </div>
   </div>
+<!-- if searchlist is empty(serach value isn't matching with searchlist)the following line is displayed -->
 {% empty %}
 <div class="container" id="twtid" style="background:#fff;border-radius:9px;box-shadow:12px 12px 15px -12px #000; padding:0px 0 0; margin-bottom:-56px; width: 550px;height:300px;margin-top: 65px;">
-					<div class="post" style="height: 500px;width: 500px;">
-						
+					<div class="post" style="height: 500px;width: 500px;">						
     <h1 style="margin-top:100px; font-size: 50"><center>&nbsp;&ensp;&emsp;No name's matching :(</center></h1>
 <br><br>
 </div>
 </div>
-      {% endfor %}
-
+{% endfor %}
+<!-- styles -->
 <style type="text/css">
   body{
     background-color: #d1e0e0;
   }
 </style>
-<script type="text/javascript">
-
-$( function() {
-        $("#search").on('keyup', function(){
-        var value = $(this).val();
-        $.ajax({
-            url: "{% url 'ajax_autocomplete' %}",
-            data: {
-              'search': value 
-            },
-            dataType: 'json',
-            success: function (data) {
-                list = data.list;
-                console.log(list);
-                $("#search").autocomplete({
-                source : list,
-                minLength:1
-                
-                });       
-            }
-        });        
-    });
- });
-
-
-</script>
-
+<!-- styles to display the profiles in a grid form -->
 <style type="text/css">
-
         .grid-container {
-                display: inline-grid;
-                grid-template-columns: auto auto auto auto;
-                background-color:#44a0cc52;
-                padding: 3px;
-
+              display: inline-grid;
+              grid-template-columns: auto auto auto auto;
+              background-color:#44a0cc52;
+              padding: 3px;
         }
         .grid-item {
-                background-color:white;
-                padding: 3px;
-                font-size: 20px;
-                text-align: center;
-                height: 300px;
-                width: 400px;
+              background-color:white;
+              padding: 3px;
+              font-size: 20px;
+              text-align: center;
+              height: 300px;
+              width: 400px;
         }
         #div{
-                padding: 100px;
-                
+            padding: 100px;                
         }
 </style>
-
 {% endblock %}

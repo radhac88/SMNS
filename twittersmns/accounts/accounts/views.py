@@ -23,9 +23,6 @@ from django.contrib.auth import authenticate,login
 from django.http import HttpResponseRedirect,HttpResponse
 from django.http import JsonResponse
 
-
-
-
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -41,8 +38,6 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
-
-
 
 def home(request):
 	if request.method == "POST":
@@ -96,7 +91,6 @@ def home(request):
 		else:
 			return render(request, 'start.html')
 	return render(request, 'home.html', {'form': form,'random_users': ran,'pic':pic})	
-
 
 def profile(request, pk):
 	try:
@@ -180,6 +174,7 @@ def updateprofile(request):
 	            profile.profile_image = form.cleaned_data['profile_image']
 	            profile.header_image = form.cleaned_data['header_image']
 	            profile.save()
+
 	        commentslist=[]
 	        for i in twt:
 	        	comments=comment.objects.filter(twtid=i.id)
@@ -203,6 +198,7 @@ def updateprofile(request):
 	    			replycommentlist.append(reply)
 	    		twtlist=zip(twt,commentslist,replycommentlist)
 	    		return render(request, 'updateprofile.html', {'form': form,'twtlist':twtlist,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})  
+
     except:
     	form =ProfileForm(request.POST)
     	if form.is_valid():
@@ -221,7 +217,6 @@ def updateprofile(request):
             	replycommentlist.append(reply)
             	twtlist=zip(twt,commentslist,replycommentlist)    
             return render(request, 'updateprofile.html', {'form': form,'twtlist':twtlist,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})	
-    return render(request, 'updateprofile.html', {'form': form,'pic':pic,'twt1':twt,'followers':followers,'following':following,'twtcount':tweetscount})
 
 def replycomments(request, pk):
 		post = get_object_or_404(comment, pk=pk)
