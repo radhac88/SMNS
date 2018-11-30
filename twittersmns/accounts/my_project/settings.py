@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -135,21 +135,18 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # MEDIA_URL='/accounts/images/'
 MEDIA_URL='/media/'
-# <<<<<<< HEAD
+MAX_UPLOAD_SIZE = "20971520"
 
-# # REDIS related settings 
-# =======
-# >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
-# REDIS_HOST = 'localhost'
-# REDIS_PORT = '6379'
-# BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
-# BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600} 
-# <<<<<<< HEAD
-# CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
-# =======
-# CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'   
-# BROKER_URL = 'amqp://guest:guest@localhost//'
-# CELERY_ACCEPT_CONTENT = ['json']
-# CELERY_TASKS_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
-# >>>>>>> c23780c21d620240d733d35107e75dc0d79d052b
+
+# REDIS related settings 
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = '6379'
+BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600} 
+
+CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'   
+BROKER_URL = 'amqp://guest:guest@localhost//'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASKS_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'

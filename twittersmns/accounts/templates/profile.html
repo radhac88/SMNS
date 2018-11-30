@@ -54,11 +54,13 @@
             <p style="margin-left: 20px;">posted on:{{i.created_at}}</p>
 <div id="comments_hide{{i.pk}}" style="display: none;">         
 {% for i in j %}
+
           <div class="post" style="width: auto;height: auto;">
             {% for i in pic %}
               <a href="#"><img src="/{{i.profile_image}}" class="img-circle"onerror="this.src='../../static/img/default.jpg';"width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
             {% endfor %}
             <i style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></i><br><br>
+
             <p style="margin-left: 20px;">{{i.text|linebreaksbr}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             <a href="{% url 'replycomments' pk=i.pk %}">{{ i.replycomments.count }}</a>
             <p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'replysavecomment' pk=i.pk }" data-pk1="{{i.pk}}" data-target="#myModal1" data-user1="{{i.user}}" data-text1="{{i.text|linebreaksbr}}" id="modalbutton1" style="color: #3399ff;margin-left:20px;" title="comments"></p>

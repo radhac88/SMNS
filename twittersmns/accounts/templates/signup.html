@@ -25,6 +25,7 @@
 <link id="async-css-placeholder">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 </head>
+{% block content %}
 
 <body class="three-col logged-out ms-windows" 
 data-fouc-class-names="swift-loading no-nav-banners"
@@ -56,6 +57,7 @@ dir="ltr">
 <div id="page-outer">
   <div id="page-container" class="AppContent wrapper wrapper-login">
     <div class="page-canvas">
+
       <div class="signin-wrapper" data-login-message="" style="max-width:90%;padding-left: 20px;">
         <h1>Sign Up To Twitter</h1>
 <form method="post" action="{%url 'signup'%}">
@@ -69,6 +71,7 @@ dir="ltr">
  </div>
 </form>
       </div>
+
     </div>
   </div>
 </div>
@@ -94,14 +97,21 @@ function myFunction() {
 <!-- on blur the error message is displayed -->
 <script type="text/javascript">
   $(document).ready(function(){
+
     $("#id_username").before("<span class='star'>*</span> <br>");
     var err_username = '<span id="err_username" class="errmsg"></span>';
     $("#id_username").after(err_username);  
     $("#id_username").blur(function(){
+     
     var username =$("#id_username").val();
     if(username==""){
-      $("#id_username").css("border-color", "red");  
-      $("#err_username").html("Invalid Username"); 
+      $("#id_username").css("border-color", "red");
+      
+      
+      $("#err_username").html("Invalid Username");
+       
+        
+
         return false;
       }
     else{
@@ -121,10 +131,10 @@ function myFunction() {
     $("#id_email").before("<span class='star'>*</span><br>");  
     var err_email = '<span id="err_email" class="errmsg"></span>';
     $("#id_email").after(err_email);  
-    $("#id_email").blur(function(){
+    $("#id_email").blur(function(){  
     var mail=$("#id_email").val();
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
-    if(!(mail.match(mailformat))){  
+    if(!(mail.match(mailformat))){
       $("#err_email").text("Invalid email address");
        $("#id_email").css("border-color", "red");  
         return false;
@@ -143,12 +153,14 @@ function myFunction() {
 <!-- on blur the error message is displayed -->
 <script type="text/javascript">
   $(document).ready(function(){
+
+
     $("#id_password1").before("<span class='star'>*</span><br>");
     var err_password1 = '<span id="err_password1" class="errmsg"></span>';
     $("#id_password1").after(err_password1);  
-    $("#id_password1").blur(function(){
-    var psw=$("#id_password1").val();  
-    if(!(psw.length>=8)){
+    $("#id_password1").blur(function(){  
+    var psw=$("#id_password1").val();    
+    if(!(psw.length>=8)){            
       $("#err_password1").html("password should contain minimum 8 characters");
        $("#id_password1").css("border-color", "red");  
         return false;
@@ -170,10 +182,10 @@ function myFunction() {
     $("#id_password2").before("<span class='star'>*</span><br>");  
     var err_password2 = '<span id="err_password2" class="surya"></span>';
     $("#id_password2").after(err_password2);  
-    $("#id_password2").blur(function(){
+    $("#id_password2").blur(function(){             
     var psw=$("#id_password2").val();
-    var con = $("#id_password2").val();  
-    if(psw!=con){  
+    var con = $("#id_password2").val();    
+    if(psw!=con){           
       $("#err_password2").html("password doesn't match!!");
        $("#id_password2").css("border-color", "red");  
         return false;
@@ -191,6 +203,7 @@ function myFunction() {
   p{
     margin-bottom: 25px;
   }
+
   ul{
     color: red;
   }
@@ -203,6 +216,7 @@ function myFunction() {
     font-family:-webkit-body;
   }
    li{
+
     font-size: 12px;
     list-style-type: disc;
   }
@@ -218,8 +232,9 @@ function myFunction() {
     color: red;
   }
   h1{
+    
     font-size: 34px;
-  }  
+}
   input{
     width: 279px;
   }
@@ -236,4 +251,5 @@ function myFunction() {
     display: none;
   }
 </style> 
+{% endblock %}
 </html>

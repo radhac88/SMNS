@@ -52,3 +52,29 @@
 {% endblock %}
 </body>
 </html>
+
+<script type="text/javascript">
+$( function() {
+        $("#search").on('keyup', function(){
+        var value = $(this).val();
+        $.ajax({
+            url: "{% url 'ajax_autocomplete' %}",
+            data: {
+              'search': value 
+            },
+            dataType: 'json',
+            success: function (data) {
+                list = data.list;
+                console.log(list);
+                $("#search").autocomplete({
+                source : list,
+                minLength:1
+                
+                });       
+            }
+        });        
+    });
+ });
+</script>
+
+

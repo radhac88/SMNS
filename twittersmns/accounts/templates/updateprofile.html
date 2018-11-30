@@ -28,10 +28,8 @@
 </head>
 <body>
 {% block content %}
-
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    
+  <div class="container-fluid">    
     <ul class="nav navbar-nav">
       <li><a href="{% url 'home' %}"><i class="fa fa-fw fa-home" style="font-size:20px"></i><b>Home</b></a></li> 
       <li><a href="#"><i class=" fas fa-bolt" style="font-size:20px"></i><b>&nbsp Moments</b></a></li>
@@ -75,6 +73,7 @@
 
 <nav class="navbar navbar-default ">
   <div class="container-fluid">
+
      <ul class="nav navbar-nav" style="margin-left:350px;">
       <li><a href="{% url 'following_page' pk=user.pk %}"><b>Following</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{following}}</b></li>      
       <li><a href="{% url 'followers_page' pk=user.pk %}"><b>Followers</b></a>&emsp;&emsp;&emsp;<b style="color:#3399ff; font-size: 20px;">{{followers}}</b></li>
@@ -107,6 +106,7 @@
               <img id="twtimg" class="img-responsive" onError="this.onerror=null;this.src='';" src="/{{i.profile_image }}" / style="margin-left: 20px;">  
             </div><br>
 
+<<<<<<< HEAD
             <a href="{% url 'comments' pk=i.pk %}">{{ i.comments.count }}</a>
             <p type="button" class="fa fa-comments fa-lg" style="color: #3399ff;margin-left:20px;" title="comments"></p><a href="#" data-toggle="tooltip" title="retweet"><i class="fas fa-retweet" style="color: #3399ff;margin-left:50px; font-size: 20px;"></i></a><a href="#" data-toggle="tooltip" title="likes"><i class="fas fa-heart" style="margin-left: 80px;color: #3399ff;font-size: 20px;"></i></a><i class="far fa-envelope" style="margin-left:90px; color:#3399ff;font-size:20px;"></i>
             <i style="margin-left: 80px;color: #3399ff;font-size: 15px;"></i><button class="btn btn-info" onclick="ch('{{i.pk}}')">comments</button>
@@ -118,6 +118,7 @@
               <a href="#"><img src="/{{i.profile_image}}" onerror="this.src='../static/img/default.jpg';" class="img-circle" width="40px" height="40px" style="margin-top:10px; margin-left:10px"></a>
             {% endfor %}
             <i style="margin-top:30px;"><b style="color:#3399ff; font-size:17px; margin-left:20px;">{{i.user}}</b></i><br><br>
+
             <p style="margin-left: 20px;">{{i.text|linebreaksbr}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             <a href="{% url 'replycomments' pk=i.pk %}">{{ i.replycomments.count }}</a>
             <p type="button" class="fa fa-comments fa-lg" data-toggle="modal" data-form="{% url 'replysavecomment' pk=i.pk }" data-pk1="{{i.pk}}" data-target="#myModal1" data-user1="{{i.user}}" data-text1="{{i.text|linebreaksbr}}" id="modalbutton1" style="color: #3399ff;margin-left:20px;" title="comments"></p>
@@ -166,6 +167,7 @@
 <!-- styles -->
 <style type="text/css">
   #twtimg{
+
       padding: 1px;
       width: 90%;
   }
@@ -210,8 +212,7 @@ $( function() {
                 list = data.list;
                 console.log(list);
                 $("#search").autocomplete({
-                source : list,
-                minLength:1
+                source : list
                 
                 });       
             }
@@ -219,10 +220,6 @@ $( function() {
     });
  });
 </script>
-
-
-
-
 {% endblock %}
 </body>
 </html>
